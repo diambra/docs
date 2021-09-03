@@ -19,6 +19,8 @@ defaultContentLanguageInSubdir= true
   disableMermaid = false
   customMermaidURL = "https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"
   titleSeparator = "::"
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "red"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
