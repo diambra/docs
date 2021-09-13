@@ -1,11 +1,8 @@
 ---
-title: Getting started
+title: Installation
 weight: 10
-chapter: true
 ---
 
-### Chapter 1
-
-# Basics
+# Installation
 
 Discover what this Hugo theme is all about and the core-concepts behind it.
