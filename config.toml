@@ -45,9 +45,9 @@ url = "showcase"
 weight = 11
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bookmark'></i> Hugo Documentation"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
+name = "<i class='fas fa-heart'></i> Support"
+identifier = "support"
+url = "https://www.paypal.com/donate?token=nGXpYEIW16U7h-prozHCv3N0hAqkruAmnJ2xummvIoc8cQ5Deapl4dCpZn5kD9xIAtD2TKLf-E3sv15p"
 weight = 20
 
 [[Languages.en.menu.shortcuts]]
