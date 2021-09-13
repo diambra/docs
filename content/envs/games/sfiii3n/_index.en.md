@@ -1,6 +1,6 @@
 ---
 date: 2016-04-09T16:50:16+02:00
-title: Street Fighter III 3rd strike: fight for the future
+title: Street Fighter III 3rd strike - Fight for the future
 weight: 20
 ---
 
