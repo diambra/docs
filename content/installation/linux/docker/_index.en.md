@@ -1,112 +1,97 @@
 ---
 date: 2016-04-09T16:50:16+02:00
-title: Docker
-weight: 20
+title: Docker (Recommended)
+weight: 10
 ---
 
-## Global site parameters
+## Prerequisites
 
-On top of [Hugo global configuration](https://gohugo.io/overview/configuration/), **Hugo-theme-learn** lets you define the following parameters in your `config.toml` (here, values are default).
+- Install <a href="https://docs.docker.com/engine/install/#server" target="_blank">Docker Engine</a>
+- Install <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> (Needed for GPU usage)
+- Download/Clone <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">DIAMBRA Arena Repo</a><br>
+  Download `wget https://github.com/diambra/DIAMBRAenvironment/archive/refs/heads/main.zip`<br>
+  Clone `git clone https://github.com/diambra/DIAMBRAenvironment.git`
 
-Note that some of these parameters are explained in details in other sections of this documentation.
+- Obtain game ROMS
 
-```toml
-[params]
-  # Prefix URL to edit current page. Will display an "Edit this page" button on top right hand corner of every page.
-  # Useful to give opportunity to people to create merge request for your doc.
-  # See the config.toml file from this documentation site to have an example.
-  editURL = ""
-  # Author of the site, will be used in meta information
-  author = ""
-  # Description of the site, will be used in meta information
-  description = ""
-  # Shows a checkmark for visited pages on the menu
-  showVisitedLinks = false
-  # Disable search function. It will hide search bar
-  disableSearch = false
-  # Javascript and CSS cache are automatically busted when new version of site is generated.
-  # Set this to true to disable this behavior (some proxies don't handle well this optimization)
-  disableAssetsBusting = false
-  # Set this to true to disable copy-to-clipboard button for inline code.
-  disableInlineCopyToClipBoard = false
-  # A title for shortcuts in menu is set by default. Set this to true to disable it.
-  disableShortcutsTitle = false
-  # If set to false, a Home button will appear below the search bar on the menu.
-  # It is redirecting to the landing page of the current language if specified. (Default is "/")
-  disableLandingPageButton = true
-  # When using mulitlingual website, disable the switch language button.
-  disableLanguageSwitchingButton = false
-  # Hide breadcrumbs in the header and only show the current page title
-  disableBreadcrumb = true
-  # If set to true, prevents Hugo from including the mermaid module if not needed (will reduce load times and traffic)
-  disableMermaid = false
-  # Specifies the remote location of the mermaid js
-  customMermaidURL = "https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"
-  # Hide Next and Previous page buttons normally displayed full height beside content
-  disableNextPrev = true
-  # Order sections in menu by "weight" or "title". Default to "weight"
-  ordersectionsby = "weight"
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
-  themeVariant = ""
-  # Provide a list of custom css files to load relative from the `static/` folder in the site root.
-  custom_css = ["css/foo.css", "css/bar.css"]
-  # Change the title separator. Default to "::".
-  titleSeparator = "-"
+{{% notice tip %}}
+Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check the SHA256 checksum of the downloaded file using the shell command `sha256sum romFile.zip` and compare it with those listed <a href="AAA" target="_blank">here</a> or, after installation, validate the ROM file using the dedicated funciontality as described in <a href="#">this section below</a>.
+{{% /notice %}}
+
+{{% notice warning %}}
+As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software interface to existing videogames, and it cannot work as a standalone application. As such, it requires the User to own software elements protected by copyright, and to interface them with the Environment itself. It is the case, for example, of Game ROMS required to execute the correspondent Game-related Environment. In such cases, <ins><strong>it is sole and only responsibility of the User to comply with all the laws and regulations, and to make sure he has the right to use such copyright-protected material. DIAMBRA Arena owners will spend their maximum effort in avoiding illegal distribution of such material, and are by no mean responsible for copyright infringement.</strong></ins> 
+{{% /notice %}}
+
+## Installation
+
+## Tests
+
+#### Run random agent in Dead Or Alive++ with GUI support
+
+```bash
+./runDocker.sh -r "your/roms/local/path" -s diambraArenaGist.py -g 1
 ```
 
-## Activate search
+#### Validate game ROM file
 
-If not already present, add the follow lines in the same `config.toml` file.
+```python
+import diambraArena
 
-```toml
-[outputs]
-home = [ "HTML", "RSS", "JSON"]
+# Verify SHA256 Checksum for ROM file
+diambraArena.checkGameSha256(gameId, romFile.zip)
 ```
 
-Learn theme uses the last improvement available in hugo version 20+ to generate a json index file ready to be consumed by lunr.js javascript search engine.
 
-> Hugo generate lunrjs index.json at the root of public folder.
-> When you build the site with `hugo server`, hugo generates it internally and of course it doesn’t show up in the filesystem
 
-## Mermaid
 
-The mermaid configuration parameters can also be set on a specific page. In this case, the global parameter would be overwritten by the local one.
 
-> Example:
->
-> Mermaid is globally disabled. By default it won't be loaded by any page.  
-> On page "Architecture" you need a class diagram. You can set the mermaid parameters locally to only load mermaid on this page (not on the others).
-
-You also can disable mermaid for specific pages while globally enabled.
-
-## Home Button Configuration
-
-If the `disableLandingPage` option is set to `false`, an Home button will appear
-on the left menu. It is an alternative for clicking on the logo. To edit the
-appearance, you will have to configure two parameters for the defined languages:
-
-```toml
-[Lanugages]
-[Lanugages.en]
-...
-landingPageURL = "/en"
-landingPageName = "<i class='fas fa-home'></i> Redirect to Home"
-...
-[Lanugages.fr]
-...
-landingPageURL = "/fr"
-landingPageName = "<i class='fas fa-home'></i> Accueil"
-...
+```bash
+./runDocker.sh -h
 ```
-
-If those params are not configured for a specific language, they will get their
-default values:
-
-```toml
-landingPageURL = "/"
-landingPageName = "<i class='fas fa-home'></i> Home"
+```terminal
+Usage:
+ 
+  ./runDocker.sh [OPTIONS]
+ 
+OPTIONS:
+  -h Prints out this help message.
+ 
+  -r "<path>" Specify your local path to where game roms are located.
+              (Mandatory to run environments.)
+ 
+  -s <file> Python script to run inside docker container.
+            Must be located in the folder from where the bash script is executed.
+ 
+  -c <command> Command to be executed at docker container startup.
+               Can be used to start and interactive linux shell, for example to install pip packages.
+ 
+  -g <X> Specify if to run in Headless mode (X=0, default) or with GUI support (X=1)
+ 
+  -d <DEVICE> Specify if to run CPU docker image (DEVICE=CPU, default)
+              or the one with NVIDIA GPU Support (DEVICE=GPU)
+              Requires Nvidia-Docker Toolkit installed
+ 
+  -v <name> Specify the name of the volume where to store pip packages
+            installed inside the container to make them persistent. (Optional)
+ 
+Examples:
+  - Headless (CPU): ./runDocker.sh -r "your/roms/local/path"
+                                   -s yourPythonScriptInCurrentDir.py
+                                   -v yourVolumeName (optional)
+ 
+  - Headless (GPU): ./runDocker.sh -r "your/roms/local/path"
+                                   -s yourPythonScriptInCurrentDir.py
+                                   -d GPU
+                                   -v yourVolumeName (optional)
+ 
+  - With GUI (CPU): ./runDocker.sh -r "your/roms/local/path"
+                                   -s yourPythonScriptInCurrentDir.py
+                                   -g 1
+                                   -v yourVolumeName (optional)
+ 
+  - Terminal (CPU): ./runDocker.sh -c bash
+                                   -v yourVolumeName (optional)
+ 
+  - CUDA Installation Test (GPU): ./runDocker.sh -c "cat /proc/driver/nvidia/version; nvcc -V"
+                                                 -d GPU
 ```
-
-The home button is going to looks like this:
-
-![Default Home Button](/en/basics/configuration/images/home_button_defaults.jpg?width=100%)
