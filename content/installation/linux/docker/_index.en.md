@@ -8,21 +8,38 @@ weight: 10
 
 - Install <a href="https://docs.docker.com/engine/install/#server" target="_blank">Docker Engine</a>
 - Install <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> (Needed for GPU usage)
-- Download/Clone <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">DIAMBRA Arena Repo</a><br>
-  Download `wget https://github.com/diambra/DIAMBRAenvironment/archive/refs/heads/main.zip`<br>
-  Clone `git clone https://github.com/diambra/DIAMBRAenvironment.git`
 
-- Obtain game ROMS
+## Installation
+
+##### Download examples
+
+- Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and navigate to the destination folder in the shell:
+    ```bash
+    wget XXX; unzip examples.zip && cd examples
+    ```
+
+##### Download game ROM(s) and check validity
+
+- Check available games details running:
+    ```bash
+    ./diambraArena.sh -l
+    ```
+  Output example:
+
+- Search ROMs and download them. You can use `Search keywords` provided by the game list command reported above, there is a list of suggested terms for each game.
+- Check ROM(s) validity 
+     ```bash
+     ./diambraArena.sh -r "your/roms/local/path" \
+                       -t romFileName.zip
+     ```
 
 {{% notice tip %}}
-Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check the SHA256 checksum of the downloaded file using the shell command `sha256sum romFile.zip` and compare it with those listed <a href="AAA" target="_blank">here</a> or, after installation, validate the ROM file using the dedicated funciontality as described in <a href="#">this section below</a>.
+Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file using the above command.
 {{% /notice %}}
 
 {{% notice warning %}}
 As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software interface to existing videogames, and it cannot work as a standalone application. As such, it requires the User to own software elements protected by copyright, and to interface them with the Environment itself. It is the case, for example, of Game ROMS required to execute the correspondent Game-related Environment. In such cases, <ins><strong>it is sole and only responsibility of the User to comply with all the laws and regulations, and to make sure he has the right to use such copyright-protected material. DIAMBRA Arena owners will spend their maximum effort in avoiding illegal distribution of such material, and are by no mean responsible for copyright infringement.</strong></ins> 
 {{% /notice %}}
-
-## Installation
 
 ## Tests
 
