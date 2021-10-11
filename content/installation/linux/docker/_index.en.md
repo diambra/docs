@@ -11,70 +11,92 @@ weight: 10
 
 ## Installation
 
-##### Download examples
+#### Download DIAMBRA Arena docker images
 
-- Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and navigate to the destination folder in the shell:
+- Base Image (CPU): `docker pull diambra:diambra-arena-base`
+
+- Image with CUDA Support (GPU - CUDA 10.0): `docker pull diambra:diambra-arena-gpu-cuda10.0`
+
+#### Download examples
+
+- Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
     ```bash
     wget XXX; unzip examples.zip && cd examples
     ```
 
-##### Download game ROM(s) and check validity
+#### Download game ROM(s) and check validity
 
 - Check available games details running:
     ```bash
     ./diambraArena.sh -l
     ```
   Output example:
+  ![Test](/images/gamesList.png)
 
-- Search ROMs and download them. You can use `Search keywords` provided by the game list command reported above, there is a list of suggested terms for each game.
-- Check ROM(s) validity 
+- Search ROMs and download them. You can use <strong>Search keywords</strong> provided by the game list command reported above, there is a list of suggested terms for each game. <strong>Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</strong>.
+
+  {{% notice note %}}
+  Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
+  {{% /notice %}}
+
+- Check ROM(s) validity running:
      ```bash
      ./diambraArena.sh -r "your/roms/local/path" \
                        -t romFileName.zip
      ```
-
 {{% notice tip %}}
-Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file using the above command.
+To avoid specifying ROMs path every time, you can define a specific environment variable<br> 
+A) in your current shell session with: `export DIAMBRAROMSPATH=your/roms/local/path`<br>
+B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate shell `.profile` (in `bash`, for example, append the line to `~/.bashrc`)
 {{% /notice %}}
 
 {{% notice warning %}}
 As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software interface to existing videogames, and it cannot work as a standalone application. As such, it requires the User to own software elements protected by copyright, and to interface them with the Environment itself. It is the case, for example, of Game ROMS required to execute the correspondent Game-related Environment. In such cases, <ins><strong>it is sole and only responsibility of the User to comply with all the laws and regulations, and to make sure he has the right to use such copyright-protected material. DIAMBRA Arena owners will spend their maximum effort in avoiding illegal distribution of such material, and are by no mean responsible for copyright infringement.</strong></ins> 
 {{% /notice %}}
 
-## Tests
+## Quickstart 
 
-#### Run random agent in Dead Or Alive++ with GUI support
-
-```bash
-./runDocker.sh -r "your/roms/local/path" -s diambraArenaGist.py -g 1
-```
-
-#### Validate game ROM file
-
-```python
-import diambraArena
-
-# Verify SHA256 Checksum for ROM file
-diambraArena.checkGameSha256(gameId, romFile.zip)
-```
-
-
-
-
+#### Run random agent in Dead Or Alive++ (with GUI support)
 
 ```bash
-./runDocker.sh -h
+./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py -g 1
 ```
+
+#### Run random agent in Dead Or Alive++ (Headless mode)
+
+```bash
+./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
+```
+
+#### Bash terminal with python package persistent install
+
+```bash
+./diambraArena.sh -c bash -v yourVolumeName
+```
+
+#### CUDA Installation test
+```bash
+./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V" -d GPU
+```
+#### Check out help message
+```bash
+./diambraArena.sh -h
+```
+
 ```terminal
 Usage:
- 
-  ./runDocker.sh [OPTIONS]
+
+  ./diambraArena.sh [OPTIONS]
  
 OPTIONS:
   -h Prints out this help message.
  
+  -l Prints out available games list.
+ 
+  -t <romFile.zip> Checks ROM file validity.
+ 
   -r "<path>" Specify your local path to where game roms are located.
-              (Mandatory to run environments.)
+              (Mandatory to run environments and to check ROM validity.)
  
   -s <file> Python script to run inside docker container.
             Must be located in the folder from where the bash script is executed.
@@ -92,23 +114,50 @@ OPTIONS:
             installed inside the container to make them persistent. (Optional)
  
 Examples:
-  - Headless (CPU): ./runDocker.sh -r "your/roms/local/path"
-                                   -s yourPythonScriptInCurrentDir.py
-                                   -v yourVolumeName (optional)
+  - Availble games list with details: ./diambraArena.sh -l
  
-  - Headless (GPU): ./runDocker.sh -r "your/roms/local/path"
-                                   -s yourPythonScriptInCurrentDir.py
-                                   -d GPU
-                                   -v yourVolumeName (optional)
+  - ROM File Validation: ./diambraArena.sh -r "your/roms/local/path"
+                                           -t romFile.zip
  
-  - With GUI (CPU): ./runDocker.sh -r "your/roms/local/path"
-                                   -s yourPythonScriptInCurrentDir.py
-                                   -g 1
-                                   -v yourVolumeName (optional)
+  - Headless (CPU): ./diambraArena.sh -r "your/roms/local/path"
+                                      -s yourPythonScriptInCurrentDir.py
+                                      -v yourVolumeName (optional)
  
-  - Terminal (CPU): ./runDocker.sh -c bash
-                                   -v yourVolumeName (optional)
+  - Headless (GPU): ./diambraArena.sh -r "your/roms/local/path"
+                                      -s yourPythonScriptInCurrentDir.py
+                                      -d GPU
+                                      -v yourVolumeName (optional)
  
-  - CUDA Installation Test (GPU): ./runDocker.sh -c "cat /proc/driver/nvidia/version; nvcc -V"
-                                                 -d GPU
+  - With GUI (CPU): ./diambraArena.sh -r "your/roms/local/path"
+                                      -s yourPythonScriptInCurrentDir.py
+                                      -g 1
+                                      -v yourVolumeName (optional)
+ 
+  - Terminal (CPU): ./diambraArena.sh -c bash
+                                      -v yourVolumeName (optional)
+ 
+  - CUDA Installation Test (GPU): ./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V"
+                                                    -d GPU
 ```
+
+## Advanced Usage
+
+### Commands details
+
+#### Headless Execution
+
+
+```bash
+volume="-v ${OPTARG}:/usr/local/lib/python3.6/dist-packages/"
+romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind "
+gpuSetup="--gpus all" 
+imageName="diambra:diambra-arena-gpu-cuda10.0"                              
+imageName="diambra:diambra-arena-base"
+
+docker run -it --rm $gpuSetup --privileged $volume $romsPath \              
+ --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
+ --name diambraArena $imageName \                                           
+  sh -c "cd /opt/diambraArena/code/ && $cmd" 
+```
+
+#### GUI-Supported Execution
