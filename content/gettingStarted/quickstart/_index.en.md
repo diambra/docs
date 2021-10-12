@@ -4,109 +4,241 @@ title: Quickstart
 weight: 10
 ---
 
-## Global site parameters
+## Assumptions
 
-On top of [Hugo global configuration](https://gohugo.io/overview/configuration/), **Hugo-theme-learn** lets you define the following parameters in your `config.toml` (here, values are default).
+- Installation completed and succesfully tested as described in <a href="/installation/">Installation</a> section
+- <a href="/installation/">TODO: UPDATE LINK Examples</a> provided with DIAMBRA Arena repo dowloaded
+- ROMs downloaded and all placed in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`
 
-Note that some of these parameters are explained in details in other sections of this documentation.
+{{% notice tip %}}
+To avoid specifying ROMs for every command you run, you can define a specific environment variable (See <a href="/installation/">Installation</a> section for details). 
+{{% /notice %}}
 
-```toml
-[params]
-  # Prefix URL to edit current page. Will display an "Edit this page" button on top right hand corner of every page.
-  # Useful to give opportunity to people to create merge request for your doc.
-  # See the config.toml file from this documentation site to have an example.
-  editURL = ""
-  # Author of the site, will be used in meta information
-  author = ""
-  # Description of the site, will be used in meta information
-  description = ""
-  # Shows a checkmark for visited pages on the menu
-  showVisitedLinks = false
-  # Disable search function. It will hide search bar
-  disableSearch = false
-  # Javascript and CSS cache are automatically busted when new version of site is generated.
-  # Set this to true to disable this behavior (some proxies don't handle well this optimization)
-  disableAssetsBusting = false
-  # Set this to true to disable copy-to-clipboard button for inline code.
-  disableInlineCopyToClipBoard = false
-  # A title for shortcuts in menu is set by default. Set this to true to disable it.
-  disableShortcutsTitle = false
-  # If set to false, a Home button will appear below the search bar on the menu.
-  # It is redirecting to the landing page of the current language if specified. (Default is "/")
-  disableLandingPageButton = true
-  # When using mulitlingual website, disable the switch language button.
-  disableLanguageSwitchingButton = false
-  # Hide breadcrumbs in the header and only show the current page title
-  disableBreadcrumb = true
-  # If set to true, prevents Hugo from including the mermaid module if not needed (will reduce load times and traffic)
-  disableMermaid = false
-  # Specifies the remote location of the mermaid js
-  customMermaidURL = "https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"
-  # Hide Next and Previous page buttons normally displayed full height beside content
-  disableNextPrev = true
-  # Order sections in menu by "weight" or "title". Default to "weight"
-  ordersectionsby = "weight"
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
-  themeVariant = ""
-  # Provide a list of custom css files to load relative from the `static/` folder in the site root.
-  custom_css = ["css/foo.css", "css/bar.css"]
-  # Change the title separator. Default to "::".
-  titleSeparator = "-"
+## Basic usage examples
+
+### Script options details (Docker only)
+
+{{< tabs >}}
+{{% tab name="Linux (Docker) / MacOS" %}}
+```bash
+./diambraArena.sh -h
+```
+Output:
+```terminal
+Usage:
+
+  ./diambraArena.sh [OPTIONS]
+ 
+OPTIONS:
+  -h Prints out this help message.
+ 
+  -l Prints out available games list.
+ 
+  -t <romFile.zip> Checks ROM file validity.
+ 
+  -r "<path>" Specify your local path to where game roms are located.
+              (Mandatory to run environments and to check ROM validity.)
+ 
+  -s <file> Python script to run inside docker container.
+            Must be located in the folder from where the bash script is executed.
+ 
+  -c <command> Command to be executed at docker container startup.
+               Can be used to start and interactive linux shell, for example to install pip packages.
+ 
+  -g <X> Specify if to run in Headless mode (X=0, default) or with GUI support (X=1)
+ 
+  -d <DEVICE> Specify if to run CPU docker image (DEVICE=CPU, default)
+              or the one with NVIDIA GPU Support (DEVICE=GPU)
+              Requires Nvidia-Docker Toolkit installed
+ 
+  -v <name> Specify the name of the volume where to store pip packages
+            installed inside the container to make them persistent. (Optional)
+ 
+Examples:
+  - Availble games list with details: ./diambraArena.sh -l
+ 
+  - ROM File Validation: ./diambraArena.sh -r "your/roms/local/path"
+                                           -t romFile.zip
+ 
+  - Headless (CPU): ./diambraArena.sh -r "your/roms/local/path"
+                                      -s yourPythonScriptInCurrentDir.py
+                                      -v yourVolumeName (optional)
+ 
+  - Headless (GPU): ./diambraArena.sh -r "your/roms/local/path"
+                                      -s yourPythonScriptInCurrentDir.py
+                                      -d GPU
+                                      -v yourVolumeName (optional)
+ 
+  - With GUI (CPU): ./diambraArena.sh -r "your/roms/local/path"
+                                      -s yourPythonScriptInCurrentDir.py
+                                      -g 1
+                                      -v yourVolumeName (optional)
+ 
+  - Terminal (CPU): ./diambraArena.sh -c bash
+                                      -v yourVolumeName (optional)
+ 
+  - CUDA Installation Test (GPU): ./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V"
+                                                    -d GPU
+```
+{{% /tab %}}
+{{% tab name="Win" %}}
+```batch
+diambraArena.bat -h
+```
+Output:
+
+```terminal
+Usage:
+
+  diambraArena.bat [OPTIONS]
+
+OPTIONS:
+  -h Prints out this help message.
+
+  -l Prints out available games list.
+
+  "ROMCHECK=<romFile>.zip" Check ROM file validity.
+
+  "ROMSPATH=<path>" Specify your local path where game ROMs are located. 
+                    (Mandatory to run environments.)
+
+  "PYTHONFILE=<file>" Python script to run inside docker container. 
+                      Must be located in the folder from where the batch script is executed.
+
+  "CMDTOEXEC=<command>" Command to be executed at docker container startup.
+                        Can be used to start and interactive linux shell, for example to install pip packages.
+
+  "GUI=<X>" Specify if to run in Headless mode (X=0, default) or with GUI support (X=1)
+
+  "ENVDISPLAYIP=<vEthernetIP>" Specify the vEthernet IP Address on which the Virtual X Server is listening. 
+                               The address can be retrieved using `ipconfig` command, 
+                               look for `Default Switch` or `WSL` in connection details.
+                               (Optional, the script will try to recover it automatically.)
+ 
+  "XSRVPATH=<path>" Specify where Windows X Server executable is located.
+                    Standard location is usually `C:\Program Files\vcxsrv.exe`
+                    (Optional, the script will try to recover it automatically.)
+ 
+  "VOLUME=<name>" Specify the name of the volume where to store pip packages 
+                  installed inside the container to make them persistent. (Optional)
+
+Examples:
+  - Availble games list with details: diambraArena.bat -l
+
+  - ROM File Validation: diambraArena.bat "ROMSPATH=your\roms\local\path"
+                                          "ROMCHECK=<romFile>.zip"
+
+  - Headless: diambraArena.bat "ROMSPATH=your\roms\local\path"
+                               "PYTHONFILE=yourPythonScriptInCurrentDir.py"
+                               "VOLUME=yourVolumeName" (optional)
+
+  - With GUI: diambraArena.bat "ROMSPATH=your\roms\local\path" 
+                               "PYTHONFILE=yourPythonScriptInCurrentDir.py"
+                               "GUI=1" 
+                               "ENVDISPLAYIP=<vEthernetIP>" (optional)
+                               "XSRVPATH=<pathToVcXsrv>" (optional)
+                               "VOLUME=yourVolumeName" (optional)
+
+  - Terminal: diambraArena.bat "CMDTOEXEC=bash"
+                               "VOLUME=yourVolumrName" (optional)
+```
+{{% /tab %}}
+{{< /tabs >}}
+
+### Environment Executions
+
+#### Run random agent in Dead Or Alive++ (with GUI support)
+
+{{< tabs >}}
+{{% tab name="Linux (Docker) / MacOS" %}}
+```bash
+./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py -g 1
+```
+{{% /tab %}}
+{{% tab name="Win" %}}
+```batch
+diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py" "GUI=1"
+```
+{{% notice info %}}
+Increasing game window size could cause relevant slowdowns to the environments. GUI-supported executions are mainly thought for evaluation purposes. Make sure to use headless mode / deactivate rendering for maximum environment speed (e.g. during training).
+{{% /notice %}}
+{{% /tab %}}
+{{% tab name="Linux (Source)" %}}
+```bash
+python diambraArenaGist.py --romsPath "your/roms/local/path"
+```
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Run random agent in Dead Or Alive++ (Headless mode)
+
+{{< tabs >}}
+{{% tab name="Linux (Docker) / MacOS" %}}
+```bash
+./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py
+```
+{{% /tab %}}
+{{% tab name="Win" %}}
+```batch
+diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py"
+```
+{{% /tab %}}
+{{% tab name="Linux (Source)" %}}
+Add 
+```python
+diambraKwargs["headless"] = True
+```
+to environment keyword arguments in `diambraArenaGist.py` script
+```bash
+python diambraArenaGist.py --romsPath "your/roms/local/path"
+```
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Bash terminal with python packages persistent install (using Docker Volumes)
+
+{{< tabs >}}
+{{% tab name="Linux (Docker) / MacOS" %}}
+```bash
+./diambraArena.sh -c bash -v yourVolumeName
+```
+{{% /tab %}}
+{{% tab name="Win" %}}
+```batch
+diambraArena.bat "CMDTOEXEC=bash" "VOLUME=yourVolumeName"
+```
+{{% /tab %}}
+{{< /tabs >}}
+
+## Advanced usage examples
+
+### GPU Docker image executions (Linux only)
+
+{{% notice info %}}
+GPU access from docker images is natively supported by Linux hosts only, provided <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> has been installed. Windows host systems can support it only via experimental features (for now), as described <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html" target="_blank">here</a> and <a href="https://docs.docker.com/desktop/windows/wsl/#gpu-support" target="_blank">here</a>. <b>It is highly recommended to rely on Linux hosts to leverage this feature.</b> 
+{{% /notice %}}
+
+#### Check GPU availability with TensorFlow
+
+```bash
+./diambraArena.sh -d GPU -c "pip install tensorflow-gpu==1.14; python -c \"import tensorflow as tf; print('GPU available =', tf.test.is_gpu_available())\""
 ```
 
-## Activate search
+### Docker commands details
 
-If not already present, add the follow lines in the same `config.toml` file.
+#### Headless execution
 
-```toml
-[outputs]
-home = [ "HTML", "RSS", "JSON"]
+```bash
+volume="-v ${OPTARG}:/usr/local/lib/python3.6/dist-packages/"
+romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind "
+gpuSetup="--gpus all" 
+imageName="diambra:diambra-arena-gpu-cuda10.0"                              
+imageName="diambra:diambra-arena-base"
+
+docker run -it --rm $gpuSetup --privileged $volume $romsPath \              
+ --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
+ --name diambraArena $imageName \                                           
+  sh -c "cd /opt/diambraArena/code/ && $cmd" 
 ```
 
-Learn theme uses the last improvement available in hugo version 20+ to generate a json index file ready to be consumed by lunr.js javascript search engine.
-
-> Hugo generate lunrjs index.json at the root of public folder.
-> When you build the site with `hugo server`, hugo generates it internally and of course it doesn’t show up in the filesystem
-
-## Mermaid
-
-The mermaid configuration parameters can also be set on a specific page. In this case, the global parameter would be overwritten by the local one.
-
-> Example:
->
-> Mermaid is globally disabled. By default it won't be loaded by any page.  
-> On page "Architecture" you need a class diagram. You can set the mermaid parameters locally to only load mermaid on this page (not on the others).
-
-You also can disable mermaid for specific pages while globally enabled.
-
-## Home Button Configuration
-
-If the `disableLandingPage` option is set to `false`, an Home button will appear
-on the left menu. It is an alternative for clicking on the logo. To edit the
-appearance, you will have to configure two parameters for the defined languages:
-
-```toml
-[Lanugages]
-[Lanugages.en]
-...
-landingPageURL = "/en"
-landingPageName = "<i class='fas fa-home'></i> Redirect to Home"
-...
-[Lanugages.fr]
-...
-landingPageURL = "/fr"
-landingPageName = "<i class='fas fa-home'></i> Accueil"
-...
-```
-
-If those params are not configured for a specific language, they will get their
-default values:
-
-```toml
-landingPageURL = "/"
-landingPageName = "<i class='fas fa-home'></i> Home"
-```
-
-The home button is going to looks like this:
-
-![Default Home Button](/en/basics/configuration/images/home_button_defaults.jpg?width=100%)
+#### GUI-supported execution
