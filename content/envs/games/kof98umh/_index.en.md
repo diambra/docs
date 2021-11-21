@@ -1,7 +1,7 @@
 ---
 date: 2016-04-09T16:50:16+02:00
-title: Gym Options
-weight: 30
+title: The King of Fighers '98 UMH
+weight: 50
 ---
 
 ## Global site parameters
