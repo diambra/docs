@@ -6,7 +6,7 @@ weight: 60
 
 Output example:                                                               
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <a href="/images/envs/doappData.png" target="_blank"><img src="/images/envs/doappData.png" style="margin-bottom:20px;"></a>
+  <a href="/images/envs/kof98umhData.png" target="_blank"><img src="/images/envs/kof98umhData.png" style="margin-bottom:20px;"></a>
   <figcaption align="middle">External aerodynamics showing pressure-colored flow lines and turbulent wake</figcaption>
 </figure>
 

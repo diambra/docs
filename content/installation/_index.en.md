@@ -3,6 +3,7 @@ title: Installation
 weight: 10
 ---
 
-# Installation
-
-Discover what this Hugo theme is all about and the core-concepts behind it.
+Test di scrittura
+- <a href="/installation/linux/">Linux</a>
+- <a href="/installation/win/">Windows</a>
+- <a href="/installation/macos/">MacOS</a>
