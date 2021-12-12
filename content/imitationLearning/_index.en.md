@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting
-weight: 70
+title: Imitation Learning
+weight: 60
 ---
 
 # Installation

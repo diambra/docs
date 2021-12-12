@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting
-weight: 70
+title: Utils
+weight: 40
 ---
 
 # Installation
