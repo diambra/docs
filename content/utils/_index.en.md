@@ -3,13 +3,16 @@ title: Utils
 weight: 50
 ---
 
-- <a href="/utils/#available-games">Available Games</a>
-- <a href="/utils/#check-game-sha256-checksum">Check Game SHA256 Checksum</a>
-- <a href="/utils/#environment-spaces-summary">Environment Spaces Summary</a>
-- <a href="/utils/#show-gym-observation">Show Gym Observation</a>
-- <a href="/utils/#show-wrapped-observation">Show Wrapped Observation</a>
+### Index
 
-#### Available Games
+- <a href="/utils/#available-games" style="font-size:20px;">Available Games</a>
+- <a href="/utils/#check-game-sha256-checksum" style="font-size:20px;">Check Game SHA256 Checksum</a>
+- <a href="/utils/#environment-spaces-summary" style="font-size:20px;">Environment Spaces Summary</a>
+- <a href="/utils/#show-gym-observation" style="font-size:20px;">Show Gym Observation</a>
+- <a href="/utils/#show-wrapped-observation" style="font-size:20px;">Show Wrapped Observation</a>
+- <a href="/utils/#gamepad-interface" style="font-size:20px;">Gamepad Interface</a>
+
+### Available Games
 
 ```python
 import diambraArena
@@ -41,14 +44,28 @@ diambraArena.availableGames(printOut=True, details=True)
 ...
 ```
 
-#### Check Game SHA256 Checksum
+### Check Game SHA256 Checksum
 
 ```python
 import diambraArena
-diambraArena.checkGameSha256(path="path/to/specific/rom/file.zip", gameId=None)
+diambraArena.checkGameSha256(path="path/to/specific/rom/doapp.zip", gameId=None)
 ```
 
-#### Environment Spaces Summary
+```txt
+Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+```
+
+```python
+import diambraArena
+diambraArena.checkGameSha256(path="path/to/specific/rom/doapp.zip", gameId="umk3")
+```
+
+```txt
+Expected  SHA256 Checksum: f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af
+Retrieved SHA256 Checksum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+```
+
+### Environment Spaces Summary
 
 ```python
 from diambraArena.gymUtils import envSpacesSummary
@@ -144,7 +161,7 @@ action_space =  Discrete(12)
     Space n =  12
 ```
 
-#### Show Gym Observation
+### Show Gym Observation
 
 ```python
 from diambraArena.gymUtils import showGymObs
@@ -168,7 +185,7 @@ observation["P1"]["oppWins"]: 0
 observation["P1"]["actions"]: {'move': 0, 'attack': 3}
 ```
 
-#### Show Wrapped Observation
+### Show Wrapped Observation
 
 ```python
 from diambraArena.gymUtils import showWrapObs
@@ -214,4 +231,17 @@ observation["P1"]["actions"]["attack"]:
  [1 0 0 0]
  [1 0 0 0]
  [1 0 0 0]]
+```
+
+### Gamepad Interface
+
+```python
+import diambraArena
+from diambraArena.utils.diambraGamepad import diambraGamepad
+...
+# GamePad(s) initialization
+gamepad = diambraGamepad(env.actionList)
+gamepad.start()
+...
+actions = gamepad.getActions()
 ```

@@ -3,7 +3,8 @@ title: Installation
 weight: 10
 ---
 
-Test di scrittura
-- <a href="/installation/linux/">Linux</a>
-- <a href="/installation/win/">Windows</a>
-- <a href="/installation/macos/">MacOS</a>
+### Index
+
+- <a href="/installation/linux/" style="font-size:20px;">Linux</a>
+- <a href="/installation/win/" style="font-size:20px;">Windows</a>
+- <a href="/installation/macos/" style="font-size:20px;">MacOS</a>

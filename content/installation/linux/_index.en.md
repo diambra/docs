@@ -4,5 +4,7 @@ title: Linux
 weight: 10
 ---
 
-- <a href="/installation/linux/docker/">Docker (Recommended)</a>
-- <a href="/installation/linux/fromsource/">From source</a>
+### Index
+
+- <a href="/installation/linux/docker/" style="font-size:20px;">Docker (Recommended)</a>
+- <a href="/installation/linux/fromsource/" style="font-size:20px;">From source</a>
