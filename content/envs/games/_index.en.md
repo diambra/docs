@@ -4,7 +4,6 @@ title: Games
 weight: 20
 ---
 
-Output example:                                                               
 <div>
   <figure style="margin-top: 0px; margin-bottom:0px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
    <a href="/envs/games/doapp/"><img style="margin-bottom: 20px;" src="/images/envs/doapp.jpg">

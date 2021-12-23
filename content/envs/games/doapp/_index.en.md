@@ -44,7 +44,7 @@ weight: 10
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
   <img src="/images/envs/doappData.png" style="margin-bottom:20px;">
-  <figcaption align="middle">Some examples of additional observations</figcaption>
+  <figcaption align="middle">Some examples of Dead Or Alive ++ additional observations</figcaption>
 </figure>
 
 #### Global
@@ -55,12 +55,6 @@ weight: 10
 | <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0, 8]| Current stage of the game |
 
 #### Player specific
-
-To access the observation elements described in the following table, key(s) `P1` (1P and 2P Modes) and/or `P2` (2P Mode only) needs to be used as shown in the following snippet:
-
-```python
-ownSideVar = observation["P1"]["ownSide"]
-```
 
 | <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
