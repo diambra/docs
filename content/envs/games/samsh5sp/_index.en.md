@@ -21,15 +21,15 @@ weight: 50
 | <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>  | 4   |
 | <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | 11 (11)   |
 | <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | 4  |
-| <strong><span style="color:#5B5B60;">Max Stage</span></strong>  | 8   |
+| <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>  | 8   |
 
 ### Game Specific Settings
 
-| <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>|
-|-------------|-------------| ------|------|
-| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| [1, 4]|
-| <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | Kasumi, Zack, Hayabusa, Bayman, Lei-Fang, Raidou, Gen-Fu, Tina, Bass, Jann-Lee, Ayane |
-| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [1, 4] |
+| <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
+|-------------|-------------| ------|------| ----|
+| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 3 |[1, 4]|
+| <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | [[`Random`], [`Random`]]|Kasumi, Zack, Hayabusa, Bayman, Lei-Fang, Raidou, Gen-Fu, Tina, Bass, Jann-Lee, Ayane |
+| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [4, 4] | [1, 4] |
 
 ### Action Space
 
