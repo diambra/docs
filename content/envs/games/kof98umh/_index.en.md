@@ -5,7 +5,7 @@ weight: 60
 ---
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="/images/envs/kof98umh.jpg" style="margin-bottom:20px;">
+  <img src="/images/envs/kof98umh.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
 ### Game Specific Info
