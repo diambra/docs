@@ -33,13 +33,13 @@ weight: 20
 
 | <strong><span style="color:#5B5B60;">Title</span></strong> | <strong><span style="color:#5B5B60;">Status</span></strong> | <strong><span style="color:#5B5B60;">GameID</span></strong>|
 |-------------|-------------| ------|                                    
-| Dead Or Alive ++                  | Stable| `doapp`|
-| Street Fighter III 3rd Strike     | Stable| `sfiii3n`|
-| Tekken Tag Tournament             | Stable| `tektagt`|
-| Ultimate Mortal Kombat 3          | Stable| `umk3`|
-| Samurai Showdown V Special        | Beta| `samsh5sp`|
-| The King of Fighters '98: Ultimate Match Hero    | Beta| `kof98umh`|
+| <a href="/envs/games/doapp/">Dead Or Alive ++</a>                  | Stable[^1]| `doapp`|
+| <a href="/envs/games/sfiii3n/">Street Fighter III 3rd Strike</a>     | Stable[^1]| `sfiii3n`|
+| <a href="/envs/games/tektagt/">Tekken Tag Tournament</a>             | Stable[^1]| `tektagt`|
+| <a href="/envs/games/umk3/">Ultimate Mortal Kombat 3</a>          | Stable[^1]| `umk3`|
+| <a href="/envs/games/samsh5sp/">Samurai Showdown V Special</a>        | Beta[^2]| `samsh5sp`|
+| <a href="/envs/games/kof98umh/">The King of Fighters '98: Ultimate Match Hero</a>    | Beta[^2]| `kof98umh`|
 
-Stable = 
+[^1]: Stable = Successfully trained Deep RL Agent in Single Player mode.
+[^2]: Beta = Passing all Quality Assurance tests.
 
-Beta = 

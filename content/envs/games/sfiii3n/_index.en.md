@@ -16,9 +16,9 @@ weight: 20
 | <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>   | `sfiii3n.zip`       |
 | <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | `7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416`        |
 | <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | `STREET FIGHTER III 3RD STRIKE: FIGHT FOR THE FUTUR [JAPAN] (CLONE)`, `street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone`, `106255`, `wowroms`     |
-| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>  | 224px&#160;X&#160;384px&#160;X&#160;3   |
+| <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>  | 224px&#160;X&#160;384px&#160;X&#160;3   |
 | <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | 9, 10 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-9): (No-Attack, Low Punch, Medium Punch, High Punch, Low Kick, Medium Kick, High Kick), Low Punch+Low Kick, Medium Punch+Medium Kick, High Punch+High Kick   |
-| <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>  | 8   |
+| <strong><span style="color:#5B5B60;">Max Difficulty (1P Mode)</span></strong>  | 8   |
 | <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | 20 (19)   |
 | <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | 7  |
 | <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>  | 10   |
@@ -57,7 +57,7 @@ weight: 20
 | <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
 | <strong><span style="color:#5B5B60;">Frame</span></strong>   | `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [224&#160;X&#160;384&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
-| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0, 10]| Current stage of the game |
+| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 10]| Current stage of the game |
 
 #### Player specific
 

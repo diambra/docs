@@ -16,9 +16,9 @@ weight: 10
 | <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>   | `doapp.zip`       |
 | <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | `d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e`        |
 | <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | `DEAD OR ALIVE ++ [JAPAN]`, `dead-or-alive-japan`, `80781`, `wowroms`       |
-| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>  | 480px&#160;X&#160;512px&#160;X&#160;3   |
+| <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>  | 480px&#160;X&#160;512px&#160;X&#160;3   |
 | <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | 9, 8 (4)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-7): (No-Attack, Hold, Punch, Kick), Hold+Punch, Hold+Kick, Punch+Kick, Hold+Punch+Kick   |
-| <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>  | 4   |
+| <strong><span style="color:#5B5B60;">Max Difficulty (1P Mode)</span></strong>  | 4   |
 | <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | 11 (11)   |
 | <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | 4  |
 | <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>  | 8   |
@@ -52,7 +52,7 @@ weight: 10
 | <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
 | <strong><span style="color:#5B5B60;">Frame</span></strong>   | `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [480&#160;X&#160;512&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
-| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0, 8]| Current stage of the game |
+| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 8]| Current stage of the game |
 
 #### Player specific
 

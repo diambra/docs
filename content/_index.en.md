@@ -1,5 +1,5 @@
 ---
-title: "DIAMBRA Arena"
+title: "Home"
 ---
 
 # DIAMBRA Arena Docs
