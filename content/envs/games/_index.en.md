@@ -1,6 +1,6 @@
 ---
 date: 2016-04-09T16:50:16+02:00
-title: Games
+title: Games & Specifics
 weight: 20
 ---
 <div>
@@ -32,13 +32,13 @@ weight: 20
 
 <p style="font-size:35px;  margin-bottom:50px; text-align:center; color: #a5101f;">... many more to come soon.</p>
 
-| <strong><span style="color:#5B5B60;">Title</span></strong> | <strong><span style="color:#5B5B60;">Status</span></strong> | <strong><span style="color:#5B5B60;">GameID</span></strong>|
+| <strong><span style="color:#5B5B60;">Title</span></strong> | <strong><span style="color:#5B5B60;">Status</span></strong> | <strong><span style="color:#5B5B60;">Game Id</span></strong>|
 |-------------|-------------| ------|                                    
 | <a href="/envs/games/doapp/">Dead Or Alive ++</a>                  | Stable[^1]| `doapp`|
 | <a href="/envs/games/sfiii3n/">Street Fighter III 3rd Strike</a>     | Stable[^1]| `sfiii3n`|
 | <a href="/envs/games/tektagt/">Tekken Tag Tournament</a>             | Stable[^1]| `tektagt`|
 | <a href="/envs/games/umk3/">Ultimate Mortal Kombat 3</a>          | Stable[^1]| `umk3`|
-| <a href="/envs/games/samsh5sp/">Samurai Showdown V Special</a>        | Beta[^2]| `samsh5sp`|
+| <a href="/envs/games/samsh5sp/">Samurai Showdown 5 Special</a>        | Beta[^2]| `samsh5sp`|
 | <a href="/envs/games/kof98umh/">The King of Fighters '98: Ultimate Match Hero</a>    | Beta[^2]| `kof98umh`|
 
 [^1]: Stable = Successfully trained Deep RL Agent in Single Player mode.

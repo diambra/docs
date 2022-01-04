@@ -27,9 +27,9 @@ weight: 50
 
 | <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------|-------------| ------|------| ----|
-| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 6 |[1, 8]|
+| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 3 |[1, 8]|
 | <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | [[`Random`], [`Random`]]| Kyoshiro, Jubei, Hanzo, Enja, Amakusa, Suija, Galford, Charlotte, Kusare, Sogetsu, Gaira, Ukyo, Yoshitora, Gaoh, Haohmaru, Genjuro, Shizumaru, Kazuki, Tamtam, Rasetsumaru, Rimururu, Mina, Zankuro, Nakoruru, Rera, Yunfei, Basara, Mizuki |
-| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [4, 4] | [1, 4] |
+| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [2, 2] | [1, 4] |
 
 ### Action Space
 

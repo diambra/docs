@@ -27,7 +27,7 @@ weight: 30
 
 | <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------|-------------| ------|------| ----|
-| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 7 |[1, 9]|
+| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 3 |[1, 9]|
 | <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | [[`Random`,&#160;`Random`],&#160;[`Random`,&#160;`Random`]] | Xiaoyu, Yoshimitsu, Nina, Law, Hwoarang, Eddy, Paul, King, Lei, Jin, Baek, Michelle, Armorking, Gunjack, Anna, Brian, Heihachi, Ganryu, Julia, Jun, Kunimitsu, Kazuya, Bruce, Kuma, Jack-Z, Lee, Wang, P.Jack, Devil, True Ogre, Ogre, Roger, Tetsujin, Panda, Tiger, Angel, Alex, Mokujin |
 | <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [2, 2] | [1, 2] |
 

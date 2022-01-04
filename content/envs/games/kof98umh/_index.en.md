@@ -27,11 +27,11 @@ weight: 60
 
 | <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------|-------------| ------|------| ----|
-| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 6 |[1, 8]|
+| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 3 |[1, 8]|
 | <strong><span style="color:#5B5B60;">Fighting Style</span></strong>   | `fightingStyle`       | `int`| [0, 0] |[0, 3]|
 | <strong><span style="color:#5B5B60;">Ultimate Fighting Style Configuration</span></strong>   | `ultimateStyle`       | `int`| [[0, 0, 0], [0, 0, 0]] |[0, 1]&#160;X&#160;[0, 1]&#160;X&#160;[0, 1]|
 | <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | [[`Random`], [`Random`]]| Kyo, Benimaru, Daimon, Terry, Andy, Joe, Ryo, Robert, Yuri, Leona, Ralf, Clark, Athena, Kensou, Chin, Chizuru, Mai, King, Kim, Chang, Choi, Yashiro, Shermie, Chris, Yamazaki, Mary, Billy, Iori, Mature, Vice, Heidern, Takuma, Saisyu, Heavy-D!, Lucky, Brian, Eiji, Kasumi, Shingo, Rugal, Geese, Krauser, Mr.Big |
-| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [4, 4] | [1, 4] |
+| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [2, 2] | [1, 4] |
 
 ### Action Space
 

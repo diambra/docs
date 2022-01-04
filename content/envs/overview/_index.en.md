@@ -1,27 +1,37 @@
 ---
-date: 2016-04-09T16:50:16+02:00
-title: Overview
+title: Settings, Info & Spaces 
 weight: 10
 ---
 
-<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="/images/envs/doapp.jpg" style="margin-bottom:20px;">
-</figure>
+### Environment Settings
+
+| <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
+|-------------|-------------| ------|------|------|
+| <strong><span style="color:#5B5B60;">Game Selection</span></strong> | `gameId` | `string` | - | - |
+| <strong><span style="color:#5B5B60;">Path to ROMs Folder</span></strong> | `romsPath` | `string` | - | - |
+| <strong><span style="color:#5B5B60;">Player Side Selection</span></strong> | `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 |
+| <strong><span style="color:#5B5B60;">Environment Rendering</span></strong> | `render` | `bool` | `True` | True / False |
+| <strong><span style="color:#5B5B60;">60 FPS Lock</span></strong> | `lockFps` | `bool` | `True` | True / False |
+| <strong><span style="color:#5B5B60;">Game Sound</span></strong> | `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  |
+| <strong><span style="color:#5B5B60;">Environment/Emulator Steps Ratio</span></strong> | `stepRatio` | `int` | 6 | [1, 6] |
+| <strong><span style="color:#5B5B60;">Headless Mode (For Server-Side Executions)</span></strong> | `headless` | `bool` | `False` | True / False |
+| <strong><span style="color:#5B5B60;">Game Continue Logic (1P Mode Only)</span></strong> | `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done |
+| <strong><span style="color:#5B5B60;">Show Game Final</span></strong> | `showFinal` | `bool` | `True` | True / False |
 
 ### Game Specific Info
 
-|       |  |
+|  <strong><span style="color:#5B5B60;">Parameter</span></strong>  | <strong><span style="color:#5B5B60;">Description</span></strong>  |
 |-------------|-------------|
-| <strong><span style="color:#5B5B60;">Game ID</span></strong>   | `doapp`       |
-| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>   | `doapp.zip`       |
-| <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | `d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e`        |
-| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | `DEAD OR ALIVE ++ [JAPAN]`, `dead-or-alive-japan`, `80781`, `wowroms`       |
-| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>  | 480px&#160;X&#160;512px&#160;X&#160;3   |
-| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | 9, 8 (4)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-7): (No-Attack, Hold, Punch, Kick), Hold+Punch, Hold+Kick, Punch+Kick, Hold+Punch+Kick   |
-| <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>  | 4   |
-| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | 11 (11)   |
-| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | 4  |
-| <strong><span style="color:#5B5B60;">Max Stage</span></strong>  | 8   |
+| <strong><span style="color:#5B5B60;">Game ID</span></strong>   | String identifying the game  |
+| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>   | Name of the original game ROM to be downloaded (if renaming is needed, it will be indicated)      |
+| <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | ROM file checksum used to validate it |
+| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | List of keywords that can be used to find the correct ROM file   |
+| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>  | Game frame resolution   |
+| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | Number of moves and attack actions and their descrption   |
+| <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>  | Maximum difficulty level available   |
+| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | Number of characters featured in the game, and those that can actually be selected  |
+| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | Maximum number of different outfits available per each character |
+| <strong><span style="color:#5B5B60;">Max Stage</span></strong>  | Maximum number of stages for the single player mode   |
 
 ### Game Specific Settings
 
