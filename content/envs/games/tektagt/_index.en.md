@@ -8,6 +8,15 @@ weight: 30
   <img src="/images/envs/tektagt.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
+### Index                                                                       
+                                                                                
+- <a href="/envs/games/tektagt/#game-specific-info" style="font-size:20px;">Game Specific Info</a>
+- <a href="/envs/games/tektagt/#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
+- <a href="/envs/games/tektagt/#action-space-settings" style="font-size:20px;">Action Space Settings</a>
+- <a href="/envs/games/tektagt/#observation-space" style="font-size:20px;">Observation Space</a>
+    - <a href="/envs/games/tektagt/#global" style="font-size:20px;">Global</a>                
+    - <a href="/envs/games/tektagt/#player-specific" style="font-size:20px;">Player Specific</a>
+
 ### Game Specific Info
 
 |       |  |
@@ -31,14 +40,14 @@ weight: 30
 | <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | [[`Random`,&#160;`Random`],&#160;[`Random`,&#160;`Random`]] | Xiaoyu, Yoshimitsu, Nina, Law, Hwoarang, Eddy, Paul, King, Lei, Jin, Baek, Michelle, Armorking, Gunjack, Anna, Brian, Heihachi, Ganryu, Julia, Jun, Kunimitsu, Kazuya, Bruce, Kuma, Jack-Z, Lee, Wang, P.Jack, Devil, True Ogre, Ogre, Roger, Tetsujin, Panda, Tiger, Angel, Alex, Mokujin |
 | <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [2, 2] | [1, 2] |
 
-### Action Space
+### Action Space Settings
 
-| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Values</span></strong>| <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
-|-------------|-------------| ------|-------| 
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Not Active  | `discrete`, `False` | 9 (moves) + 6 (attacks) - 1 (no-action counted twice) = 14 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Active  | `discrete`, `True` | 9 (moves) + 13 (attacks) - 1 (no-action counted twice) = 21 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Not Active  | `multiDiscrete`, `False` | 9 (moves) X 6 (attacks) = 54 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Active  | `multiDiscrete`, `True` | 9 (moves) X 13 (attacks) = 117 |
+| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Keys</span></strong> | <strong><span style="color:#5B5B60;">Values</span></strong>| <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
+|-------------|-------------| ------|-------| ------- |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Not Active  | `actionSpace`,  `attackButCombination` | `discrete`, `False` | 9 (moves) + 6 (attacks) - 1 (no-action counted twice) = 14 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Active  | `actionSpace`,  `attackButCombination` | `discrete`, `True` | 9 (moves) + 13 (attacks) - 1 (no-action counted twice) = 21 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Not Active  | `actionSpace`,  `attackButCombination` | `multiDiscrete`, `False` | 9 (moves) X 6 (attacks) = 54 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Active  | `actionSpace`,  `attackButCombination` | `multiDiscrete`, `True` | 9 (moves) X 13 (attacks) = 117 |
 
 ### Observation Space
 

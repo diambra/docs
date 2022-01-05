@@ -8,6 +8,15 @@ weight: 10
   <img src="/images/envs/doapp.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
+### Index                                                                       
+                                                                                
+- <a href="/envs/games/doapp/#game-specific-info" style="font-size:20px;">Game Specific Info</a>
+- <a href="/envs/games/doapp/#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
+- <a href="/envs/games/doapp/#action-space-settings" style="font-size:20px;">Action Space Settings</a>
+- <a href="/envs/games/doapp/#observation-space" style="font-size:20px;">Observation Space</a>
+    - <a href="/envs/games/doapp/#global" style="font-size:20px;">Global</a>                
+    - <a href="/envs/games/doapp/#player-specific" style="font-size:20px;">Player Specific</a>
+
 ### Game Specific Info
 
 |       |  |
@@ -31,14 +40,14 @@ weight: 10
 | <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | [[`Random`],&#160;[`Random`]]|Kasumi, Zack, Hayabusa, Bayman, Lei-Fang, Raidou, Gen-Fu, Tina, Bass, Jann-Lee, Ayane |
 | <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [2, 2] | [1, 4] |
 
-### Action Space
+### Action Space Settings
 
-| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Values</span></strong>| <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
-|-------------|-------------| ------|-------| 
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Not Active  | `discrete`, `False` | 9 (moves) + 4 (attacks) - 1 (no-action counted twice) = 12 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Active  | `discrete`, `True` | 9 (moves) + 8 (attacks) - 1 (no-action counted twice) = 16 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Not Active  | `multiDiscrete`, `False` | 9 (moves) X 4 (attacks) = 36 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Active  | `multiDiscrete`, `True` | 9 (moves) X 8 (attacks) = 72 |
+| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Keys</span></strong> | <strong><span style="color:#5B5B60;">Values</span></strong>| <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
+|-------------|-------------| ------|-------| ------- |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Not Active  |`actionSpace`,  `attackButCombination` | `discrete`, `False` | 9 (moves) + 4 (attacks) - 1 (no-action counted twice) = 12 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Active  | `actionSpace`,  `attackButCombination` | `discrete`, `True` | 9 (moves) + 8 (attacks) - 1 (no-action counted twice) = 16 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Not Active  | `actionSpace`,  `attackButCombination` | `multiDiscrete`, `False` | 9 (moves) X 4 (attacks) = 36 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Active  | `actionSpace`,  `attackButCombination` | `multiDiscrete`, `True` | 9 (moves) X 8 (attacks) = 72 |
 
 ### Observation Space
 
