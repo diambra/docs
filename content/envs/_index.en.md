@@ -1,21 +1,23 @@
 ---
 title: Environments
 weight: 30
+math: true
 ---
 
 ### Index
 
-- <a href="/envs/#environments-interaction-basics" style="font-size:20px;">Environment Interaction Basics</a>
-- <a href="/envs/#environment-settings" style="font-size:20px;">Environment Settings</a>
+- <a href="/envs/#interaction-basics" style="font-size:20px;">Interaction Basics</a>
+- <a href="/envs/#settings" style="font-size:20px;">Settings</a>
 - <a href="/envs/#game-specific-info" style="font-size:20px;">Game Specific Info</a>
 - <a href="/envs/#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
-- <a href="/envs/#action-spaces-settings" style="font-size:20px;">Action Space(s) Settings</a>
+- <a href="/envs/#action-spaces" style="font-size:20px;">Action Space(s)</a>
+    - <a href="/envs/#action-space-settings" style="font-size:20px;">Action Space Setting</a>
 - <a href="/envs/#observation-space" style="font-size:20px;">Observation Space</a>
     - <a href="/envs/#global" style="font-size:20px;">Global</a>
     - <a href="/envs/#player-specific" style="font-size:20px;">Player Specific</a>
 - <a href="/envs/#reward-function" style="font-size:20px;">Reward Function</a>
 
-### Environment Interaction Basics
+### Interaction Basics
 
 <div style="font-size:20px;">
 DIAMBRA Arena Environments usage follows the standard RL interaction framework: the agent sends an action to the environment, which process it and performs a transition accordingly, from the starting state to the new state, returning the observation and the reward to the agent to close the interaction loop. The figure below shows this typical interaction scheme and data flow.
@@ -68,9 +70,14 @@ Line by line, one finds:
 - 19 Interaction loop exit after episode end
 - 21 Environment close
 
+
+{{% notice note %}}
+<span style="font-size:20px;">More complex and complete examples can be found <a href="/gettingstarted/examples/">in this section</a>.</span>
+{{% /notice %}}
+
 </div>
 
-### Environment Settings
+### Settings
 
 <div style="font-size:20px;">
 
@@ -96,7 +103,7 @@ All environments share a numerous set of options allowing to handle many differe
 
 <div style="font-size:20px;">                                                   
 
-Game specific info provide useful details about it. They are reported in every game dedicated page, and summarized and described in the table below.
+Game specific info provide useful details about it. They are reported in every game-dedicated page, and summarized and described in the table below.
                                                                                 
 </div> 
 
@@ -117,7 +124,7 @@ Game specific info provide useful details about it. They are reported in every g
 
 <div style="font-size:20px;">                                                   
 
-Environment settings that depend on the specific game and that are shared among all of them are reported in the table below. Each game dedicated page where additional ones (if present) are reported.
+Environment settings depending on the specific game and shared among all of them are reported in the table below. Additional ones (if present) are reported in game-dedicated pages.
                                                                                 
 </div> 
 
@@ -128,18 +135,52 @@ Environment settings that depend on the specific game and that are shared among 
 | <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game |
 | <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game |
 
+<div style="font-size:20px;">                                                   
+
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 40%">
   <img src="/images/envs/outfits.png" style="margin-bottom:20px;">
   <figcaption align="middle">Example of Dead or Alive ++ available outfits for Kasumi</figcaption>
 </figure>
 
-### Action Space(s) Settings
+</div> 
 
-<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 40%;">
+### Action Space(s)
+
+<div style="font-size:20px;">                                                   
+
+Actions of the interfaced games can be grouped in two categories: move actions (Up, Left, etc.) and attack ones (Punch, Kick, etc.). DIAMBRA Arena provides four different action spaces: the main distinction is between Discrete and MultiDiscrete ones. The former is a single list composed by the union of move and attack actions (of type `gym.spaces.Discrete`), while the latter consists of two sets combined, for move and attack actions respectively (of type `gym.spaces.MultiDiscrete`). 
+
+For each of the two options, there is an additional differentiation available: if to use attack buttons combinations or not. This option is mainly available to reduce the action space size as much as possible, since combinations of attack buttons can be seen as additional attack buttons. The complete visual description of available action spaces is shown in the figure below, where all four choices are presented via the correspondent gamepad buttons configuration for Dead Or Alive ++.
+
+When run in 2P mode, the environment is provided with an action space of `type gym.spaces.Dict` populated with two items, identified by keys "P1" and "P2", whose values are either `gym.spaces.Discrete` or `gym.spaces.MultiDiscrete` as described above. 
+
+Each game has specific action spaces since attack buttons (and their combinations) are, in general, game-dependent. For this reason, in each game-dedicated page, a table like the one found below is reported, describing all four actions spaces for the specific game.
+
+In Discrete action spaces: 
+- There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions.
+- The total number of actions available is N<sub>m</sub> + N<sub>a</sub> − 1 where N<sub>m</sub> is the number of move actions (no-move included) and N<sub>a</sub> is the number of attack actions (no-attack included).
+Only one action, either move or attack, can be sent for
+each environment step.
+
+In MultiDiscrete action spaces:
+- There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions. 
+- The total number of actions available is N<sub>m</sub> × N<sub>a</sub>.
+- Both move and attack actions can be sent at the same time for each environment step. 
+
+All meaningful actions are made available per each game: they are sufficient to cover the entire spectrum of moves and combos for all the available characters.
+
+Only meaningful actions are made available per each game: if a specific game has Button-1 and Button-2 among its available actions, and not Button-1 + Button-2, it means that the latter has no effect in any circumstance, considering all characters in all conditions.
+
+Some actions (especially attack buttons combinations) may have no effect for some of the characters: in some games combos requiring attack buttons combinations are valid only for a subset of characters.
+
+<figure style="margin-bottom:20px; margin-top:0px; margin-right:auto; margin-left:auto;width: 40%;">
   <img src="/images/envs/actionSpaces.png" style="margin-bottom:20px;">
   <figcaption align="middle">Example of Dead Or Alive ++ Action Spaces</figcaption>
 </figure>
 
+</div> 
+
+#### Action Space Settings
 
 | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Keys</span></strong> | <strong><span style="color:#5B5B60;">Values</span></strong>| <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
 |-------------|-------------| ------|-------| ------- |
@@ -149,46 +190,77 @@ Environment settings that depend on the specific game and that are shared among 
 
 <div style="font-size:20px;"> 
 
-Environment observations are composed by two main elements: a visual one (the game frame) and an aggregation of quantitative values (like stage number, health values, etc.) called Additional Observations. Both of them are exposed by the environment through an observation space of type <a href="https://github.com/openai/gym/tree/master/gym/spaces/" target="blank_">`gym.spaces.Dict`</a>. It consists of global elements and player specific ones, they are presented and described in the tables below. In addition, next figure shows an example of Dead Or Alive ++ observation where some of the Additional Observations are highlighted, superimposed on the game frame.
+Environment observations are composed by two main elements: a visual one (the game frame) and an aggregation of quantitative values called Additional Observations (stage number, health values, etc.). Both of them are exposed through an observation space of type <a href="https://github.com/openai/gym/tree/master/gym/spaces/" target="blank_">`gym.spaces.Dict`</a>. It consists of global elements and player-specific ones, they are presented and described in the tables below. To give additional context, next figure shows an example of Dead Or Alive ++ observation where some of the Additional Observations are highlighted, superimposed on the game frame.
 
-Each game extends the set presented here with its specific one, described in the game dedicated page.
+Each game specifies and extends the set presented here with its custom one, described in the game-dedicated page.
 
-</div>
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
   <img src="/images/envs/doappData.png" style="margin-bottom:20px;">
   <figcaption align="middle">An example of Dead Or Alive ++ additional observations</figcaption>
 </figure>
 
+</div>
+
 #### Global
 
 <div style="font-size:20px;"> 
 
+Global elements of the observation space are unrelated to the player and they are currently limited to those presented and described in the following table. The same table is found on each game-dedicated page reporting its specs:
+
 </div>
 
-| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
+| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
-| <strong><span style="color:#5B5B60;">Frame</span></strong>   | `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [480&#160;X&#160;512&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
-| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0, 8]| Current stage of the game |
+| <strong><span style="color:#5B5B60;">Frame</span></strong>   | `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Min and max values for each dimension | Last game frame  (RGB pixel screen)|
+| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  Min and max values | Current stage of the game |
 
 #### Player specific
 
-To access the observation elements described in the following table, key(s) `P1` (1P and 2P Modes) and/or `P2` (2P Mode only) needs to be used as shown in the following snippet:
+<div style="font-size:20px;"> 
+
+Player-specific observations can be accessed using key(s) `P1` (1P and 2P Modes) and/or `P2` (2P Mode only), as shown in the following snippet for the <strong><span style="color:#5B5B60;">Side</span></strong> element:
+
+</div>
 
 ```python
 ownSideVar = observation["P1"]["ownSide"]
 ```
 
-| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
+<div style="font-size:20px;"> 
+
+Typical values that are available for each game are reported and described in the table below. The same table is found in every game-dedicated page, specifying and extending (if needed) the observation elements set.
+
+</div>
+
+| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
 | <strong><span style="color:#5B5B60;">Side</span></strong>   | `ownSide`/`oppSide`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Side of the stage where the player is<br>0: Left, 1: Right |
-| <strong><span style="color:#5B5B60;">Wins</span></strong>   | `ownWins`/`oppWins` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;2]| Number of rounds won by the player |
-| <strong><span style="color:#5B5B60;">Selected Character&#160;#1</span></strong>   | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;10] | Index of character in use (for games where only one character is selected, this values is the same as "Character in Use")<br>0: Kasumi, 1: Zack, 2: Hayabusa, 3: Bayman, 4: Lei-Fang, 5: Raidou, 6: Gen-Fu, 7: Tina, 8: Bass, 9: Jann-Lee, 10: Ayane|
-| <strong><span style="color:#5B5B60;">Character in Use</span></strong>   | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;10] | Index of character in use<br>0: Kasumi, 1: Zack, 2: Hayabusa, 3: Bayman, 4: Lei-Fang, 5: Raidou, 6: Gen-Fu, 7: Tina, 8: Bass, 9: Jann-Lee, 10: Ayane|
-| <strong><span style="color:#5B5B60;">Health</span></strong>   | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;208]| Health bar value |
-| <strong><span style="color:#5B5B60;">Actions-Move</span></strong>   | `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| <strong><span style="color:#5B5B60;">Actions-Attack</span></strong>   | `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;7] or [0,&#160;3]| Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
+| <strong><span style="color:#5B5B60;">Wins</span></strong>   | `ownWins`/`oppWins` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Number of Rounds]| Number of rounds won by the player |
+| <strong><span style="color:#5B5B60;">Selected Character&#160;#1</span></strong>   | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use (for games where only one character is selected, this values is the same as "Character in Use")|
+| <strong><span style="color:#5B5B60;">Character in Use</span></strong>   | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use|
+| <strong><span style="color:#5B5B60;">Health</span></strong>   | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Health Value]| Health bar value |
+| <strong><span style="color:#5B5B60;">Actions-Move</span></strong>   | `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of move actions - 1] | Index of last move action performed (no-move, left, left+up, up, etc.)|
+| <strong><span style="color:#5B5B60;">Actions-Attack</span></strong>   | `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of attack actions - 1] | Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
 
 ### Reward Function
 
+<div style="font-size:20px;"> 
 
+The reward is defined as a function of characters health values so that, qualitatively, damage suffered by the agent corresponds to a negative reward, and damage inflicted to the opponent corresponds to a positive reward. The quantitative, general and formal reward function definition is as follows: 
+
+$$R_t = \frac{\sum_i^{0,N_c}\lparen \bar{H_i}^{t^-} - \bar{H_i}^{t} - \lparen \hat{H_i}^{t^-} - \hat{H_i}^{t}\rparen\rparen}{\lparen H_{max}-H_{min}\rparen/2}$$
+
+where:
+
+- $\bar{H}$ and $\hat{H}$ are health values for opponent’s character(s) and agent’s one(s) respectively; 
+- $t^-$ and $t$ are used to indicate conditions at ”state-time” and at ”new state-time” (i.e. before and after environment step); N c is the number of characters taking part in a round. Usually is N c = 1 but there are some games where multiple characters are used, with the additional possible option of alternating them during gameplay, like Tekken Tag Tournament where 2 characters have to be selected and two opponents are faced every round (thus N c = 2); H max and H min are maximum and
+minimum health values, respectively, for the given game; usually, but not always, H min = 0. The normalization term at the denominator in Eq. 1 ensures
+that a round won with a perfect (i.e. without losing any
+health), generates a maximum total cumulative reward (for
+the round) equal to 2N c .
+The lower and upper bounds for the episode total cumulative
+reward are defined in Eqs. 2. They consider the default
+reward function (Eq. 1) for game execution with Continue
+
+</div>
