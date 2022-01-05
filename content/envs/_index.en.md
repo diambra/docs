@@ -17,6 +17,12 @@ math: true
     - <a href="/envs/#player-specific" style="font-size:20px;">Player Specific</a>
 - <a href="/envs/#reward-function" style="font-size:20px;">Reward Function</a>
 
+<div style="font-size:20px;">
+
+This page describes in details all general aspects related to DIAMBRA Arena environments. For game-specific details visit <a href="/envs/games" style="font-size:20px;">Games & Specifics</a> page.
+
+</div>
+
 ### Interaction Basics
 
 <div style="font-size:20px;">
@@ -249,18 +255,51 @@ Typical values that are available for each game are reported and described in th
 
 The reward is defined as a function of characters health values so that, qualitatively, damage suffered by the agent corresponds to a negative reward, and damage inflicted to the opponent corresponds to a positive reward. The quantitative, general and formal reward function definition is as follows: 
 
-$$R_t = \frac{\sum_i^{0,N_c}\lparen \bar{H_i}^{t^-} - \bar{H_i}^{t} - \lparen \hat{H_i}^{t^-} - \hat{H_i}^{t}\rparen\rparen}{\lparen H_{max}-H_{min}\rparen/2}$$
+$$
+\begin{equation}
+R_t = \frac{\sum_i^{0,N_c}\left(\bar{H_i}^{t^-} - \bar{H_i}^{t} - \left(\hat{H_i}^{t^-} - \hat{H_i}^{t}\right)\right)}{\left(H_{max}-H_{min}\right)/2}
+\end{equation}
+$$
 
 where:
 
 - $\bar{H}$ and $\hat{H}$ are health values for opponent’s character(s) and agent’s one(s) respectively; 
-- $t^-$ and $t$ are used to indicate conditions at ”state-time” and at ”new state-time” (i.e. before and after environment step); N c is the number of characters taking part in a round. Usually is N c = 1 but there are some games where multiple characters are used, with the additional possible option of alternating them during gameplay, like Tekken Tag Tournament where 2 characters have to be selected and two opponents are faced every round (thus N c = 2); H max and H min are maximum and
-minimum health values, respectively, for the given game; usually, but not always, H min = 0. The normalization term at the denominator in Eq. 1 ensures
-that a round won with a perfect (i.e. without losing any
-health), generates a maximum total cumulative reward (for
-the round) equal to 2N c .
-The lower and upper bounds for the episode total cumulative
-reward are defined in Eqs. 2. They consider the default
-reward function (Eq. 1) for game execution with Continue
+- $t^-$ and $t$ are used to indicate conditions at ”state-time” and at ”new state-time” (i.e. before and after environment step); 
+- $N_c$ is the number of characters taking part in a round. Usually is $N_c = 1$ but there are some games where multiple characters are used, with the additional possible option of alternating them during gameplay, like Tekken Tag Tournament where 2 characters have to be selected and two opponents are faced every round (thus $N_c = 2$); 
+- $H_{max}$ and $H_{min}$ are maximum and minimum health values, respectively, for the given game; usually, but not always, $H_{min} = 0$.
 
+The normalization term at the denominator in reward equation (Eq. 1) ensures that a round won with a perfect (i.e. without losing any health), generates a maximum total cumulative reward (for the round) equal to $2N_c$.
+
+The lower and upper bounds for the episode total cumulative reward are defined in the equations (Eqs. 2) below. They consider the default reward function for game execution with Continue Game option set equal to 0.0 (Continue not allowed).
+
+$$
+\begin{equation}
+\begin{gathered}
+\min{\sum_t^{0,T_s}R_t} = -2 N_c \left( \left(N_s-1\right) \left(N_r-1\right) +  N_r\right) \\\\
+\max{\sum_t^{0,T_s}R_t} = 2 N_c N_s N_r
+\end{gathered}
+\end{equation}
+$$
+
+where:
+- $N_r$ is the number of rounds to win (or lose) in order to win (or lose) a stage;
+- $T_s$ is the terminal state, reached when either $N_r$ rounds are lost (for both 1P and 2P mode) or game is cleared (for 1P mode only); 
+- $t$ represents the environment step and for an episode goes from 0 to $T_s$;
+- $N_s$ is the maximum number of stages the agent can play before the game reaches $T_s$. 
+
+For 1P mode $N_s$ is game-dependent, while for 2P mode $N_s=1$, meaning the episode always ends after a single stage (so after $N_r$ rounds have been won / lost be the same player, either P1 or P2).
+
+For 2P mode, P1 reward is defined as $R$ in the reward Eq. 1 and P2 reward is equal to $-R$ (zero-sum games). Eq. 1 describes the default reward function. It is of course possible to tweak it at will by means of custom <a href="/wrappers/#reward-wrappers">*Reward Wrappers*</a>.
+
+The minimum and maximum total cumulative reward for the round can be <strong><span style="color:#5B5B60;">different than</span></strong> $2N_c$ in some cases. This may happen because:
+ - When multiple characters are used at the same time, the "Round Done" condition can be different for different games (e.g. either at least one character has zero health or all characters have zero health) impacting on the amount of reward collected.
+ - For some games health bars can be recharged (e.g. the character in background in Tekken Tag Tournament, or Gill's resurrection move in Street Fighter III), making available an extra amount of reward to be collected or lost in that round.
+ - For some games, in some stages, additional opponents may be faced (opponent $N_c$ not constant through stages), making available an extra amount of reward to be collected (e.g. the endurance stages in Ultimate Mortal Kombat 3).
+ - For some games, not all characters share the same maximum health. $H_{max}$ and $H_{min}$ are always the extremes for a given game, among all characters.
+
+Lower and upper bounds of episode total cumulative reward may, in some cases, deviate from what defined by Eqs. 2, because:
+- The absolute value of minimum / maximum total cumulative reward for the round can be different from $2N_c$ (see above).
+- For some games, $N_r$ is not the same for all the stages (1P mode only), for example for Tekken Tag Tournament the final stage is made of a single round while all previous ones require two wins.
+
+Please note that the maximum cumulative reward (for 1P mode) is obtained when clearing the game winning all rounds with a perfect ($\max{\sum_t^{0,T_s}R_t}\Rightarrow$ game completed), but the vice versa is not true. In fact not necessarily the higher number of stages won, the higher is the total cumulative reward ($\max{\sum_t^{0,T_s}R_t}\not\propto$ stage reached, game completed $\nRightarrow\max{\sum_t^{0,T_s}R_t}$). Somehow counter intuitively, in order to obtain the lowest possible total cumulative reward the agent is supposed to reach the final stage (collecting negative rewards in all previous ones) before loosing by $N_r$ perfects.
 </div>

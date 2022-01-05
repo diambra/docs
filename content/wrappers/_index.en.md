@@ -18,10 +18,19 @@ weight: 40
     - <a href="/wrappers/#reward-normalization" style="font-size:20px;">Reward Normalization</a>
     - <a href="/wrappers/#reward-clipping" style="font-size:20px;">Reward Clippiing</a>
 
+<div style="font-size:20px;">
+
+DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers one has just to add an additional kwargs dictionary, here named `wrappersSettings` as shown in the next code block, to the environment creation method, having populated the dictionary as specified in the next sections.
+
+Implementation examples and templates can be found in the code repository, <a href="/wrappers/#reward-clipping" style="font-size:20px;" target="_blank">here ADD LINK</a>
+
+</div>
+
 ```python
 # Gym wrappers settings
 wrappersSettings = {}
 ```
+
 ### Generic Wrappers
 
 #### NoOp Steps After Reset
@@ -72,7 +81,7 @@ wrappersSettings["actionsStack"] = 12
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>|<strong><span style="color:#5B5B60;">Target Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Note</span></strong> |
 |-------------|-------------| ------|------|--------|
-| `scale`     | `bool` | - | All | Activates observation scaling.<br>Affects observation elements as follows:<br> - *Box*: type kept, changes bounds according to `scaleMod` setting.<br> - *Discrete (Binary)*: not affected.<br> - *Discrete*: changed to *MultiDiscrete (Binary)* through one-hot encoding, size equal to original *Discrete* cardinality.<br> - *MultiDiscrete*: changed to *N-MultiDiscrete (Binary)* through N-times one-hot encoding, N equal to original *MultiDiscrete* size, encoding size equal to original *MultiDiscrete* element cardinality.<br>*False by default.*  |
+| `scale`     | `bool` | True / False | All | Activates observation scaling.<br>Affects observation elements as follows:<br> - *Box*: type kept, changes bounds according to `scaleMod` setting.<br> - *Discrete (Binary)*: not affected.<br> - *Discrete*: changed to *MultiDiscrete (Binary)* through one-hot encoding, size equal to original *Discrete* cardinality.<br> - *MultiDiscrete*: changed to *N-MultiDiscrete (Binary)* through N-times one-hot encoding, N equal to original *MultiDiscrete* size, encoding size equal to original *MultiDiscrete* element cardinality.<br>*False by default.*  |
 | `scaleMod`     | `int` | [0,&#160;1] | All | Defines the scaling bounds: 0 - [0,&#160;1]; 1 - [-1,&#160;1].<br>Keeps observation elements of the same type.<br>*0 by default.*  |
 
 ```python
@@ -98,7 +107,7 @@ wrappersSettings["stickyActions"] = 1
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Note</span></strong> |
 |-------------|-------------| ------|------|
-| `normalizeRewards` | `bool`| - | Activates reward normalization. Divides reward value by half the maximum health bar value.<br>*True by default.*  |
+| `normalizeRewards` | `bool`| True / False | Activates reward normalization. Divides reward value by half the maximum health bar value.<br>*True by default.*  |
 
 ```python
 wrappersSettings["normalizeRewards"] = True
@@ -108,7 +117,7 @@ wrappersSettings["normalizeRewards"] = True
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Note</span></strong> |
 |-------------|-------------| ------|------|
-| `clipRewards` | `bool`| - | Activates reward clipping. Applies the sign function to the reward value.<br>*False by default.*  |
+| `clipRewards` | `bool`| True / False | Activates reward clipping. Applies the sign function to the reward value.<br>*False by default.*  |
 
 
 ```python
