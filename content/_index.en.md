@@ -2,40 +2,106 @@
 title: "Home"
 ---
 
+
+
+<figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 40%;">
+  <img src="/images/envs/basicUsage.png" style="margin-bottom:20px;">           
+</figure>   
+
 # DIAMBRA Arena Docs
 
-[Hugo-theme-learn](http://github.com/matcornic/hugo-theme-learn) is a theme for [Hugo](https://gohugo.io/), a fast and modern static website engine written in Go. Where Hugo is often used for blogs, this multilingual-ready theme is **fully designed for documentation**.
+<div style="font-size:20px;">
 
-This theme is a partial porting of the [Learn theme](http://learn.getgrav.org/) of [Grav](https://getgrav.org/), a modern flat-file CMS written in PHP.
+DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It acts as an interface towards popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym standard</span>, that makes its adoption smooth and straightforward. 
 
-{{% notice tip %}}Learn theme works with a _page tree structure_ to organize content : All contents are pages, which belong to other pages. [read more about this]({{%relref "cont/pages/_index.md"%}}) 
-{{% /notice %}}
+It <span style="color:#333333; font-weight:bolder;">supports all major Operating Systems: Linux, Windows and MacOS</span>, most of them via Docker, with a step by step installation guide available in this manual. It is <span style="color:#333333; font-weight:bolder;">completely free to use</span>, the user only needs to register on the official website. 
 
-## Main features
 
-* [Automatic Search]({{%relref "basics/configuration/_index.md#activate-search" %}})
-* [Multilingual mode]({{%relref "cont/i18n/_index.md" %}})
-* **Unlimited menu levels**
-* **Automatic next/prev buttons to navigate through menu entries**
-* [Image resizing, shadow...]({{%relref "cont/markdown.en.md#images" %}})
-* [Attachments files]({{%relref "shortcodes/attachments.en.md" %}})
-* [List child pages]({{%relref "shortcodes/children/_index.md" %}})
-* [Mermaid diagram]({{%relref "shortcodes/mermaid.en.md" %}}) (flowchart, sequence, gantt)
-* [Customizable look and feel and themes variants]({{%relref "basics/style-customization/_index.md"%}})
-* [Buttons]({{%relref "shortcodes/button.en.md" %}}), [Tip/Note/Info/Warning boxes]({{%relref "shortcodes/notice.en.md" %}}), [Expand]({{%relref "shortcodes/expand.en.md" %}})
+In addition, its <a href="">TODO ADD LINK GitHub repository</a> provides a <span style="color:#333333; font-weight:bolder;">collection of examples</span> covering main use cases of interest <span style="color:#333333; font-weight:bolder;">that can be run in just a few steps</span>.
 
-![Screenshot](https://github.com/matcornic/hugo-theme-learn/raw/master/images/screenshot.png?width=40pc&classes=shadow)
+#### Environments Main Features
 
-## Contribute to this documentation
-Feel free to update this content, just click the **Edit this page** link displayed on top right of each page, and pullrequest it
+All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side). 
 
-{{% notice info %}}
-Your modification will be deployed automatically when merged.
-{{% /notice %}}
+They all  <span style="color:#333333; font-weight:bolder;">support both single player (1P) as well as two players (2P) mode</span>, making them the perfect resource to explore all the following Reinforcement Learning subfields: 
 
-## Documentation website
-This current documentation has been statically generated with Hugo with a simple command : `hugo -t hugo-theme-learn` -- source code is [available here at GitHub](https://github.com/matcornic/hugo-theme-learn)
+</div>
 
-{{% notice note %}}
-Automatically published and hosted thanks to [Netlify](https://www.netlify.com/). Read more about [Automated HUGO deployments with Netlify](https://www.netlify.com/blog/2015/07/30/hosting-hugo-on-netlifyinsanely-fast-deploys/)
-{{% /notice %}}
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/AIvsCOM.png"/>
+   <figcaption align="middle">Standard RL</figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/AIvsAI.png"/>
+   <figcaption align="middle">Competitive Multi-Agent</figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/AIvsHUM.png"/>
+   <figcaption align="middle">Competitive Human-Agent</figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/SP.png"/>
+   <figcaption align="middle">Self-Play</figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/IL.png"/>
+   <figcaption align="middle">Imitation Learning</figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/HITL.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>
+  </figure> 
+</div>
+
+#### Available Games
+
+<div style="font-size:20px;">
+
+Interfaced games have been selected among the most popular fighting retro-games. While sharing the same fundamental mechanics, they provide slightly different challenges, with specific features such as different type and number of characters, how to perform combos, health bars recharging, etc.  
+
+Whenever possible, games are released with all hidden/bonus characters unlocked. 
+
+Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
+
+</div>
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
+  </figure>                                                                     
+</div>                                                                          
+       
+
+### Docs Structure
+
+- <a href="/installation/linux/" style="font-size:20px;">Linux</a>              
+- <a href="/installation/win/" style="font-size:20px;">Windows</a>              
+- <a href="/installation/macos/" style="font-size:20px;">MacOS</a>              
+
+### References
+
+<div style="font-size:20px;">
+
+- Official Website
+- Documentation Page
+- 
+
+</div>
+
+### Citation
+

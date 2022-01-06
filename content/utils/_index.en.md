@@ -271,7 +271,7 @@ observation["P1"]["actions"]: {'move': 0, 'attack': 3}
 #### Wrapped Observation
 
 {{% notice warning %}}                                                           
-This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the normalization wrapper is active.
+<span style="font-size:20px;">This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the normalization wrapper is active.</span>
 {{% /notice %}}  
 
 ```python
