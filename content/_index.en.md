@@ -19,6 +19,11 @@ It <span style="color:#333333; font-weight:bolder;">supports all major Operating
 
 In addition, its <a href="">TODO ADD LINK GitHub repository</a> provides a <span style="color:#333333; font-weight:bolder;">collection of examples</span> covering main use cases of interest <span style="color:#333333; font-weight:bolder;">that can be run in just a few steps</span>.
 
+<figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 40%;">
+  <img src="/images/envs/basicUsage.png" style="margin-bottom:20px;">           
+  <figcaption align="middle">Agent-Environment Interaction Scheme</figcaption>
+</figure>   
+
 #### Environments Main Features
 
 All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side). 
@@ -89,13 +94,21 @@ Additional details can be found in their <a href="/envs/games/">dedicated sectio
 
 ### Docs Structure
 
-- <a href="/installation/linux/" style="font-size:20px;">Linux</a>              
-- <a href="/installation/win/" style="font-size:20px;">Windows</a>              
-- <a href="/installation/macos/" style="font-size:20px;">MacOS</a>              
+<div style="font-size:20px;">
+
+- <a href="/installation/">Installation</a>              
+    - <a href="/installation/linux/">Linux</a>              
+    - <a href="/installation/win/">Windows</a>              
+    - <a href="/installation/macos/">MacOS</a>              
+- <a href="/gettingstarted/">Getting Started</a>              
+    - <a href="/gettingstarted/examples/">Examples</a>              
+- <a href="/envs/">Environments</a>              
+    - <a href="/envs/games/">Games & Specifics</a>              
+- <a href="/wrappers/">Wrappers</a>              
+- <a href="/utils/">Utils</a>              
+- <a href="/imitationlearning/">Imitation Learning</a>              
 
 ### References
-
-<div style="font-size:20px;">
 
 - Official Website
 - Documentation Page

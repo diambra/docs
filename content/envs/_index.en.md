@@ -26,73 +26,81 @@ This page describes in details all general aspects related to DIAMBRA Arena envi
 
 ### Overview
 
-<div style="font-size:20px;">
+<div style="font-size:20px;">                                                   
+                                                                                
+DIAMBRA Arena is a software package featuring a collection of high-quality environments for Reinforcement Learning research and experimentation. It acts as an interface towards popular arcade emulated video games, offering a Python API fully compliant with OpenAI Gym standard, that makes its adoption smooth and straightforward.
+                                                                                
+It supports all major Operating Systems: Linux, Windows and MacOS, most of them via Docker, with a step by step installation guide available in this manual. It is completely free to use, the user only needs to register on the official website.
+                                                                                
+                                                                                
+In addition, its <a href="">TODO ADD LINK GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
+                                                                                
+#### Environments Main Features                                                 
+                                                                                
+All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side).
+                                                                                
+They all support both single player (1P) as well as two players (2P) mode, making them the perfect resource to explore all the following Reinforcement Learning subfields:
+                                                                                
+</div>                                                                          
+                                                                                
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/AIvsCOM.png"/>
+   <figcaption align="middle">Standard RL</figcaption>                          
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/AIvsAI.png"/>
+   <figcaption align="middle">Competitive Multi-Agent</figcaption>              
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/AIvsHUM.png"/>
+   <figcaption align="middle">Competitive Human-Agent</figcaption>              
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/SP.png"/>
+   <figcaption align="middle">Self-Play</figcaption>                            
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/IL.png"/>
+   <figcaption align="middle">Imitation Learning</figcaption>                   
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="/images/home/HITL.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>                    
+  </figure>                                                                     
+</div>         
 
-DIAMBRA Arena is a software package featuring a col-
-lection of high-quality environments for RL research and
-experimentation. It acts as an interface towards popular
-arcade emulated video games, offering a Python API fully
-compliant with OpenAI Gym standard, that makes its adop-
-tion smooth and straightforward.
-It is accompained by a comprehensive documentation (DI-
-AMBRA, 2021a) and its repository (DIAMBRA, 2021b)
-comes with a collection of examples covering main use
-cases of interest that can be run in just a few steps. It sup-
-ports all major Operating Systems: Linux, Windows and
-MacOS, most of them via Docker. A detailed, step by step
-installation guide for each OS is available in the documen-
-tation. It is completely free to use, the user only needs to
-register on the official website.
-The first version of the software focuses on Fighting games,
-creating a robust and consistent package. All of them are
-episodic RL environments, with discrete actions that repre-
-sent gamepad buttons. The observations to be used for con-
-trol are composed by a screen pixels buffer plus additional
-data made of RAM values representing game elements such
-as characters health values or characters stage side. The
-problem can thus be framed as ”Control from pixels” only,
-or as a more general one, taking advantage of RAM numeri-
+#### Available Games 
 
-cal values too. It is worth noticing that RAM values usage
-is guaranteed to be fair, meaning that they only provide
-redundant information that can be retrieved from the game
-screen alone, and no ”hidden” state is contained in it.
-Every environment supports both single player (1P) as well
-as two players (2P) mode. The former is the ”classic” arcade
-race for clearing the game achieving the score record that
-can be used for Standard RL. The latter adds three new,
-orthogonal dimensions to these environments, making them
-suitable for research and experimentation in the domains
-of Competitive Multi-Agent as well as for Human-Agent
-Cooperation / Competition, and allowing to make use of
-Self-Play for training.
-In addition, it can be easily set up to explore Human-in-the-
-Loop Training, covering applications like Human Assisted
-Rewards and the natively supported Imitation Learning, for
-which it provides tools to record human expert demonstra-
-tions and a specific class to seamlessly load and use them
-for agent training.
-Available Games. All interfaced games have been selected
-among the most popular and successful fighting retro-games.
-They have been selected so that, while sharing the same
-fundamental mechanics, they provide slightly different chal-
-lenges, with specific features such as different number of
-characters to be used at the same time, how to handle combo
-moves, possibility to recharge health bars or not, and similar.
-Whenever possible, games are released with all hid-
-den/bonus characters unlocked. For every released title,
-extensive testing has been carried out, being the minimum
-requirement for a game to be released in beta. After that, the
-next internal step is training a Deep RL agent to play, and
-possibly complete it, making sure the 1P mode is playable
-with no bugs up until game end. This is the condition under
-which titles are moved from beta to stable status.
-For the first release of the package, the available titles are
-listed in Table 1 and shown in Figure 2 in the Appendix. All
-details for each of them can be found in the documentation
-
-
-</div>
+<div style="font-size:20px;">                                                   
+                                                                                
+Interfaced games have been selected among the most popular fighting retro-games. While sharing the same fundamental mechanics, they provide slightly different challenges, with specific features such as different type and number of characters, how to perform combos, health bars recharging, etc.
+                                                                                
+Whenever possible, games are released with all hidden/bonus characters unlocked.
+                                                                                
+Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
+                                                                                
+</div>                                                                          
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
+  </figure>                                                                     
+</div>    
 
 ### Interaction Basics
 
@@ -132,27 +140,9 @@ while True:
 env.close()
 ```
 
-<div style="font-size:20px;">
-
-Line by line, one finds:
-- 1 Package import
-- 3-7 Keywords argument dictionary definition, featuring the two mandatory parameters: Game ID (in this case "doapp" for Dead Or Alive ++) and local path to game ROMs (with a placeholder string that needs to be substituted with the correct ROMs path)
-- 8 Environment creation
-- 10 Environment reset
-- 12 Interaction loop start
-- 13 Random action sampling
-- 15 Environment stepping (action sent, observation and reward retrieved)
-- 17 Episode done condition check
-- 18 Environment reset
-- 19 Interaction loop exit after episode end
-- 21 Environment close
-
-
 {{% notice note %}}
-<span style="font-size:20px;">More complex and complete examples can be found <a href="/gettingstarted/examples/">in this section</a>.</span>
+<span style="font-size:20px;">More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.</span>
 {{% /notice %}}
-
-</div>
 
 ### Settings
 
