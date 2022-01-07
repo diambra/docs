@@ -39,7 +39,7 @@
     src: url("../fonts/Work_Sans_500.eot?#iefix") format("embedded-opentype"), url("../fonts/Work_Sans_500.woff") format("woff"), url("../fonts/Work_Sans_500.woff2") format("woff2"), url("../fonts/Work_Sans_500.svg#WorkSans") format("svg"), url("../fonts/Work_Sans_500.ttf") format("truetype");
 }
 body {
-    background: #f0f0f5;
+    background: rgba(11, 11, 16, 0.10);  
     color: #777;
 }
 body #chapter h1 {
@@ -325,7 +325,9 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 #body {
     position: relative;
     margin-left: 300px;
-    min-height: 100%;
+    min-height: 1080px;
+    max-width: 900px;
+    background: #f0f0f5;
 }
 #body img, #body .video-container {
     margin: 3rem auto;
@@ -348,7 +350,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
     border: 1px solid #ccc;
 }
 #body .padding {
-    padding: 3rem 6rem;
+    padding: 1.618em 3.236em;
 }
 @media only all and (max-width: 59.938em) {
     #body .padding {

@@ -5,26 +5,26 @@ weight: 40
 
 ### Index 
 
-- <a href="/wrappers/#generic-wrappers" style="font-size:20px;">Generic Wrappers</a>
-    - <a href="/wrappers/#noop-steps-after-reset" style="font-size:20px;">NoOp Steps After Reset</a>
-- <a href="/wrappers/#observation-wrappers" style="font-size:20px;">Observation Wrappers</a>
-    - <a href="/wrappers/#frame-warping" style="font-size:20px;">Frame Warping</a>
-    - <a href="/wrappers/#frame-stacking-with-optional-dilation" style="font-size:20px;">Frame Stacking With Optional Dilation</a>
-    - <a href="/wrappers/#action-stacking" style="font-size:20px;">Action Stacking</a>
-    - <a href="/wrappers/#scaling" style="font-size:20px;">Scaling</a>
-- <a href="/wrappers/#action-wrappers" style="font-size:20px;">Action Wrappers</a>
-    - <a href="/wrappers/#action-sticking" style="font-size:20px;">Action Sticking</a>
-- <a href="/wrappers/#reward-wrappers" style="font-size:20px;">Reward Wrappers</a>
-    - <a href="/wrappers/#reward-normalization" style="font-size:20px;">Reward Normalization</a>
-    - <a href="/wrappers/#reward-clipping" style="font-size:20px;">Reward Clippiing</a>
+<div style="font-size:1.125rem;">
 
-<div style="font-size:20px;">
+- <a href="/wrappers/#generic-wrappers">Generic Wrappers</a>
+    - <a href="/wrappers/#noop-steps-after-reset">NoOp Steps After Reset</a>
+- <a href="/wrappers/#observation-wrappers">Observation Wrappers</a>
+    - <a href="/wrappers/#frame-warping">Frame Warping</a>
+    - <a href="/wrappers/#frame-stacking-with-optional-dilation">Frame Stacking With Optional Dilation</a>
+    - <a href="/wrappers/#action-stacking">Action Stacking</a>
+    - <a href="/wrappers/#scaling">Scaling</a>
+- <a href="/wrappers/#action-wrappers">Action Wrappers</a>
+    - <a href="/wrappers/#action-sticking">Action Sticking</a>
+- <a href="/wrappers/#reward-wrappers">Reward Wrappers</a>
+    - <a href="/wrappers/#reward-normalization">Reward Normalization</a>
+    - <a href="/wrappers/#reward-clipping">Reward Clipping</a>
+
+</div>
 
 DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers one has just to add an additional kwargs dictionary, here named `wrappersSettings` as shown in the next code block, to the environment creation method, having populated the dictionary as specified in the next sections.
 
-Implementation examples and templates can be found in the code repository, <a href="/wrappers/#reward-clipping" style="font-size:20px;" target="_blank">here ADD LINK</a>
-
-</div>
+Implementation examples and templates can be found in the code repository, <a href="/wrappers/#reward-clipping" target="_blank">here ADD LINK</a>
 
 ```python
 # Gym wrappers settings

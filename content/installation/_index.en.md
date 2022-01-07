@@ -5,6 +5,10 @@ weight: 10
 
 ### Index
 
-- <a href="/installation/linux/" style="font-size:20px;">Linux</a>
-- <a href="/installation/win/" style="font-size:20px;">Windows</a>
-- <a href="/installation/macos/" style="font-size:20px;">MacOS</a>
+<div style="font-size:1.125rem;">
+
+- <a href="/installation/linux/">Linux</a>
+- <a href="/installation/win/">Windows</a>
+- <a href="/installation/macos/">MacOS</a>
+
+</div>

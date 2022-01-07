@@ -6,28 +6,28 @@ math: true
 
 ### Index
 
-- <a href="/envs/#overview" style="font-size:20px;">Overview</a>
-- <a href="/envs/#interaction-basics" style="font-size:20px;">Interaction Basics</a>
-- <a href="/envs/#settings" style="font-size:20px;">Settings</a>
-- <a href="/envs/#game-specific-info" style="font-size:20px;">Game Specific Info</a>
-- <a href="/envs/#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
-- <a href="/envs/#action-spaces" style="font-size:20px;">Action Space(s)</a>
-    - <a href="/envs/#action-space-settings" style="font-size:20px;">Action Space Setting</a>
-- <a href="/envs/#observation-space" style="font-size:20px;">Observation Space</a>
-    - <a href="/envs/#global" style="font-size:20px;">Global</a>
-    - <a href="/envs/#player-specific" style="font-size:20px;">Player Specific</a>
-- <a href="/envs/#reward-function" style="font-size:20px;">Reward Function</a>
+<div style="font-size:1.125rem;">
 
-<div style="font-size:20px;">
+- <a href="/envs/#overview">Overview</a>
+- <a href="/envs/#interaction-basics">Interaction Basics</a>
+- <a href="/envs/#settings">Settings</a>
+- <a href="/envs/#game-specific-info">Game Specific Info</a>
+- <a href="/envs/#game-specific-settings">Game Specific Settings</a>
+- <a href="/envs/#action-spaces">Action Space(s)</a>
+    - <a href="/envs/#action-space-settings">Action Space Setting</a>
+- <a href="/envs/#observation-space">Observation Space</a>
+    - <a href="/envs/#global">Global</a>
+    - <a href="/envs/#player-specific">Player Specific</a>
+- <a href="/envs/#reward-function">Reward Function</a>
 
-This page describes in details all general aspects related to DIAMBRA Arena environments. For game-specific details visit <a href="/envs/games" style="font-size:20px;">Games & Specifics</a> page.
 
 </div>
 
+This page describes in details all general aspects related to DIAMBRA Arena environments. For game-specific details visit <a href="/envs/games">Games & Specifics</a> page.
+
+
 ### Overview
 
-<div style="font-size:20px;">                                                   
-                                                                                
 DIAMBRA Arena is a software package featuring a collection of high-quality environments for Reinforcement Learning research and experimentation. It acts as an interface towards popular arcade emulated video games, offering a Python API fully compliant with OpenAI Gym standard, that makes its adoption smooth and straightforward.
                                                                                 
 It supports all major Operating Systems: Linux, Windows and MacOS, most of them via Docker, with a step by step installation guide available in this manual. It is completely free to use, the user only needs to register on the official website.
@@ -40,8 +40,6 @@ In addition, its <a href="">TODO ADD LINK GitHub repository</a> provides a colle
 All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side).
                                                                                 
 They all support both single player (1P) as well as two players (2P) mode, making them the perfect resource to explore all the following Reinforcement Learning subfields:
-                                                                                
-</div>                                                                          
                                                                                 
 <div>                                                                           
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
@@ -72,15 +70,12 @@ They all support both single player (1P) as well as two players (2P) mode, makin
 
 #### Available Games 
 
-<div style="font-size:20px;">                                                   
-                                                                                
 Interfaced games have been selected among the most popular fighting retro-games. While sharing the same fundamental mechanics, they provide slightly different challenges, with specific features such as different type and number of characters, how to perform combos, health bars recharging, etc.
                                                                                 
 Whenever possible, games are released with all hidden/bonus characters unlocked.
                                                                                 
 Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
                                                                                 
-</div>                                                                          
 <div>                                                                           
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
    <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
@@ -104,17 +99,14 @@ Additional details can be found in their <a href="/envs/games/">dedicated sectio
 
 ### Interaction Basics
 
-<div style="font-size:20px;">
 DIAMBRA Arena Environments usage follows the standard RL interaction framework: the agent sends an action to the environment, which process it and performs a transition accordingly, from the starting state to the new state, returning the observation and the reward to the agent to close the interaction loop. The figure below shows this typical interaction scheme and data flow.
 
-<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 40%;">
+<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 80%;">
   <img src="/images/envs/basicUsage.png" style="margin-bottom:20px;">
   <figcaption align="middle">Scheme of Agent-Environment Interaction</figcaption>
 </figure>
 
 The shortest snippet for a complete basic execution of an environment consists of just a few lines of code, and is presented in the code block below:
-</div>
-
 
 ```python {linenos=inline}
 import diambraArena 
@@ -141,15 +133,12 @@ env.close()
 ```
 
 {{% notice note %}}
-<span style="font-size:20px;">More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.</span>
+More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.
 {{% /notice %}}
 
 ### Settings
 
-<div style="font-size:20px;">
-
 All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary. The following table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages and, for those shared among all games, in the table contained in the <a href="/envs/#game-specific-settings">Game Specific Settings</a> section below.
-</div>
 
 | <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
 |-------------|-------------| ------|------|------|
@@ -168,11 +157,7 @@ All environments share a numerous set of options allowing to handle many differe
 
 ### Game Specific Info
 
-<div style="font-size:20px;">                                                   
-
 Game specific info provide useful details about it. They are reported in every game-dedicated page, and summarized and described in the table below.
-                                                                                
-</div> 
 
 |  <strong><span style="color:#5B5B60;">Parameter</span></strong>  | <strong><span style="color:#5B5B60;">Description</span></strong>  |
 |-------------|-------------|
@@ -189,12 +174,7 @@ Game specific info provide useful details about it. They are reported in every g
 
 ### Game Specific Settings
 
-<div style="font-size:20px;">                                                   
-
 Environment settings depending on the specific game and shared among all of them are reported in the table below. Additional ones (if present) are reported in game-dedicated pages.
-                                                                                
-</div> 
-
 
 | <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
 |-------------|-------------| ------|------|-----|
@@ -202,18 +182,12 @@ Environment settings depending on the specific game and shared among all of them
 | <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game |
 | <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game |
 
-<div style="font-size:20px;">                                                   
-
-<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 40%">
+<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
   <img src="/images/envs/outfits.png" style="margin-bottom:20px;">
   <figcaption align="middle">Example of Dead or Alive ++ available outfits for Kasumi</figcaption>
 </figure>
 
-</div> 
-
 ### Action Space(s)
-
-<div style="font-size:20px;">                                                   
 
 Actions of the interfaced games can be grouped in two categories: move actions (Up, Left, etc.) and attack ones (Punch, Kick, etc.). DIAMBRA Arena provides four different action spaces: the main distinction is between Discrete and MultiDiscrete ones. The former is a single list composed by the union of move and attack actions (of type `gym.spaces.Discrete`), while the latter consists of two sets combined, for move and attack actions respectively (of type `gym.spaces.MultiDiscrete`). 
 
@@ -240,12 +214,10 @@ Only meaningful actions are made available per each game: if a specific game has
 
 Some actions (especially attack buttons combinations) may have no effect for some of the characters: in some games combos requiring attack buttons combinations are valid only for a subset of characters.
 
-<figure style="margin-bottom:20px; margin-top:0px; margin-right:auto; margin-left:auto;width: 40%;">
+<figure style="margin-bottom:20px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%;">
   <img src="/images/envs/actionSpaces.png" style="margin-bottom:20px;">
   <figcaption align="middle">Example of Dead Or Alive ++ Action Spaces</figcaption>
 </figure>
-
-</div> 
 
 #### Action Space Settings
 
@@ -254,8 +226,6 @@ Some actions (especially attack buttons combinations) may have no effect for som
 | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> / <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a>  | Active / Not Active  |`actionSpace`,  `attackButCombination` | `discrete`/`multiDiscrete`, `True`/`False` | Total number of actions available, divided in move and attack actions |
 
 ### Observation Space
-
-<div style="font-size:20px;"> 
 
 Environment observations are composed by two main elements: a visual one (the game frame) and an aggregation of quantitative values called Additional Observations (stage number, health values, etc.). Both of them are exposed through an observation space of type <a href="https://github.com/openai/gym/tree/master/gym/spaces/" target="blank_">`gym.spaces.Dict`</a>. It consists of global elements and player-specific ones, they are presented and described in the tables below. To give additional context, next figure shows an example of Dead Or Alive ++ observation where some of the Additional Observations are highlighted, superimposed on the game frame.
 
@@ -267,15 +237,9 @@ Each game specifies and extends the set presented here with its custom one, desc
   <figcaption align="middle">An example of Dead Or Alive ++ additional observations</figcaption>
 </figure>
 
-</div>
-
 #### Global
 
-<div style="font-size:20px;"> 
-
 Global elements of the observation space are unrelated to the player and they are currently limited to those presented and described in the following table. The same table is found on each game-dedicated page reporting its specs:
-
-</div>
 
 | <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
@@ -284,21 +248,13 @@ Global elements of the observation space are unrelated to the player and they ar
 
 #### Player specific
 
-<div style="font-size:20px;"> 
-
 Player-specific observations can be accessed using key(s) `P1` (1P and 2P Modes) and/or `P2` (2P Mode only), as shown in the following snippet for the <strong><span style="color:#5B5B60;">Side</span></strong> element:
-
-</div>
 
 ```python
 ownSideVar = observation["P1"]["ownSide"]
 ```
 
-<div style="font-size:20px;"> 
-
 Typical values that are available for each game are reported and described in the table below. The same table is found in every game-dedicated page, specifying and extending (if needed) the observation elements set.
-
-</div>
 
 | <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
@@ -311,8 +267,6 @@ Typical values that are available for each game are reported and described in th
 | <strong><span style="color:#5B5B60;">Actions-Attack</span></strong>   | `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of attack actions - 1] | Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
 
 ### Reward Function
-
-<div style="font-size:20px;"> 
 
 The reward is defined as a function of characters health values so that, qualitatively, damage suffered by the agent corresponds to a negative reward, and damage inflicted to the opponent corresponds to a positive reward. The quantitative, general and formal reward function definition is as follows: 
 
@@ -363,4 +317,3 @@ Lower and upper bounds of episode total cumulative reward may, in some cases, de
 - For some games, $N_r$ is not the same for all the stages (1P mode only), for example for Tekken Tag Tournament the final stage is made of a single round while all previous ones require two wins.
 
 Please note that the maximum cumulative reward (for 1P mode) is obtained when clearing the game winning all rounds with a perfect ($\max{\sum_t^{0,T_s}R_t}\Rightarrow$ game completed), but the vice versa is not true. In fact not necessarily the higher number of stages won, the higher is the total cumulative reward ($\max{\sum_t^{0,T_s}R_t}\not\propto$ stage reached, game completed $\nRightarrow\max{\sum_t^{0,T_s}R_t}$). Somehow counter intuitively, in order to obtain the lowest possible total cumulative reward the agent is supposed to reach the final stage (collecting negative rewards in all previous ones) before loosing by $N_r$ perfects.
-</div>

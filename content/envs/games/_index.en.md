@@ -33,11 +33,11 @@ weight: 20
 <p style="font-size:35px;  margin-bottom:20px; text-align:center; color: #a5101f;">... many more to come soon.</p>
 
 {{% notice note %}}
-<span style="font-size:20px;">Whenever possible, games are released with all hidden/bonus characters unlocked.</span>
+Whenever possible, games are released with all hidden/bonus characters unlocked.
 {{% /notice %}}
 
 {{% notice info %}}
-<span style="font-size:20px;">For every released title, extensive testing has been carried out, being the minimum requirement for a game to be released in beta. After that, the next internal step is training a Deep RL agent to play, and possibly complete it, making sure the 1P mode is playable with no bugs up until game end. This is the condition under which titles are moved from beta to stable status.</span>
+For every released title, extensive testing has been carried out, being the minimum requirement for a game to be released in beta. After that, the next internal step is training a Deep RL agent to play, and possibly complete it, making sure the 1P mode is playable with no bugs up until game end. This is the condition under which titles are moved from beta to stable status.
 {{% /notice %}}
 </div>
 

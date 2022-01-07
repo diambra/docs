@@ -3,23 +3,25 @@ title: Getting Started
 weight: 20
 ---
 
-<div style="font-size:20px;">
-
 ### Index
+
+<div style="font-size:1.125rem;">
 
 - <a href="/gettingstarted/#prerequisites">Prerequisites</a>
 - <a href="/gettingstarted/#basic-usage">Basic Usage</a>
     - <a href="/gettingstarted/#launcher-options">Launcher Options</a>
     - <a href="/gettingstarted/#environment-run">Environment Run</a>
-        - <a href="/gettingstarted/#random-agent-gui">Random Agent in Dead Or Alive++ (with GUI Support)</a>
-        - <a href="/gettingstarted/#random-agent-headless">Random Agent in Dead Or Alive++ (Headless Mode)</a>
-        - <a href="/gettingstarted/#bash-terminal">Bash Terminal With Python Packages Persistent Install</a>
+        - <a href="/gettingstarted/#random-agent-in-dead-or-alive-with-gui-support">Random Agent in Dead Or Alive++ (with GUI Support)</a>
+        - <a href="/gettingstarted/#random-agent-in-dead-or-alive-headless-mode">Random Agent in Dead Or Alive++ (Headless Mode)</a>
+        - <a href="/gettingstarted/#gpu-docker-image-linux-only">Bash Terminal With Python Packages Persistent Install</a>
 - <a href="/gettingstarted/#advanced-usage">Advanced Usage</a>
     - <a href="/gettingstarted/#gpu-docker-image-linux-only">GPU Docker Image (Linux Only)</a>
-        - <a href="/gettingstarted/#gpu-availability">Check GPU Availability with TensorFlow</a>
+        - <a href="/gettingstarted/#check-gpu-availability-with-tensorflow">Check GPU Availability with TensorFlow</a>
     - <a href="/gettingstarted/#docker-commands-details">Docker Commands Details</a>
         - <a href="/gettingstarted/#headless-execution">Headless Execution</a>
         - <a href="/gettingstarted/#gui-supported-execution">GUI-Supported Execution</a>
+
+</div>
 
 ### Prerequisites
 
@@ -28,7 +30,7 @@ weight: 20
 - ROMs downloaded and all placed in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`
 
 {{% notice tip %}}
-<span style="font-size:20px;">To avoid specifying ROMs for every command you run, you can define a specific environment variable (See <a href="/installation/">Installation</a> section for details).</span>
+To avoid specifying ROMs for every command you run, you can define a specific environment variable (See <a href="/installation/">Installation</a> section for details).
 {{% /notice %}}
 
 ### Basic Usage
@@ -36,7 +38,7 @@ weight: 20
 In what follows we will always use the most concise script example available, `diambraArenaGist.py`, featuring a random agent playing Dead Or Alive ++. We selected it to keep things as simple as possible, but every python script can be used in the very same way.
 
 {{% notice note %}}                                                             
-<span style="font-size:20px;">More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.</span>
+More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.
 {{% /notice %}}           
 
 #### Launcher Options (Docker only)
@@ -52,14 +54,12 @@ It provides a simple interface to easily perform many useful tasks, like:
 
 The next block shows how to print out all available options for every OS.
 
-</div>
-
 {{< tabs >}}
 {{% tab name="Linux (Docker) / MacOS" %}}
 ```bash
 ./diambraArena.sh -h
 ```
-<span style="font-size:20px;">Output:</span>
+Output:
 ```terminal
 Usage:
 
@@ -121,7 +121,7 @@ Examples:
 ```batch
 diambraArena.bat -h
 ```
-<span style="font-size:20px;">Output:</span>
+Output:
 
 ```terminal
 Usage:
@@ -183,8 +183,6 @@ Examples:
 
 #### Environment Run
 
-<div style="font-size:20px;">
-
 The next three code blocks show the three most important use-cases covering the vast majority of typical interaction needed:
 - Running the environment through a python script with GUI support
 - Running the environment through a python script in Headless mode
@@ -197,12 +195,10 @@ A typical interaction when using DIAMBRA Arena for Reinforcement Learning resear
 3. Perform evaluation of your trained agent taking a look at how it behaves running your local Python evaluation script inside the Docker with GUI Support
 
 {{% notice note %}}                                                             
-<span style="font-size:20px;">The entire folder where the launcher script is located will be loaded inside the container. The Python script launched needs to be in the same folder of the launcher script.</span>
-{{% /notice %}}           
+The entire folder where the launcher script is located will be loaded inside the container. The Python script launched needs to be in the same folder of the launcher script.
+{{% /notice %}} 
 
-</div>
-
-<h5 style="font-size:20px;" id="random-agent-gui">Random Agent in Dead Or Alive++ (with GUI Support)</h5>
+##### Random Agent in Dead Or Alive++ (with GUI Support)
 
 {{< tabs >}}
 {{% tab name="Linux (Docker) / MacOS" %}}
@@ -225,7 +221,7 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 {{% /tab %}}
 {{< /tabs >}}
 
-<h5 style="font-size:20px;" id="random-agent-headless">Random Agent in Dead Or Alive++ (Headless Mode)</h5>
+##### Random Agent in Dead Or Alive++ (Headless Mode)
 
 {{< tabs >}}
 {{% tab name="Linux (Docker) / MacOS" %}}
@@ -250,13 +246,9 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 {{% /tab %}}
 {{< /tabs >}}
 
-<h5 style="font-size:20px;" id="bash-terminal">Bash Terminal With Python Packages Persistent Install</h5>
-
-<div style="font-size:20px;">
+##### Bash Terminal With Python Packages Persistent Install
 
 In order to make Python packages installation persistent inside the Docker container, Docker volumes are used. The container's Python package folder is linked to a folder in user's local filesystem (named `yourVolumeName`) where all modifications are saved.
-
-</div>
 
 {{< tabs >}}
 {{% tab name="Linux (Docker) / MacOS" %}}
@@ -276,16 +268,12 @@ diambraArena.bat "CMDTOEXEC=bash" "VOLUME=yourVolumeName"
 #### GPU Docker Image (Linux Only)
 
 {{% notice info %}}
-<span style="font-size:20px;">GPU access from docker images is natively supported by Linux hosts only, provided <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> has been installed. Windows host systems can support it only via experimental features (for now), as described <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html" target="_blank">here</a> and <a href="https://docs.docker.com/desktop/windows/wsl/#gpu-support" target="_blank">here</a>. <b>It is highly recommended to rely on Linux hosts to leverage this feature.</b></span>
+GPU access from docker images is natively supported by Linux hosts only, provided <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> has been installed. Windows host systems can support it only via experimental features (for now), as described <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html" target="_blank">here</a> and <a href="https://docs.docker.com/desktop/windows/wsl/#gpu-support" target="_blank">here</a>. <b>It is highly recommended to rely on Linux hosts to leverage this feature.</b>
 {{% /notice %}}
-
-<div style="font-size:20px;">
 
 The next code block aims at verifying that the GPU Docker image has access to the machine GPU. It does so by sending a command to the terminal that: first, installs Tensorflow with PIP, and then executes a short Python script that runs the TF check for GPU availability. It will print "True" in the terminal if GPU can be accessed correctly.
 
-</div>
-
-<h5 style="font-size:20px;" id="gpu-availability">Check GPU Availability with TensorFlow</h5>
+##### Check GPU Availability with TensorFlow
 
 ```bash
 ./diambraArena.sh -d GPU -c "pip install tensorflow-gpu==1.14; python -c \"import tensorflow as tf; print('GPU available =', tf.test.is_gpu_available())\""
@@ -293,7 +281,7 @@ The next code block aims at verifying that the GPU Docker image has access to th
 
 #### Docker Commands Details
 
-<h5 style="font-size:20px;" id="headless-execution">Headless Execution</h5>
+##### Headless Execution
 
 ```bash
 volume="-v ${OPTARG}:/usr/local/lib/python3.6/dist-packages/"
@@ -308,4 +296,4 @@ docker run -it --rm $gpuSetup --privileged $volume $romsPath \
   sh -c "cd /opt/diambraArena/code/ && $cmd" 
 ```
 
-<h5 style="font-size:20px;" id="gui-supported-execution">GUI-Supported Execution</h5>
+##### GUI-Supported Execution
