@@ -108,6 +108,12 @@ Additional details can be found in their <a href="/envs/games/">dedicated sectio
 - <a href="/utils/">Utils</a>              
 - <a href="/imitationlearning/">Imitation Learning</a>              
 
+### Support, Feature Requests & Bugs Reports
+
+To receive support, use the dedicated channel in our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>.
+
+To request features or report bugs, use the <a href="" target="_blank">TODO UPDATE LINK GitHub Issue Tracker</a>.
+
 ### References
 
 - Official Website

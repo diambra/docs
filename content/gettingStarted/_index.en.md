@@ -33,13 +33,24 @@ weight: 20
 
 ### Basic Usage
 
-In what follows we will always use the most concise example available, `diambraArenaGist.py`, featuring a random agent playing Dead Or Alive ++. We selected it to keep things as simple as possible, but every python script can be used in the very same way.
+In what follows we will always use the most concise script example available, `diambraArenaGist.py`, featuring a random agent playing Dead Or Alive ++. We selected it to keep things as simple as possible, but every python script can be used in the very same way.
 
 {{% notice note %}}                                                             
 <span style="font-size:20px;">More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.</span>
 {{% /notice %}}           
 
 #### Launcher Options (Docker only)
+
+To allow a very smooth execution, we included a *launcher script* in DIAMBRA Arena repo, inside the <a href="/installation/">TODO: UPDATE LINK Examples</a> folder. It is a bash/batch script named `diambraArena.sh`/`diambraArena.bat` for Linux-MacOS/Windows respectively. 
+
+It provides a simple interface to easily perform many useful tasks, like:
+ - Validating a ROM file
+ - Executing a local python script, with and without GUI support (X-server)
+ - Executing a terminal command inside the Docker container
+ - Opening a live terminal inside the Docker container with optional support for persistent update of the container itself
+ - Running the CPU only or the GPU container version (Linux Only)
+
+The next block shows how to print out all available options for every OS.
 
 </div>
 
@@ -172,6 +183,25 @@ Examples:
 
 #### Environment Run
 
+<div style="font-size:20px;">
+
+The next three code blocks show the three most important use-cases covering the vast majority of typical interaction needed:
+- Running the environment through a python script with GUI support
+- Running the environment through a python script in Headless mode
+- Opening a terminal inside the Docker container using volumes to make operations, like Python packages install, persistent
+
+A typical interaction when using DIAMBRA Arena for Reinforcement Learning research and experimentation could be, for example:
+
+1. Install all dependencies needed to train your Deep RL agent inside the container and make them persistent (i.e. installing Stable-Baselines from the terminal)
+2. Prepare your Python training script on your local machine and launch it in headless mode
+3. Perform evaluation of your trained agent taking a look at how it behaves running your local Python evaluation script inside the Docker with GUI Support
+
+{{% notice note %}}                                                             
+<span style="font-size:20px;">The entire folder where the launcher script is located will be loaded inside the container. The Python script launched needs to be in the same folder of the launcher script.</span>
+{{% /notice %}}           
+
+</div>
+
 <h5 style="font-size:20px;" id="random-agent-gui">Random Agent in Dead Or Alive++ (with GUI Support)</h5>
 
 {{< tabs >}}
@@ -222,7 +252,11 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 
 <h5 style="font-size:20px;" id="bash-terminal">Bash Terminal With Python Packages Persistent Install</h5>
 
-(using Docker Volumes)
+<div style="font-size:20px;">
+
+In order to make Python packages installation persistent inside the Docker container, Docker volumes are used. The container's Python package folder is linked to a folder in user's local filesystem (named `yourVolumeName`) where all modifications are saved.
+
+</div>
 
 {{< tabs >}}
 {{% tab name="Linux (Docker) / MacOS" %}}
@@ -242,8 +276,14 @@ diambraArena.bat "CMDTOEXEC=bash" "VOLUME=yourVolumeName"
 #### GPU Docker Image (Linux Only)
 
 {{% notice info %}}
-GPU access from docker images is natively supported by Linux hosts only, provided <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> has been installed. Windows host systems can support it only via experimental features (for now), as described <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html" target="_blank">here</a> and <a href="https://docs.docker.com/desktop/windows/wsl/#gpu-support" target="_blank">here</a>. <b>It is highly recommended to rely on Linux hosts to leverage this feature.</b> 
+<span style="font-size:20px;">GPU access from docker images is natively supported by Linux hosts only, provided <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> has been installed. Windows host systems can support it only via experimental features (for now), as described <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html" target="_blank">here</a> and <a href="https://docs.docker.com/desktop/windows/wsl/#gpu-support" target="_blank">here</a>. <b>It is highly recommended to rely on Linux hosts to leverage this feature.</b></span>
 {{% /notice %}}
+
+<div style="font-size:20px;">
+
+The next code block aims at verifying that the GPU Docker image has access to the machine GPU. It does so by sending a command to the terminal that: first, installs Tensorflow with PIP, and then executes a short Python script that runs the TF check for GPU availability. It will print "True" in the terminal if GPU can be accessed correctly.
+
+</div>
 
 <h5 style="font-size:20px;" id="gpu-availability">Check GPU Availability with TensorFlow</h5>
 
