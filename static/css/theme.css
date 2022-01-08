@@ -325,7 +325,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 #body {
     position: relative;
     margin-left: 300px;
-    min-height: 1080px;
+    min-height: 100vh;
     max-width: 900px;
     background: #f0f0f5;
 }
