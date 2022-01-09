@@ -26,7 +26,7 @@ All environments are episodic Reinforcement Learning tasks, with discrete action
 
 They all  <span style="color:#333333; font-weight:bolder;">support both single player (1P) as well as two players (2P) mode</span>, making them the perfect resource to explore all the following Reinforcement Learning subfields: 
 
-<div style="margin-bottom:200px;">
+<div style="margin-bottom:0px;">
   <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">
    <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="/images/home/AIvsCOM.png"/>
    <figcaption align="middle">Standard RL</figcaption>
@@ -115,3 +115,5 @@ To request features or report bugs, use the <a href="" target="_blank">TODO UPDA
 
 ### Citation
 
+
+### Terms of Use
