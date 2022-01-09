@@ -54,7 +54,7 @@ It provides a simple interface to easily perform many useful tasks, like:
 
 The next block shows how to print out all available options for every OS.
 
-{{< tabs >}}
+{{< tabs groupId="noLinuxSource">}}
 {{% tab name="Linux (Docker) / MacOS" %}}
 ```bash
 ./diambraArena.sh -h
@@ -200,7 +200,7 @@ The entire folder where the launcher script is located will be loaded inside the
 
 ##### Random Agent in Dead Or Alive++ (with GUI Support)
 
-{{< tabs >}}
+{{< tabs groupId="linuxSource">}}
 {{% tab name="Linux (Docker) / MacOS" %}}
 ```bash
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py -g 1
@@ -223,7 +223,7 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 
 ##### Random Agent in Dead Or Alive++ (Headless Mode)
 
-{{< tabs >}}
+{{< tabs groupId="linuxSource">}}
 {{% tab name="Linux (Docker) / MacOS" %}}
 ```bash
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py
@@ -250,7 +250,7 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 
 In order to make Python packages installation persistent inside the Docker container, Docker volumes are used. The container's Python package folder is linked to a folder in user's local filesystem (named `yourVolumeName`) where all modifications are saved.
 
-{{< tabs >}}
+{{< tabs groupId="noLinuxSource">}}
 {{% tab name="Linux (Docker) / MacOS" %}}
 ```bash
 ./diambraArena.sh -c bash -v yourVolumeName
@@ -285,7 +285,7 @@ The next code blocks shows how the launcher script handles the execution. This c
 
 ##### Headless Execution
 
-{{< tabs >}}
+{{< tabs groupId="gpuGpu">}}
 {{% tab name="Linux/MacOS (CPU)" %}}
 ```bash
 volume="-v $volumeName:/usr/local/lib/python3.6/dist-packages/"
@@ -357,7 +357,7 @@ where `VOLUME`, `ROMSPATH` and `CMDTOEXEC` are are built by the launcher using a
 
 ##### GUI-Supported Execution
 
-{{< tabs >}}
+{{< tabs groupId="guiExec">}}
 {{% tab name="Linux" %}}
 ```bash
 volume="-v $volumeName:/usr/local/lib/python3.6/dist-packages/"
