@@ -11,8 +11,8 @@ weight: 20
 - <a href="/gettingstarted/#basic-usage">Basic Usage</a>
     - <a href="/gettingstarted/#launcher-options">Launcher Options</a>
     - <a href="/gettingstarted/#environment-run">Environment Run</a>
-        - <a href="/gettingstarted/#random-agent-in-dead-or-alive-with-gui-support">Random Agent in Dead Or Alive++ (with GUI Support)</a>
         - <a href="/gettingstarted/#random-agent-in-dead-or-alive-headless-mode">Random Agent in Dead Or Alive++ (Headless Mode)</a>
+        - <a href="/gettingstarted/#random-agent-in-dead-or-alive-with-gui-support">Random Agent in Dead Or Alive++ (with GUI Support)</a>
         - <a href="/gettingstarted/#gpu-docker-image-linux-only">Bash Terminal With Python Packages Persistent Install</a>
 - <a href="/gettingstarted/#advanced-usage">Advanced Usage</a>
     - <a href="/gettingstarted/#gpu-docker-image-linux-only">GPU Docker Image (Linux Only)</a>
@@ -41,7 +41,7 @@ In what follows we will always use the most concise script example available, `d
 More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.
 {{% /notice %}}           
 
-#### Launcher Options (Docker only)
+#### Launcher Options (Docker Only)
 
 To allow a very smooth execution, we included a *launcher script* in DIAMBRA Arena repo, inside the <a href="/installation/">TODO: UPDATE LINK Examples</a> folder. It is a bash/batch script named `diambraArena.sh`/`diambraArena.bat` for Linux-MacOS/Windows respectively. 
 
@@ -117,7 +117,7 @@ Examples:
                                                     -d GPU
 ```
 {{% /tab %}}
-{{% tab name="Win" %}}
+{{% tab name="Windows" %}}
 ```bat
 diambraArena.bat -h
 ```
@@ -198,29 +198,6 @@ A typical interaction when using DIAMBRA Arena for Reinforcement Learning resear
 The entire folder where the launcher script is located will be loaded inside the container. The Python script launched needs to be in the same folder of the launcher script.
 {{% /notice %}} 
 
-##### Random Agent in Dead Or Alive++ (with GUI Support)
-
-{{< tabs groupId="linuxSource">}}
-{{% tab name="Linux (Docker) / MacOS" %}}
-```bash
-./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py -g 1
-```
-{{% /tab %}}
-{{% tab name="Win" %}}
-```bat
-diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py" "GUI=1"
-```
-{{% notice info %}}
-Increasing game window size could cause relevant slowdowns to the environments. GUI-supported executions are mainly thought for evaluation purposes. Make sure to use headless mode / deactivate rendering for maximum environment speed (e.g. during training).
-{{% /notice %}}
-{{% /tab %}}
-{{% tab name="Linux (Source)" %}}
-```bash
-python diambraArenaGist.py --romsPath "your/roms/local/path"
-```
-{{% /tab %}}
-{{< /tabs >}}
-
 ##### Random Agent in Dead Or Alive++ (Headless Mode)
 
 {{< tabs groupId="linuxSource">}}
@@ -229,7 +206,7 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py
 ```
 {{% /tab %}}
-{{% tab name="Win" %}}
+{{% tab name="Windows" %}}
 ```bat
 diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py"
 ```
@@ -246,6 +223,40 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 {{% /tab %}}
 {{< /tabs >}}
 
+##### Random Agent in Dead Or Alive++ (with GUI Support)
+
+{{< tabs groupId="linuxSource">}}
+{{% tab name="Linux (Docker) / MacOS" %}}
+
+{{% notice note %}}
+Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions here <strong>TODO ADD LINK</strong>(MacOS) and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
+{{% /notice %}}
+
+
+```bash
+./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py -g 1
+```
+{{% /tab %}}
+{{% tab name="Windows" %}}
+
+{{% notice note %}}
+Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions here <strong>TODO ADD LINK</strong> and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
+{{% /notice %}}
+
+```bat
+diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py" "GUI=1"
+```
+{{% notice info %}}
+Increasing game window size could cause relevant slowdowns to the environments. GUI-supported executions are mainly thought for evaluation purposes. Make sure to use headless mode / deactivate rendering for maximum environment speed (e.g. during training).
+{{% /notice %}}
+{{% /tab %}}
+{{% tab name="Linux (Source)" %}}
+```bash
+python diambraArenaGist.py --romsPath "your/roms/local/path"
+```
+{{% /tab %}}
+{{< /tabs >}}
+
 ##### Bash Terminal With Python Packages Persistent Install
 
 In order to make Python packages installation persistent inside the Docker container, Docker volumes are used. The container's Python package folder is linked to a folder in user's local filesystem (named `yourVolumeName`) where all modifications are saved.
@@ -256,7 +267,7 @@ In order to make Python packages installation persistent inside the Docker conta
 ./diambraArena.sh -c bash -v yourVolumeName
 ```
 {{% /tab %}}
-{{% tab name="Win" %}}
+{{% tab name="Windows" %}}
 ```bat
 diambraArena.bat "CMDTOEXEC=bash" "VOLUME=yourVolumeName"
 ```
@@ -290,7 +301,6 @@ The next code blocks shows how the launcher script handles the execution. This c
 ```bash
 volume="-v $volumeName:/usr/local/lib/python3.6/dist-packages/"
 romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind"
-cmd="xvfb-run $cmd"
 
 docker run -it --rm --privileged $volume $romsPath \              
  --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
@@ -312,7 +322,6 @@ where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 ```bash
 volume="-v $volumeName:/usr/local/lib/python3.6/dist-packages/"
 romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind"
-cmd="xvfb-run $cmd"
 
 docker run -it --rm --gpus all --privileged $volume $romsPath \              
  --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
@@ -330,12 +339,11 @@ where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `sh -c "cd /opt/diambraArena/code/ && $cmd`: specifying the command to be executed in container's shell
 
 {{% /tab %}}
-{{% tab name="Win (CPU)" %}}
+{{% tab name="Windows (CPU)" %}}
 ```bat
   set "CURDIR="%cd%"" 
   set VOLUME=-v %VOLUME%:/usr/local/lib/python3.6/dist-packages/ 
   set ROMSPATH=--mount src=%ROMSPATH%,target="/opt/diambraArena/roms",type=bind
-  set "CMDTOEXEC=xvfb-run !CMDTOEXEC!"
 
   docker run -it --rm --privileged %ROMSPATH% %VOLUME% ^                        
    --mount src=%CURDIR%,target="/opt/diambraArena/code",type=bind ^             
@@ -374,7 +382,7 @@ romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind"
 where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arguments passed to the script by the user, and the launch command is composed by the following parts:
 
 - `./x11docker --cap-default --hostipc --network=host --name=diambraArena ` `--wm=host \
- --pulseaudio --size=1024x600 -- --privileged`: running the application providing x11 support for Docker on Linux `x11docker` (credits to the <a href="https://github.com/mviereck/x11docker" target="_blank">x11docker team!</a>) included in the examples folder provided by DIAMBRA Arena Repo using its default options for networking (`--cap-default --hostipc --network=host --wm=host`), specifying the container name (`--name=diambraArena`), specifying support for audio (`--pulseaudio`) and setting viewport resolution (`--size=1024x600`) and granting a given level of permissions (`--privileged`)
+ --pulseaudio --size=1024x600 -- --privileged`: running the application providing x11 support for Docker on Linux `x11docker` (credits to the <a href="https://github.com/mviereck/x11docker" target="_blank">x11docker team!</a>) included in the examples folder provided by DIAMBRA Arena Repo using its default options for networking (`--cap-default --hostipc --network=host --wm=host`), specifying the container name (`--name=diambraArena`), specifying support for audio (`--pulseaudio`), setting viewport resolution (`--size=1024x600`), and granting a given level of permissions (`--privileged`)
 - `-v $volumeName:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `volumeName` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=$(pwd),target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to run is expected to be located (`/opt/diambraArena/code`)
@@ -384,27 +392,31 @@ where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `pkill -f "bash ./x11docker*`: killing the `x11docker` application running in background once the container execution ends 
 
 {{% /tab %}}
-{{% tab name="Win" %}}
+{{% tab name="Windows" %}}
 ```bat
+
   set "CURDIR="%cd%"" 
   set VOLUME=-v %VOLUME%:/usr/local/lib/python3.6/dist-packages/ 
   set ROMSPATH=--mount src=%ROMSPATH%,target="/opt/diambraArena/roms",type=bind
-  set "CMDTOEXEC=xvfb-run !CMDTOEXEC!"
 
-  docker run -it --rm --privileged %ROMSPATH% %VOLUME% ^                        
+  START /B CMD /C CALL "!XSRVPATH!" -noprimary -nowgl -ac -displayfd 664 -screen 0 400x300@1
+  docker run -it --rm --privileged -e DISPLAY="!ENVDISPLAYIP!:0.0" %ROMSPATH% %VOLUME% ^
    --mount src=%CURDIR%,target="/opt/diambraArena/code",type=bind ^             
    --name diambraArena diambra:diambra-arena-base ^                             
-   sh -c "cd /opt/diambraArena/code/ && !CMDTOEXEC!" 
+   sh -c "cd /opt/diambraArena/code/ && %CMDTOEXEC%"                            
+  TASKKILL /IM vcxsrv.exe /F
 ```
 
-where `VOLUME`, `ROMSPATH` and `CMDTOEXEC` are are built by the launcher using arguments passed to the script by the user, and the launch command is composed by the following parts:
+where `VOLUME`, `ROMSPATH`, `ENVDISPLAYIP`, `XSRVPATH` and `CMDTOEXEC` are are built by the launcher using arguments passed to the script by the user, and the launch command is composed by the following parts:
 
-- `docker run -it --rm --privileged`: running the docker image in interactive mode (`-it`), removing the container once exited (`--rm`), and granting a given level of permissions (`--privileged`)
+- `START /B CMD /C CALL "!XSRVPATH!" -noprimary -nowgl -ac -displayfd 664 -screen 0 400x300@1`: running in background (`/B`) the `vcxsrv.exe` virtual X server with all its standard options, specifying in particular the viewport resolution (`-screen 0 400x300@1`)
+- `docker run -it --rm --privileged -e DISPLAY="!ENVDISPLAYIP!:0.0"`: running the docker image in interactive mode (`-it`), removing the container once exited (`--rm`), granting a given level of permissions (`--privileged`), and setting the environment variable for the remote display (` -e DISPLAY="!ENVDISPLAYIP!:0.0"`)
 - `-v %VOLUME%:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `VOLUME` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=%ROMSPATH%,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=%CURDIR%,target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to execute is expected to be located (`/opt/diambraArena/code`)
 - `--name diambraArena diambra:diambra-arena-base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra:diambra-arena-base`)
 - `sh -c "cd /opt/diambraArena/code/ && !CMDTOEXEC!`: specifying the command to be executed in container's shell
+- `TASKKILL /IM vcxsrv.exe /F`: killing the `vcxsrv.exe` application running in background once the container execution ends 
 
 {{% /tab %}}
 {{% tab name="MacOS" %}}
@@ -413,16 +425,15 @@ volume="-v $volumeName:/usr/local/lib/python3.6/dist-packages/"
 romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind" 
 
 socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &>/dev/null & sleep 15s; open -a xquartz; sleep 5s; \
-echo "Running DIAMBRA Arena docker container ..."; \                        
 docker run -it --rm --privileged -e DISPLAY="$envDisplayIp:0.0" $volume $romsPath \
  --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
  --name diambraArena diambra:diambra-arena-base \                                           
   sh -c "cd /opt/diambraArena/code/ && $cmd"
 ```
-where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arguments passed to the script by the user, and the launch command is composed by the following parts:
+where `volumeName`, `romsPath`, `DISPLAY`, `envDisplayIp` and `cmd` are are built by the launcher using arguments passed to the script by the user, and the launch command is composed by the following parts:
 
-- `socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &>/dev/null & sleep 15s;`: running `socat` to bridge communication between Docker container and `xquartz` x server, forwarding the output to `/dev/null` to keep the process alive (`&>/dev/null`), putting the process in the background and waiting for 15 seconds before moving to the next command (`& sleep 15s;`) 
-- `open -a xquartz; sleep 5s;`: opening xquartz x display server to receive the container stream
+- `socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &>/dev/null & sleep 15s;`: running `socat` to bridge communication between Docker container and `xquartz` virtual X server, forwarding the output to `/dev/null` to keep the process alive (`&>/dev/null`), putting the process in the background and waiting for 15 seconds before moving to the next command (`& sleep 15s;`) 
+- `open -a xquartz; sleep 5s;`: opening xquartz x display server to receive the container stream and pausing script execution for 5s (`sleep 5s`)
 - `docker run -it --rm --privileged -e DISPLAY="$envDisplayIp:0.0"`: running the docker image in interactive mode (`-it`), removing the container once exited (`--rm`), granting a given level of permissions (`--privileged`), and setting the environment variable for the remote display (`-e DISPLAY="$envDisplayIp:0.0"`)
 - `-v $volumeName:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `volumeName` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
