@@ -95,7 +95,7 @@ Install and use Virtual Environment to manage dependencies, both <a href="https:
     ```
   Output example:
 <figure style="margin-right:auto; margin-left:auto;">
-  <img src="/images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
+  <img src="./images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
 </figure>  
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
@@ -136,7 +136,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
     ```
   Output example:
 <figure style="margin-right:auto; margin-left:auto;">
-  <img src="/images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
+  <img src="./images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
 </figure>  
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
@@ -178,7 +178,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
     ```
   Output example:
 <figure style="margin-right:auto; margin-left:auto;">
-  <img src="/images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
+  <img src="./images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
 </figure>  
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
@@ -221,7 +221,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
     ```
   Output example:
 <figure style="margin-right:auto; margin-left:auto;">
-  <img src="/images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
+  <img src="./images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
 </figure>  
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
