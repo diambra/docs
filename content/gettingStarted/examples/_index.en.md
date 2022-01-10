@@ -8,11 +8,11 @@ weight: 20
 
 <div style="font-size:1.125rem;">
 
-- <a href="/gettingstarted/examples/singleplayerenv/">Single Player Environment</a>
-- <a href="/gettingstarted/examples/multiplayerenv/">Multi Player Environment</a>
-- <a href="/gettingstarted/examples/wrappersoptions/">Wrappers Options</a>
-- <a href="/gettingstarted/examples/humanexperiencerecorder/">Human Experience Recorder</a>
-- <a href="/gettingstarted/examples/imitationlearning/">Imitation Learning</a>
+- <a href="./singleplayerenv/">Single Player Environment</a>
+- <a href="./multiplayerenv/">Multi Player Environment</a>
+- <a href="./wrappersoptions/">Wrappers Options</a>
+- <a href="./humanexperiencerecorder/">Human Experience Recorder</a>
+- <a href="./imitationlearning/">Imitation Learning</a>
 
 <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO UPDATE EXAMPLE REPO LINK</a>
 
