@@ -5,7 +5,7 @@ weight: 20
 ---
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="./images/envs/sfiii3n.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
+  <img src="../../../images/envs/sfiii3n.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
 ### Index                                                                       
@@ -53,11 +53,11 @@ weight: 20
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="./images/envs/sfiii3nData.png" style="margin-bottom:20px;">
+  <img src="../../../images/envs/sfiii3nData.png" style="margin-bottom:20px;">
 </figure>
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="./images/envs/sfiii3nData2.png" style="margin-bottom:20px;">
+  <img src="../../../images/envs/sfiii3nData2.png" style="margin-bottom:20px;">
   <figcaption align="middle">Some examples of Street Fighter III additional observations</figcaption>
 </figure>
 

@@ -43,27 +43,27 @@ They all support both single player (1P) as well as two players (2P) mode, makin
                                                                                 
 <div>                                                                           
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="./images/home/AIvsCOM.png"/>
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/AIvsCOM.png"/>
    <figcaption align="middle">Standard RL</figcaption>                          
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="./images/home/AIvsAI.png"/>
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/AIvsAI.png"/>
    <figcaption align="middle">Competitive Multi-Agent</figcaption>              
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="./images/home/AIvsHUM.png"/>
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/AIvsHUM.png"/>
    <figcaption align="middle">Competitive Human-Agent</figcaption>              
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="./images/home/SP.png"/>
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/SP.png"/>
    <figcaption align="middle">Self-Play</figcaption>                            
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="./images/home/IL.png"/>
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/IL.png"/>
    <figcaption align="middle">Imitation Learning</figcaption>                   
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="./images/home/HITL.png"/>
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/HITL.png"/>
    <figcaption align="middle">Human-in-the-Loop</figcaption>                    
   </figure>                                                                     
 </div>         
@@ -78,22 +78,22 @@ Additional details can be found in their <a href="/envs/games/">dedicated sectio
                                                                                 
 <div>                                                                           
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="./images/envs/doapp.jpg"/></a>
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/doapp.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="./images/envs/sfiii3n.jpg"/></a>
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/sfiii3n.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="./images/envs/tektagt.jpg"/></a>
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/tektagt.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="./images/envs/umk3.jpg"/></a>
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/umk3.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="./images/envs/samsh5sp.jpg"/></a>
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/samsh5sp.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="./images/envs/kof98umh.jpg"/></a>
+   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/kof98umh.jpg"/></a>
   </figure>                                                                     
 </div>    
 
@@ -102,7 +102,7 @@ Additional details can be found in their <a href="/envs/games/">dedicated sectio
 DIAMBRA Arena Environments usage follows the standard RL interaction framework: the agent sends an action to the environment, which process it and performs a transition accordingly, from the starting state to the new state, returning the observation and the reward to the agent to close the interaction loop. The figure below shows this typical interaction scheme and data flow.
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 80%;">
-  <img src="./images/envs/basicUsage.png" style="margin-bottom:20px;">
+  <img src="../images/envs/basicUsage.png" style="margin-bottom:20px;">
   <figcaption align="middle">Scheme of Agent-Environment Interaction</figcaption>
 </figure>
 
@@ -183,7 +183,7 @@ Environment settings depending on the specific game and shared among all of them
 | <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game |
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
-  <img src="./images/envs/outfits.png" style="margin-bottom:20px;">
+  <img src="../images/envs/outfits.png" style="margin-bottom:20px;">
   <figcaption align="middle">Example of Dead or Alive ++ available outfits for Kasumi</figcaption>
 </figure>
 
@@ -215,7 +215,7 @@ Only meaningful actions are made available per each game: if a specific game has
 Some actions (especially attack buttons combinations) may have no effect for some of the characters: in some games combos requiring attack buttons combinations are valid only for a subset of characters.
 
 <figure style="margin-bottom:20px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%;">
-  <img src="./images/envs/actionSpaces.png" style="margin-bottom:20px;">
+  <img src="../images/envs/actionSpaces.png" style="margin-bottom:20px;">
   <figcaption align="middle">Example of Dead Or Alive ++ Action Spaces</figcaption>
 </figure>
 
@@ -233,7 +233,7 @@ Each game specifies and extends the set presented here with its custom one, desc
 
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="./images/envs/doappData.png" style="margin-bottom:20px;">
+  <img src="../images/envs/doappData.png" style="margin-bottom:20px;">
   <figcaption align="middle">An example of Dead Or Alive ++ additional observations</figcaption>
 </figure>
 

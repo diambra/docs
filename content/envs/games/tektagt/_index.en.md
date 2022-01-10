@@ -5,7 +5,7 @@ weight: 30
 ---
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="./images/envs/tektagt.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
+  <img src="../../../images/envs/tektagt.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
 ### Index                                                                       
@@ -52,11 +52,11 @@ weight: 30
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="./images/envs/tektagtData.png" style="margin-bottom:20px;">
+  <img src="../../../images/envs/tektagtData.png" style="margin-bottom:20px;">
 </figure>
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="./images/envs/tektagtData2.png" style="margin-bottom:20px;">
+  <img src="../../../images/envs/tektagtData2.png" style="margin-bottom:20px;">
   <figcaption align="middle">Some examples of Tekken Tag Tournament additional observations</figcaption>
 </figure>
 

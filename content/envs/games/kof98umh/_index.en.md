@@ -5,7 +5,7 @@ weight: 60
 ---
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="./images/envs/kof98umh.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
+  <img src="../../../images/envs/kof98umh.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
 ### Index                                                                       
@@ -54,7 +54,7 @@ weight: 60
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="./images/envs/kof98umhData.png" style="margin-bottom:20px;">
+  <img src="../../../images/envs/kof98umhData.png" style="margin-bottom:20px;">
   <figcaption align="middle">Some examples of The King of Fighters '98 Ultimate Match additional observations</figcaption>
 </figure>
 
