@@ -205,21 +205,27 @@ showGymObs(observation=obs, charList=charactersNames, waitKey=1, viz=True)
 ```
 Output:
 
-```txt
-observation["frame"].shape: (480, 512, 3)
-observation["stage"]: 1
-observation["P1"]["ownChar1"]: Kasumi
-observation["P1"]["oppChar1"]: Bayman
-observation["P1"]["ownChar"]: Kasumi
-observation["P1"]["oppChar"]: Bayman
-observation["P1"]["ownHealth"]: 208
-observation["P1"]["oppHealth"]: 208
-observation["P1"]["ownSide"]: 0
-observation["P1"]["oppSide"]: 1
-observation["P1"]["ownWins"]: 0
-observation["P1"]["oppWins"]: 0
-observation["P1"]["actions"]: {'move': 0, 'attack': 3}
-```
+ - Frame visualization window:
+<figure style="margin-right:auto; margin-left:auto;">                           
+  <img src="../images/utils/gymObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
+</figure> 
+
+ - Terminal printout:
+   ```txt
+   observation["frame"].shape: (480, 512, 3)
+   observation["stage"]: 1
+   observation["P1"]["ownChar1"]: Kasumi
+   observation["P1"]["oppChar1"]: Bayman
+   observation["P1"]["ownChar"]: Kasumi
+   observation["P1"]["oppChar"]: Bayman
+   observation["P1"]["ownHealth"]: 66
+   observation["P1"]["oppHealth"]: 184
+   observation["P1"]["ownSide"]: 0
+   observation["P1"]["oppSide"]: 1
+   observation["P1"]["ownWins"]: 0
+   observation["P1"]["oppWins"]: 0
+   observation["P1"]["actions"]: {'move': 0, 'attack': 3}
+   ```
 
 #### Wrapped Observation
 
@@ -235,46 +241,53 @@ showWrapObs(observation=obs, nActionsStack=nActStack, charList=charactersNames, 
 
 Output:
 
-```txt
-observation["frame"].shape: (128, 128, 4)
-observation["stage"]: 0.0
-observation["P1"]["ownChar1"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
-observation["P1"]["oppChar1"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
-observation["P1"]["ownChar"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
-observation["P1"]["oppChar"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
-observation["P1"]["ownHealth"]: 1.0
-observation["P1"]["oppHealth"]: 1.0
-observation["P1"]["ownSide"]: 0
-observation["P1"]["oppSide"]: 1
-observation["P1"]["ownWins"]: 0.0
-observation["P1"]["oppWins"]: 0.0
-observation["P1"]["actions"]["move"]:
-[[1 0 0 0 0 0 0 0 0]
- [1 0 0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0 0 1]
- [1 0 0 0 0 0 0 0 0]
- [0 1 0 0 0 0 0 0 0]
- [0 1 0 0 0 0 0 0 0]
- [1 0 0 0 0 0 0 0 0]
- [1 0 0 0 0 0 0 0 0]
- [0 0 0 0 0 0 1 0 0]
- [0 0 0 0 0 0 1 0 0]
- [0 0 0 1 0 0 0 0 0]
- [0 0 0 0 0 0 0 0 1]]
-observation["P1"]["actions"]["attack"]:
-[[1 0 0 0]
- [1 0 0 0]
- [1 0 0 0]
- [0 0 1 0]
- [1 0 0 0]
- [1 0 0 0]
- [1 0 0 0]
- [1 0 0 0]
- [1 0 0 0]
- [1 0 0 0]
- [1 0 0 0]
- [1 0 0 0]]
-```
+- Frame stack visualization windows:
+<figure style="margin-right:auto; margin-left:auto;">                           
+  <img src="../images/utils/wrapObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
+</figure> 
+
+- Terminal printout:
+
+  ```txt
+  observation["frame"].shape: (128, 128, 4)
+  observation["stage"]: 0.0
+  observation["P1"]["ownChar1"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
+  observation["P1"]["oppChar1"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
+  observation["P1"]["ownChar"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
+  observation["P1"]["oppChar"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
+  observation["P1"]["ownHealth"]: 0.8173076923076923
+  observation["P1"]["oppHealth"]: 0.8028846153846154
+  observation["P1"]["ownSide"]: 1
+  observation["P1"]["oppSide"]: 0
+  observation["P1"]["ownWins"]: 0.0
+  observation["P1"]["oppWins"]: 0.0
+  observation["P1"]["actions"]["move"]:
+  [[1 0 0 0 0 0 0 0 0]
+   [1 0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0 1]
+   [1 0 0 0 0 0 0 0 0]
+   [0 1 0 0 0 0 0 0 0]
+   [0 1 0 0 0 0 0 0 0]
+   [1 0 0 0 0 0 0 0 0]
+   [1 0 0 0 0 0 0 0 0]
+   [0 0 0 0 0 0 1 0 0]
+   [0 0 0 0 0 0 1 0 0]
+   [0 0 0 1 0 0 0 0 0]
+   [0 0 0 0 0 0 0 0 1]]
+  observation["P1"]["actions"]["attack"]:
+  [[1 0 0 0]
+   [1 0 0 0]
+   [1 0 0 0]
+   [0 0 1 0]
+   [1 0 0 0]
+   [1 0 0 0]
+   [1 0 0 0]
+   [1 0 0 0]
+   [1 0 0 0]
+   [1 0 0 0]
+   [1 0 0 0]
+   [1 0 0 0]]
+  ```
 
 ### Gamepad Interface
 
