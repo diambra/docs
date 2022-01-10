@@ -7,10 +7,10 @@ weight: 10
 
 ### Index
 
-- <a href="/installation/#overview">Overview</a>
-- <a href="/installation/#prerequisites">Prerequisites</a>
-- <a href="/installation/#installation">Installation</a>
-- <a href="/installation/#installation-tests">Installation Tests</a>
+- <a href="./#overview">Overview</a>
+- <a href="./#prerequisites">Prerequisites</a>
+- <a href="./#installation">Installation</a>
+- <a href="./#installation-tests">Installation Tests</a>
 
 </div>
 

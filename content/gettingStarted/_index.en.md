@@ -7,19 +7,19 @@ weight: 20
 
 <div style="font-size:1.125rem;">
 
-- <a href="/gettingstarted/#prerequisites">Prerequisites</a>
-- <a href="/gettingstarted/#basic-usage">Basic Usage</a>
-    - <a href="/gettingstarted/#launcher-options">Launcher Options</a>
-    - <a href="/gettingstarted/#environment-run">Environment Run</a>
-        - <a href="/gettingstarted/#random-agent-in-dead-or-alive-headless-mode">Random Agent in Dead Or Alive++ (Headless Mode)</a>
-        - <a href="/gettingstarted/#random-agent-in-dead-or-alive-with-gui-support">Random Agent in Dead Or Alive++ (with GUI Support)</a>
-        - <a href="/gettingstarted/#gpu-docker-image-linux-only">Bash Terminal With Python Packages Persistent Install</a>
-- <a href="/gettingstarted/#advanced-usage">Advanced Usage</a>
-    - <a href="/gettingstarted/#gpu-docker-image-linux-only">GPU Docker Image (Linux Only)</a>
-        - <a href="/gettingstarted/#check-gpu-availability-with-tensorflow">Check GPU Availability with TensorFlow</a>
-    - <a href="/gettingstarted/#docker-commands-details">Docker Commands Details</a>
-        - <a href="/gettingstarted/#headless-execution">Headless Execution</a>
-        - <a href="/gettingstarted/#gui-supported-execution">GUI-Supported Execution</a>
+- <a href="./#prerequisites">Prerequisites</a>
+- <a href="./#basic-usage">Basic Usage</a>
+    - <a href="./#launcher-options">Launcher Options</a>
+    - <a href="./#environment-run">Environment Run</a>
+        - <a href="./#random-agent-in-dead-or-alive-headless-mode">Random Agent in Dead Or Alive++ (Headless Mode)</a>
+        - <a href="./#random-agent-in-dead-or-alive-with-gui-support">Random Agent in Dead Or Alive++ (with GUI Support)</a>
+        - <a href="./#gpu-docker-image-linux-only">Bash Terminal With Python Packages Persistent Install</a>
+- <a href="./#advanced-usage">Advanced Usage</a>
+    - <a href="./#gpu-docker-image-linux-only">GPU Docker Image (Linux Only)</a>
+        - <a href="./#check-gpu-availability-with-tensorflow">Check GPU Availability with TensorFlow</a>
+    - <a href="./#docker-commands-details">Docker Commands Details</a>
+        - <a href="./#headless-execution">Headless Execution</a>
+        - <a href="./#gui-supported-execution">GUI-Supported Execution</a>
 
 </div>
 
@@ -38,7 +38,7 @@ To avoid specifying ROMs for every command you run, you can define a specific en
 In what follows we will always use the most concise script example available, `diambraArenaGist.py`, featuring a random agent playing Dead Or Alive ++. We selected it to keep things as simple as possible, but every python script can be used in the very same way.
 
 {{% notice note %}}                                                             
-More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.
+More complex and complete examples can be found in the <a href="./examples/">Examples</a> section.
 {{% /notice %}}           
 
 #### Launcher Options (Docker Only)

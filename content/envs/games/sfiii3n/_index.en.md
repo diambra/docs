@@ -10,12 +10,12 @@ weight: 20
 
 ### Index                                                                       
                                                                                 
-- <a href="/envs/games/sfiii3n/#game-specific-info" style="font-size:20px;">Game Specific Info</a>
-- <a href="/envs/games/sfiii3n/#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
-- <a href="/envs/games/sfiii3n/#action-space-settings" style="font-size:20px;">Action Space Settings</a>
-- <a href="/envs/games/sfiii3n/#observation-space" style="font-size:20px;">Observation Space</a>
-    - <a href="/envs/games/sfiii3n/#global" style="font-size:20px;">Global</a>                
-    - <a href="/envs/games/sfiii3n/#player-specific" style="font-size:20px;">Player Specific</a>
+- <a href="./#game-specific-info" style="font-size:20px;">Game Specific Info</a>
+- <a href="./#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
+- <a href="./#action-space-settings" style="font-size:20px;">Action Space Settings</a>
+- <a href="./#observation-space" style="font-size:20px;">Observation Space</a>
+    - <a href="./#global" style="font-size:20px;">Global</a>                
+    - <a href="./#player-specific" style="font-size:20px;">Player Specific</a>
 
 ### Game Specific Info
 

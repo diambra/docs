@@ -8,22 +8,22 @@ math: true
 
 <div style="font-size:1.125rem;">
 
-- <a href="/envs/#overview">Overview</a>
-- <a href="/envs/#interaction-basics">Interaction Basics</a>
-- <a href="/envs/#settings">Settings</a>
-- <a href="/envs/#game-specific-info">Game Specific Info</a>
-- <a href="/envs/#game-specific-settings">Game Specific Settings</a>
-- <a href="/envs/#action-spaces">Action Space(s)</a>
-    - <a href="/envs/#action-space-settings">Action Space Setting</a>
-- <a href="/envs/#observation-space">Observation Space</a>
-    - <a href="/envs/#global">Global</a>
-    - <a href="/envs/#player-specific">Player Specific</a>
-- <a href="/envs/#reward-function">Reward Function</a>
+- <a href="./#overview">Overview</a>
+- <a href="./#interaction-basics">Interaction Basics</a>
+- <a href="./#settings">Settings</a>
+- <a href="./#game-specific-info">Game Specific Info</a>
+- <a href="./#game-specific-settings">Game Specific Settings</a>
+- <a href="./#action-spaces">Action Space(s)</a>
+    - <a href="./#action-space-settings">Action Space Setting</a>
+- <a href="./#observation-space">Observation Space</a>
+    - <a href="./#global">Global</a>
+    - <a href="./#player-specific">Player Specific</a>
+- <a href="./#reward-function">Reward Function</a>
 
 
 </div>
 
-This page describes in details all general aspects related to DIAMBRA Arena environments. For game-specific details visit <a href="/envs/games">Games & Specifics</a> page.
+This page describes in details all general aspects related to DIAMBRA Arena environments. For game-specific details visit <a href="./games">Games & Specifics</a> page.
 
 
 ### Overview
@@ -74,26 +74,26 @@ Interfaced games have been selected among the most popular fighting retro-games.
                                                                                 
 Whenever possible, games are released with all hidden/bonus characters unlocked.
                                                                                 
-Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
+Additional details can be found in their <a href="./games/">dedicated section</a>.
                                                                                 
 <div>                                                                           
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/doapp.jpg"/></a>
+   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/doapp.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/sfiii3n.jpg"/></a>
+   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/sfiii3n.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/tektagt.jpg"/></a>
+   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/tektagt.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/umk3.jpg"/></a>
+   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/umk3.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/samsh5sp.jpg"/></a>
+   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/samsh5sp.jpg"/></a>
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/kof98umh.jpg"/></a>
+   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/kof98umh.jpg"/></a>
   </figure>                                                                     
 </div>    
 
@@ -133,12 +133,12 @@ env.close()
 ```
 
 {{% notice note %}}
-More complex and complete examples can be found in the <a href="/gettingstarted/examples/">Examples</a> section.
+More complex and complete examples can be found in the <a href="../gettingstarted/examples/">Examples</a> section.
 {{% /notice %}}
 
 ### Settings
 
-All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary. The following table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages and, for those shared among all games, in the table contained in the <a href="/envs/#game-specific-settings">Game Specific Settings</a> section below.
+All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary. The following table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages and, for those shared among all games, in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
 
 | <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
 |-------------|-------------| ------|------|------|
@@ -304,7 +304,7 @@ where:
 
 For 1P mode $N_s$ is game-dependent, while for 2P mode $N_s=1$, meaning the episode always ends after a single stage (so after $N_r$ rounds have been won / lost be the same player, either P1 or P2).
 
-For 2P mode, P1 reward is defined as $R$ in the reward Eq. 1 and P2 reward is equal to $-R$ (zero-sum games). Eq. 1 describes the default reward function. It is of course possible to tweak it at will by means of custom <a href="/wrappers/#reward-wrappers">*Reward Wrappers*</a>.
+For 2P mode, P1 reward is defined as $R$ in the reward Eq. 1 and P2 reward is equal to $-R$ (zero-sum games). Eq. 1 describes the default reward function. It is of course possible to tweak it at will by means of custom <a href="../wrappers/#reward-wrappers">*Reward Wrappers*</a>.
 
 The minimum and maximum total cumulative reward for the round can be <strong><span style="color:#5B5B60;">different than</span></strong> $2N_c$ in some cases. This may happen because:
  - When multiple characters are used at the same time, the "Round Done" condition can be different for different games (e.g. either at least one character has zero health or all characters have zero health) impacting on the amount of reward collected.

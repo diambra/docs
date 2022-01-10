@@ -10,12 +10,12 @@ weight: 40
 
 ### Index                                                                       
                                                                                 
-- <a href="/envs/games/umk3/#game-specific-info" style="font-size:20px;">Game Specific Info</a>
-- <a href="/envs/games/umk3/#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
-- <a href="/envs/games/umk3/#action-space-settings" style="font-size:20px;">Action Space Settings</a>
-- <a href="/envs/games/umk3/#observation-space" style="font-size:20px;">Observation Space</a>
-    - <a href="/envs/games/umk3/#global" style="font-size:20px;">Global</a>                
-    - <a href="/envs/games/umk3/#player-specific" style="font-size:20px;">Player Specific</a>
+- <a href="./#game-specific-info" style="font-size:20px;">Game Specific Info</a>
+- <a href="./#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
+- <a href="./#action-space-settings" style="font-size:20px;">Action Space Settings</a>
+- <a href="./#observation-space" style="font-size:20px;">Observation Space</a>
+    - <a href="./#global" style="font-size:20px;">Global</a>                
+    - <a href="./#player-specific" style="font-size:20px;">Player Specific</a>
 
 ### Game Specific Info
 

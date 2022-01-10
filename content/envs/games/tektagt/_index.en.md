@@ -10,12 +10,12 @@ weight: 30
 
 ### Index                                                                       
                                                                                 
-- <a href="/envs/games/tektagt/#game-specific-info" style="font-size:20px;">Game Specific Info</a>
-- <a href="/envs/games/tektagt/#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
-- <a href="/envs/games/tektagt/#action-space-settings" style="font-size:20px;">Action Space Settings</a>
-- <a href="/envs/games/tektagt/#observation-space" style="font-size:20px;">Observation Space</a>
-    - <a href="/envs/games/tektagt/#global" style="font-size:20px;">Global</a>                
-    - <a href="/envs/games/tektagt/#player-specific" style="font-size:20px;">Player Specific</a>
+- <a href="./#game-specific-info" style="font-size:20px;">Game Specific Info</a>
+- <a href="./#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
+- <a href="./#action-space-settings" style="font-size:20px;">Action Space Settings</a>
+- <a href="./#observation-space" style="font-size:20px;">Observation Space</a>
+    - <a href="./#global" style="font-size:20px;">Global</a>                
+    - <a href="./#player-specific" style="font-size:20px;">Player Specific</a>
 
 ### Game Specific Info
 

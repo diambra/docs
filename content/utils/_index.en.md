@@ -7,33 +7,31 @@ weight: 50
 
 <div style="font-size:1.125rem;">
 
-- <a href="/utils/#available-games">Available Games</a>
-- <a href="/utils/#roms-check">ROMs Check</a>
-- <a href="/utils/#environment-spaces-summary">Environment Spaces Summary</a>
-- <a href="/utils/#observation-inspection">Observation Inspection</a>
-    - <a href="/utils/#gym-observation">Gym Observation</a>
-    - <a href="/utils/#wrapped-observation">Wrapped Observation</a>
-- <a href="/utils/#gamepad-interface">Gamepad Interface</a>
+- <a href="./#available-games">Available Games</a>
+- <a href="./#roms-check">ROMs Check</a>
+- <a href="./#environment-spaces-summary">Environment Spaces Summary</a>
+- <a href="./#observation-inspection">Observation Inspection</a>
+    - <a href="./#gym-observation">Gym Observation</a>
+    - <a href="./#wrapped-observation">Wrapped Observation</a>
+- <a href="./#gamepad-interface">Gamepad Interface</a>
 
 </div>
 
 DIAMBRA Arena comes with many different tools supporting development and debug. They provide different functionalities, all described below in the sections below where both code and output is reported. 
 
-Source code can be found in the code repository, <a href="/wrappers/#reward-clipping" target="_blank">here ADD LINK</a>
+Source code can be found in the code repository, <a href="../wrappers/#reward-clipping" target="_blank">here ADD LINK</a>
 
 ### Available Games
 
 Provides a list of available games and their most important details.
 
 Code:
-
 ```python
 import diambraArena
 diambraArena.availableGames(printOut=True, details=True)
 ```
 
 Output:
-
 ```txt
  Title: Dead Or Alive ++ - GameId: doapp
    Difficulty levels: Min 1 - Max 4

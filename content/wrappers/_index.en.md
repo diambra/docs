@@ -7,24 +7,24 @@ weight: 40
 
 <div style="font-size:1.125rem;">
 
-- <a href="/wrappers/#generic-wrappers">Generic Wrappers</a>
-    - <a href="/wrappers/#noop-steps-after-reset">NoOp Steps After Reset</a>
-- <a href="/wrappers/#observation-wrappers">Observation Wrappers</a>
-    - <a href="/wrappers/#frame-warping">Frame Warping</a>
-    - <a href="/wrappers/#frame-stacking-with-optional-dilation">Frame Stacking With Optional Dilation</a>
-    - <a href="/wrappers/#action-stacking">Action Stacking</a>
-    - <a href="/wrappers/#scaling">Scaling</a>
-- <a href="/wrappers/#action-wrappers">Action Wrappers</a>
-    - <a href="/wrappers/#action-sticking">Action Sticking</a>
-- <a href="/wrappers/#reward-wrappers">Reward Wrappers</a>
-    - <a href="/wrappers/#reward-normalization">Reward Normalization</a>
-    - <a href="/wrappers/#reward-clipping">Reward Clipping</a>
+- <a href="./#generic-wrappers">Generic Wrappers</a>
+    - <a href="./#noop-steps-after-reset">NoOp Steps After Reset</a>
+- <a href="./#observation-wrappers">Observation Wrappers</a>
+    - <a href="./#frame-warping">Frame Warping</a>
+    - <a href="./#frame-stacking-with-optional-dilation">Frame Stacking With Optional Dilation</a>
+    - <a href="./#action-stacking">Action Stacking</a>
+    - <a href="./#scaling">Scaling</a>
+- <a href="./#action-wrappers">Action Wrappers</a>
+    - <a href="./#actions-sticking">Actions Sticking</a>
+- <a href="./#reward-wrappers">Reward Wrappers</a>
+    - <a href="./#reward-normalization">Reward Normalization</a>
+    - <a href="./#reward-clipping">Reward Clipping</a>
 
 </div>
 
 DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers one has just to add an additional kwargs dictionary, here named `wrappersSettings` as shown in the next code block, to the environment creation method, having populated the dictionary as specified in the next sections.
 
-Implementation examples and templates can be found in the code repository, <a href="/wrappers/#reward-clipping" target="_blank">here ADD LINK</a>
+Implementation examples and templates can be found in the code repository, <a href="./#reward-clipping" target="_blank">here ADD LINK</a>
 
 ```python
 # Gym wrappers settings
