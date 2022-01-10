@@ -5,7 +5,7 @@ weight: 40
 ---
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="/images/envs/umk3.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
+  <img src="./images/envs/umk3.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
 ### Index                                                                       
@@ -53,7 +53,7 @@ weight: 40
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="/images/envs/umk3Data.png" style="margin-bottom:20px;">
+  <img src="./images/envs/umk3Data.png" style="margin-bottom:20px;">
   <figcaption align="middle">Some examples of Ultimate Mortal Kombat 3 additional observations</figcaption>
 </figure>
 

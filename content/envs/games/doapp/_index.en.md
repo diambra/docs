@@ -5,7 +5,7 @@ weight: 10
 ---
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="/images/envs/doapp.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
+  <img src="./images/envs/doapp.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
 ### Index                                                                       
@@ -52,7 +52,7 @@ weight: 10
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="/images/envs/doappData.png" style="margin-bottom:20px;">
+  <img src="./images/envs/doappData.png" style="margin-bottom:20px;">
   <figcaption align="middle">Some examples of Dead Or Alive ++ additional observations</figcaption>
 </figure>
 

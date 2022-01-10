@@ -5,7 +5,7 @@ weight: 50
 ---
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 400px;">
-  <img src="/images/envs/samsh5sp.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
+  <img src="./images/envs/samsh5sp.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
 ### Index                                                                       
@@ -52,15 +52,15 @@ weight: 50
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="/images/envs/samsh5spData.png" style="margin-bottom:20px;">
+  <img src="./images/envs/samsh5spData.png" style="margin-bottom:20px;">
 </figure>
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="/images/envs/samsh5spData2.png" style="margin-bottom:20px;">
+  <img src="./images/envs/samsh5spData2.png" style="margin-bottom:20px;">
 </figure>
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="/images/envs/samsh5spData3.png" style="margin-bottom:20px;">
+  <img src="./images/envs/samsh5spData3.png" style="margin-bottom:20px;">
   <figcaption align="middle">Some examples of Samurai Showdown 5 Special additional observations</figcaption>
 </figure>
 
