@@ -22,10 +22,6 @@ GPU Support
 
 ### Prerequisites
 
-{{% notice note %}}
-Running environment
-{{% /notice %}}
-
 {{< tabs groupId="installationTabs">}}
 {{% tab name="Linux (Docker)" %}}
 
@@ -43,7 +39,7 @@ Running environment
 
 - Install <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">Docker Desktop for MacOS</a>
 - Install socat:
-  ```bash
+  ```shell
   brew install socat
   ```
 - Install <a href="https://www.xquartz.org/releases/XQuartz-2.7.8.html" target="_blank">Xquartz 2.7.8</a>
@@ -71,32 +67,60 @@ Install and use Virtual Environment to manage dependencies, both <a href="https:
 ##### Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU):
-  ```bash
+  ```shell
   docker pull diambra:diambra-arena-base
   ```
 
 - Image with CUDA Support (GPU - CUDA 10.0):
-  ```bash
+  ```shell
   docker pull diambra:diambra-arena-gpu-cuda10.0
   ```
 
 ##### Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
-    ```bash
+    ```shell
     wget XXX; unzip examples.zip && cd examples
     ```
 
 ##### Download Game ROM(s) and Check Validity
 
 - Check available games details running:
-    ```bash
+    ```shell
     ./diambraArena.sh -l
     ```
   Output example:
-<figure style="margin-right:auto; margin-left:auto;">
-  <img src="../images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
-</figure>  
+  ```shell
+   Title: Dead Or Alive ++ - GameId: doapp
+     Difficulty levels: Min 1 - Max 4
+     SHA256 sum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+     Original ROM name: doapp.zip
+     Search keywords: ['DEAD OR ALIVE ++ [JAPAN]', 'dead-or-alive-japan', '80781', 'wowroms']
+     Characters list: ['Kasumi', 'Zack', 'Hayabusa', 'Bayman', 'Lei-Fang', 'Raidou', 'Gen-Fu', 'Tina', 'Bass', 'Jann-Lee', 'Ayane']
+
+   Title: Street Fighter III - GameId: sfiii3n
+     Difficulty levels: Min 1 - Max 8
+     SHA256 sum: 7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416
+     Original ROM name: sfiii3n.zip
+     Search keywords: ['STREET FIGHTER III 3RD STRIKE: FIGHT FOR THE FUTUR [JAPAN] (CLONE)', 'street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone', '106255', 'wowroms']
+     Characters list: ['Alex', 'Twelve', 'Hugo', 'Sean', 'Makoto', 'Elena', 'Ibuki', 'Chun-Li', 'Dudley', 'Necro', 'Q', 'Oro', 'Urien', 'Remy', 'Ryu', 'Gouki', 'Yun', 'Yang', 'Ken', 'Gill']
+
+   Title: Tekken Tag Tournament - GameId: tektagt
+     Difficulty levels: Min 1 - Max 9
+     SHA256 sum: 57be777eae0ee9e1c035a64da4c0e7cb7112259ccebe64e7e97029ac7f01b168
+     Original ROM name: tektagtac.zip
+     Search keywords: ['TEKKEN TAG TOURNAMENT [ASIA] (CLONE)', 'tekken-tag-tournament-asia-clone', '108661', 'wowroms']
+     Notes: Rename the rom from tektagtac.zip to tektagt.zip
+     Characters list: ['Xiaoyu', 'Yoshimitsu', 'Nina', 'Law', 'Hwoarang', 'Eddy', 'Paul', 'King', 'Lei', 'Jin', 'Baek', 'Michelle', 'Armorking', 'Gunjack', 'Anna', 'Brian', 'Heihachi', 'Ganryu', 'Julia', 'Jun', 'Kunimitsu', 'Kazuya', 'Bruce', 'Kuma', 'Jack-Z', 'Lee', 'Wang', 'P.Jack', 'Devil', 'True Ogre', 'Ogre', 'Roger', 'Tetsujin', 'Panda', 'Tiger', 'Angel', 'Alex', 'Mokujin', 'Unknown']
+
+   Title: Ultimate Mortal Kombat 3 - GameId: umk3
+     Difficulty levels: Min 1 - Max 5
+     SHA256 sum: f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af
+     Original ROM name: umk3r10.zip
+     Search keywords: ['ULTIMATE MORTAL KOMBAT 3 (CLONE)', 'ultimate-mortal-kombat-3-clone', '109574', 'wowroms']
+     Notes: Rename the rom from umk3r10.zip to umk3.zip
+     Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
+  ```
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
@@ -105,9 +129,16 @@ Install and use Virtual Environment to manage dependencies, both <a href="https:
   {{% /notice %}}
 
 - Check ROM(s) validity running:
-  ```bash
+  ```shell
   ./diambraArena.sh -r "your/roms/local/path" -t romFileName.zip
   ```
+
+  The output for a valid ROM file would look like the following:
+
+  ```shell
+  Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+  ```
+
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable<br> 
 A) in your current shell session with: `export DIAMBRAROMSPATH=your/roms/local/path`<br>
@@ -120,10 +151,9 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 ##### Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU): 
-  ```cmd
+  ```shell
   docker pull diambra:diambra-arena-base
   ```
-
 ##### Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder
@@ -131,13 +161,41 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 ##### Download Game ROM(s) and Check Validity
 
 - Check available games details running:
-    ```bat
+    ```shell
     diambraArena.bat -l
     ```
   Output example:
-<figure style="margin-right:auto; margin-left:auto;">
-  <img src="../images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
-</figure>  
+  ```shell
+   Title: Dead Or Alive ++ - GameId: doapp
+     Difficulty levels: Min 1 - Max 4
+     SHA256 sum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+     Original ROM name: doapp.zip
+     Search keywords: ['DEAD OR ALIVE ++ [JAPAN]', 'dead-or-alive-japan', '80781', 'wowroms']
+     Characters list: ['Kasumi', 'Zack', 'Hayabusa', 'Bayman', 'Lei-Fang', 'Raidou', 'Gen-Fu', 'Tina', 'Bass', 'Jann-Lee', 'Ayane']
+
+   Title: Street Fighter III - GameId: sfiii3n
+     Difficulty levels: Min 1 - Max 8
+     SHA256 sum: 7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416
+     Original ROM name: sfiii3n.zip
+     Search keywords: ['STREET FIGHTER III 3RD STRIKE: FIGHT FOR THE FUTUR [JAPAN] (CLONE)', 'street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone', '106255', 'wowroms']
+     Characters list: ['Alex', 'Twelve', 'Hugo', 'Sean', 'Makoto', 'Elena', 'Ibuki', 'Chun-Li', 'Dudley', 'Necro', 'Q', 'Oro', 'Urien', 'Remy', 'Ryu', 'Gouki', 'Yun', 'Yang', 'Ken', 'Gill']
+
+   Title: Tekken Tag Tournament - GameId: tektagt
+     Difficulty levels: Min 1 - Max 9
+     SHA256 sum: 57be777eae0ee9e1c035a64da4c0e7cb7112259ccebe64e7e97029ac7f01b168
+     Original ROM name: tektagtac.zip
+     Search keywords: ['TEKKEN TAG TOURNAMENT [ASIA] (CLONE)', 'tekken-tag-tournament-asia-clone', '108661', 'wowroms']
+     Notes: Rename the rom from tektagtac.zip to tektagt.zip
+     Characters list: ['Xiaoyu', 'Yoshimitsu', 'Nina', 'Law', 'Hwoarang', 'Eddy', 'Paul', 'King', 'Lei', 'Jin', 'Baek', 'Michelle', 'Armorking', 'Gunjack', 'Anna', 'Brian', 'Heihachi', 'Ganryu', 'Julia', 'Jun', 'Kunimitsu', 'Kazuya', 'Bruce', 'Kuma', 'Jack-Z', 'Lee', 'Wang', 'P.Jack', 'Devil', 'True Ogre', 'Ogre', 'Roger', 'Tetsujin', 'Panda', 'Tiger', 'Angel', 'Alex', 'Mokujin', 'Unknown']
+
+   Title: Ultimate Mortal Kombat 3 - GameId: umk3
+     Difficulty levels: Min 1 - Max 5
+     SHA256 sum: f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af
+     Original ROM name: umk3r10.zip
+     Search keywords: ['ULTIMATE MORTAL KOMBAT 3 (CLONE)', 'ultimate-mortal-kombat-3-clone', '109574', 'wowroms']
+     Notes: Rename the rom from umk3r10.zip to umk3.zip
+     Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
+  ```
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
@@ -146,9 +204,16 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   {{% /notice %}}
 
 - Check ROM(s) validity running:
-  ```bat
+  ```shell
   diambraArena.bat "ROMSPATH=your\roms\local\path" "ROMCHECK=<romFile>.zip"
   ```
+
+  The output for a valid ROM file would look like the following:
+
+  ```shell
+  Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+  ```
+
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable named `DIAMBRAROMSPATH`.<br> 
 {{% /notice %}}
@@ -159,27 +224,55 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 ##### Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU):
-  ```bash
+  ```shell
   docker pull diambra:diambra-arena-base
   ```
 
 ##### Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
-    ```bash
+    ```shell
     wget XXX; unzip examples.zip && cd examples
     ```
 
 ##### Download Game ROM(s) and Check Validity
 
 - Check available games details running:
-    ```bash
+    ```shell
     ./diambraArena.sh -l
     ```
   Output example:
-<figure style="margin-right:auto; margin-left:auto;">
-  <img src="../images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
-</figure>  
+  ```shell
+   Title: Dead Or Alive ++ - GameId: doapp
+     Difficulty levels: Min 1 - Max 4
+     SHA256 sum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+     Original ROM name: doapp.zip
+     Search keywords: ['DEAD OR ALIVE ++ [JAPAN]', 'dead-or-alive-japan', '80781', 'wowroms']
+     Characters list: ['Kasumi', 'Zack', 'Hayabusa', 'Bayman', 'Lei-Fang', 'Raidou', 'Gen-Fu', 'Tina', 'Bass', 'Jann-Lee', 'Ayane']
+
+   Title: Street Fighter III - GameId: sfiii3n
+     Difficulty levels: Min 1 - Max 8
+     SHA256 sum: 7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416
+     Original ROM name: sfiii3n.zip
+     Search keywords: ['STREET FIGHTER III 3RD STRIKE: FIGHT FOR THE FUTUR [JAPAN] (CLONE)', 'street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone', '106255', 'wowroms']
+     Characters list: ['Alex', 'Twelve', 'Hugo', 'Sean', 'Makoto', 'Elena', 'Ibuki', 'Chun-Li', 'Dudley', 'Necro', 'Q', 'Oro', 'Urien', 'Remy', 'Ryu', 'Gouki', 'Yun', 'Yang', 'Ken', 'Gill']
+
+   Title: Tekken Tag Tournament - GameId: tektagt
+     Difficulty levels: Min 1 - Max 9
+     SHA256 sum: 57be777eae0ee9e1c035a64da4c0e7cb7112259ccebe64e7e97029ac7f01b168
+     Original ROM name: tektagtac.zip
+     Search keywords: ['TEKKEN TAG TOURNAMENT [ASIA] (CLONE)', 'tekken-tag-tournament-asia-clone', '108661', 'wowroms']
+     Notes: Rename the rom from tektagtac.zip to tektagt.zip
+     Characters list: ['Xiaoyu', 'Yoshimitsu', 'Nina', 'Law', 'Hwoarang', 'Eddy', 'Paul', 'King', 'Lei', 'Jin', 'Baek', 'Michelle', 'Armorking', 'Gunjack', 'Anna', 'Brian', 'Heihachi', 'Ganryu', 'Julia', 'Jun', 'Kunimitsu', 'Kazuya', 'Bruce', 'Kuma', 'Jack-Z', 'Lee', 'Wang', 'P.Jack', 'Devil', 'True Ogre', 'Ogre', 'Roger', 'Tetsujin', 'Panda', 'Tiger', 'Angel', 'Alex', 'Mokujin', 'Unknown']
+
+   Title: Ultimate Mortal Kombat 3 - GameId: umk3
+     Difficulty levels: Min 1 - Max 5
+     SHA256 sum: f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af
+     Original ROM name: umk3r10.zip
+     Search keywords: ['ULTIMATE MORTAL KOMBAT 3 (CLONE)', 'ultimate-mortal-kombat-3-clone', '109574', 'wowroms']
+     Notes: Rename the rom from umk3r10.zip to umk3.zip
+     Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
+  ```
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
@@ -188,9 +281,16 @@ To avoid specifying ROMs path for every command you run, you can define a specif
   {{% /notice %}}
 
 - Check ROM(s) validity running:
-  ```bash
+  ```shell
   ./diambraArena.sh -r "your/roms/local/path" -t romFileName.zip
   ```
+
+  The output for a valid ROM file would look like the following:
+
+  ```shell
+  Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+  ```
+
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable<br> 
 A) in your current shell session with: `export DIAMBRAROMSPATH=your/roms/local/path`<br>
@@ -205,25 +305,52 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 - Download or clone <a href="" target="_blank">TODO UPDATE LINKDIAMBRA Arena Repository</a>
 - Open a terminal and navigate inside the repository root
 - Execute the installation script to install OS dependencies
-  ```bash
+  ```shell
   ./setupOS.sh
   ```
 - Install the DIAMBRA Arena with PIP
-  ```bash
+  ```shell
   pip3 install .
   ```
 ##### Download Game ROM(s) and Check Validity
 
 - Check available games details running:
 
-    ```bash
+    ```shell
     python -c "import diambraArena; diambraArena.availableGames(True, True)"
     ```
   Output example:
-<figure style="margin-right:auto; margin-left:auto;">
-  <img src="../images/gamesList.png" style="padding-left:40px;margin-bottom:3rem; margin-top:0px">
-</figure>  
+  ```shell
+   Title: Dead Or Alive ++ - GameId: doapp
+     Difficulty levels: Min 1 - Max 4
+     SHA256 sum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+     Original ROM name: doapp.zip
+     Search keywords: ['DEAD OR ALIVE ++ [JAPAN]', 'dead-or-alive-japan', '80781', 'wowroms']
+     Characters list: ['Kasumi', 'Zack', 'Hayabusa', 'Bayman', 'Lei-Fang', 'Raidou', 'Gen-Fu', 'Tina', 'Bass', 'Jann-Lee', 'Ayane']
 
+   Title: Street Fighter III - GameId: sfiii3n
+     Difficulty levels: Min 1 - Max 8
+     SHA256 sum: 7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416
+     Original ROM name: sfiii3n.zip
+     Search keywords: ['STREET FIGHTER III 3RD STRIKE: FIGHT FOR THE FUTUR [JAPAN] (CLONE)', 'street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone', '106255', 'wowroms']
+     Characters list: ['Alex', 'Twelve', 'Hugo', 'Sean', 'Makoto', 'Elena', 'Ibuki', 'Chun-Li', 'Dudley', 'Necro', 'Q', 'Oro', 'Urien', 'Remy', 'Ryu', 'Gouki', 'Yun', 'Yang', 'Ken', 'Gill']
+
+   Title: Tekken Tag Tournament - GameId: tektagt
+     Difficulty levels: Min 1 - Max 9
+     SHA256 sum: 57be777eae0ee9e1c035a64da4c0e7cb7112259ccebe64e7e97029ac7f01b168
+     Original ROM name: tektagtac.zip
+     Search keywords: ['TEKKEN TAG TOURNAMENT [ASIA] (CLONE)', 'tekken-tag-tournament-asia-clone', '108661', 'wowroms']
+     Notes: Rename the rom from tektagtac.zip to tektagt.zip
+     Characters list: ['Xiaoyu', 'Yoshimitsu', 'Nina', 'Law', 'Hwoarang', 'Eddy', 'Paul', 'King', 'Lei', 'Jin', 'Baek', 'Michelle', 'Armorking', 'Gunjack', 'Anna', 'Brian', 'Heihachi', 'Ganryu', 'Julia', 'Jun', 'Kunimitsu', 'Kazuya', 'Bruce', 'Kuma', 'Jack-Z', 'Lee', 'Wang', 'P.Jack', 'Devil', 'True Ogre', 'Ogre', 'Roger', 'Tetsujin', 'Panda', 'Tiger', 'Angel', 'Alex', 'Mokujin', 'Unknown']
+
+   Title: Ultimate Mortal Kombat 3 - GameId: umk3
+     Difficulty levels: Min 1 - Max 5
+     SHA256 sum: f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af
+     Original ROM name: umk3r10.zip
+     Search keywords: ['ULTIMATE MORTAL KOMBAT 3 (CLONE)', 'ultimate-mortal-kombat-3-clone', '109574', 'wowroms']
+     Notes: Rename the rom from umk3r10.zip to umk3.zip
+     Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
+  ```
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
   {{% notice note %}}
@@ -231,9 +358,16 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   {{% /notice %}}
 
 - Check ROM(s) validity running:
-  ```bash
+  ```shell
   python -c "import diambraArena, os; diambraArena.checkGameSha256(os.path.join('your/roms/local/path', 'romFileName.zip'))"
   ```
+
+  The output for a valid ROM file would look like the following:
+
+  ```shell
+  Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+  ```
+
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable<br> 
 A) in your current shell session with: `export DIAMBRAROMSPATH=your/roms/local/path`<br>
@@ -254,13 +388,13 @@ As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software inter
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
 
-```bash
+```shell
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
 ```
 
 ##### CUDA Installation Test
 
-```bash
+```shell
 ./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V" -d GPU
 ```
 {{% /tab %}}
@@ -268,7 +402,7 @@ As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software inter
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
 
-```bat
+```shell
 diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py" 
 ```
 {{% /tab %}} 
@@ -276,7 +410,7 @@ diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
 
-```bash
+```shell
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
 ```
 
@@ -288,7 +422,7 @@ diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py
 
 Navigate inside the Examples folder provided by DIAMBRA Arena Repo and execute the basic the Python script as follows:
 
-```bash
+```shell
 python diambraArenaGist.py --romsPath "your/roms/local/path" 
 ```   
 
