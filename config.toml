@@ -33,7 +33,7 @@ home = [ "HTML", "RSS", "JSON"]
 title = "DIAMBRA Arena Docs"
 weight = 1
 languageName = "English"
-landingPageURL = baseURL
+landingPageURL = "./"
 landingPageName = "<i class='fas fa-home'></i> Home"
 
 [[Languages.en.menu.shortcuts]]
