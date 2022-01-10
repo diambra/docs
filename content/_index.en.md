@@ -59,7 +59,7 @@ Interfaced games have been selected among the most popular fighting retro-games.
 
 Whenever possible, games are released with all hidden/bonus characters unlocked. 
 
-Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
+Additional details can be found in their <a href="./envs/games/">dedicated section</a>.
 
 <div>                                                                           
   <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">
