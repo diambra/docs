@@ -3,7 +3,7 @@ title: "Home"
 ---
 
 <figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 80%;">
-  <img src="/images/envs/basicUsage.png" style="margin-bottom:20px;">           
+  <img src="./images/envs/basicUsage.png" style="margin-bottom:20px;">
 </figure>   
 
 # DIAMBRA Arena Docs
