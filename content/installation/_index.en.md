@@ -22,6 +22,10 @@ GPU Support
 
 ### Prerequisites
 
+{{% notice note %}}
+<span style="color:#333333; font-weight:bolder;">In order to use DIAMBRA Arena, you need to <a href="https://diambra.ai/register/" target="_blank">create your account on our website</a>. It requires just a few clicks and is 100% free.</span>
+{{% /notice %}}
+
 {{< tabs groupId="installationTabs">}}
 {{% tab name="Linux (Docker)" %}}
 
