@@ -79,6 +79,7 @@ Install and use Virtual Environment to manage dependencies, both <a href="https:
 ##### Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
+
     ```shell
     wget XXX; unzip examples.zip && cd examples
     ```
@@ -129,6 +130,7 @@ Install and use Virtual Environment to manage dependencies, both <a href="https:
   {{% /notice %}}
 
 - Check ROM(s) validity running:
+
   ```shell
   ./diambraArena.sh -r "your/roms/local/path" -t romFileName.zip
   ```
@@ -151,6 +153,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 ##### Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU): 
+
   ```shell
   docker pull diambra:diambra-arena-base
   ```
@@ -161,10 +164,12 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 ##### Download Game ROM(s) and Check Validity
 
 - Check available games details running:
+
     ```shell
     diambraArena.bat -l
     ```
   Output example:
+
   ```shell
    Title: Dead Or Alive ++ - GameId: doapp
      Difficulty levels: Min 1 - Max 4
@@ -204,6 +209,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   {{% /notice %}}
 
 - Check ROM(s) validity running:
+
   ```shell
   diambraArena.bat "ROMSPATH=your\roms\local\path" "ROMCHECK=<romFile>.zip"
   ```
@@ -224,6 +230,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 ##### Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU):
+
   ```shell
   docker pull diambra:diambra-arena-base
   ```
@@ -231,6 +238,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 ##### Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
+
     ```shell
     wget XXX; unzip examples.zip && cd examples
     ```
@@ -238,10 +246,12 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 ##### Download Game ROM(s) and Check Validity
 
 - Check available games details running:
+
     ```shell
     ./diambraArena.sh -l
     ```
   Output example:
+
   ```shell
    Title: Dead Or Alive ++ - GameId: doapp
      Difficulty levels: Min 1 - Max 4
@@ -281,6 +291,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
   {{% /notice %}}
 
 - Check ROM(s) validity running:
+
   ```shell
   ./diambraArena.sh -r "your/roms/local/path" -t romFileName.zip
   ```
@@ -305,10 +316,12 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 - Download or clone <a href="" target="_blank">TODO UPDATE LINKDIAMBRA Arena Repository</a>
 - Open a terminal and navigate inside the repository root
 - Execute the installation script to install OS dependencies
+
   ```shell
   ./setupOS.sh
   ```
 - Install the DIAMBRA Arena with PIP
+
   ```shell
   pip3 install .
   ```
@@ -319,7 +332,9 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
     ```shell
     python -c "import diambraArena; diambraArena.availableGames(True, True)"
     ```
+
   Output example:
+
   ```shell
    Title: Dead Or Alive ++ - GameId: doapp
      Difficulty levels: Min 1 - Max 4
@@ -351,6 +366,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
      Notes: Rename the rom from umk3r10.zip to umk3.zip
      Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
   ```
+
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
   {{% notice note %}}
@@ -358,6 +374,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   {{% /notice %}}
 
 - Check ROM(s) validity running:
+
   ```shell
   python -c "import diambraArena, os; diambraArena.checkGameSha256(os.path.join('your/roms/local/path', 'romFileName.zip'))"
   ```
@@ -397,6 +414,18 @@ As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software inter
 ```shell
 ./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V" -d GPU
 ```
+A successful installation would print out something similar to the following:
+
+```shell
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  440.95.01  Thu May 28 07:03:08 UTC 2020
+GCC version:  gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2018 NVIDIA Corporation
+Built on Sat_Aug_25_21:08:01_CDT_2018
+Cuda compilation tools, release 10.0, V10.0.130
+```
+
+
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
@@ -413,7 +442,6 @@ diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py
 ```shell
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
 ```
-
 
 {{% /tab %}} 
 {{% tab name="Linux (Source)" %}}

@@ -39,7 +39,7 @@ In addition, its <a href="">TODO ADD LINK GitHub repository</a> provides a colle
                                                                                 
 All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side).
                                                                                 
-They all support both single player (1P) as well as two players (2P) mode, making them the perfect resource to explore all the following Reinforcement Learning subfields:
+They all support both single player (1P) as well as two players (2P) mode, making them the perfect resource to explore all the following Reinforcement Learning sub-fields:
                                                                                 
 <div>                                                                           
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
@@ -276,7 +276,7 @@ R_t = \frac{\sum_i^{0,N_c}\left(\bar{H_i}^{t^-} - \bar{H_i}^{t} - \left(\hat{H_i
 \end{equation}
 $$
 
-where:
+Where:
 
 - $\bar{H}$ and $\hat{H}$ are health values for opponent’s character(s) and agent’s one(s) respectively; 
 - $t^-$ and $t$ are used to indicate conditions at ”state-time” and at ”new state-time” (i.e. before and after environment step); 
@@ -296,7 +296,7 @@ $$
 \end{equation}
 $$
 
-where:
+Where:
 - $N_r$ is the number of rounds to win (or lose) in order to win (or lose) a stage;
 - $T_s$ is the terminal state, reached when either $N_r$ rounds are lost (for both 1P and 2P mode) or game is cleared (for 1P mode only); 
 - $t$ represents the environment step and for an episode goes from 0 to $T_s$;
