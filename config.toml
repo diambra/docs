@@ -10,6 +10,8 @@ defaultContentLanguageInSubdir= true
 
 [markup.goldmark.renderer]
 unsafe= true
+[markup.goldmark.extensions]
+linkify = false
 
 [params]
   #editURL = "https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/"

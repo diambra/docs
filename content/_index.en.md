@@ -13,7 +13,7 @@ DIAMBRA Arena is a software package featuring a collection of <span style="color
 It <span style="color:#333333; font-weight:bolder;">supports all major Operating Systems: Linux, Windows and MacOS</span>, most of them via Docker, with a step by step installation guide available in this manual. It is <span style="color:#333333; font-weight:bolder;">completely free to use</span>, the user only needs to register on the official website. 
 
 
-In addition, its <a href="">TODO ADD LINK GitHub repository</a> provides a <span style="color:#333333; font-weight:bolder;">collection of examples</span> covering main use cases of interest <span style="color:#333333; font-weight:bolder;">that can be run in just a few steps</span>.
+In addition, its <a href="https://github.com/diambra/diambraArena" target="_blank">GitHub repository</a> provides a <span style="color:#333333; font-weight:bolder;">collection of examples</span> covering main use cases of interest <span style="color:#333333; font-weight:bolder;">that can be run in just a few steps</span>.
 
 <figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 80%;">
   <img src="./images/envs/basicUsage.png" style="margin-bottom:20px;">           
@@ -102,16 +102,25 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
 
 To receive support, use the dedicated channel in our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>.
 
-To request features or report bugs, use the <a href="" target="_blank">TODO UPDATE LINK GitHub Issue Tracker</a>.
+To request features or report bugs, use the <a href="https://github.com/diambra/diambraArena/issues" target="_blank">GitHub Issue Tracker</a>.
 
 ### References
 
-- Official Website
-- Documentation Page
-- 
+- GitHub Repository: <a href="https://github.com/diambra/diambraArena" target="_blank">https://github.com/diambra/diambraArena</a>
+- Official Website: <a href="https://diambra.ai" target="_blank">https://diambra.ai</a>
+- Twitch Channel:
+- YouTube Channel
 
 ### Citation
 
+```LaTex
+  @misc{diambra2022
+    author = {Alessandro Palmas},
+    title = {DIAMBRA Arena: built with OpenAI Gym Python interface, easy to use, transforms popular video games into Reinforcement Learning environments.},
+    year = {2022},
+    howpublished = {\url{https://github.com/diambra/diambraArena}},
+  }
+```
 
 ### Terms of Use
 
