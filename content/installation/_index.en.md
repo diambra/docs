@@ -313,7 +313,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 
 ##### Install OS Dependencies and Python Packages
 
-- Download or clone <a href="" target="_blank">TODO UPDATE LINKDIAMBRA Arena Repository</a>
+- Download or clone <a href="https://github.com/diambra/diambraArena" target="_blank">DIAMBRA Arena Repository</a>
 - Open a terminal and navigate inside the repository root
 - Execute the installation script to install OS dependencies
 
@@ -409,12 +409,76 @@ As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software inter
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
 ```
 
+A successful installation would result in a terminal printout like the following (note that it takes up to a few tens of seconds to complete a round):
+
+```shell
+EnvId = TestEnv
+Action Spaces = multiDiscrete
+Use attack buttons combinations = [True, True]
+diambraEnv library successfully loaded
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+      .:-:-**#*#####+***+=-:. 
+ ..-++####+#################=+=:. 
+:+*#*###########################*-. 
+   .-+#############################=. 
+      .-*###########################+. 
+        .=######++======++*#########*#=. ........ ...     .......     ...........     ........     ........ ............     ............         ........... 
+          -*=------:---------=*########- .------..-----:. .------.   .-----------.    --------.   :-------- --------------:. --------------:.    :----------: 
+          .:--------:---------:=#######* .------..-------..------.   :-----:-----:.   ---------. .--------- ------:..:-----: ------:..------:   .------:-----. 
+        .:------::---::--------:+#######..------. .------..------.  .------.:-----.   ----------.---------- ------:..------. ------:  :-----.  .:-----:.------. 
+        :-----::.:---:-----::---:######* .------. .------..------. .:-----: .------.  ------:-------------- ------::-----:.. ------:.-----:.   .------..------. 
+       .--:..  . :::.:.---.-:---.#####*- .------. .------..------. .------.::------:  ------:.-----.:------ ------:  :-----: ------:.:------: .------:.:-------. 
+        ..:..:::.:::.::....:.::--:####*. .------::------:..------..------:.:::------. ------: .---. :-----: -------::------: ------:  ------: :------..::------: 
+       .-::::::---...:--. .-.:-::=###+.  .::::::::::::..  .::::::..::::::.   .::::::. ::::::.  .:.  ::::::: ::::::::::::::.  :::::::  ::::::: ::::::.    .:::::: 
+       .--:.   .:--...::. ..::+####*: 
+       :--:..   .---:...:.   .:+*+:. 
+       .:---:::----.. ....    .:. 
+        .:------:..:...  :. 
+         .......   ..:.  .. 
+
+
+                                                                   DIAMBRA™ | Dueling AI Arena
+                                                              https://diambra.ai - info@diambra.ai
+
+                                                         DIAMBRA™ is a Trade Mark, © Copyright 2018-2022
+                                                                              v. 1.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Environment initialization ...
+SHA256 check ok. Correct rom file found.
+78081g503.ic655 NOT FOUND (NO GOOD DUMP KNOWN) (tried in doapp coh1002m doapp)
+WARNING: the machine might not run correctly.
+2188 Completed console init
+Num. of Channels = 3
+Screen Dim (W x H) = 512 480
+(0)Buttons configuration:
+(0)  H = But6
+(0)  K = But2
+(0)  P = But1
+(0)Game Continue Val = 0
+(0)Show final = 1
+(0)1P Environment
+(0)Player side = Random
+(0)Characters = [Random, Random]
+(0)Number of outfits = [2, 2]
+done.
+Using MultiDiscrete action space
+(0)Setting difficulty = 3
+(0)Starting game
+(0)Player starting side = P2
+(0)P2 = Kasumi
+(0)Waiting for fight to start
+(0)Round done
+(0)Moving to next round
+```
+
 ##### CUDA Installation Test
 
 ```shell
 ./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V" -d GPU
 ```
-A successful installation would print out something similar to the following:
+A successful installation would result in a terminal printout like the following:
 
 ```shell
 NVRM version: NVIDIA UNIX x86_64 Kernel Module  440.95.01  Thu May 28 07:03:08 UTC 2020
@@ -425,7 +489,6 @@ Built on Sat_Aug_25_21:08:01_CDT_2018
 Cuda compilation tools, release 10.0, V10.0.130
 ```
 
-
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
@@ -434,6 +497,70 @@ Cuda compilation tools, release 10.0, V10.0.130
 ```shell
 diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py" 
 ```
+
+A successful installation would result in a terminal printout like the following (note that it takes up to a few tens of seconds to complete a round):
+
+```shell
+EnvId = TestEnv
+Action Spaces = multiDiscrete
+Use attack buttons combinations = [True, True]
+diambraEnv library successfully loaded
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+      .:-:-**#*#####+***+=-:. 
+ ..-++####+#################=+=:. 
+:+*#*###########################*-. 
+   .-+#############################=. 
+      .-*###########################+. 
+        .=######++======++*#########*#=. ........ ...     .......     ...........     ........     ........ ............     ............         ........... 
+          -*=------:---------=*########- .------..-----:. .------.   .-----------.    --------.   :-------- --------------:. --------------:.    :----------: 
+          .:--------:---------:=#######* .------..-------..------.   :-----:-----:.   ---------. .--------- ------:..:-----: ------:..------:   .------:-----. 
+        .:------::---::--------:+#######..------. .------..------.  .------.:-----.   ----------.---------- ------:..------. ------:  :-----.  .:-----:.------. 
+        :-----::.:---:-----::---:######* .------. .------..------. .:-----: .------.  ------:-------------- ------::-----:.. ------:.-----:.   .------..------. 
+       .--:..  . :::.:.---.-:---.#####*- .------. .------..------. .------.::------:  ------:.-----.:------ ------:  :-----: ------:.:------: .------:.:-------. 
+        ..:..:::.:::.::....:.::--:####*. .------::------:..------..------:.:::------. ------: .---. :-----: -------::------: ------:  ------: :------..::------: 
+       .-::::::---...:--. .-.:-::=###+.  .::::::::::::..  .::::::..::::::.   .::::::. ::::::.  .:.  ::::::: ::::::::::::::.  :::::::  ::::::: ::::::.    .:::::: 
+       .--:.   .:--...::. ..::+####*: 
+       :--:..   .---:...:.   .:+*+:. 
+       .:---:::----.. ....    .:. 
+        .:------:..:...  :. 
+         .......   ..:.  .. 
+
+
+                                                                   DIAMBRA™ | Dueling AI Arena
+                                                              https://diambra.ai - info@diambra.ai
+
+                                                         DIAMBRA™ is a Trade Mark, © Copyright 2018-2022
+                                                                              v. 1.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Environment initialization ...
+SHA256 check ok. Correct rom file found.
+78081g503.ic655 NOT FOUND (NO GOOD DUMP KNOWN) (tried in doapp coh1002m doapp)
+WARNING: the machine might not run correctly.
+2188 Completed console init
+Num. of Channels = 3
+Screen Dim (W x H) = 512 480
+(0)Buttons configuration:
+(0)  H = But6
+(0)  K = But2
+(0)  P = But1
+(0)Game Continue Val = 0
+(0)Show final = 1
+(0)1P Environment
+(0)Player side = Random
+(0)Characters = [Random, Random]
+(0)Number of outfits = [2, 2]
+done.
+Using MultiDiscrete action space
+(0)Setting difficulty = 3
+(0)Starting game
+(0)Player starting side = P2
+(0)P2 = Kasumi
+(0)Waiting for fight to start
+(0)Round done
+(0)Moving to next round
+```
 {{% /tab %}} 
 {{% tab name="MacOS" %}}
 
@@ -441,6 +568,70 @@ diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py
 
 ```shell
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
+```
+
+A successful installation would result in a terminal printout like the following (note that it takes up to a few tens of seconds to complete a round):
+
+```shell
+EnvId = TestEnv
+Action Spaces = multiDiscrete
+Use attack buttons combinations = [True, True]
+diambraEnv library successfully loaded
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+      .:-:-**#*#####+***+=-:. 
+ ..-++####+#################=+=:. 
+:+*#*###########################*-. 
+   .-+#############################=. 
+      .-*###########################+. 
+        .=######++======++*#########*#=. ........ ...     .......     ...........     ........     ........ ............     ............         ........... 
+          -*=------:---------=*########- .------..-----:. .------.   .-----------.    --------.   :-------- --------------:. --------------:.    :----------: 
+          .:--------:---------:=#######* .------..-------..------.   :-----:-----:.   ---------. .--------- ------:..:-----: ------:..------:   .------:-----. 
+        .:------::---::--------:+#######..------. .------..------.  .------.:-----.   ----------.---------- ------:..------. ------:  :-----.  .:-----:.------. 
+        :-----::.:---:-----::---:######* .------. .------..------. .:-----: .------.  ------:-------------- ------::-----:.. ------:.-----:.   .------..------. 
+       .--:..  . :::.:.---.-:---.#####*- .------. .------..------. .------.::------:  ------:.-----.:------ ------:  :-----: ------:.:------: .------:.:-------. 
+        ..:..:::.:::.::....:.::--:####*. .------::------:..------..------:.:::------. ------: .---. :-----: -------::------: ------:  ------: :------..::------: 
+       .-::::::---...:--. .-.:-::=###+.  .::::::::::::..  .::::::..::::::.   .::::::. ::::::.  .:.  ::::::: ::::::::::::::.  :::::::  ::::::: ::::::.    .:::::: 
+       .--:.   .:--...::. ..::+####*: 
+       :--:..   .---:...:.   .:+*+:. 
+       .:---:::----.. ....    .:. 
+        .:------:..:...  :. 
+         .......   ..:.  .. 
+
+
+                                                                   DIAMBRA™ | Dueling AI Arena
+                                                              https://diambra.ai - info@diambra.ai
+
+                                                         DIAMBRA™ is a Trade Mark, © Copyright 2018-2022
+                                                                              v. 1.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Environment initialization ...
+SHA256 check ok. Correct rom file found.
+78081g503.ic655 NOT FOUND (NO GOOD DUMP KNOWN) (tried in doapp coh1002m doapp)
+WARNING: the machine might not run correctly.
+2188 Completed console init
+Num. of Channels = 3
+Screen Dim (W x H) = 512 480
+(0)Buttons configuration:
+(0)  H = But6
+(0)  K = But2
+(0)  P = But1
+(0)Game Continue Val = 0
+(0)Show final = 1
+(0)1P Environment
+(0)Player side = Random
+(0)Characters = [Random, Random]
+(0)Number of outfits = [2, 2]
+done.
+Using MultiDiscrete action space
+(0)Setting difficulty = 3
+(0)Starting game
+(0)Player starting side = P2
+(0)P2 = Kasumi
+(0)Waiting for fight to start
+(0)Round done
+(0)Moving to next round
 ```
 
 {{% /tab %}} 
@@ -452,7 +643,71 @@ Navigate inside the Examples folder provided by DIAMBRA Arena Repo and execute t
 
 ```shell
 python diambraArenaGist.py --romsPath "your/roms/local/path" 
-```   
+```
+
+A successful installation would result in the game screen rendered inside a new window and a terminal printout like the following:
+
+```shell
+EnvId = TestEnv
+Action Spaces = multiDiscrete
+Use attack buttons combinations = [True, True]
+diambraEnv library successfully loaded
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+      .:-:-**#*#####+***+=-:. 
+ ..-++####+#################=+=:. 
+:+*#*###########################*-. 
+   .-+#############################=. 
+      .-*###########################+. 
+        .=######++======++*#########*#=. ........ ...     .......     ...........     ........     ........ ............     ............         ........... 
+          -*=------:---------=*########- .------..-----:. .------.   .-----------.    --------.   :-------- --------------:. --------------:.    :----------: 
+          .:--------:---------:=#######* .------..-------..------.   :-----:-----:.   ---------. .--------- ------:..:-----: ------:..------:   .------:-----. 
+        .:------::---::--------:+#######..------. .------..------.  .------.:-----.   ----------.---------- ------:..------. ------:  :-----.  .:-----:.------. 
+        :-----::.:---:-----::---:######* .------. .------..------. .:-----: .------.  ------:-------------- ------::-----:.. ------:.-----:.   .------..------. 
+       .--:..  . :::.:.---.-:---.#####*- .------. .------..------. .------.::------:  ------:.-----.:------ ------:  :-----: ------:.:------: .------:.:-------. 
+        ..:..:::.:::.::....:.::--:####*. .------::------:..------..------:.:::------. ------: .---. :-----: -------::------: ------:  ------: :------..::------: 
+       .-::::::---...:--. .-.:-::=###+.  .::::::::::::..  .::::::..::::::.   .::::::. ::::::.  .:.  ::::::: ::::::::::::::.  :::::::  ::::::: ::::::.    .:::::: 
+       .--:.   .:--...::. ..::+####*: 
+       :--:..   .---:...:.   .:+*+:. 
+       .:---:::----.. ....    .:. 
+        .:------:..:...  :. 
+         .......   ..:.  .. 
+
+
+                                                                   DIAMBRA™ | Dueling AI Arena
+                                                              https://diambra.ai - info@diambra.ai
+
+                                                         DIAMBRA™ is a Trade Mark, © Copyright 2018-2022
+                                                                              v. 1.0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Environment initialization ...
+SHA256 check ok. Correct rom file found.
+78081g503.ic655 NOT FOUND (NO GOOD DUMP KNOWN) (tried in doapp coh1002m doapp)
+WARNING: the machine might not run correctly.
+2188 Completed console init
+Num. of Channels = 3
+Screen Dim (W x H) = 512 480
+(0)Buttons configuration:
+(0)  H = But6
+(0)  K = But2
+(0)  P = But1
+(0)Game Continue Val = 0
+(0)Show final = 1
+(0)1P Environment
+(0)Player side = Random
+(0)Characters = [Random, Random]
+(0)Number of outfits = [2, 2]
+done.
+Using MultiDiscrete action space
+(0)Setting difficulty = 3
+(0)Starting game
+(0)Player starting side = P2
+(0)P2 = Kasumi
+(0)Waiting for fight to start
+(0)Round done
+(0)Moving to next round
+```
 
 {{% /tab %}}
 {{< /tabs >}}  
