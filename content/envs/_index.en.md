@@ -109,27 +109,27 @@ DIAMBRA Arena Environments usage follows the standard RL interaction framework: 
 The shortest snippet for a complete basic execution of an environment consists of just a few lines of code, and is presented in the code block below:
 
 ```python {linenos=inline}
-import diambraArena 
+ import diambraArena 
 
-# Environment settings
-settings = {}
-settings["gameId"] = "doapp"
-settings["romsPath"] = "/path/to/roms/"
-
-env = diambraArena.make("MyEnv", settings)
-
-observation = env.reset()
-
-while True:
-    actions = env.action_space.sample()
-
-    observation, reward, done, info = env.step(actions)
-
-    if done:
-        observation = env.reset()
-        break
-
-env.close()
+ # Environment settings
+ settings = {}
+ settings["gameId"] = "doapp"
+ settings["romsPath"] = "/path/to/roms/"
+ 
+ env = diambraArena.make("MyEnv", settings)
+ 
+ observation = env.reset()
+ 
+ while True:
+     actions = env.action_space.sample()
+ 
+     observation, reward, done, info = env.step(actions)
+ 
+     if done:
+         observation = env.reset()
+         break
+ 
+ env.close()
 ```
 
 {{% notice note %}}
@@ -138,7 +138,13 @@ More complex and complete examples can be found in the <a href="../gettingstarte
 
 ### Settings
 
-All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary. The following table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages and, for those shared among all games, in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
+All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary passed to the environment creation method, as shown on line 8 in previous code example also reported below:
+
+```python
+env = diambraArena.make("MyEnv", settings)
+```
+
+Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages. Settings that are shared among all games, are found in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
 
 {{% notice tip %}}
 Two ready-to-use examples showing how environment settings are used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/singleplayerenv/">this</a> and <a href="../gettingstarted/examples/multiplayerenv/">this section</a> of this manual.

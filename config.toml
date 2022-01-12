@@ -39,23 +39,40 @@ landingPageURL = "./"
 landingPageName = "<i class='fas fa-home'></i> Home"
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
-identifier = "ds"
-url = "https://github.com/diambra/diambraArena"
+name = "<i class='fas fa-globe'></i> Website"
+identifier = "website"
+url = "https://diambra.ai"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-camera'></i> Showcases"
-url = "showcase"
+name = "<i class='fab fa-fw fa-github'></i> GitHub Repo"
+identifier = "github"
+url = "https://github.com/diambra/diambraArena"
 weight = 11
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-twitch'></i> Twitch UPDATE LINK"
+url = "twitch"
+weight = 15
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-discord'></i> Discord"
+url = "https://discord.gg/tFDS2UN5sv"
+weight = 20
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-youtube'></i> YouTube UPDATE LINK"
+url = "/credits"
+weight = 21
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-linkedin'></i> Linkedin"
+url = "https://www.linkedin.com/company/diambra"
+weight = 12
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fas fa-heart'></i> Support"
 identifier = "support"
-url = "https://www.paypal.com/donate?token=nGXpYEIW16U7h-prozHCv3N0hAqkruAmnJ2xummvIoc8cQ5Deapl4dCpZn5kD9xIAtD2TKLf-E3sv15p"
-weight = 20
-
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-bullhorn'></i> Credits"
-url = "/credits"
+url = "https://www.paypal.com/donate?token=9jYa1y3F4jOACFWJI8BVqOSfDh5yNiN-TC9rn_AwNfo1391bRN4F_la1yBg62ugQTj0ZWmVDQC6TB0UY"
 weight = 30
+
