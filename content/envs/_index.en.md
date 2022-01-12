@@ -140,6 +140,10 @@ More complex and complete examples can be found in the <a href="../gettingstarte
 
 All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary. The following table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages and, for those shared among all games, in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
 
+{{% notice tip %}}
+Two ready-to-use examples showing how environment settings are used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/singleplayerenv/">this</a> and <a href="../gettingstarted/examples/multiplayerenv/">this section</a> of this manual.
+{{% /notice %}}
+
 | <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
 |-------------|-------------| ------|------|------|
 | <strong><span style="color:#5B5B60;">Game Selection\*</span></strong> | `gameId` | `string` | - | - |

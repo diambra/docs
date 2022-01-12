@@ -22,14 +22,20 @@ weight: 40
 
 </div>
 
-DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers one has just to add an additional kwargs dictionary, here named `wrappersSettings` as shown in the next code block, to the environment creation method, having populated the dictionary as specified in the next sections.
 
-Implementation examples and templates can be found in the code repository, <a href="./#reward-clipping" target="_blank">here ADD LINK</a>
+DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers one has just to add an additional kwargs dictionary, here named `wrappersSettings` to the environment creation method, as shown in the next code block, having populated the dictionary as specified in the next sections.
 
 ```python
-# Gym wrappers settings
-wrappersSettings = {}
+env = diambraArena.make("TestEnv", settings, wrappersSettings)
 ```
+
+{{% notice note %}}
+Implementation examples and templates can be found in the code repository, <a href="./#reward-clipping" target="_blank">here ADD LINK</a>
+{{% /notice %}}
+
+{{% notice tip %}}
+A ready-to-use example showing how wrappers are set up and used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/wrappersoptions/">this section</a> of this manual.
+{{% /notice %}}
 
 ### Generic Wrappers
 
