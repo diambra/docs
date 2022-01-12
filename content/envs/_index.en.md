@@ -157,7 +157,7 @@ All environments share a numerous set of options allowing to handle many differe
 
 ### Game Specific Info
 
-Game specific info provide useful details about it. They are reported in every game-dedicated page, and summarized and described in the table below.
+Game specific details provide useful information about each title. They are reported in every game-dedicated page, and summarized and described in the table below.
 
 |  <strong><span style="color:#5B5B60;">Parameter</span></strong>  | <strong><span style="color:#5B5B60;">Description</span></strong>  |
 |-------------|-------------|

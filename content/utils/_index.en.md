@@ -23,15 +23,15 @@ Source code can be found in the code repository, <a href="../wrappers/#reward-cl
 
 ### Available Games
 
-Provides a list of available games and their most important details.
+Provides a list of available games and their most important details. It is executed as shown below:
 
-Code:
 ```python
 import diambraArena
 diambraArena.availableGames(printOut=True, details=True)
 ```
 
-Output:
+Output will be similar to what follows:
+
 ```txt
  Title: Dead Or Alive ++ - GameId: doapp
    Difficulty levels: Min 1 - Max 4
@@ -63,14 +63,14 @@ Checks ROM SHA256 checksum to validate them.
 
 #### Without `gameId` specification
 
-If no `gameId` is specified, the ROM file provided as first argument, will be verified against all available games.
+If no `gameId` is specified, the ROM file provided as first argument, will be verified against all available games. It is executed as shown below:
 
 ```python
 import diambraArena
 diambraArena.checkGameSha256(path="path/to/specific/rom/doapp.zip", gameId=None)
 ```
 
-Output:
+Output will be similar to what follows:
 
 ```txt
 Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
@@ -78,13 +78,13 @@ Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca1572568656
 
 #### With `gameId` specification
 
-If `gameId` is specified, the ROM file provided checksum will be compared with the one of the specified game identified by `gameId`.
+If `gameId` is specified, the ROM file provided checksum will be compared with the one of the specified game identified by `gameId`. It is executed as shown below:
 
 ```python
 import diambraArena
 diambraArena.checkGameSha256(path="path/to/specific/rom/doapp.zip", gameId="umk3")
 ```
-Output:
+Output will be similar to what follows:
 
 ```txt
 Expected  SHA256 Checksum: f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af
@@ -93,14 +93,14 @@ Retrieved SHA256 Checksum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489
 
 ### Environment Spaces Summary
 
-Prints out a summary of Environment's Observation and Action spaces showing nesting levels, keys, space types and low/high bounds where applicable.
+Prints out a summary of Environment's Observation and Action spaces showing nesting levels, keys, space types and low/high bounds where applicable. It is executed as shown below:
                                                                                 
 ```python
 from diambraArena.gymUtils import envSpacesSummary
 ...
 envSpacesSummary(env=environment)
 ```
-Output:
+Output will be similar to what follows:
 
 ```txt
 Observation space:
@@ -203,7 +203,7 @@ from diambraArena.gymUtils import showGymObs
 ...
 showGymObs(observation=obs, charList=charactersNames, waitKey=1, viz=True)
 ```
-Output:
+Output will be similar to what follows:
 
  - Frame visualization window:
 <figure style="margin-right:auto; margin-left:auto;">                           
@@ -239,7 +239,7 @@ from diambraArena.gymUtils import showWrapObs
 showWrapObs(observation=obs, nActionsStack=nActStack, charList=charactersNames, waitKey=1, viz=True)
 ```
 
-Output:
+Output will be similar to what follows:
 
 - Frame stack visualization windows:
 <figure style="margin-right:auto; margin-left:auto;">                           
@@ -291,7 +291,7 @@ Output:
 
 ### Gamepad Interface
 
-It allows to easily integrate a Game Pad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent.
+It allows to easily integrate a Game Pad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 
 ```python
 import diambraArena

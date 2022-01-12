@@ -16,14 +16,18 @@ weight: 10
 
 ### Overview
 
-DOCKER VS FROM SOURCE
+DIAMBRA Arena runs on all major Operating Systems: Linux, Windows and MacOS. It is natively supported on Linux Ubuntu 18.04 or newer and Linux Mint 19 or newer, where it can be installed directly from sources. For all other options (different Linux distributions, Windows and MacOS), it leverages Docker technology. 
 
-GPU Support
+Docker installation is quick and controlled, with equal performances in terms of environment execution speed, showing even better performances sometimes, when compared with installation from source. It even allows, on every OS, to run all environments with rendering active, showing game frames on screen in real time.
+
+The unique Docker shortcoming is for Windows and MacOS users: at the moment it does not support host machine's GPU interfacing, impeding to leverage CUDA computing. To do so within Docker, one needs to use Linux-based hosts. Still, it does not represent a road-block for Windows and MacOS users, as typical Deep RL networks are shallow, allowing to perform CPU-based training and inference with only minor (if any) slowdowns.
+
+Ubuntu / Mint users can follow both paths, each one with pros and cons. On one side, using Docker allows to define a well isolated container able to even speed up executions in some cases. On the other hand, it requires a little bit of experience and overhead to properly handle aspects like folder sharing/binding, persistent container modifications, and similar ones. 
 
 ### Prerequisites
 
 {{% notice note %}}
-<span style="color:#333333; font-weight:bolder;">In order to use DIAMBRA Arena, you need to <a href="https://diambra.ai/register/" target="_blank">create your account on our website</a>. It requires just a few clicks and is 100% free.</span>
+<span style="color:#333333; font-weight:bolder;">In order to use DIAMBRA Arena, you need to <a href="https://diambra.ai/register/" target="_blank">create your account on our website</a>. It requires just a few clicks and is 100% free. <br />Credentials (email/user id and password) will be asked at the first environment execution. </span>
 {{% /notice %}}
 
 {{< tabs groupId="installationTabs">}}
@@ -58,7 +62,7 @@ GPU Support
 
 ##### Virtual Environment (Optional, but strongly suggested)
 
-Install and use Virtual Environment to manage dependencies, both <a href="https://virtualenv.pypa.io/en/latest/" target="_blank">VirtualEnv</a> and <a href="https://docs.conda.io/projects/conda/en/latest/index.html" target="_blank">[Ana]Conda</a> are good options.
+Install and use a virtual environment to manage dependencies, both <a href="https://virtualenv.pypa.io/en/latest/" target="_blank">VirtualEnv</a> and <a href="https://docs.conda.io/projects/conda/en/latest/index.html" target="_blank">[Ana]Conda</a> are good options.
 
 {{% /tab %}}
 {{< /tabs >}}  
@@ -90,7 +94,7 @@ Install and use Virtual Environment to manage dependencies, both <a href="https:
 
 ##### Download Game ROM(s) and Check Validity
 
-- Check available games details running:
+- Check available games details:
     ```shell
     ./diambraArena.sh -l
     ```
@@ -127,7 +131,7 @@ Install and use Virtual Environment to manage dependencies, both <a href="https:
      Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
   ```
 
-- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
+- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
@@ -167,7 +171,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 
 ##### Download Game ROM(s) and Check Validity
 
-- Check available games details running:
+- Check available games details:
 
     ```shell
     diambraArena.bat -l
@@ -206,7 +210,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
      Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
   ```
 
-- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
+- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
@@ -249,7 +253,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 
 ##### Download Game ROM(s) and Check Validity
 
-- Check available games details running:
+- Check available games details:
 
     ```shell
     ./diambraArena.sh -l
@@ -288,7 +292,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
      Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
   ```
 
-- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
+- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
@@ -324,14 +328,14 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   ```shell
   ./setupOS.sh
   ```
-- Install the DIAMBRA Arena with PIP
+- Install DIAMBRA Arena Python package with PIP
 
   ```shell
   pip3 install .
   ```
 ##### Download Game ROM(s) and Check Validity
 
-- Check available games details running:
+- Check available games details:
 
     ```shell
     python -c "import diambraArena; diambraArena.availableGames(True, True)"
@@ -371,7 +375,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
      Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
   ```
 
-- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
+- Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
@@ -408,6 +412,10 @@ As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software inter
 {{% tab name="Linux (Docker)" %}}
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
+
+Navigate inside the Examples folder provided with <a href="https://github.com/diambra/diambraArena" target="_blank">DIAMBRA Arena repository</a>, where launcher and Python scripts are located. <span style="color:#333333; font-weight:bolder;">Your <a href="https://diambra.ai/register/" target="_blank">DIAMBRA credentials</a> will be asked at the first execution.</span>
+
+Run the environment as shown below:
 
 ```shell
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
@@ -479,6 +487,8 @@ Using MultiDiscrete action space
 
 ##### CUDA Installation Test
 
+To check if GPU has been interfaced properly, run the test as follows:
+
 ```shell
 ./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V" -d GPU
 ```
@@ -497,6 +507,10 @@ Cuda compilation tools, release 10.0, V10.0.130
 {{% tab name="Windows" %}}
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
+
+Navigate inside the Examples folder provided with <a href="https://github.com/diambra/diambraArena" target="_blank">DIAMBRA Arena repository</a>, where launcher and Python scripts are located. <span style="color:#333333; font-weight:bolder;">Your <a href="https://diambra.ai/register/" target="_blank">DIAMBRA credentials</a> will be asked at the first execution.</span>
+
+Run the environment as shown below:
 
 ```shell
 diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py" 
@@ -569,6 +583,11 @@ Using MultiDiscrete action space
 {{% tab name="MacOS" %}}
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
+
+Navigate inside the Examples folder provided with <a href="https://github.com/diambra/diambraArena" target="_blank">DIAMBRA Arena repository</a>, where launcher and Python scripts are located. <span style="color:#333333; font-weight:bolder;">Your <a href="https://diambra.ai/register/" target="_blank">DIAMBRA credentials</a> will be asked at the first execution.</span>
+
+Run the environment as shown below:
+
 
 ```shell
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py 
@@ -643,7 +662,9 @@ Using MultiDiscrete action space
 
 ##### Run Random Agent in Dead Or Alive++
 
-Navigate inside the Examples folder provided by DIAMBRA Arena Repo and execute the basic the Python script as follows:
+Navigate inside the Examples folder provided with <a href="https://github.com/diambra/diambraArena" target="_blank">DIAMBRA Arena repository</a>, where launcher and Python scripts are located. <span style="color:#333333; font-weight:bolder;">Your <a href="https://diambra.ai/register/" target="_blank">DIAMBRA credentials</a> will be asked at the first execution.</span>
+
+Run the environment as shown below:
 
 ```shell
 python diambraArenaGist.py --romsPath "your/roms/local/path" 
