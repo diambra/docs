@@ -58,7 +58,7 @@ weight = 15
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-discord'></i> Discord"
 url = "https://discord.gg/tFDS2UN5sv"
-weight = 20
+weight = 14
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-youtube'></i> YouTube UPDATE LINK"

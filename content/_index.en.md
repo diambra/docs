@@ -2,11 +2,11 @@
 title: "Home"
 ---
 
-<figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 80%;">
-  <img src="./images/envs/basicUsage.png" style="margin-bottom:20px;">
-</figure>   
-
 # DIAMBRA Arena Docs
+
+<figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
+  <img src="./images/home/envCover.png" style="margin-top:0px;">
+</figure>   
 
 DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It acts as an interface towards popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym standard</span>, that makes its adoption smooth and straightforward. 
 
