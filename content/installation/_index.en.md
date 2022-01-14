@@ -31,13 +31,13 @@ Ubuntu / Mint users can follow both paths, each one with pros and cons. On one s
 {{% /notice %}}
 
 {{< tabs groupId="installationTabs">}}
-{{% tab name="Linux (Docker)" %}}
+{{% tab name="Linux Docker" %}}
 
 - Install <a href="https://docs.docker.com/engine/install/#server" target="_blank">Docker Engine</a>
 - Install <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html" target="_blank">Nvidia Container Toolkit</a> (Needed for GPU usage)
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 - Install <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Docker Desktop for Windows</a>
 - Install <a href="https://sourceforge.net/projects/vcxsrv/" target="_blank">VcXsrv Windows X Server</a>
@@ -53,7 +53,7 @@ Ubuntu / Mint users can follow both paths, each one with pros and cons. On one s
 - Install <a href="https://www.xquartz.org/releases/XQuartz-2.7.8.html" target="_blank">Xquartz 2.7.8</a>
 
 {{% /tab %}} 
-{{% tab name="Linux (Source)" %}}
+{{% tab name="Linux Source" %}}
 
 ##### Operating System
 
@@ -70,7 +70,7 @@ Install and use a virtual environment to manage dependencies, both <a href="http
 ### Installation
 
 {{< tabs groupId="installationTabs">}}
-{{% tab name="Linux (Docker)" %}}
+{{% tab name="Linux Docker" %}}
 
 ##### Download DIAMBRA Arena Docker Images
 
@@ -156,7 +156,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 {{% /notice %}}
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 ##### Download DIAMBRA Arena Docker Images
 
@@ -317,7 +317,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 {{% /notice %}}
 
 {{% /tab %}} 
-{{% tab name="Linux (Source)" %}}
+{{% tab name="Linux Source" %}}
 
 ##### Install OS Dependencies and Python Packages
 
@@ -409,7 +409,7 @@ As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software inter
 ### Installation Tests 
 
 {{< tabs groupId="installationTabs">}}
-{{% tab name="Linux (Docker)" %}}
+{{% tab name="Linux Docker" %}}
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
 
@@ -504,7 +504,7 @@ Cuda compilation tools, release 10.0, V10.0.130
 ```
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 ##### Run Random Agent in Dead Or Alive++ (Headless Mode)
 
@@ -658,7 +658,7 @@ Using MultiDiscrete action space
 ```
 
 {{% /tab %}} 
-{{% tab name="Linux (Source)" %}}
+{{% tab name="Linux Source" %}}
 
 ##### Run Random Agent in Dead Or Alive++
 

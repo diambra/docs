@@ -55,7 +55,7 @@ It provides a simple interface to easily perform many useful tasks, like:
 The next block shows how to print out all available options for every OS.
 
 {{< tabs groupId="noLinuxSource">}}
-{{% tab name="Linux (Docker) / MacOS" %}}
+{{% tab name="Linux Docker / MacOS" %}}
 
 ```shell
 ./diambraArena.sh -h
@@ -121,7 +121,7 @@ Examples:
 ```
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 ```shell
 diambraArena.bat -h
@@ -208,21 +208,21 @@ The entire folder where the launcher script is located will be loaded inside the
 ##### Random Agent in Dead Or Alive++ (Headless Mode)
 
 {{< tabs groupId="linuxSource">}}
-{{% tab name="Linux (Docker) / MacOS" %}}
+{{% tab name="Linux Docker / MacOS" %}}
 
 ```shell
 ./diambraArena.sh -r "your/roms/local/path" -s diambraArenaGist.py
 ```
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 ```shell
 diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py"
 ```
 
 {{% /tab %}}
-{{% tab name="Linux (Source)" %}}
+{{% tab name="Linux Source" %}}
 
 Add 
 
@@ -242,7 +242,7 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 ##### Random Agent in Dead Or Alive++ (with GUI Support)
 
 {{< tabs groupId="linuxSource">}}
-{{% tab name="Linux (Docker) / MacOS" %}}
+{{% tab name="Linux Docker / MacOS" %}}
 
 {{% notice note %}}
 Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions here <strong>TODO ADD LINK</strong>(MacOS) and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
@@ -253,7 +253,7 @@ Running environments with GUI support requires the Docker container to connect t
 ```
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 {{% notice note %}}
 Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions here <strong>TODO ADD LINK</strong> and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
@@ -267,7 +267,7 @@ diambraArena.bat "ROMSPATH=your/roms/local/path" "PYTHONFILE=diambraArenaGist.py
 Increasing game window size could cause relevant slowdowns to the environments. GUI-supported executions are mainly thought for evaluation purposes. Make sure to use headless mode / deactivate rendering for maximum environment speed (e.g. during training).
 {{% /notice %}}
 {{% /tab %}}
-{{% tab name="Linux (Source)" %}}
+{{% tab name="Linux Source" %}}
 
 ```shell
 python diambraArenaGist.py --romsPath "your/roms/local/path"
@@ -281,14 +281,14 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 In order to make Python packages installation persistent inside the Docker container, Docker volumes are used. The container's Python package folder is linked to a folder in user's local filesystem (named `yourVolumeName`) where all modifications are saved.
 
 {{< tabs groupId="noLinuxSource">}}
-{{% tab name="Linux (Docker) / MacOS" %}}
+{{% tab name="Linux Docker / MacOS" %}}
 
 ```shell
 ./diambraArena.sh -c bash -v yourVolumeName
 ```
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 ```shell
 diambraArena.bat "CMDTOEXEC=bash" "VOLUME=yourVolumeName"
@@ -355,7 +355,7 @@ The next code blocks shows how the launcher script handles the execution. This c
 ##### Headless Execution
 
 {{< tabs groupId="gpuGpu">}}
-{{% tab name="Linux/MacOS (CPU)" %}}
+{{% tab name="Linux/MacOS CPU" %}}
 
 ```bash
 volume="-v $volumeName:/usr/local/lib/python3.6/dist-packages/"
@@ -377,7 +377,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `sh -c "cd /opt/diambraArena/code/ && $cmd`: specifying the command to be executed in container's shell
 
 {{% /tab %}}
-{{% tab name="Linux (GPU)" %}}
+{{% tab name="Linux GPU" %}}
 
 ```bash
 volume="-v $volumeName:/usr/local/lib/python3.6/dist-packages/"
@@ -399,7 +399,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `sh -c "cd /opt/diambraArena/code/ && $cmd`: specifying the command to be executed in container's shell
 
 {{% /tab %}}
-{{% tab name="Windows (CPU)" %}}
+{{% tab name="Win CPU" %}}
 
 ```bat
   set "CURDIR="%cd%"" 
@@ -454,7 +454,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `pkill -f "bash ./x11docker*`: killing the `x11docker` application running in background once the container execution ends 
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Win" %}}
 
 ```bat
 
