@@ -1,4 +1,4 @@
-baseURL = "https://artificialtwin.gitlab.io/alphaMale/diambra/diambraArenaDocs/"
+baseURL = "http://docs.diambra.ai"
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
@@ -51,8 +51,8 @@ url = "https://github.com/diambra/diambraArena"
 weight = 11
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-twitch'></i> Twitch UPDATE LINK"
-url = "twitch"
+name = "<i class='fab fa-twitch'></i> Twitch"
+url = "https://www.twitch.tv/diambra_ai"
 weight = 15
 
 [[Languages.en.menu.shortcuts]]
@@ -61,8 +61,8 @@ url = "https://discord.gg/tFDS2UN5sv"
 weight = 14
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-youtube'></i> YouTube UPDATE LINK"
-url = "/credits"
+name = "<i class='fab fa-youtube'></i> YouTube"
+url = "https://www.youtube.com/channel/UCMlHRxN3KtLIj1N8mKvmXDw/videos"
 weight = 21
 
 [[Languages.en.menu.shortcuts]]
