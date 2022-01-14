@@ -27,27 +27,27 @@ All environments are episodic Reinforcement Learning tasks, with discrete action
 They all  <span style="color:#333333; font-weight:bolder;">support both single player (1P) as well as two players (2P) mode</span>, making them the perfect resource to explore all the following Reinforcement Learning subfields: 
 
 <div style="margin-bottom:0px;">
-  <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15%; min-height:120px;">
    <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="./images/home/AIvsCOM.png"/>
    <figcaption align="middle">Standard RL</figcaption>
   </figure>
-  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
    <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="./images/home/AIvsAI.png"/>
    <figcaption align="middle">Competitive Multi-Agent</figcaption>
   </figure>
-  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
    <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="./images/home/AIvsHUM.png"/>
    <figcaption align="middle">Competitive Human-Agent</figcaption>
   </figure>
-  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
    <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="./images/home/SP.png"/>
    <figcaption align="middle">Self-Play</figcaption>
   </figure>
-  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
    <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="./images/home/IL.png"/>
    <figcaption align="middle">Imitation Learning</figcaption>
   </figure>
-  <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
    <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="./images/home/HITL.png"/>
    <figcaption align="middle">Human-in-the-Loop</figcaption>
   </figure> 
