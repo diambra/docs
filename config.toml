@@ -73,6 +73,6 @@ weight = 12
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fas fa-heart'></i> Support"
 identifier = "support"
-url = "https://www.paypal.com/donate?token=9jYa1y3F4jOACFWJI8BVqOSfDh5yNiN-TC9rn_AwNfo1391bRN4F_la1yBg62ugQTj0ZWmVDQC6TB0UY"
+url = "https://www.paypal.com/donate?token=7JJqDUtaQvuvH4-K0ulZQq8FyATNPPgiadaMMyzCpq6eSOMS2Hz8ZIrAVXJmQ7tPPZ3xlwiSmOCpuOuD"
 weight = 30
 
