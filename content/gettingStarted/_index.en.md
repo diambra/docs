@@ -37,6 +37,41 @@ To avoid specifying ROMs for every command you run, you can define a specific en
 
 In what follows the most concise script example available will be used, `diambraArenaGist.py`, featuring a random agent playing Dead Or Alive ++. It has been selected to keep things as simple as possible, but every python script can be used in the very same way.
 
+The complete script consist of just a few lines and is reported below:
+```python {linenos=inline}
+ import diambraArena 
+
+ # Mandatory environment settings
+ settings = {}
+ settings["gameId"] = "doapp"
+ settings["romsPath"] = "/path/to/roms/"
+ 
+ # Environment creation
+ env = diambraArena.make("MyEnv", settings)
+ 
+ # Environment reset
+ observation = env.reset()
+ 
+ # Agent-Environment interaction loop
+ while True:
+
+     # Action sampling
+     actions = env.action_space.sample()
+ 
+     # Environment stepping
+     observation, reward, done, info = env.step(actions)
+ 
+     # Episode end (Done condition) check
+     if done:
+         # Environment reset after episode's end
+         observation = env.reset()
+         # Interrupting interaction loop at episode's end
+         break
+ 
+ # Environment close
+ env.close()
+```
+
 {{% notice note %}}                                                             
 More complex and complete examples can be found in the <a href="./examples/">Examples</a> section.
 {{% /notice %}}           
