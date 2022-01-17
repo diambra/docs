@@ -4,6 +4,16 @@ title: Single Player Environment
 weight: 10
 ---
 
+This example focuses on:
+ - Basic environment usage (Standard RL, Single Player Mode)
+ - Environment settings configuration
+ - Algorithm - Environment interaction loop
+ - Gym observation visualization
+
+{{% notice tip %}}
+A dedicated section describing environment settings is presented <a href="/envs/#settings">here</a> and provides additional details on their usage and purpose.
+{{% /notice %}}
+
 #### Modules import
 
 ```python

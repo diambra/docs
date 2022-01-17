@@ -4,6 +4,14 @@ title: Wrappers Options
 weight: 40
 ---
 
+This example focuses on:
+ - Wrapppers settings configuration
+ - Wrapped observation visualization
+
+{{% notice tip %}}
+A dedicated section describing environment wrappers settings is presented <a href="/wrappers/">here</a> and provides additional details on their usage and purpose.
+{{% /notice %}}
+
 #### Modules import
 
 ```python

@@ -4,6 +4,16 @@ title: Multi Player Environment
 weight: 20
 ---
 
+This example focuses on:
+ - Two players mode environment usage (Competitive Multi-Agent, SelfPlay, Competitive Human-Agent)
+ - Environment settings configuration
+ - Algorithms - Environment interaction loop
+ - Gym observation visualization
+
+{{% notice tip %}}
+A dedicated section describing environment settings is presented <a href="/envs/#settings">here</a> and provides additional details on their usage and purpose.
+{{% /notice %}}
+
 #### Modules import
 
 ```python

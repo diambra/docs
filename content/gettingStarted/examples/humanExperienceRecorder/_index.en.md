@@ -4,6 +4,14 @@ title: Human Experience Recorder
 weight: 50
 ---
 
+This example focuses on:
+ - Human experience recording settings configuration
+ - Gamepad interfacing
+
+{{% notice tip %}}
+A dedicated section describing human experience recording wrapper settings is presented <a href="/imitationlearning/#experience-recording-wrapper">here</a> and provides additional details on their usage and purpose.
+{{% /notice %}}
+
 #### Modules import
 
 ```python

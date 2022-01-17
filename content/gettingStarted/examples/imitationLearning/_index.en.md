@@ -4,6 +4,13 @@ title: Imitation Learning
 weight: 60
 ---
 
+This example focuses on:
+ - Human expert demonstration loader class usage for Imitation Learning
+
+{{% notice tip %}}
+A dedicated section describing recorded experience loader is presented <a href="/imitationlearning/#recorded-experience-loader">here</a> and provides additional details on its usage and purpose.
+{{% /notice %}}
+
 #### Modules import
 
 ```python
