@@ -18,11 +18,11 @@ weight: 10
 
 DIAMBRA Arena runs on all major Operating Systems: Linux, Windows and MacOS. It is natively supported on Linux Ubuntu 18.04 or newer and Linux Mint 19 or newer, where it can be installed directly from sources. For all other options (different Linux distributions, Windows and MacOS), it leverages Docker technology. 
 
-Docker installation is quick and controlled, with equal performances in terms of environment execution speed, showing even better performances sometimes, when compared with installation from source. It even allows, on every OS, to run all environments with rendering active, showing game frames on screen in real time.
+Docker installation is quick and controlled, with equal (if not better) performances in terms of environment execution speed, when compared with installation from source. It even allows, on every OS, to run all environments with rendering active, showing game frames on screen in real time.
 
-The unique Docker shortcoming is for Windows and MacOS users: at the moment it does not support host machine's GPU interfacing, impeding to leverage CUDA computing. To do so within Docker, one needs to use Linux-based hosts. Still, it does not represent a road-block for Windows and MacOS users, as typical Deep RL networks are shallow, allowing to perform CPU-based training and inference with only minor (if any) slowdowns.
+The only Docker limitation is for Windows and MacOS users: at the moment it does not support host machine's GPU interfacing, impeding to leverage CUDA computing. To do so within Docker, one needs to use Linux-based hosts. Still, it does not represent a road-block for Windows and MacOS users, as typical Deep RL networks are shallow, allowing to perform CPU-based training and inference with only minor (if any) slowdowns.
 
-Ubuntu / Mint users can follow both paths, each one with pros and cons. On one side, using Docker allows to define a well isolated container able to even speed up executions in some cases. On the other hand, it requires a little bit of experience and overhead to properly handle aspects like folder sharing/binding, persistent container modifications, and similar ones. 
+Ubuntu / Mint users can follow both installation paths (Docker-based / Source-based), each one with pros and cons. Using Docker allows to levearge a well isolated container able to even speed up executions in some cases, at the price of requiring a little bit of experience and overhead to properly handle aspects like folder sharing/binding, persistent container modifications, and similar ones. Installing DIAMBRA Arena from source allows to have deeper access to code, making easier to interface it with custom libraries, tools or scripts. It requires, though, to manually handle aspects as making sure all dependencies are installed and kept aligned in time. 
 
 ### Prerequisites
 
@@ -403,7 +403,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 {{< /tabs >}}  
 
 {{% notice warning %}}
-As specified on Terms of Use (Section 8), DIAMBRA Arena is a mere software interface to existing videogames, and it cannot work as a standalone application. As such, it requires the User to own software elements protected by copyright, and to interface them with the Environment itself. It is the case, for example, of Game ROMS required to execute the correspondent Game-related Environment. In such cases, <ins><span style="color:#333333; font-weight:bolder;">it is sole and only responsibility of the User to comply with all the laws and regulations, and to make sure he has the right to use such copyright-protected material. DIAMBRA Arena owners will spend their maximum effort in avoiding illegal distribution of such material, and are by no mean responsible for copyright infringement.</span></ins> 
+As specified on <a href="https://diambra.ai/terms" target="_blank">Terms of Use</a> (Section 7), DIAMBRA Arena is a mere software interface to existing videogames, and it cannot work as a standalone application. As such, it requires the User to own software elements protected by copyright, and to interface them with the Environment itself. It is the case, for example, of Game ROMS required to execute the correspondent Game-related Environment. In such cases, <ins><span style="color:#333333; font-weight:bolder;">it is sole and only responsibility of the User to comply with all the laws and regulations, and to make sure he has the right to use such copyright-protected material. DIAMBRA Arena owners will spend their maximum effort in avoiding illegal distribution of such material, and are by no mean responsible for copyright infringement.</span></ins> 
 {{% /notice %}}
 
 ### Installation Tests 

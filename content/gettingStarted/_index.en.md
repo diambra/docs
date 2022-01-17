@@ -35,7 +35,7 @@ To avoid specifying ROMs for every command you run, you can define a specific en
 
 ### Basic Usage
 
-In what follows we will always use the most concise script example available, `diambraArenaGist.py`, featuring a random agent playing Dead Or Alive ++. We selected it to keep things as simple as possible, but every python script can be used in the very same way.
+In what follows the most concise script example available will be used, `diambraArenaGist.py`, featuring a random agent playing Dead Or Alive ++. It has been selected to keep things as simple as possible, but every python script can be used in the very same way.
 
 {{% notice note %}}                                                             
 More complex and complete examples can be found in the <a href="./examples/">Examples</a> section.
@@ -245,7 +245,7 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 {{% tab name="Linux Docker / MacOS" %}}
 
 {{% notice note %}}
-Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions here <strong>TODO ADD LINK</strong>(MacOS) and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
+Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions <a href="/installation/#prerequisites">here</a> (MacOS) and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
 {{% /notice %}}
 
 ```shell
@@ -256,7 +256,7 @@ Running environments with GUI support requires the Docker container to connect t
 {{% tab name="Win" %}}
 
 {{% notice note %}}
-Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions here <strong>TODO ADD LINK</strong> and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
+Running environments with GUI support requires the Docker container to connect to a virtual X server on the host machine. The launch script tries to establish this connection automatically, but it may require additional configuration. If you are not able to run the next code block, make sure you followed the installation instructions <a href="/installation/#prerequisites">here</a> and ask for support on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>. 
 {{% /notice %}}
 
 ```shell
@@ -457,7 +457,6 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 {{% tab name="Win" %}}
 
 ```bat
-
   set "CURDIR="%cd%"" 
   set VOLUME=-v %VOLUME%:/usr/local/lib/python3.6/dist-packages/ 
   set ROMSPATH=--mount src=%ROMSPATH%,target="/opt/diambraArena/roms",type=bind
