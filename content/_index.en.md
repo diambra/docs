@@ -126,7 +126,7 @@ To request features or report bugs, use the <a href="https://github.com/diambra/
 
 ### Terms of Use
 
-DIAMBRA Arena software package is subject to our <a href="https://diambra.ai/terms" target="_blank">Terms of Use</a>. By using it, you accept them without reserves.
+DIAMBRA Arena software package is subject to our <a href="https://diambra.ai/terms" target="_blank">Terms of Use</a>. By using it, you accept them in full.
 
 
 ###### DIAMBRA™ is a Trade Mark, © Copyright 2018-2022. All Rights Reserved.

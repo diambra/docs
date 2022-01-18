@@ -16,7 +16,7 @@ With the goal of easing the usage of Imitation Learning, DIAMBRA Arena comes wit
 
 ### Experience Recording Wrapper
 
-In order to activate the experience recording wrapper, one has just to add an additional kwargs dictionary, here named `trajRecSettings`, to the environment creation method, as shown in the next code block. The dictionary has to be populated as described in the next sections.
+In order to activate the experience recording wrapper, one has just to add an additional kwargs dictionary, here named `trajRecSettings`, to the environment creation method, as shown in the next code block. The dictionary has to be populated as described below.
 
 ```python
 env = diambraArena.make("TestEnv", settings, wrappersSettings, trajRecSettings)
@@ -31,11 +31,11 @@ Implementation examples and templates can be found in the code repository, <a hr
 A ready-to-use example showing how the recording wrapper is set up and used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/humanexperiencerecorder/">this section</a> of this manual.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Note</span></strong> |
-|-------------|-------------| ------|------|
-| `userName`     | `string`| - | Provides an identifier to be associated with the recorded trajectory  |
-| `filePath`     | `string`| - | Specifies the path where to save recorded experiences |
-| `ignoreP2`     | `int`| [0,&#160;1] | Specifies if to ignore P2 experience. Useful for example when recording expert demonstrations of a human player who is playing against an RL agent |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
+|-------------|-------------| ------|------|-----|
+| `userName`     | `string`| - | - | Provides an identifier to be associated with the recorded trajectory  |
+| `filePath`     | `string`| - | - | Specifies the path where to save recorded experiences |
+| `ignoreP2`     | `int`| - | [0,&#160;1] | Specifies if to ignore P2 experience. Useful for example when recording expert demonstrations of a human player who is playing against an RL agent |
 
 ```python                                                                       
 trajRecSettings["userName"] = "Alex"                                            
@@ -48,6 +48,11 @@ trajRecSettings["ignoreP2"] = 0
 {{% notice tip %}}
 A ready-to-use example showing how the recorded experience loader is set up and used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/imitationlearning/">this section</a> of this manual.
 {{% /notice %}}
+
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
+|-------------|-------------| ------|------|-----|
+| `trajFilesList`     | `string`| - | - | Provides an identifier to be associated with the recorded trajectory  |
+| `totalCpus`     | `int`| 1 | [1, inf) | Specifies the path where to save recorded experiences |
 
 ```python                                                                       
 # Show files in folder                                                          

@@ -11,8 +11,8 @@ math: true
 - <a href="./#overview">Overview</a>
 - <a href="./#interaction-basics">Interaction Basics</a>
 - <a href="./#settings">Settings</a>
-- <a href="./#game-specific-info">Game Specific Info</a>
-- <a href="./#game-specific-settings">Game Specific Settings</a>
+  - <a href="./#general-settings">General Settings</a>
+  - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
     - <a href="./#action-space-settings">Action Space Setting</a>
 - <a href="./#observation-space">Observation Space</a>
@@ -144,53 +144,39 @@ All environments share a numerous set of options allowing to handle many differe
 env = diambraArena.make("MyEnv", settings)
 ```
 
+#### General Settings
+
 Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages. Settings that are shared among all games, are found in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
 
 {{% notice tip %}}
 Two ready-to-use examples showing how environment settings are used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/singleplayerenv/">this</a> and <a href="../gettingstarted/examples/multiplayerenv/">this section</a> of this manual.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
+| <strong><span style="color:#5B5B60;">Setting - Description</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
 |-------------|-------------| ------|------|------|
-| <strong><span style="color:#5B5B60;">Game Selection\*</span></strong> | `gameId` | `string` | - | - |
-| <strong><span style="color:#5B5B60;">Path to ROMs Folder\*</span></strong> | `romsPath` | `string` | - | - |
-| <strong><span style="color:#5B5B60;">Player Side Selection</span></strong> | `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 |
-| <strong><span style="color:#5B5B60;">Environment Rendering</span></strong> | `render` | `bool` | `True` | True / False |
-| <strong><span style="color:#5B5B60;">60 FPS Lock</span></strong> | `lockFps` | `bool` | `True` | True / False |
-| <strong><span style="color:#5B5B60;">Game Sound</span></strong> | `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  |
-| <strong><span style="color:#5B5B60;">Environment/Emulator Steps Ratio</span></strong> | `stepRatio` | `int` | 6 | [1, 6] |
-| <strong><span style="color:#5B5B60;">Headless Mode (For Server-Side Executions)</span></strong> | `headless` | `bool` | `False` | True / False |
-| <strong><span style="color:#5B5B60;">Game Continue Logic (1P Mode Only)</span></strong> | `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done |
-| <strong><span style="color:#5B5B60;">Show Game Final</span></strong> | `showFinal` | `bool` | `True` | True / False |
+| <strong><span style="color:#5B5B60;">Game Selection\*</span></strong> - Selects the game to execute | `gameId` | `string` | - | - |
+| <strong><span style="color:#5B5B60;">Path to ROMs Folder\*</span></strong>  - Defines the local path of the folder where all game ROMs are located | `romsPath` | `string` | - | - |
+| <strong><span style="color:#5B5B60;">Player Side Selection</span></strong> - Allows to select single player (1P) or two players (2P) mode, and to select on which side to play, P1 (left) or P2 (right) | `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 |
+| <strong><span style="color:#5B5B60;">Environment Rendering</span></strong> - activates game rendering | `render` | `bool` | `True` | True / False |
+| <strong><span style="color:#5B5B60;">60 FPS Lock</span></strong> - Locks FPS to nominal value (60 FPS) | `lockFps` | `bool` | `True` | True / False |
+| <strong><span style="color:#5B5B60;">Game Sound</span></strong> - Activates game sound | `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  |
+| <strong><span style="color:#5B5B60;">Environment/Emulator Steps Ratio</span></strong> - Defines how many steps the game (emulator) performs for every environment step | `stepRatio` | `int` | 6 | [1, 6] |
+| <strong><span style="color:#5B5B60;">Headless Mode</span></strong> - Activates headless mode for server side executions | `headless` | `bool` | `False` | True / False |
+| <strong><span style="color:#5B5B60;">Game Continue Logic (1P Mode Only)</span></strong> - Defines if and how to allow ”Continue” when the agent is about to face the game over condition | `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done |
+| <strong><span style="color:#5B5B60;">Show Game Final</span></strong> - Activates displaying of final animation when game is completed | `showFinal` | `bool` | `True` | True / False |
+| <strong><span style="color:#5B5B60;">Rank</span></strong> - Assigns a rank number to the environment, useful when using parallel environment instances | `rank` | `int` | `0` | True / False |
 
 \*: Mandatory
 
-### Game Specific Info
-
-Game specific details provide useful information about each title. They are reported in every game-dedicated page, and summarized and described in the table below.
-
-|  <strong><span style="color:#5B5B60;">Parameter</span></strong>  | <strong><span style="color:#5B5B60;">Description</span></strong>  |
-|-------------|-------------|
-| <strong><span style="color:#5B5B60;">Game ID</span></strong>   | String identifying the game  |
-| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>   | Name of the original game ROM to be downloaded (if renaming is needed, it is indicated)      |
-| <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | ROM file checksum used to validate it |
-| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | List of keywords that can be used to find the correct ROM file   |
-| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>  | Game frame resolution   |
-| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | Number of moves and attack actions and their description   |
-| <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>  | Maximum difficulty level available   |
-| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | Number of characters featured in the game, and those that can actually be selected  |
-| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | Maximum number of different outfits available per each character |
-| <strong><span style="color:#5B5B60;">Max Stage</span></strong>  | Maximum number of stages for the single player mode   |
-
-### Game Specific Settings
+#### Game Specific Settings
 
 Environment settings depending on the specific game and shared among all of them are reported in the table below. Additional ones (if present) are reported in game-dedicated pages.
 
-| <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
+| <strong><span style="color:#5B5B60;">Setting - Description</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
 |-------------|-------------| ------|------|-----|
-| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| Default value if not specified | Min and Max values allowed for the specific game|
-| <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game |
-| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game |
+| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong> - Specifies game difficulty | `difficulty`       | `int`| Default value if not specified | Min and Max values allowed for the specific game|
+| <strong><span style="color:#5B5B60;">Character(s)</span></strong> - Specifies character(s) to use | `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game |
+| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong> - Defines the number of outfits to draw from at character selection  | `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game |
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
   <img src="../images/envs/outfits.png" style="margin-bottom:20px;">

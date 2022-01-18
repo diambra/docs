@@ -33,6 +33,23 @@ weight: 20
 <div>
 <p style="font-size:35px;  margin-bottom:20px; text-align:center; color: #a5101f; clear:both;">... many more to come soon.</p>
 
+### Game Specific Info
+
+Game specific details provide useful information about each title. They are reported in every game-dedicated page, and summarized and described in the table below.
+
+|  <strong><span style="color:#5B5B60;">Parameter</span></strong>  | <strong><span style="color:#5B5B60;">Description</span></strong>  |
+|-------------|-------------|
+| <strong><span style="color:#5B5B60;">Game ID</span></strong>   | String identifying the game  |
+| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>   | Name of the original game ROM to be downloaded (if renaming is needed, it is indicated)      |
+| <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | ROM file checksum used to validate it |
+| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | List of keywords that can be used to find the correct ROM file   |
+| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>  | Game frame resolution   |
+| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | Number of moves and attack actions and their description   |
+| <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>  | Maximum difficulty level available   |
+| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | Number of characters featured in the game, and those that can actually be selected  |
+| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | Maximum number of different outfits available per each character |
+| <strong><span style="color:#5B5B60;">Max Stage</span></strong>  | Maximum number of stages for the single player mode   |
+
 {{% notice note %}}
 Whenever possible, games are released with all hidden/bonus characters unlocked.
 {{% /notice %}}
