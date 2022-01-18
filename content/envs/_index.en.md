@@ -152,19 +152,19 @@ Next table summarizes and describes the general, game-independent, settings, whi
 Two ready-to-use examples showing how environment settings are used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/singleplayerenv/">this</a> and <a href="../gettingstarted/examples/multiplayerenv/">this section</a> of this manual.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Setting - Description</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
 |-------------|-------------| ------|------|------|
-| <strong><span style="color:#5B5B60;">Game Selection\*</span></strong> - Selects the game to execute | `gameId` | `string` | - | - |
-| <strong><span style="color:#5B5B60;">Path to ROMs Folder\*</span></strong>  - Defines the local path of the folder where all game ROMs are located | `romsPath` | `string` | - | - |
-| <strong><span style="color:#5B5B60;">Player Side Selection</span></strong> - Allows to select single player (1P) or two players (2P) mode, and to select on which side to play, P1 (left) or P2 (right) | `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 |
-| <strong><span style="color:#5B5B60;">Environment Rendering</span></strong> - activates game rendering | `render` | `bool` | `True` | True / False |
-| <strong><span style="color:#5B5B60;">60 FPS Lock</span></strong> - Locks FPS to nominal value (60 FPS) | `lockFps` | `bool` | `True` | True / False |
-| <strong><span style="color:#5B5B60;">Game Sound</span></strong> - Activates game sound | `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  |
-| <strong><span style="color:#5B5B60;">Environment/Emulator Steps Ratio</span></strong> - Defines how many steps the game (emulator) performs for every environment step | `stepRatio` | `int` | 6 | [1, 6] |
-| <strong><span style="color:#5B5B60;">Headless Mode</span></strong> - Activates headless mode for server side executions | `headless` | `bool` | `False` | True / False |
-| <strong><span style="color:#5B5B60;">Game Continue Logic (1P Mode Only)</span></strong> - Defines if and how to allow ”Continue” when the agent is about to face the game over condition | `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done |
-| <strong><span style="color:#5B5B60;">Show Game Final</span></strong> - Activates displaying of final animation when game is completed | `showFinal` | `bool` | `True` | True / False |
-| <strong><span style="color:#5B5B60;">Rank</span></strong> - Assigns a rank number to the environment, useful when using parallel environment instances | `rank` | `int` | `0` | True / False |
+| `gameId`\* | `string` | - | - | Selects the game to execute |
+| `romsPath`\* | `string` | - | - |Defines the local path of the folder where all game ROMs are located |
+| `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Allows to select single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
+| `render` | `bool` | `True` | True / False | Activates game rendering|
+| `lockFps` | `bool` | `True` | True / False | Locks FPS to nominal value (60 FPS) |
+| `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
+| `stepRatio` | `int` | 6 | [1, 6] | Defines how many steps the game (emulator) performs for every environment step |
+| `headless` | `bool` | `False` | True / False | Activates headless mode for server side executions |
+| `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
+| `showFinal` | `bool` | `True` | True / False | Activates displaying of final animation when game is completed |
+| `rank` | `int` | `0` | True / False | Assigns a rank number to the environment, useful when using parallel environment instances |
 
 \*: Mandatory
 
@@ -172,11 +172,11 @@ Two ready-to-use examples showing how environment settings are used can be found
 
 Environment settings depending on the specific game and shared among all of them are reported in the table below. Additional ones (if present) are reported in game-dedicated pages.
 
-| <strong><span style="color:#5B5B60;">Setting - Description</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|------|-----|
-| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong> - Specifies game difficulty | `difficulty`       | `int`| Default value if not specified | Min and Max values allowed for the specific game|
-| <strong><span style="color:#5B5B60;">Character(s)</span></strong> - Specifies character(s) to use | `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game |
-| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong> - Defines the number of outfits to draw from at character selection  | `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game |
+| `difficulty`       | `int`| Default value if not specified | Min and Max values allowed for the specific game| Specifies game difficulty (1P only) |
+| `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game | Specifies character(s) to use |
+| `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game | Defines the number of outfits to draw from at character selection  |
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
   <img src="../images/envs/outfits.png" style="margin-bottom:20px;">
@@ -237,10 +237,10 @@ Each game specifies and extends the set presented here with its custom one, desc
 
 Global elements of the observation space are unrelated to the player and they are currently limited to those presented and described in the following table. The same table is found on each game-dedicated page reporting its specs:
 
-| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------|-------------| ------|-------| --------------|
-| <strong><span style="color:#5B5B60;">Frame</span></strong>   | `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Min and max values for each dimension | Last game frame  (RGB pixel screen)|
-| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  Min and max values | Current stage of the game |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
+|-------------| ------|-------| --------------|
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Min and max values for each dimension | Last game frame  (RGB pixel screen)|
+| `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  Min and max values | Current stage of the game |
 
 #### Player specific
 
@@ -252,15 +252,15 @@ ownSideVar = observation["P1"]["ownSide"]
 
 Typical values that are available for each game are reported and described in the table below. The same table is found in every game-dedicated page, specifying and extending (if needed) the observation elements set.
 
-| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|-------| --------------|
-| <strong><span style="color:#5B5B60;">Side</span></strong>   | `ownSide`/`oppSide`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Side of the stage where the player is<br>0: Left, 1: Right |
-| <strong><span style="color:#5B5B60;">Wins</span></strong>   | `ownWins`/`oppWins` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Number of Rounds]| Number of rounds won by the player |
-| <strong><span style="color:#5B5B60;">Selected Character&#160;#1</span></strong>   | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use (for games where only one character is selected, this values is the same as "Character in Use")|
-| <strong><span style="color:#5B5B60;">Character in Use</span></strong>   | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use|
-| <strong><span style="color:#5B5B60;">Health</span></strong>   | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Health Value]| Health bar value |
-| <strong><span style="color:#5B5B60;">Actions-Move</span></strong>   | `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of move actions - 1] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| <strong><span style="color:#5B5B60;">Actions-Attack</span></strong>   | `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of attack actions - 1] | Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
+| `ownSide`/`oppSide`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Side of the stage where the player is<br>0: Left, 1: Right |
+| `ownWins`/`oppWins` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Number of Rounds]| Number of rounds won by the player |
+| `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use (for games where only one character is selected, this values is the same as "Character in Use")|
+| `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use|
+| `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Health Value]| Health bar value |
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of move actions - 1] | Index of last move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of attack actions - 1] | Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
 
 ### Reward Function
 

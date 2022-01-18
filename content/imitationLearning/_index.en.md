@@ -51,25 +51,11 @@ A ready-to-use example showing how the recorded experience loader is set up and 
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|------|-----|
-| `trajFilesList`     | `string`| - | - | Provides an identifier to be associated with the recorded trajectory  |
+| `trajFilesList`     | `string`| - | - | List of recorded experience files |
 | `totalCpus`     | `int`| 1 | [1, inf) | Specifies the path where to save recorded experiences |
 
 ```python                                                                       
-# Show files in folder                                                          
-basePath = os.path.dirname(os.path.abspath(__file__))                           
-recordedTrajectoriesFolder = os.path.join(basePath, "recordedTrajectories")     
-recordedTrajectoriesFiles = [os.path.join(recordedTrajectoriesFolder, f)        
-                             for f in os.listdir(recordedTrajectoriesFolder)    
-                             if os.path.isfile(os.path.join(recordedTrajectoriesFolder, f))]
-print(recordedTrajectoriesFiles)                                                
-                                                                                
-# Imitation learning settings                                                   
-settings = {}                                                                   
-                                                                                
-# List of recorded trajectories files                                           
 settings["trajFilesList"] = recordedTrajectoriesFiles                           
-                                                                                
-# Number of parallel Imitation Learning environments to run                     
 settings["totalCpus"] = 2                                                       
 ```                                                                             
                                                                                 
