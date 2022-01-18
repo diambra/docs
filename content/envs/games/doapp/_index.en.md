@@ -10,12 +10,16 @@ weight: 10
 
 ### Index                                                                       
                                                                                 
-- <a href="./#game-specific-info" style="font-size:20px;">Game Specific Info</a>
-- <a href="./#game-specific-settings" style="font-size:20px;">Game Specific Settings</a>
-- <a href="./#action-space-settings" style="font-size:20px;">Action Space Settings</a>
-- <a href="./#observation-space" style="font-size:20px;">Observation Space</a>
-    - <a href="./#global" style="font-size:20px;">Global</a>                
-    - <a href="./#player-specific" style="font-size:20px;">Player Specific</a>
+<div style="font-size:1.125rem;">
+
+- <a href="./#game-specific-info">Game Specific Info</a>
+- <a href="./#game-specific-settings">Game Specific Settings</a>
+- <a href="./#action-space-settings">Action Space Settings</a>
+- <a href="./#observation-space">Observation Space</a>
+    - <a href="./#global">Global</a>                
+    - <a href="./#player-specific">Player Specific</a>
+
+</div>
 
 ### Game Specific Info
 

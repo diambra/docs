@@ -33,7 +33,7 @@ DIAMBRA Arena is a software package featuring a collection of high-quality envir
 It supports all major Operating Systems: Linux, Windows and MacOS, most of them via Docker, with a step by step installation guide available in this manual. It is completely free to use, the user only needs to register on the official website.
                                                                                 
                                                                                 
-In addition, its <a href="">TODO ADD LINK GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
+In addition, its <a href="https://github.com/diambra/diambraArena" target="_blank">GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
                                                                                 
 #### Environments Main Features                                                 
                                                                                 
@@ -314,7 +314,7 @@ Where:
 
 For 1P mode $N_s$ is game-dependent, while for 2P mode $N_s=1$, meaning the episode always ends after a single stage (so after $N_r$ rounds have been won / lost be the same player, either P1 or P2).
 
-For 2P mode, P1 reward is defined as $R$ in the reward Eq. 1 and P2 reward is equal to $-R$ (zero-sum games). Eq. 1 describes the default reward function. It is of course possible to tweak it at will by means of custom <a href="../wrappers/#reward-wrappers">*Reward Wrappers*</a>.
+For 2P mode, P1 reward is defined as $R$ in the reward Eq. 1 and P2 reward is equal to $-R$ (zero-sum games). Eq. 1 describes the default reward function. It is of course possible to tweak it at will by means of custom <a href="../wrappers/#reward-wrappers">Reward Wrappers</a>.
 
 The minimum and maximum total cumulative reward for the round can be <strong><span style="color:#5B5B60;">different than</span></strong> $2N_c$ in some cases. This may happen because:
  - When multiple characters are used at the same time, the "Round Done" condition can be different for different games (e.g. either at least one character has zero health or all characters have zero health) impacting on the amount of reward collected.

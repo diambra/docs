@@ -23,7 +23,7 @@ weight: 40
 </div>
 
 
-DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers one has just to add an additional kwargs dictionary, here named `wrappersSettings`, to the environment creation method. As shown in the next code block, having populated the dictionary as specified in the next sections.
+DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers, one has just to add an additional kwargs dictionary, here named `wrappersSettings`, to the environment creation method, as shown in the next code block. The dictionary has to be populated as described in the next sections.
 
 ```python
 env = diambraArena.make("TestEnv", settings, wrappersSettings)
