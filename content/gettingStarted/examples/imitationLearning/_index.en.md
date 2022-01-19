@@ -37,8 +37,14 @@ settings = {}
 # List of recorded trajectories files
 settings["trajFilesList"] = recordedTrajectoriesFiles
 
-# Number of parallel Imitation Learning environments to run
+# Number of parallel Imitation Learning environments that will be run in parallel
 settings["totalCpus"] = 2
+
+# Number of parallel Imitation Learning environments that will be run in parallel
+settings["totalCpus"] = 2
+
+# Rank of the created environment                                               
+settings["rank"] = 0   
 ```
 
 #### Environment execution

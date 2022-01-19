@@ -149,13 +149,13 @@ env = diambraArena.make("MyEnv", settings)
 Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages. Settings that are shared among all games, are found in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
 
 {{% notice tip %}}
-Two ready-to-use examples showing how environment settings are used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/singleplayerenv/">this</a> and <a href="../gettingstarted/examples/multiplayerenv/">this section</a> of this manual.
+Two ready-to-use examples showing how environment settings are used can be found <a href="../gettingstarted/examples/singleplayerenv/">here</a> and <a href="../gettingstarted/examples/multiplayerenv/">here</a>.
 {{% /notice %}}
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
 |-------------|-------------| ------|------|------|
 | `gameId`\* | `string` | - | (See games list and info) | Selects the game to execute |
-| `romsPath`\* | `string` | - | - |Defines the local path of the folder where all game ROMs are located |
+| `romsPath`\* | `string` | - | - |Defines the absolute path of the folder where all game ROMs are located |
 | `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
 | `render` | `bool` | `True` | True / False | Activates game rendering|
 | `lockFps` | `bool` | `True` | True / False | Locks FPS to nominal value (60 FPS) |

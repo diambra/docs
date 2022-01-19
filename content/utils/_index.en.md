@@ -94,7 +94,7 @@ Retrieved SHA256 Checksum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489
 ### Environment Spaces Summary
 
 Prints out a summary of Environment's Observation and Action spaces showing nesting levels, keys, space types and low/high bounds where applicable. It is executed as shown below:
-                                                                                
+
 ```python
 from diambraArena.gymUtils import envSpacesSummary
 ...
@@ -198,6 +198,10 @@ There are two different methods, one to be used for the basic Gym Environment an
 
 #### Gym Observation
 
+{{% notice tip %}}
+Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a> and <a href="/gettingstarted/examples/multiplayerenv/">this</a> examples.
+{{% /notice %}}  
+
 ```python
 from diambraArena.gymUtils import showGymObs
 ...
@@ -206,7 +210,7 @@ showGymObs(observation=obs, charList=charactersNames, waitKey=1, viz=True)
 Output will be similar to what follows:
 
  - Frame visualization window:
-<figure style="margin-right:auto; margin-left:auto;">                           
+<figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/gymObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
 </figure> 
 
@@ -229,7 +233,11 @@ Output will be similar to what follows:
 
 #### Wrapped Observation
 
-{{% notice warning %}}                                                           
+{{% notice tip %}}
+Use of this functionality can be found in <a href="/gettingstarted/examples/wrappersoptions/">this</a>, <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
+{{% /notice %}}  
+
+{{% notice warning %}}
 This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the normalization wrapper is active.
 {{% /notice %}}  
 
@@ -242,7 +250,7 @@ showWrapObs(observation=obs, nActionsStack=nActStack, charList=charactersNames, 
 Output will be similar to what follows:
 
 - Frame stack visualization windows:
-<figure style="margin-right:auto; margin-left:auto;">                           
+<figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/wrapObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
 </figure> 
 
@@ -290,6 +298,10 @@ Output will be similar to what follows:
   ```
 
 ### Gamepad Interface
+
+{{% notice tip %}}
+Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
+{{% /notice %}}  
 
 It allows to easily integrate a Game Pad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 

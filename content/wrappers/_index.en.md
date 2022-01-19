@@ -34,7 +34,7 @@ Implementation examples and templates can be found in the code repository, <a hr
 {{% /notice %}}
 
 {{% notice tip %}}
-A ready-to-use example showing how wrappers are set up and used can be found in the Examples folder inside DIAMBRA Arena repository, and described in <a href="../gettingstarted/examples/wrappersoptions/">this section</a> of this manual.
+Use of these functionalities can be found in <a href="../gettingstarted/examples/wrappersoptions/">this</a> and <a href="../gettingstarted/examples/humanexperiencerecorder/">this</a> examples.
 {{% /notice %}}
 
 ### Generic Wrappers
