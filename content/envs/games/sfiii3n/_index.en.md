@@ -89,7 +89,7 @@ weight: 20
 | `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
 | `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;10] or [0,&#160;7]| Index of last attack action performed (no-attack, low punch, medium punch, etc.) with, respectively, attack buttons combination active or not|
 | `ownStunBar`/`oppStunBar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;72] | Stun bar value |
-| `ownStunned`/`oppStunned`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Stunned |
+| `ownStunned`/`oppStunned`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Stunned flag |
 | `ownSuperBar`/`oppSuperBar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;128] | Super bar value |
 | `ownSuperType`/`oppSuperType`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;2] | Selected type of super move<br>0-1-2: Super Type 1-2-3 |
 | `ownSuperCount`/`oppSuperCount`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;3] | Count of activated super moves |
