@@ -14,7 +14,7 @@ math: true
   - <a href="./#general-settings">General Settings</a>
   - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
-    - <a href="./#action-space-settings">Action Space Setting</a>
+    - <a href="./#action-spaces-in-numbers">Action Spaces in Numbers</a>
 - <a href="./#observation-space">Observation Space</a>
     - <a href="./#global">Global</a>
     - <a href="./#player-specific">Player Specific</a>
@@ -154,7 +154,7 @@ Two ready-to-use examples showing how environment settings are used can be found
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
 |-------------|-------------| ------|------|------|
-| `gameId`\* | `string` | - | - | Selects the game to execute |
+| `gameId`\* | `string` | - | (See games list and info) | Selects the game to execute |
 | `romsPath`\* | `string` | - | - |Defines the local path of the folder where all game ROMs are located |
 | `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Allows to select single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
 | `render` | `bool` | `True` | True / False | Activates game rendering|
@@ -164,7 +164,9 @@ Two ready-to-use examples showing how environment settings are used can be found
 | `headless` | `bool` | `False` | True / False | Activates headless mode for server side executions |
 | `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
 | `showFinal` | `bool` | `True` | True / False | Activates displaying of final animation when game is completed |
-| `rank` | `int` | `0` | True / False | Assigns a rank number to the environment, useful when using parallel environment instances |
+| `rank` | `int` | `0` | [0, inf) | Assigns a rank number to the environment, useful when using parallel environment instances |
+| `actionSpace` | `string` | `multiDiscrete` | discrete / multiDiscrete | Defines the type of the action space |
+| `attackButcombination` | `bool` | `True` | True / False | Activates attack buttons combinations |
 
 \*: Mandatory
 
@@ -185,11 +187,11 @@ Environment settings depending on the specific game and shared among all of them
 
 ### Action Space(s)
 
-Actions of the interfaced games can be grouped in two categories: move actions (Up, Left, etc.) and attack ones (Punch, Kick, etc.). DIAMBRA Arena provides four different action spaces: the main distinction is between Discrete and MultiDiscrete ones. The former is a single list composed by the union of move and attack actions (of type `gym.spaces.Discrete`), while the latter consists of two sets combined, for move and attack actions respectively (of type `gym.spaces.MultiDiscrete`). 
+Actions of the interfaced games can be grouped in two categories: move actions (Up, Left, etc.) and attack ones (Punch, Kick, etc.). DIAMBRA Arena provides four different action spaces: the main distinction is between <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="_blank">Discrete</a> and <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="_blank">MultiDiscrete</a> ones. The former is a single list composed by the union of move and attack actions (of type `gym.spaces.Discrete`), while the latter consists of two sets combined, for move and attack actions respectively (of type `gym.spaces.MultiDiscrete`). 
 
 For each of the two options, there is an additional differentiation available: if to use attack buttons combinations or not. This option is mainly available to reduce the action space size as much as possible, since combinations of attack buttons can be seen as additional attack buttons. The complete visual description of available action spaces is shown in the figure below, where all four choices are presented via the correspondent gamepad buttons configuration for Dead Or Alive ++.
 
-When run in 2P mode, the environment is provided with an action space of `type gym.spaces.Dict` populated with two items, identified by keys "P1" and "P2", whose values are either `gym.spaces.Discrete` or `gym.spaces.MultiDiscrete` as described above. 
+When run in 2P mode, the environment is provided with a <a href="https://github.com/openai/gym/blob/master/gym/spaces/dict.py" target="_blank">Dictionary</a> action space (type `gym.spaces.Dict`) populated with two items, identified by keys "P1" and "P2", whose values are either `gym.spaces.Discrete` or `gym.spaces.MultiDiscrete` as described above. 
 
 Each game has specific action spaces since attack buttons (and their combinations) are, in general, game-dependent. For this reason, in each game-dedicated page, a table like the one found below is reported, describing all four actions spaces for the specific game.
 
@@ -215,11 +217,13 @@ Some actions (especially attack buttons combinations) may have no effect for som
   <figcaption align="middle">Example of Dead Or Alive ++ Action Spaces</figcaption>
 </figure>
 
-#### Action Space Settings
+#### Action Spaces in Numbers
 
-| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Keys</span></strong> | <strong><span style="color:#5B5B60;">Values</span></strong>| <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
-|-------------|-------------| ------|-------| ------- |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> / <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a>  | Active / Not Active  |`actionSpace`,  `attackButCombination` | `discrete`/`multiDiscrete`, `True`/`False` | Total number of actions available, divided in move and attack actions |
+For every game, a table containing the following info is reported. It provides numerical details about action spaces sizes.
+
+| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons Combination</span></strong> | <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
+|-------------|-------------| ------|
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> / <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a>  | Active / Not Active  | Total number of actions available, divided in move and attack actions |
 
 ### Observation Space
 

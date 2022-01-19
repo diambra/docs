@@ -14,7 +14,7 @@ weight: 20
 
 - <a href="./#game-specific-info">Game Specific Info</a>
 - <a href="./#game-specific-settings">Game Specific Settings</a>
-- <a href="./#action-space-settings">Action Space Settings</a>
+- <a href="./#action-spaces">Action Spaces</a>
 - <a href="./#observation-space">Observation Space</a>
     - <a href="./#global">Global</a>                
     - <a href="./#player-specific">Player Specific</a>
@@ -38,21 +38,21 @@ weight: 20
 
 ### Game Specific Settings
 
-| <strong><span style="color:#5B5B60;">Setting</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
-|-------------|-------------| ------|------| ----|
-| <strong><span style="color:#5B5B60;">Difficulty (1P Mode Only)</span></strong>   | `difficulty`       | `int`| 3 |[1, 8]|
-| <strong><span style="color:#5B5B60;">Characters List</span></strong>   | `characters`| `string`       | [[`Random`],&#160;[`Random`]] | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
-| <strong><span style="color:#5B5B60;">Characters Outfits</span></strong>   | `charOutfits`| `int`      | [2, 2] | [1, 7] |
-| <strong><span style="color:#5B5B60;">Super Art</span></strong>   | `superArt`| `int`      | [0, 0] | [0, 3] |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
+|-------------| ------|------| ----|
+| `difficulty`       | `int`| 3 |[1, 8]|
+| `characters`| `string`       | [[`Random`],&#160;[`Random`]] | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
+| `charOutfits`| `int`      | [2, 2] | [1, 7] |
+| `superArt`| `int`      | [0, 0] | [0, 3] |
 
-### Action Space Settings
+### Action Spaces 
 
-| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Keys</span></strong> | <strong><span style="color:#5B5B60;">Values</span></strong>| <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
-|-------------|-------------| ------|-------| ------- |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Not Active  | `actionSpace`,  `attackButCombination` | `discrete`, `False` | 9 (moves) + 7 (attacks) - 1 (no-action counted twice) = 15 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Active  | `actionSpace`,  `attackButCombination` | `discrete`, `True` | 9 (moves) + 10 (attacks) - 1 (no-action counted twice) = 18 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Not Active  | `actionSpace`,  `attackButCombination` | `multiDiscrete`, `False` | 9 (moves) X 7 (attacks) = 63 |
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Active  | `actionSpace`,  `attackButCombination` | `multiDiscrete`, `True` | 9 (moves) X 10 (attacks) = 90 |
+| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
+|-------------|-------------| ------|
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Not Active  | 9 (moves) + 7 (attacks) - 1 (no-action counted twice) = 15 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | Active  | 9 (moves) + 10 (attacks) - 1 (no-action counted twice) = 18 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Not Active  | 9 (moves) X 7 (attacks) = 63 |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Active  | 9 (moves) X 10 (attacks) = 90 |
 
 ### Observation Space
 
@@ -67,19 +67,25 @@ weight: 20
 
 #### Global
 
-| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------|-------------| ------|-------| --------------|
-| <strong><span style="color:#5B5B60;">Frame</span></strong>   | `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [224&#160;X&#160;384&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
-| <strong><span style="color:#5B5B60;">Stage (1P Mode Only)</span></strong>   | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 10]| Current stage of the game |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
+|-------------| ------|-------| --------------|
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [224&#160;X&#160;384&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
+| `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 10]| Current stage of the game |
 
 #### Player specific
 
-| <strong><span style="color:#5B5B60;">Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------|-------------| ------|-------| --------------|
-| <strong><span style="color:#5B5B60;">Side</span></strong>   | `ownSide`/`oppSide`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Side of the stage where the player is<br>0: Left, 1: Right |
-| <strong><span style="color:#5B5B60;">Wins</span></strong>   | `ownWins`/`oppWins` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;2]| Number of rounds won by the player |
-| <strong><span style="color:#5B5B60;">Selected Character&#160;#1</span></strong>   | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;19] | Index of first character selected (since in this game only one character is selected, these values are the same as "Character in Use")<br>0: Alex, 1: Twelve, 2: Hugo, 3: Sean, 4: Makoto, 5: Elena, 6: Ibuki, 7: Chun-Li, 8: Dudley, 9: Necro, 10: Q, 11: Oro, 12: Urien, 13: Remy, 14: Ryu, 15: Gouki, 16: Yun, 17: Yang, 18: Ken, 19: Gill|
-| <strong><span style="color:#5B5B60;">Character in Use</span></strong>   | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;19] | Index of character in use<br>0: Alex, 1: Twelve, 2: Hugo, 3: Sean, 4: Makoto, 5: Elena, 6: Ibuki, 7: Chun-Li, 8: Dudley, 9: Necro, 10: Q, 11: Oro, 12: Urien, 13: Remy, 14: Ryu, 15: Gouki, 16: Yun, 17: Yang, 18: Ken, 19: Gill|
-| <strong><span style="color:#5B5B60;">Health</span></strong>   | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [-1,&#160;160]| Health bar value |
-| <strong><span style="color:#5B5B60;">Actions-Move</span></strong>   | `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| <strong><span style="color:#5B5B60;">Actions-Attack</span></strong>   | `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;10] or [0,&#160;7]| Index of last attack action performed (no-attack, low punch, medium punch, etc.) with, respectively, attack buttons combination active or not|
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
+|-------------| ------|-------| --------------|
+| `ownSide`/`oppSide`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Side of the stage where the player is<br>0: Left, 1: Right |
+| `ownWins`/`oppWins` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;2]| Number of rounds won by the player |
+| `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;19] | Index of first character selected (since in this game only one character is selected, these values are the same as "Character in Use")<br>0: Alex, 1: Twelve, 2: Hugo, 3: Sean, 4: Makoto, 5: Elena, 6: Ibuki, 7: Chun-Li, 8: Dudley, 9: Necro, 10: Q, 11: Oro, 12: Urien, 13: Remy, 14: Ryu, 15: Gouki, 16: Yun, 17: Yang, 18: Ken, 19: Gill|
+| `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;19] | Index of character in use<br>0: Alex, 1: Twelve, 2: Hugo, 3: Sean, 4: Makoto, 5: Elena, 6: Ibuki, 7: Chun-Li, 8: Dudley, 9: Necro, 10: Q, 11: Oro, 12: Urien, 13: Remy, 14: Ryu, 15: Gouki, 16: Yun, 17: Yang, 18: Ken, 19: Gill|
+| `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [-1,&#160;160]| Health bar value |
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;10] or [0,&#160;7]| Index of last attack action performed (no-attack, low punch, medium punch, etc.) with, respectively, attack buttons combination active or not|
+| `ownStunBar`/`oppStunBar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;72] | Stun bar value |
+| `ownStunned`/`oppStunned`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Stunned |
+| `ownSuperBar`/`oppSuperBar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;128] | Super bar value |
+| `ownSuperType`/`oppSuperType`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;2] | Selected type of super move<br>0-1-2: Super Type 1-2-3 |
+| `ownSuperCount`/`oppSuperCount`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;3] | Count of activated super moves |
+| `ownSuperMax`/`oppSuperMax`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [1,&#160;3] | Maximum number of activated super moves |
