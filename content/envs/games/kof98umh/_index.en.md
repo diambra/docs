@@ -41,10 +41,15 @@ weight: 60
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------| ------|------| ----|
 | `difficulty`       | `int`| 3 |[1, 8]|
-| `fightingStyle`       | `int`| [0, 0] |[0, 3]|
-| `ultimateStyle`       | `int`| [[0, 0, 0], [0, 0, 0]] |[0, 1]&#160;X&#160;[0, 1]&#160;X&#160;[0, 1]|
 | `characters`| `string`       | [[`Random`], [`Random`]]| Kyo, Benimaru, Daimon, Terry, Andy, Joe, Ryo, Robert, Yuri, Leona, Ralf, Clark, Athena, Kensou, Chin, Chizuru, Mai, King, Kim, Chang, Choi, Yashiro, Shermie, Chris, Yamazaki, Mary, Billy, Iori, Mature, Vice, Heidern, Takuma, Saisyu, Heavy-D!, Lucky, Brian, Eiji, Kasumi, Shingo, Rugal, Geese, Krauser, Mr.Big |
 | `charOutfits`| `int`      | [2, 2] | [1, 4] |
+
+##### Extended game settings
+
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong>
+|-------------| ------|------| ----|------|
+| `fightingStyle`       | `int`| [0, 0] |[0, 3]| Selects the fighting style.<br>0: Random, 1: Advanced, 2: Extra, 3: Ultimate
+| `ultimateStyle`       | `int`| [[0, 0, 0], [0, 0, 0]] |[0, 2]&#160;X&#160;[0, 2]&#160;X&#160;[0, 2]| Selects details about Ultimate Fighting Style for Dash, Evade and Bar features.<br>0: Random, 1: Advanced, 0: Extra |
 
 ### Action Spaces
 

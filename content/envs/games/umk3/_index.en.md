@@ -41,9 +41,14 @@ weight: 40
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------| ------|------| ----|
 | `difficulty`       | `int`| 3 |[1, 5]|
-| `tower`       | `int`| 3 |[1, 4]|
 | `characters`| `string`       | [[`Random`], [`Random`]]| Kitana, Reptile, Kano, Sektor, Kabal, Sonya, Mileena, Sindel, Sheeva, Jax, Ermac, Stryker, Shang Tsung, Nightwolf, Sub-Zero-2, Cyrax, Liu Kang, Jade, Sub-Zero, Kung Lao, Smoke, Skorpion |
 | `charOutfits`| `int`      | [2, 2] | [1, 2] |
+
+##### Extended Game Settings
+
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong>|
+|-------------| ------|------| ----|--------|
+| `tower`       | `int`| 3 |[1, 4]| Selects the tower to play in (1P mode only)|
 
 ### Action Spaces
 

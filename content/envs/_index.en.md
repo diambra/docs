@@ -156,7 +156,7 @@ Two ready-to-use examples showing how environment settings are used can be found
 |-------------|-------------| ------|------|------|
 | `gameId`\* | `string` | - | (See games list and info) | Selects the game to execute |
 | `romsPath`\* | `string` | - | - |Defines the local path of the folder where all game ROMs are located |
-| `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Allows to select single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
+| `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
 | `render` | `bool` | `True` | True / False | Activates game rendering|
 | `lockFps` | `bool` | `True` | True / False | Locks FPS to nominal value (60 FPS) |
 | `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
