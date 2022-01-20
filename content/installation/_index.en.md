@@ -27,7 +27,7 @@ Ubuntu / Mint users can follow both installation paths (Docker-based / Source-ba
 ### Prerequisites
 
 {{% notice note %}}
-In order to use DIAMBRA Arena, you need to:<br>&nbsp;&nbsp;• Have an active internet connection<br>&nbsp;&nbsp;• <a href="https://diambra.ai/register/" target="_blank">Create your account on our website</a>, it requires just a few clicks and is 100% free<br /><br />Credentials (email/user id and password) will be asked at the first environment execution.
+In order to use DIAMBRA Arena, it is needed to:<br>&nbsp;&nbsp;• Have an active internet connection<br>&nbsp;&nbsp;• <a href="https://diambra.ai/register/" target="_blank">Create an account on our website</a>, it requires just a few clicks and is 100% free<br /><br />Credentials (email/user id and password) will be asked at the first environment execution.
 {{% /notice %}}
 
 {{< tabs groupId="installationTabs">}}
