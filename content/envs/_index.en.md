@@ -35,7 +35,7 @@ It supports all major Operating Systems: Linux, Windows and MacOS, most of them 
                                                                                 
 In addition, its <a href="https://github.com/diambra/diambraArena" target="_blank">GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
                                                                                 
-#### Environments Main Features                                                 
+#### Main Features                                                 
                                                                                 
 All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side).
                                                                                 

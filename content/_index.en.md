@@ -20,7 +20,7 @@ In addition, its <a href="https://github.com/diambra/diambraArena" target="_blan
   <figcaption align="middle">Agent-Environment Interaction Scheme</figcaption>
 </figure>   
 
-#### Environments Main Features
+#### Main Features
 
 All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side). 
 
