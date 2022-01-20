@@ -73,6 +73,6 @@ weight = 12
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fas fa-heart'></i> Support"
 identifier = "support"
-url = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AMYSMZCQQAUZE"
+url = "https://streamlabs.com/diambra_ai/tip"
 weight = 30
 
