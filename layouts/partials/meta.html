@@ -1,4 +1,5 @@
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+    {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
     <meta name="keywords" content="{{ .Site.Params.keywords }}">
     
     <meta itemprop="name" content="{{ .Site.Title }}">
@@ -9,3 +10,6 @@
     <meta property="og:title" content="{{ .Site.Title }}">
     <meta property="og:description" content="{{ .Site.Params.description }}">
     <meta property="og:image" content="{{ .Site.BaseURL }}/images/logoMeta.png" />
+    <meta property="og:url" content="https://docs.diambra.ai/" />
+    <meta property="og:type" content="website">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
