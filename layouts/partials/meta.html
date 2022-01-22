@@ -1,0 +1,11 @@
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+    <meta name="keywords" content="{{ .Site.Params.keywords }}">
+    
+    <meta itemprop="name" content="{{ .Site.Title }}">
+    <meta itemprop="description" content="{{ .Site.Params.description }}">
+    <meta itemprop="image" content="{{ .Site.BaseURL }}/images/logoMeta.png" />
+    
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}/images/logoMeta.png" />

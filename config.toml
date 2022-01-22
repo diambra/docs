@@ -15,7 +15,8 @@ linkify = false
 
 [params]
   #editURL = "https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/"
-  description = "DIAMBRA Arena Documentation"
+  description = "Official documentation for DIAMBRA Arena, a new platform for Reinforcement Learning research and experimentation featuring popular video games."
+  keywords = "Documentation, Reinforcement Learning, Deep Reinforcement Learning, AI Tournaments, Video Games Environments, RL Environments, DIAMBRA, Dueling AI Arena, DIAMBRA Arena Documentation, AI Competitions, Artificial Intelligence"
   author = "Alessandro Palmas"
   showVisitedLinks = true
   disableBreadcrumb = false
