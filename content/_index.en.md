@@ -108,7 +108,8 @@ To request features or report bugs, use the <a href="https://github.com/diambra/
 
 - Official Website: <a href="https://diambra.ai" target="_blank">https://diambra.ai</a>
 - GitHub Repository: <a href="https://github.com/diambra/diambraArena" target="_blank">https://github.com/diambra/diambraArena</a>
-- Linkedin: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
+- Docker Repository: <a href="https://hub.docker.com/r/diambra/diambra-arena" target="_blank">https://hub.docker.com/r/diambra/diambra-arena</a>
+- Linkedin Page: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
 - Discord Server: <a href="https://discord.gg/tFDS2UN5sv" target="_blank">https://discord.gg/tFDS2UN5sv</a>
 - Twitch Channel: <a href="https://www.twitch.tv/diambra_ai" target="_blank">https://www.twitch.tv/diambra_ai</a>
 - YouTube Channel: <a href="https://www.youtube.com/channel/UCMlHRxN3KtLIj1N8mKvmXDw/videos" target="_blank">https://www.youtube.com/channel/UCMlHRxN3KtLIj1N8mKvmXDw/videos</a>

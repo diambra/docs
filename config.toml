@@ -46,10 +46,16 @@ url = "https://diambra.ai"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-fw fa-github'></i> GitHub Repo"
+name = "<i class='fab fa-fw fa-github'></i> GitHub"
 identifier = "github"
 url = "https://github.com/diambra/diambraArena"
 weight = 11
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-fw fa-docker'></i> Docker"
+identifier = "docker"
+url = "https://hub.docker.com/r/diambra/diambra-arena"
+weight = 12
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-twitch'></i> Twitch"

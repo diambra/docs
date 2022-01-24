@@ -398,7 +398,7 @@ romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind"
 
 docker run -it --rm --privileged $volume $romsPath \              
  --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
- --name diambraArena diambra:diambra-arena-base \
+ --name diambraArena diambra/diambra-arena:base \
   sh -c "cd /opt/diambraArena/code/ && $cmd" 
 ```
 
@@ -408,7 +408,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `-v $volumeName:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `volumeName` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=$(pwd),target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to run is expected to be located (`/opt/diambraArena/code`)
-- `--name diambraArena diambra:diambra-arena-base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra:diambra-arena-base`)
+- `--name diambraArena diambra/diambra-arena:base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra/diambra-arena:base`)
 - `sh -c "cd /opt/diambraArena/code/ && $cmd`: specifying the command to be executed in container's shell
 
 {{% /tab %}}
@@ -420,7 +420,7 @@ romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind"
 
 docker run -it --rm --gpus all --privileged $volume $romsPath \              
  --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
- --name diambraArena diambra:diambra-arena-gpu-cuda10.0 \
+ --name diambraArena diambra/diambra-arena:gpu-cuda10.0 \
   sh -c "cd /opt/diambraArena/code/ && $cmd" 
 ```
 
@@ -430,7 +430,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `-v $volumeName:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `volumeName` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=$(pwd),target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to run is expected to be located (`/opt/diambraArena/code`)
-- `--name diambraArena diambra:diambra-arena-gpu-cuda10.0`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra:diambra-arena-gpu-cuda10.0`)
+- `--name diambraArena diambra/diambra-arena:gpu-cuda10.0`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra/diambra-arena:gpu-cuda10.0`)
 - `sh -c "cd /opt/diambraArena/code/ && $cmd`: specifying the command to be executed in container's shell
 
 {{% /tab %}}
@@ -443,7 +443,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 
   docker run -it --rm --privileged %ROMSPATH% %VOLUME% ^                        
    --mount src=%CURDIR%,target="/opt/diambraArena/code",type=bind ^             
-   --name diambraArena diambra:diambra-arena-base ^                             
+   --name diambraArena diambra/diambra-arena:base ^                             
    sh -c "cd /opt/diambraArena/code/ && !CMDTOEXEC!" 
 ```
 
@@ -453,7 +453,7 @@ Where `VOLUME`, `ROMSPATH` and `CMDTOEXEC` are are built by the launcher using a
 - `-v %VOLUME%:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `VOLUME` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=%ROMSPATH%,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=%CURDIR%,target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to execute is expected to be located (`/opt/diambraArena/code`)
-- `--name diambraArena diambra:diambra-arena-base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra:diambra-arena-base`)
+- `--name diambraArena diambra/diambra-arena:base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra/diambra-arena:base`)
 - `sh -c "cd /opt/diambraArena/code/ && !CMDTOEXEC!`: specifying the command to be executed in container's shell
 
 {{% /tab %}}
@@ -471,7 +471,7 @@ romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind"
 ./x11docker --cap-default --hostipc --network=host --name=diambraArena --wm=host \
  --pulseaudio --size=1024x600 -- --privileged $volume $romsPath \ 
  --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
- -- diambra:diambra-arena-base &>/dev/null & sleep 4s; \                                    
+ -- diambra/diambra-arena:base &>/dev/null & sleep 4s; \                                    
   docker exec -u 0 --privileged -it diambraArena \                          
   sh -c "set -m; cd /opt/diambraArena/code/ && $cmd"; pkill -f "bash ./x11docker*"
 ```
@@ -483,7 +483,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
 - `-v $volumeName:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `volumeName` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=$(pwd),target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to run is expected to be located (`/opt/diambraArena/code`)
-- `diambra:diambra-arena-base &>/dev/null & sleep 4s;`: specifying the image to load (`diambra:diambra-arena-base`), forwarding the output to `/dev/null` to keep the execution alive (`&>/dev/null`), putting the process in the background and waiting for 4 seconds before moving to the next command (`& sleep 4s;`)
+- `diambra/diambra-arena:base &>/dev/null & sleep 4s;`: specifying the image to load (`diambra/diambra-arena:base`), forwarding the output to `/dev/null` to keep the execution alive (`&>/dev/null`), putting the process in the background and waiting for 4 seconds before moving to the next command (`& sleep 4s;`)
 - `docker exec -u 0 --privileged -it diambraArena`: accessing the running container specifying the user (`-u 0`), granting a given level of permissions (`--privileged`), in interactive mode (`-it`), and identifying it by its name (`diambraArena`)
 - `sh -c "set -m; cd /opt/diambraArena/code/ && $cmd`: specifying the command to be executed in container's shell
 - `pkill -f "bash ./x11docker*`: killing the `x11docker` application running in background once the container execution ends 
@@ -499,7 +499,7 @@ Where `volumeName`, `romsPath` and `cmd` are are built by the launcher using arg
   START /B CMD /C CALL "!XSRVPATH!" -noprimary -nowgl -ac -displayfd 664 -screen 0 400x300@1
   docker run -it --rm --privileged -e DISPLAY="!ENVDISPLAYIP!:0.0" %ROMSPATH% %VOLUME% ^
    --mount src=%CURDIR%,target="/opt/diambraArena/code",type=bind ^             
-   --name diambraArena diambra:diambra-arena-base ^                             
+   --name diambraArena diambra/diambra-arena:base ^                             
    sh -c "cd /opt/diambraArena/code/ && %CMDTOEXEC%"                            
   TASKKILL /IM vcxsrv.exe /F
 ```
@@ -511,7 +511,7 @@ Where `VOLUME`, `ROMSPATH`, `ENVDISPLAYIP`, `XSRVPATH` and `CMDTOEXEC` are are b
 - `-v %VOLUME%:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `VOLUME` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=%ROMSPATH%,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=%CURDIR%,target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to execute is expected to be located (`/opt/diambraArena/code`)
-- `--name diambraArena diambra:diambra-arena-base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra:diambra-arena-base`)
+- `--name diambraArena diambra/diambra-arena:base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra/diambra-arena:base`)
 - `sh -c "cd /opt/diambraArena/code/ && !CMDTOEXEC!`: specifying the command to be executed in container's shell
 - `TASKKILL /IM vcxsrv.exe /F`: killing the `vcxsrv.exe` application running in background once the container execution ends 
 
@@ -525,7 +525,7 @@ romsPath="--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind"
 socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &>/dev/null & sleep 15s; open -a xquartz; sleep 5s; \
 docker run -it --rm --privileged -e DISPLAY="$envDisplayIp:0.0" $volume $romsPath \
  --mount src=$(pwd),target="/opt/diambraArena/code",type=bind \             
- --name diambraArena diambra:diambra-arena-base \                                           
+ --name diambraArena diambra/diambra-arena:base \                                           
   sh -c "cd /opt/diambraArena/code/ && $cmd"
 ```
 
@@ -537,7 +537,7 @@ Where `volumeName`, `romsPath`, `DISPLAY`, `envDisplayIp` and `cmd` are are buil
 - `-v $volumeName:/usr/local/lib/python3.6/dist-packages/`: creating/linking a volume named `volumeName` in user's local workspace with container's default Python packages installation directory to make changes persistent (they will be saved inside the volume)
 - `--mount src=$romsPath,target="/opt/diambraArena/roms",type=bind`: mounting and binding the user's local ROMs folder to a specific location inside the container where ROMs are expected to be located (`/opt/diambraArena/roms`)
 - `--mount src=$(pwd),target="/opt/diambraArena/code",type=bind`: mounting and binding the user's local folder from where the launcher script is executed, to a specific location inside the container where code to run is expected to be located (`/opt/diambraArena/code`)
-- `--name diambraArena diambra:diambra-arena-base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra:diambra-arena-base`)
+- `--name diambraArena diambra/diambra-arena:base`: specifying the name of the container to be created (`--name diambraArena`) and the image to load (`diambra/diambra-arena:base`)
 - `sh -c "cd /opt/diambraArena/code/ && $cmd`: specifying the command to be executed in container's shell
 
 {{% /tab %}}

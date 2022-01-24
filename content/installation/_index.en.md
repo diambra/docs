@@ -76,12 +76,12 @@ Install and use a virtual environment to manage dependencies, both <a href="http
 
 - Base Image (CPU):
   ```shell
-  docker pull diambra:diambra-arena-base
+  docker pull diambra/diambra-arena:base
   ```
 
 - Image with CUDA Support (GPU - CUDA 10.0):
   ```shell
-  docker pull diambra:diambra-arena-gpu-cuda10.0
+  docker pull diambra/diambra-arena:gpu-cuda10.0
   ```
 
 ##### Download Examples
@@ -163,7 +163,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 - Base Image (CPU): 
 
   ```shell
-  docker pull diambra:diambra-arena-base
+  docker pull diambra/diambra-arena:base
   ```
 ##### Download Examples
 
@@ -240,7 +240,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 - Base Image (CPU):
 
   ```shell
-  docker pull diambra:diambra-arena-base
+  docker pull diambra/diambra-arena:base
   ```
 
 ##### Download Examples
