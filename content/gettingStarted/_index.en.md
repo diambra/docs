@@ -13,7 +13,7 @@ weight: 20
     - <a href="./#environment-run">Environment Run</a>
         - <a href="./#random-agent-in-dead-or-alive-headless-mode">Random Agent in Dead Or Alive++ (Headless Mode)</a>
         - <a href="./#random-agent-in-dead-or-alive-with-gui-support">Random Agent in Dead Or Alive++ (with GUI Support)</a>
-        - <a href="./#gpu-docker-image-linux-only">Bash Terminal With Python Packages Persistent Install</a>
+        - <a href="./#bash-terminal-with-python-packages-persistent-install">Bash Terminal With Python Packages Persistent Install</a>
 - <a href="./#advanced-usage">Advanced Usage</a>
     - <a href="./#gpu-docker-image-linux-only">GPU Docker Image (Linux Only)</a>
         - <a href="./#check-gpu-availability-with-tensorflow">Check GPU Availability with TensorFlow</a>
