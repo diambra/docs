@@ -72,7 +72,7 @@ Install and use a virtual environment to manage dependencies, both <a href="http
 {{< tabs groupId="installationTabs">}}
 {{% tab name="Linux Docker" %}}
 
-##### Download DIAMBRA Arena Docker Images
+##### 1) Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU):
   ```shell
@@ -84,7 +84,7 @@ Install and use a virtual environment to manage dependencies, both <a href="http
   docker pull diambra/diambra-arena:gpu-cuda10.0
   ```
 
-##### Download Examples
+##### 2) Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
 
@@ -92,7 +92,7 @@ Install and use a virtual environment to manage dependencies, both <a href="http
     wget XXX; unzip examples.zip && cd examples
     ```
 
-##### Download Game ROM(s) and Check Validity
+##### 3) Download Game ROM(s) and Check Validity
 
 - Check available games details:
     ```shell
@@ -133,9 +133,11 @@ Install and use a virtual environment to manage dependencies, both <a href="http
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
+<div style="padding-left:40px;">
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
   {{% /notice %}}
+</div>
 
 - Check ROM(s) validity running:
 
@@ -149,27 +151,29 @@ Install and use a virtual environment to manage dependencies, both <a href="http
   Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
   ```
 
+<div style="padding-left:40px;">
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable<br> 
 A) in your current shell session with: `export DIAMBRAROMSPATH=your/roms/local/path`<br>
 B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate shell `.profile` (in `bash`, for example, append the line to `~/.bashrc`)
 {{% /notice %}}
+</div>
 
 {{% /tab %}}
 {{% tab name="Win" %}}
 
-##### Download DIAMBRA Arena Docker Images
+##### 1) Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU): 
 
   ```shell
   docker pull diambra/diambra-arena:base
   ```
-##### Download Examples
+##### 2) Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder
 
-##### Download Game ROM(s) and Check Validity
+##### 3) Download Game ROM(s) and Check Validity
 
 - Check available games details:
 
@@ -212,9 +216,11 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
+<div style="padding-left:40px;">
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
   {{% /notice %}}
+</div>
 
 - Check ROM(s) validity running:
 
@@ -228,14 +234,16 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
   ```
 
+<div style="padding-left:40px;">
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable named `DIAMBRAROMSPATH`.<br> 
 {{% /notice %}}
+</div>
 
 {{% /tab %}} 
 {{% tab name="MacOS" %}}
 
-##### Download DIAMBRA Arena Docker Images
+##### 1) Download DIAMBRA Arena Docker Images
 
 - Base Image (CPU):
 
@@ -243,7 +251,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
   docker pull diambra/diambra-arena:base
   ```
 
-##### Download Examples
+##### 2) Download Examples
 
 - Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
 
@@ -251,7 +259,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
     wget XXX; unzip examples.zip && cd examples
     ```
 
-##### Download Game ROM(s) and Check Validity
+##### 3) Download Game ROM(s) and Check Validity
 
 - Check available games details:
 
@@ -294,9 +302,11 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
+<div style="padding-left:40px;">
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
   {{% /notice %}}
+</div>
 
 - Check ROM(s) validity running:
 
@@ -310,16 +320,18 @@ To avoid specifying ROMs path for every command you run, you can define a specif
   Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
   ```
 
+<div style="padding-left:40px;">
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable<br> 
 A) in your current shell session with: `export DIAMBRAROMSPATH=your/roms/local/path`<br>
 B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate shell `.profile` (in `bash`, for example, append the line to `~/.bashrc`)
 {{% /notice %}}
+</div>
 
 {{% /tab %}} 
 {{% tab name="Linux Source" %}}
 
-##### Install OS Dependencies and Python Packages
+##### 1) Install OS Dependencies and Python Packages
 
 - Download or clone <a href="https://github.com/diambra/diambraArena" target="_blank">DIAMBRA Arena Repository</a>
 - Open a terminal and navigate inside the repository root
@@ -333,7 +345,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   ```shell
   pip3 install .
   ```
-##### Download Game ROM(s) and Check Validity
+##### 2) Download Game ROM(s) and Check Validity
 
 - Check available games details:
 
@@ -377,9 +389,11 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 
 - Search ROMs and download them. You can use <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above, there is a list of suggested terms for each game. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported in the games list above, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
+<div style="padding-left:40px;">
   {{% notice note %}}
   Specific game ROM files are required to make DIAMBRA Arena work. Make sure to check ROMs validity of the downloaded file (next bullet point).
   {{% /notice %}}
+</div>
 
 - Check ROM(s) validity running:
 
@@ -393,11 +407,13 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
   ```
 
+<div style="padding-left:40px;">
 {{% notice tip %}}
 To avoid specifying ROMs path for every command you run, you can define a specific environment variable<br> 
 A) in your current shell session with: `export DIAMBRAROMSPATH=your/roms/local/path`<br>
 B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate shell `.profile` (in `bash`, for example, append the line to `~/.bashrc`)
 {{% /notice %}}
+</div>
 
 {{% /tab %}}
 {{< /tabs >}}  
