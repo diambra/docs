@@ -26,7 +26,7 @@ weight: 20
 ### Prerequisites
 
 - Installation completed and successfully tested as described in <a href="/installation/">Installation</a> section
-- <a href="/installation/">TODO: UPDATE LINK Examples</a> provided with DIAMBRA Arena repo downloaded
+- <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">Examples</a> provided with DIAMBRA Arena repo downloaded
 - ROMs downloaded and all placed in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`
 
 {{% notice tip %}}
@@ -78,7 +78,7 @@ More complex and complete examples can be found in the <a href="./examples/">Exa
 
 #### Launcher Options (Docker Only)
 
-To allow a very smooth execution, we included a *launcher script* in DIAMBRA Arena repo, inside the <a href="/installation/">TODO: UPDATE LINK Examples</a> folder. It is a bash/batch script named `diambraArena.sh`/`diambraArena.bat` for Linux-MacOS/Windows respectively. 
+To allow a very smooth execution, we included a *launcher script* in DIAMBRA Arena repo, inside the <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">Examples</a> folder. It is a bash/batch script named `diambraArena.sh`/`diambraArena.bat` for Linux-MacOS/Windows respectively. 
 
 It provides a simple interface to easily perform many useful tasks, like:
  - Validating a ROM file

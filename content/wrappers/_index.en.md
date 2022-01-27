@@ -30,7 +30,7 @@ env = diambraArena.make("TestEnv", settings, wrappersSettings)
 ```
 
 {{% notice note %}}
-Implementation examples and templates can be found in the code repository, <a href="./#reward-clipping" target="_blank">here ADD LINK</a>
+Implementation examples and templates can be found in the code repository, <a href="https://github.com/diambra/diambraArena/tree/main/diambraArena/wrappers" target="_blank">here</a>.
 {{% /notice %}}
 
 {{% notice tip %}}

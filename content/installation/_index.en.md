@@ -86,7 +86,7 @@ Install and use a virtual environment to manage dependencies, both <a href="http
 
 ##### 2) Download Examples
 
-- Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
+- Download <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
 
     ```shell
     wget XXX; unzip examples.zip && cd examples
@@ -171,7 +171,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
   ```
 ##### 2) Download Examples
 
-- Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder
+- Download <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder
 
 ##### 3) Download Game ROM(s) and Check Validity
 
@@ -253,7 +253,7 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 
 ##### 2) Download Examples
 
-- Download <a href="https://github.com/diambra/DIAMBRAenvironment" target="_blank">TODO MODIFY!DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
+- Download <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
 
     ```shell
     wget XXX; unzip examples.zip && cd examples
