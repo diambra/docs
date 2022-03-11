@@ -9,7 +9,7 @@ weight: 20
 
 - <a href="./#prerequisites">Prerequisites</a>
 - <a href="./#basic-usage">Basic Usage</a>
-    - <a href="./#launcher-options">Launcher Options</a>
+    - <a href="./#launcher-options-docker-only">Launcher Options</a>
     - <a href="./#environment-run">Environment Run</a>
         - <a href="./#random-agent-in-dead-or-alive-headless-mode">Random Agent in Dead Or Alive++ (Headless Mode)</a>
         - <a href="./#random-agent-in-dead-or-alive-with-gui-support">Random Agent in Dead Or Alive++ (with GUI Support)</a>
@@ -151,7 +151,7 @@ Examples:
   - Terminal (CPU): ./diambraArena.sh -c bash
                                       -v yourVolumeName (optional)
  
-  - CUDA Installation Test (GPU): ./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V"
+  - CUDA Installation Test (GPU): ./diambraArena.sh -c "nvidia-smi"
                                                     -d GPU
 ```
 
