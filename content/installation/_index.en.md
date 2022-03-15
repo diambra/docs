@@ -76,21 +76,21 @@ Install and use a virtual environment to manage dependencies, both <a href="http
 
 - Base Image (CPU):
   ```shell
-  docker pull diambra/diambra-arena:base
+  docker pull diambra/diambra-arena:main
   ```
 
-- Image with CUDA Support (GPU - CUDA 10.0):
+- Image with CUDA Support (GPU - CUDA 10.0/11.0):
   ```shell
-  docker pull diambra/diambra-arena:gpu-cuda10.0
+  docker pull diambra/diambra-arena-cuda10:main
+  ```
+  or
+  ```shell
+  docker pull diambra/diambra-arena-cuda11:main
   ```
 
 ##### 2) Download Examples
 
 - Download <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
-
-    ```shell
-    wget XXX; unzip examples.zip && cd examples
-    ```
 
 ##### 3) Download Game ROM(s) and Check Validity
 
@@ -167,7 +167,7 @@ B) permanently, adding `DIAMBRAROMSPATH=your/roms/local/path` to the appropriate
 - Base Image (CPU): 
 
   ```shell
-  docker pull diambra/diambra-arena:base
+  docker pull diambra/diambra-arena:main
   ```
 ##### 2) Download Examples
 
@@ -248,16 +248,12 @@ To avoid specifying ROMs path for every command you run, you can define a specif
 - Base Image (CPU):
 
   ```shell
-  docker pull diambra/diambra-arena:base
+  docker pull diambra/diambra-arena:main
   ```
 
 ##### 2) Download Examples
 
 - Download <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">DIAMBRA Arena Examples</a>, unzip them and open a terminal inside the newly created folder:
-
-    ```shell
-    wget XXX; unzip examples.zip && cd examples
-    ```
 
 ##### 3) Download Game ROM(s) and Check Validity
 
@@ -506,17 +502,26 @@ Using MultiDiscrete action space
 To check if GPU has been interfaced properly, run the test as follows:
 
 ```shell
-./diambraArena.sh -c "cat /proc/driver/nvidia/version; nvcc -V" -d GPU
+./diambraArena.sh -c "nvidia-smi" -d GPU
 ```
 A successful installation would result in a terminal printout like the following:
 
 ```shell
-NVRM version: NVIDIA UNIX x86_64 Kernel Module  440.95.01  Thu May 28 07:03:08 UTC 2020
-GCC version:  gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
-nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2018 NVIDIA Corporation
-Built on Sat_Aug_25_21:08:01_CDT_2018
-Cuda compilation tools, release 10.0, V10.0.130
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.95.01    Driver Version: 440.95.01    CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce MX130       On   | 00000000:02:00.0 Off |                  N/A |
+| N/A   47C    P0    N/A /  N/A |    498MiB /  2004MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
++-----------------------------------------------------------------------------+
 ```
 
 {{% /tab %}}
