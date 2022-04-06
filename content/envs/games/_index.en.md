@@ -27,7 +27,11 @@ weight: 20
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
    <a href="./kof98umh/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/kof98umh.jpg"/>
    <figcaption align="middle">The King of Fighers '98 UMH</figcaption></a>
-  </figure>                                                                       
+  </figure>  
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
+   <a href="./mvsc/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/mvsc.jpg"/>
+   <figcaption align="middle">Marvel VS Capcom</figcaption></a>
+  </figure>                                                                     
 </div>
 
 <div>
@@ -67,6 +71,7 @@ For every released title, extensive testing has been carried out, being the mini
 | <a href="./umk3/">Ultimate Mortal Kombat 3</a>          | Stable[^1]| `umk3`|
 | <a href="./samsh5sp/">Samurai Showdown 5 Special</a>        | Beta[^2]| `samsh5sp`|
 | <a href="./kof98umh/">The King of Fighters '98: Ultimate Match Hero</a>    | Beta[^2]| `kof98umh`|
+| <a href="./mvsc/">Marvel VS Capcom</a>    | Beta[^2]| `mvsc`|
 
 [^1]: Stable = Successfully trained Deep RL Agent in Single Player mode.
 [^2]: Beta = Passing all Quality Assurance tests.
