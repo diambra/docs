@@ -112,7 +112,7 @@ To request features or report bugs, use the <a href="https://github.com/diambra/
 - Linkedin Page: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
 - Discord Server: <a href="https://discord.gg/tFDS2UN5sv" target="_blank">https://discord.gg/tFDS2UN5sv</a>
 - Twitch Channel: <a href="https://www.twitch.tv/diambra_ai" target="_blank">https://www.twitch.tv/diambra_ai</a>
-- YouTube Channel: <a href="https://www.youtube.com/channel/UCMlHRxN3KtLIj1N8mKvmXDw/videos" target="_blank">https://www.youtube.com/channel/UCMlHRxN3KtLIj1N8mKvmXDw/videos</a>
+- YouTube Channel: <a href="https://www.youtube.com/c/diambra_ai" target="_blank">https://www.youtube.com/c/diambra_ai</a>
 
 ### Citation
 
