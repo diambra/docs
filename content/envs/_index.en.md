@@ -94,6 +94,9 @@ Additional details can be found in their <a href="./games/">dedicated section</a
   </figure>                                                                     
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
    <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/kof98umh.jpg"/></a>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/mvsc.jpg"/></a>
   </figure>                                                                     
 </div>    
 

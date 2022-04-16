@@ -79,7 +79,10 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
   </figure>                                                                     
   <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
    <a href="./envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="./images/envs/kof98umh.jpg"/></a>
-  </figure>                                                                     
+  </figure>
+  <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <a href="./envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="./images/envs/mvsc.jpg"/></a>
+  </figure>                                                                 
 </div>                                                                          
        
 

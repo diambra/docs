@@ -27,28 +27,29 @@ weight: 20
 |-------------|-------------|
 | <strong><span style="color:#5B5B60;">Game ID</span></strong>   | `mvsc`       |
 | <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>   | `mvsc.zip`       |
-| <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | `7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416`        |
-| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | `Marvel VS Capcom CPS2`, `street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone`, `106255`, `wowroms`     |
+| <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>  | `7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416`        | 
+| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>   | `Marvel VS Capcom CPS2`, marvel-vs-capcom-clash-of-super-heroes`, `980123`, `wowroms`     |
 | <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>  | 224px&#160;X&#160;384px&#160;X&#160;3   |
-| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | 9, 10 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-9): (No-Attack, Low Punch, Medium Punch, High Punch, Low Kick, Medium Kick, High Kick), Low Punch+Low Kick, Medium Punch+Medium Kick, High Punch+High Kick   |
+| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong>  | 9, 10 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-9): (No-Attack, Low Punch, Medium Punch, High Punch, Low Kick, Medium Kick, High Kick), Low Punch+Low Kick, Medium Punch+Medium Kick (partner attack), High Punch+High Kick (tag)   |
 | <strong><span style="color:#5B5B60;">Max Difficulty (1P Mode)</span></strong>  | 8   |
-| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | 20 (19)   |
-| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | 7  |
-| <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>  | 10   |
+| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>  | 18   |
+| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>  | 2  |
+| <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>  | 8   |
 
 ### Game Specific Settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------| ------|------| ----|
-| `difficulty`       | `int`| 3 |[1, 8]|
-| `characters`| `string`       | [[`Random`],&#160;[`Random`]] | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
-| `charOutfits`| `int`      | [2, 2] | [1, 7] |
+| `difficulty`       | `int`| 4 |[1, 8]|
+| `characters`| `string`       | [[`Random`],&#160;[`Random`]] | War Machine, Captain America, Hulk, Wolverine, Gambit, Venom, Spider-Man, Ryu, Chun-Li, Jin, Zangeif, Strider Hiryu, Morrigan, Megaman |
+| `charOutfits`| `int`      | [2, 2] | [1, 2] |
 
 ##### Extended Game Settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|<strong><span style="color:#5B5B60;">Description</span></strong>|
 |-------------| ------|------| ----|---------|
-| `superArt`| `int`      | [0, 0] | [0, 3] | Selects the type of super move.<br>0: Random, 1-2-3: Super move 1-2-3|
+| `fightingStyle`| `int`      | [0, 0] | [0, 1] | Selects the type of fighting, easy mode allows the user to do combos in a easier way.<br>0: Easy ; 1: Normal|
+| `speedSelect`| `int`        | [0, 0] | [0, 1] | Select the fighting speed, like other Street Fighter games.<br>0: Turbo; 1: Normal|
 
 ### Action Spaces 
 
