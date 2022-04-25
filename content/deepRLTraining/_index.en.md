@@ -18,13 +18,72 @@ With the goal of easing the usage of Imitation Learning, DIAMBRA Arena comes wit
 
 ##### Books
 
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:15%; float:left; width:35.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlintro.png"/>
+   <figcaption align="middle">Reinforcement Learning: An Introduction - Sutton & Barto</figcaption>                          
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:35.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlworkshop.png"/>
+   <figcaption align="middle">The Reinforcement Learning Workshop - Palmas et al.</figcaption>                    
+  </figure>                                                                     
+</div>         
+
 ##### Courses / Video-lectures
+
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:15%; float:left; width:35.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/courses_deepRlBoot.png"/>
+   <figcaption align="middle">Standard RL</figcaption>                          
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:35.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/courses_deepminducl.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>                    
+  </figure>                                                                     
+</div>         
 
 ##### State-of-the-Art Research
 
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlintro.png"/>
+   <figcaption align="middle">Standard RL</figcaption>                          
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:30.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlworkshop.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>                    
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlworkshop.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>                    
+  </figure>                                                                     
+</div>         
+
 ##### More
 
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:auto; width:35.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/film_alphago.png"/>
+   <figcaption align="middle">Standard RL</figcaption>                          
+  </figure>                                                                     
+</div>         
+
 ### RL Libraries
+
+<div>                                                                           
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlintro.png"/>
+   <figcaption align="middle">Standard RL</figcaption>                          
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:30.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlworkshop.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>                    
+  </figure>                                                                     
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/deepRlTraining/books_rlworkshop.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>                    
+  </figure>                                                                     
+</div>         
 
 ##### Stable-Baselines3
 
