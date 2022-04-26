@@ -29,11 +29,5 @@ weight: 70
   </figure>
 </div>
 
-##### Stable-Baselines3
-
-##### Ray RL Lib
-
-##### RL Coach
-
 ### End-to-End DeepRL Agent Training
 
