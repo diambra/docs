@@ -238,7 +238,7 @@ Use of this functionality can be found in <a href="/gettingstarted/examples/wrap
 {{% /notice %}}  
 
 {{% notice warning %}}
-This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the normalization wrapper is active.
+This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the observation normalization wrapper is active.
 {{% /notice %}}  
 
 ```python

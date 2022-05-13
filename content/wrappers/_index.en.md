@@ -113,10 +113,10 @@ wrappersSettings["stickyActions"] = 1
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |<strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|------|-----|
-| `normalizeRewards` | `bool`| True|True / False | Activates reward normalization. Divides reward value by half the maximum health bar value.  |
+| `rewardNormalizationFactor` | `double`| 1.0 | [-inf,&#160;+inf] | If different from 1.0, activates reward normalization. Divides reward value by the product between this input value and the delta between maximum and minium health bar value for the given game.  |
 
 ```python
-wrappersSettings["normalizeRewards"] = True
+wrappersSettings["rewardNormalizationFactor"] = 1.0
 ```
 
 #### Reward Clipping

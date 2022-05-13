@@ -51,9 +51,6 @@ settings["sound"] = settings["lockFps"] and settings["render"]
 # Number of steps performed by the game for every environment step, bounds: [1, 6]
 settings["stepRatio"] = 6
 
-# Allows to execute the environment in headless mode (for server-side executions)
-settings["headless"] = False
-
 # Game continue logic (0.0 by default):
 # - [0.0, 1.0]: probability of continuing game at game over
 # - int((-inf, -1.0]): number of continues at game over before episode to be considered done

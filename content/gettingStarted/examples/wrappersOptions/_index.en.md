@@ -46,8 +46,9 @@ wrappersSettings["stickyActions"] = 1
 # Frame resize operation spec (deactivated by default)
 wrappersSettings["hwcObsResize"] = [128, 128, 1]
 
-# If to perform rewards normalization (True by default)
-wrappersSettings["normalizeRewards"] = True
+# Reward normalization factor
+# activates normalization if different from 1.0 (1.0 by default)
+wrappersSettings["rewardNormalizationFactor"] = 0.5
 
 # If to clip rewards (False by default)
 wrappersSettings["clipRewards"] = False
