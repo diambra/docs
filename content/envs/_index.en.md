@@ -298,7 +298,7 @@ Where:
 - $T_s$ is the terminal state, reached when either $N_r$ rounds are lost (for both 1P and 2P mode) or game is cleared (for 1P mode only); 
 - $t$ represents the environment step and for an episode goes from 0 to $T_s$;
 - $N_s$ is the maximum number of stages the agent can play before the game reaches $T_s$. 
-- $\Delta H = H_{max} - H_{min}$ is the difference between the maximum and the mimnimum health value for the given game; ususally, but not always, $H_{min} = 0$.
+- $\Delta H = H_{max} - H_{min}$ is the difference between the maximum and the mimnimum health values for the given game; ususally, but not always, $H_{min} = 0$.
 
 For 1P mode $N_s$ is game-dependent, while for 2P mode $N_s=1$, meaning the episode always ends after a single stage (so after $N_r$ rounds have been won / lost be the same player, either P1 or P2).
 
