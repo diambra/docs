@@ -23,6 +23,7 @@ Source code for examples described in what follows can be found in the code repo
 - <a href="./wrappersoptions/">Wrappers Options</a>
 - <a href="./humanexperiencerecorder/">Human Experience Recorder</a>
 - <a href="./imitationlearning/">Imitation Learning</a>
+- <a href="./basicjupyternotebook/">Basic Jupyter Notebook</a>
 
 </div>
  

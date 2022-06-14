@@ -21,35 +21,21 @@ import diambraArena
 from diambraArena.gymUtils import showGymObs
 ```
 
-#### Mandatory settings
+#### Environment settings
 
 ```python
 settings = {}
 
-# Game selection
-settings["gameId"] = "doapp"
-
-# Path to roms folder
-settings["romsPath"] = "home/user/DIAMBRA/roms/"
-```
-
-#### Additional environment settings
-
-```python
 # Player side selection: P1 (left), P2 (right), Random (50% P1, 50% P2)
 settings["player"] = "Random"
 
-# Renders the environment, deactivate for speedup
-settings["render"] = True
-
-# Locks execution to 60 FPS, deactivate for speedup
-settings["lockFps"] = False
-
-# Activate game sound
-settings["sound"] = settings["lockFps"] and settings["render"]
-
 # Number of steps performed by the game for every environment step, bounds: [1, 6]
 settings["stepRatio"] = 6
+
+# Native frame resize operation
+settings["frameShape"] = [128, 128, 3] # RBG image with 128x128 size
+#settings["frameShape"] = [0, 0, 1] # Grayscale image with original size
+#settings["frameShape"] = [0, 0, 0] # No frame warping (RBG image with original size)
 
 # Game continue logic (0.0 by default):
 # - [0.0, 1.0]: probability of continuing game at game over
@@ -87,10 +73,7 @@ settings["attackButCombination"] = True
 #### Environment execution
 
 ```python
-# Environment ID, must be unique for every instance of the environment
-envId = "TestEnv"
-
-env = diambraArena.make(envId, settings)
+env = diambraArena.make("doapp", settings)
 
 observation = env.reset()
 showGymObs(observation, env.charNames)

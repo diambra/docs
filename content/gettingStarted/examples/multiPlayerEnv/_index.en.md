@@ -26,16 +26,6 @@ import numpy as np
 ```python
 settings = {}
 
-# Game selection
-settings["gameId"] = "doapp"
-
-# Path to roms folder
-settings["romsPath"] = "home/user/DIAMBRA/roms/"
-```
-
-#### Additional environment settings
-
-```python
 # 2 Players game
 settings["player"] = "P1P2"
 ```
@@ -53,7 +43,7 @@ settings["attackButCombination"] = [True, True]
 #### Environment execution
 
 ```python
-env = diambraArena.make("TestEnv", settings)
+env = diambraArena.make("doapp", settings)
 
 observation = env.reset()
 showGymObs(observation, env.charNames)

@@ -19,18 +19,6 @@ import diambraArena
 from diambraArena.gymUtils import showWrapObs
 ```
 
-#### Mandatory settings
-
-```python
-settings = {}
-
-# Game selection
-settings["gameId"] = "doapp"
-
-# Path to roms folder
-settings["romsPath"] = "home/user/DIAMBRA/roms/"
-```
-
 #### Wrappers settings
 
 ```python
@@ -44,10 +32,17 @@ wrappersSettings["noOpMax"] = 0
 wrappersSettings["stickyActions"] = 1
 
 # Frame resize operation spec (deactivated by default)
+# WARNING: for speedup, avoid frame warping wrappers,
+#          use environment's native frame wrapping through
+#          "frameShape" setting (see documentation for details).
 wrappersSettings["hwcObsResize"] = [128, 128, 1]
 
-# Reward normalization factor
-# activates normalization if different from 1.0 (1.0 by default)
+# Wrapper option for reward normalization
+# When activated, the reward normalization factor can be set (default = 0.5)
+# The normalization is performed by dividing the reward value
+# by the product of the factor times the value of the full health bar
+# reward = reward / (C * fullHealthBarValue)
+wrappersSettings["rewardNormalization"] = True
 wrappersSettings["rewardNormalizationFactor"] = 0.5
 
 # If to clip rewards (False by default)
