@@ -11,6 +11,7 @@ math: true
 - <a href="./#overview">Overview</a>
 - <a href="./#interaction-basics">Interaction Basics</a>
 - <a href="./#settings">Settings</a>
+  - <a href="./#command-line-interface-settings">Command Line Interface Settings</a>
   - <a href="./#general-settings">General Settings</a>
   - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
@@ -109,26 +110,32 @@ DIAMBRA Arena Environments usage follows the standard RL interaction framework: 
 The shortest snippet for a complete basic execution of an environment consists of just a few lines of code, and is presented in the code block below:
 
 ```python {linenos=inline}
- import diambraArena 
+ # DIAMBRA Arena module import
+ import diambraArena
 
- # Environment settings
- settings = {}
- settings["gameId"] = "doapp"
- settings["romsPath"] = "/path/to/roms/"
- 
- env = diambraArena.make("MyEnv", settings)
- 
+ # Environment creation
+ env = diambraArena.make("doapp")
+
+ # Environment reset
  observation = env.reset()
- 
+
+ # Agent-Environment interaction loop
  while True:
+     # (Optional) Environment rendering
+     env.render()
+
+     # Action random sampling
      actions = env.action_space.sample()
- 
+
+     # Environment stepping
      observation, reward, done, info = env.step(actions)
- 
+
+     # Episode end (Done condition) check
      if done:
          observation = env.reset()
          break
- 
+
+ # Environment close
  env.close()
 ```
 
@@ -138,13 +145,7 @@ More complex and complete examples can be found in the <a href="../gettingstarte
 
 ### Settings
 
-All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary passed to the environment creation method, as shown on line 8 in previous code example also reported below:
-
-```python
-env = diambraArena.make("MyEnv", settings)
-```
-
-#### General Settings
+#### Command Line Interface Settings
 
 Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages. Settings that are shared among all games, are found in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
 
@@ -154,20 +155,41 @@ Two ready-to-use examples showing how environment settings are used can be found
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
 |-------------|-------------| ------|------|------|
-| `gameId`\* | `string` | - | (See games list and info) | Selects the game to execute |
 | `romsPath`\* | `string` | - | - |Defines the absolute path of the folder where all game ROMs are located |
-| `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
 | `render` | `bool` | `True` | True / False | Activates game rendering|
 | `lockFps` | `bool` | `True` | True / False | Locks FPS to nominal value (60 FPS) |
 | `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
-| `stepRatio` | `int` | 6 | [1, 6] | Defines how many steps the game (emulator) performs for every environment step |
-| `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
-| `showFinal` | `bool` | `True` | True / False | Activates displaying of final animation when game is completed |
-| `rank` | `int` | `0` | [0, inf) | Assigns a rank number to the environment, useful when using parallel environment instances |
-| `actionSpace` | `string` | `multiDiscrete` | discrete / multiDiscrete | Defines the type of the action space |
-| `attackButcombination` | `bool` | `True` | True / False | Activates attack buttons combinations |
+| `scale` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
+| `pull` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
 
 \*: Mandatory
+
+#### General Settings
+
+All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary passed to the environment creation method, as shown on line 8 in previous code example also reported below:
+
+```python
+env = diambraArena.make("doapp", settings)
+```
+The first argument, the only one that is mandatory, is the `gameId` string, it specifies the game to execute among those available (see games list and info).
+
+Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages. 
+
+Game-specific settings that are shared among all games, are found in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
+
+{{% notice tip %}}
+Two ready-to-use examples showing how environment settings are used can be found <a href="../gettingstarted/examples/singleplayerenv/">here</a> and <a href="../gettingstarted/examples/multiplayerenv/">here</a>.
+{{% /notice %}}
+
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
+|-------------|-------------| ------|------|------|
+| `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
+| `stepRatio` | `int` | 6 | [1, 6] | Defines how many steps the game (emulator) performs for every environment step |
+| `frameShape` | `list` of three `int` [H,&#160;W,&#160;C]| [0,&#160;0,&#160;0] | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1| If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>[0,&#160;0,&#160;0] - Deactivated;<br>[H,&#160;W,&#160;0] - RBG frame resized to H&#160;X&#160;W;<br>[0,&#160;0,&#160;1] - Grayscale frame;<br>[H,&#160;W,&#160;1] - Grayscale frame resized to H&#160;X&#160;W. |
+| `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
+| `showFinal` | `bool` | `True` | True / False | Activates displaying of final animation when game is completed |
+| `actionSpace` | `string` | `multiDiscrete` | discrete / multiDiscrete | Defines the type of the action space |
+| `attackButcombination` | `bool` | `True` | True / False | Activates attack buttons combinations |
 
 #### Game Specific Settings
 

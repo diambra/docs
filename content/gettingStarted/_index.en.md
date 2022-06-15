@@ -61,7 +61,7 @@ The complete script consist of just a few lines and is reported below:
 
      # Episode end (Done condition) check
      if done:
-         # Interrupting interaction loop at episode's end
+         observation = env.reset()
          break
 
  # Environment close
