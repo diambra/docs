@@ -307,27 +307,6 @@ python diambraArenaGist.py --romsPath "your/roms/local/path"
 {{% /tab %}}
 {{< /tabs >}}
 
-##### Bash Terminal With Python Packages Persistent Install
-
-In order to make Python packages installation persistent inside the Docker container, Docker volumes are used. The container's Python package folder is linked to a folder in user's local filesystem (named `yourVolumeName`) where all modifications are saved.
-
-{{< tabs groupId="noLinuxSource">}}
-{{% tab name="Linux Docker / MacOS" %}}
-
-```shell
-./diambraArena.sh -c bash -v yourVolumeName
-```
-
-{{% /tab %}}
-{{% tab name="Win" %}}
-
-```shell
-diambraArena.bat "CMDTOEXEC=bash" "VOLUME=yourVolumeName"
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### Advanced usage
 
 #### Docker Commands Details
