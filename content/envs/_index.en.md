@@ -184,12 +184,12 @@ Two ready-to-use examples showing how environment settings are used can be found
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
 |-------------|-------------| ------|------|------|
 | `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
-| `stepRatio` | `int` | 6 | [1, 6] | Defines how many steps the game (emulator) performs for every environment step |
-| `frameShape` | `list` of three `int` [H,&#160;W,&#160;C]| [0,&#160;0,&#160;0] | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1| If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>[0,&#160;0,&#160;0] - Deactivated;<br>[H,&#160;W,&#160;0] - RBG frame resized to H&#160;X&#160;W;<br>[0,&#160;0,&#160;1] - Grayscale frame;<br>[H,&#160;W,&#160;1] - Grayscale frame resized to H&#160;X&#160;W. |
-| `conitnueGame` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
-| `showFinal` | `bool` | `True` | True / False | Activates displaying of final animation when game is completed |
-| `actionSpace` | `string` | `multiDiscrete` | discrete / multiDiscrete | Defines the type of the action space |
-| `attackButcombination` | `bool` | `True` | True / False | Activates attack buttons combinations |
+| `step_ratio` | `int` | 6 | [1, 6] | Defines how many steps the game (emulator) performs for every environment step |
+| `frame_shape` | `list` of three `int` [H,&#160;W,&#160;C]| [0,&#160;0,&#160;0] | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1| If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>[0,&#160;0,&#160;0] - Deactivated;<br>[H,&#160;W,&#160;0] - RBG frame resized to H&#160;X&#160;W;<br>[0,&#160;0,&#160;1] - Grayscale frame;<br>[H,&#160;W,&#160;1] - Grayscale frame resized to H&#160;X&#160;W. |
+| `conitnue_game` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
+| `show_final` | `bool` | `True` | True / False | Activates displaying of final animation when game is completed |
+| `action_space` | `string` | `multi_discrete` | discrete / multi_discrete | Defines the type of the action space |
+| `attack_but_ccombination` | `bool` | `True` | True / False | Activates attack buttons combinations |
 
 #### Game Specific Settings
 
@@ -199,7 +199,7 @@ Environment settings depending on the specific game and shared among all of them
 |-------------|-------------| ------|------|-----|
 | `difficulty`       | `int`| Default value if not specified | Min and Max values allowed for the specific game| Specifies game difficulty (1P only) |
 | `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game | Specifies character(s) to use |
-| `charOutfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game | Defines the number of outfits to draw from at character selection  |
+| `char_outfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game | Defines the number of outfits to draw from at character selection  |
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
   <img src="../images/envs/outfits.png" style="margin-bottom:20px;">

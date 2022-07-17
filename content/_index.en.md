@@ -8,12 +8,11 @@ title: "Home"
   <img src="./images/home/envCover.png" style="margin-top:0px;">
 </figure>   
 
-DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It acts as an interface towards popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym standard</span>, that makes its adoption smooth and straightforward. 
+DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It provides a standard interface to popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym format</span>, that makes its adoption smooth and straightforward. 
 
-It <span style="color:#333333; font-weight:bolder;">supports all major Operating Systems: Linux, Windows and MacOS</span>, most of them via Docker, with a step by step installation guide available in this manual. It is <span style="color:#333333; font-weight:bolder;">completely free to use</span>, the user only needs to register on the official website. 
+It <span style="color:#333333; font-weight:bolder;">supports all major Operating Systems</span> (Linux, Windows and MacOS) and <span style="color:#333333; font-weight:bolder;">can be easily installed via `pip`</span>, as described in the <a href="./installation/">installation section</a> of this manual. It is <span style="color:#333333; font-weight:bolder;">completely free to use</span>, the user only needs to register on the official website. 
 
-
-In addition, its <a href="https://github.com/diambra/diambraArena" target="_blank">GitHub repository</a> provides a <span style="color:#333333; font-weight:bolder;">collection of examples</span> covering main use cases of interest <span style="color:#333333; font-weight:bolder;">that can be run in just a few steps</span>.
+In addition, its <a href="https://github.com/diambra/arena" target="_blank">GitHub repository</a> provides a <span style="color:#333333; font-weight:bolder;">collection of examples</span> covering main use cases of interest <span style="color:#333333; font-weight:bolder;">that can be run in just a few steps</span>.
 
 <figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 80%;">
   <img src="./images/envs/basicUsage.png" style="margin-bottom:20px;">           
@@ -55,7 +54,7 @@ They all  <span style="color:#333333; font-weight:bolder;">support both single p
 
 #### Available Games
 
-Interfaced games have been selected among the most popular fighting retro-games. While sharing the same fundamental mechanics, they provide slightly different challenges, with specific features such as different type and number of characters, how to perform combos, health bars recharging, etc.  
+Interfaced games have been selected among the most popular fighting retro-games. While sharing the same fundamental mechanics, they provide different challenges, with specific features such as different type and number of characters, how to perform combos, health bars recharging, etc.  
 
 Whenever possible, games are released with all hidden/bonus characters unlocked. 
 
@@ -81,7 +80,120 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
    <a href="./envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="./images/envs/kof98umh.jpg"/></a>
   </figure>                                                                     
 </div>                                                                          
-       
+
+### Installation
+
+- <a href="https://diambra.ai/register/" target="_blank">Create an account on our website</a>, it requires just a few clicks and is 100% free
+
+- Install Docker Desktop: <a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a> | <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Windows</a> | <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">MacOS</a>
+
+- Install DIAMBRA Arena via PIP (using a virtual environment is strongly suggested)
+
+```
+pip install diambra-arena
+```
+
+### Quickstart       
+
+
+##### Download Game ROM(s) and Check Validity
+
+Check available games with the following command:
+
+```shell
+./diambraArena.sh -l
+```
+
+Output example:
+
+  ```shell
+   Title: Dead Or Alive ++ - GameId: doapp
+     Difficulty levels: Min 1 - Max 4
+     SHA256 sum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+     Original ROM name: doapp.zip
+     Search keywords: ['DEAD OR ALIVE ++ [JAPAN]', 'dead-or-alive-japan', '80781', 'wowroms']
+     Characters list: ['Kasumi', 'Zack', 'Hayabusa', 'Bayman', 'Lei-Fang', 'Raidou', 'Gen-Fu', 'Tina', 'Bass', 'Jann-Lee', 'Ayane']
+
+   Title: Street Fighter III - GameId: sfiii3n
+     Difficulty levels: Min 1 - Max 8
+     SHA256 sum: 7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416
+     Original ROM name: sfiii3n.zip
+     Search keywords: ['STREET FIGHTER III 3RD STRIKE: FIGHT FOR THE FUTUR [JAPAN] (CLONE)', 'street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone', '106255', 'wowroms']
+     Characters list: ['Alex', 'Twelve', 'Hugo', 'Sean', 'Makoto', 'Elena', 'Ibuki', 'Chun-Li', 'Dudley', 'Necro', 'Q', 'Oro', 'Urien', 'Remy', 'Ryu', 'Gouki', 'Yun', 'Yang', 'Ken', 'Gill']
+
+   Title: Tekken Tag Tournament - GameId: tektagt
+     Difficulty levels: Min 1 - Max 9
+     SHA256 sum: 57be777eae0ee9e1c035a64da4c0e7cb7112259ccebe64e7e97029ac7f01b168
+     Original ROM name: tektagtac.zip
+     Search keywords: ['TEKKEN TAG TOURNAMENT [ASIA] (CLONE)', 'tekken-tag-tournament-asia-clone', '108661', 'wowroms']
+     Notes: Rename the rom from tektagtac.zip to tektagt.zip
+     Characters list: ['Xiaoyu', 'Yoshimitsu', 'Nina', 'Law', 'Hwoarang', 'Eddy', 'Paul', 'King', 'Lei', 'Jin', 'Baek', 'Michelle', 'Armorking', 'Gunjack', 'Anna', 'Brian', 'Heihachi', 'Ganryu', 'Julia', 'Jun', 'Kunimitsu', 'Kazuya', 'Bruce', 'Kuma', 'Jack-Z', 'Lee', 'Wang', 'P.Jack', 'Devil', 'True Ogre', 'Ogre', 'Roger', 'Tetsujin', 'Panda', 'Tiger', 'Angel', 'Alex', 'Mokujin', 'Unknown']
+
+   Title: Ultimate Mortal Kombat 3 - GameId: umk3
+     Difficulty levels: Min 1 - Max 5
+     SHA256 sum: f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af
+     Original ROM name: umk3r10.zip
+     Search keywords: ['ULTIMATE MORTAL KOMBAT 3 (CLONE)', 'ultimate-mortal-kombat-3-clone', '109574', 'wowroms']
+     Notes: Rename the rom from umk3r10.zip to umk3.zip
+     Characters list: ['Kitana', 'Reptile', 'Kano', 'Sektor', 'Kabal', 'Sonya', 'Mileena', 'Sindel', 'Sheeva', 'Jax', 'Ermac', 'Stryker', 'Shang Tsung', 'Nightwolf', 'Sub-Zero-2', 'Cyrax', 'Liu Kang', 'Jade', 'Sub-Zero', 'Kung Lao', 'Smoke', 'Skorpion', 'Human Smoke', 'Noob Saibot', 'Motaro', 'Shao Kahn']
+  ```
+
+Search ROMs on the web using <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above. <span style="color:#333333; font-weight:bolder;">Pay attention and follow game-specific notes reported there, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
+
+{{% notice note %}}
+Specific game ROM files are required. Make sure to check ROMs validity of the downloaded file.
+{{% /notice %}}
+
+Check ROM(s) validity running:
+
+```shell
+./diambraArena.sh -r "your/roms/local/path" -t romFileName.zip
+```
+
+The output for a valid ROM file would look like the following:
+
+```shell
+Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
+```
+
+{{% notice tip %}}
+To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
+{{% /notice %}}
+
+{{% notice warning %}}
+Make sure to check out our <a href="https://diambra.ai/terms" target="_blank">Terms of Use</a>, and in particular Section 7. By using the software, you accept the in full.</span></ins> 
+{{% /notice %}}
+
+##### Base script
+
+Running a complete episode with a random agent requires less than 20 python lines:
+
+```python {linenos=inline}
+ import diambra.arena
+
+ env = diambra.arena.make("doapp")
+
+ observation = env.reset()
+
+ while True:
+     env.render()
+
+     actions = env.action_space.sample()
+
+     observation, reward, done, info = env.step(actions)
+
+     if done:
+         observation = env.reset()
+         break
+
+ env.close()
+```
+
+To execute the script run:
+
+```
+diambra run -r your/roms/local/path python script.py
+```
 
 ### Docs Structure
 
@@ -102,17 +214,17 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
 
 To receive support, use the dedicated channel in our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>.
 
-To request features or report bugs, use the <a href="https://github.com/diambra/diambraArena/issues" target="_blank">GitHub Issue Tracker</a>.
+To request features or report bugs, use the <a href="https://github.com/diambra/arena/issues" target="_blank">GitHub Issue Tracker</a>.
 
 ### References
 
-- Official Website: <a href="https://diambra.ai" target="_blank">https://diambra.ai</a>
-- GitHub Repository: <a href="https://github.com/diambra/arena" target="_blank">https://github.com/diambra/arena</a>
-- Docker Repository: <a href="https://hub.docker.com/r/diambra/diambra-arena" target="_blank">https://hub.docker.com/r/diambra/diambra-arena</a>
-- Linkedin Page: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
-- Discord Server: <a href="https://discord.gg/tFDS2UN5sv" target="_blank">https://discord.gg/tFDS2UN5sv</a>
-- Twitch Channel: <a href="https://www.twitch.tv/diambra_ai" target="_blank">https://www.twitch.tv/diambra_ai</a>
-- YouTube Channel: <a href="https://www.youtube.com/c/diambra_ai" target="_blank">https://www.youtube.com/c/diambra_ai</a>
+- Website: <a href="https://diambra.ai" target="_blank">https://diambra.ai</a>
+- GitHub: <a href="https://github.com/diambra/arena" target="_blank">https://github.com/diambra/arena</a>
+- Linkedin: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
+- Discord: <a href="https://discord.gg/tFDS2UN5sv" target="_blank">https://discord.gg/tFDS2UN5sv</a>
+- Twitch: <a href="https://www.twitch.tv/diambra_ai" target="_blank">https://www.twitch.tv/diambra_ai</a>
+- YouTube: <a href="https://www.youtube.com/c/diambra_ai" target="_blank">https://www.youtube.com/c/diambra_ai</a>
+- Twitter: <a href="https://twitter.com/diambra_ai" target="_blank">https://twitter.com/diambra_ai</a>
 
 ### Citation
 
