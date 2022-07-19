@@ -42,7 +42,7 @@ weight: 40
 |-------------| ------|------| ----|
 | `difficulty`       | `int`| 3 |[1, 5]|
 | `characters`| `string`       | [[`Random`], [`Random`]]| Kitana, Reptile, Kano, Sektor, Kabal, Sonya, Mileena, Sindel, Sheeva, Jax, Ermac, Stryker, Shang Tsung, Nightwolf, Sub-Zero-2, Cyrax, Liu Kang, Jade, Sub-Zero, Kung Lao, Smoke, Skorpion |
-| `charOutfits`| `int`      | [2, 2] | [1, 2] |
+| `char_outfits`| `int`      | [2, 2] | [1, 2] |
 
 ##### Extended Game Settings
 
@@ -70,7 +70,7 @@ weight: 40
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------| ------|-------| --------------|
-| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [254&#160;X&#160;500&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [254&#160;X&#160;500&#160;X&#160;3] | Latest game frame  (RGB pixel screen)|
 | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 11]| Current stage of the game |
 
 #### Player specific
@@ -82,7 +82,7 @@ weight: 40
 | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;25] | Index of first character selected (for games where only one character is selected, this values is the same as "Character in Use")<br>0: Kitana, 1: Reptile, 2: Kano, 3: Sektor, 4: Kabal, 5: Sonya, 6: Mileena, 7: Sindel, 8: Sheeva, 9: Jax, 10: Ermac, 11: Stryker, 12: Shang Tsung, 13: Nightwolf, 14: Sub-Zero-2, 15: Cyrax, 16: Liu Kang, 17: Jade, 18: Sub-Zero, 19: Kung Lao, 20: Smoke, 21: Skorpion, 22: Human Smoke, 23: Noob Saibot, 24: Motaro", 25: Shao Kahn|
 | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;25] | Index of character in use<br>0: Kitana, 1: Reptile, 2: Kano, 3: Sektor, 4: Kabal, 5: Sonya, 6: Mileena, 7: Sindel, 8: Sheeva, 9: Jax, 10: Ermac, 11: Stryker, 12: Shang Tsung, 13: Nightwolf, 14: Sub-Zero-2, 15: Cyrax, 16: Liu Kang, 17: Jade, 18: Sub-Zero, 19: Kung Lao, 20: Smoke, 21: Skorpion, 22: Human Smoke, 23: Noob Saibot, 24: Motaro", 25: Shao Kahn|
 | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;166]| Health bar value |
-| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;6]| Index of last attack action performed (no-attack, high punch, high kick, etc.)|
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of latest move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;6]| Index of latest attack action performed (no-attack, high punch, high kick, etc.)|
 | `ownAggressorBar`/`oppAggressorBar` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0, 48]| Aggressor bar value |
 
