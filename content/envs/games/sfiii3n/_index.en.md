@@ -42,13 +42,13 @@ weight: 20
 |-------------| ------|------| ----|
 | `difficulty`       | `int`| 3 |[1, 8]|
 | `characters`| `string`       | [[`Random`],&#160;[`Random`]] | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
-| `charOutfits`| `int`      | [2, 2] | [1, 7] |
+| `char_outfits`| `int`      | [2, 2] | [1, 7] |
 
 ##### Extended Game Settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|<strong><span style="color:#5B5B60;">Description</span></strong>|
 |-------------| ------|------| ----|---------|
-| `superArt`| `int`      | [0, 0] | [0, 3] | Selects the type of super move.<br>0: Random, 1-2-3: Super move 1-2-3|
+| `super_art`| `int`      | [0, 0] | [0, 3] | Selects the type of super move.<br>0: Random, 1-2-3: Super move 1-2-3|
 
 ### Action Spaces
 
