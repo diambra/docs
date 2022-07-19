@@ -13,6 +13,7 @@ weight: 20
     - <a href="./#diambra-command-line-interface-cli">DIAMBRA Command Line Interface (CLI)</a>
     - <a href="./#script-execution">Script Execution</a>
 - <a href="./#advanced-usage">Advanced Usage</a>
+    - <a href="./#diambra-cli-advanced-options">DIAMBRA CLI Advanced Options</a>
     - <a href="./#using-python-notebooks">Using Python Notebooks</a>
     - <a href="./#environment-native-rendering">Environment Native Rendering</a>
     - <a href="./#running-multiple-environments-in-parallel">Running Multiple Environments in Parallel</a>
@@ -100,6 +101,8 @@ The entire folder where the launcher script is located will be loaded inside the
 {{% /notice %}}
 
 ### Advanced Usage
+
+##### DIAMBRA CLI Advanced Options
 
 ##### Using Python Notebooks
 
