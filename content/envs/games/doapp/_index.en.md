@@ -42,7 +42,7 @@ weight: 10
 |-------------| ------|------| ----|
 | `difficulty`       | `int`| 3 |[1, 4]|
 | `characters`| `string`       | [[`Random`],&#160;[`Random`]]|Kasumi, Zack, Hayabusa, Bayman, Lei-Fang, Raidou, Gen-Fu, Tina, Bass, Jann-Lee, Ayane |
-| `charOutfits`| `int`      | [2, 2] | [1, 4] |
+| `char_outfits`| `int`      | [2, 2] | [1, 4] |
 
 ### Action Spaces
 
@@ -64,7 +64,7 @@ weight: 10
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------| ------|-------| --------------|
-| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [480&#160;X&#160;512&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [480&#160;X&#160;512&#160;X&#160;3] | Latest game frame  (RGB pixel screen)|
 | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 8]| Current stage of the game |
 
 #### Player specific
@@ -76,6 +76,6 @@ weight: 10
 | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;10] | Index of first character selected (since in this game only one character is selected, these values are the same as "Character in Use")<br>0: Kasumi, 1: Zack, 2: Hayabusa, 3: Bayman, 4: Lei-Fang, 5: Raidou, 6: Gen-Fu, 7: Tina, 8: Bass, 9: Jann-Lee, 10: Ayane|
 | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;10] | Index of character in use<br>0: Kasumi, 1: Zack, 2: Hayabusa, 3: Bayman, 4: Lei-Fang, 5: Raidou, 6: Gen-Fu, 7: Tina, 8: Bass, 9: Jann-Lee, 10: Ayane|
 | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;208]| Health bar value |
-| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;7] or [0,&#160;3]| Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of latest move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;7] or [0,&#160;3]| Index of latest attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
 
