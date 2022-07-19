@@ -42,7 +42,7 @@ weight: 30
 |-------------| ------|------| ----|
 | `difficulty`       | `int`| 3 |[1, 9]|
 | `characters`| `string`       | [[`Random`,&#160;`Random`],&#160;[`Random`,&#160;`Random`]] | Xiaoyu, Yoshimitsu, Nina, Law, Hwoarang, Eddy, Paul, King, Lei, Jin, Baek, Michelle, Armorking, Gunjack, Anna, Brian, Heihachi, Ganryu, Julia, Jun, Kunimitsu, Kazuya, Bruce, Kuma, Jack-Z, Lee, Wang, P.Jack, Devil, True Ogre, Ogre, Roger, Tetsujin, Panda, Tiger, Angel, Alex, Mokujin |
-| `charOutfits`| `int`      | [2, 2] | [1, 2] |
+| `char_outfits`| `int`      | [2, 2] | [1, 2] |
 
 ### Action Spaces
 
@@ -68,7 +68,7 @@ weight: 30
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------| ------|-------| --------------|
-| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [240&#160;X&#160;512&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [240&#160;X&#160;512&#160;X&#160;3] | Latest game frame  (RGB pixel screen)|
 | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 8]| Current stage of the game |
 
 #### Player specific
@@ -80,9 +80,9 @@ weight: 30
 | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;38] | Index of first character selected<br>0: Xiaoyu, 1: Yoshimitsu, 2: Nina, 3: Law, 4: Hwoarang, 5: Eddy, 6: Paul, 7: King, 8: Lei, 9: Jin, 10: Baek, 11: Michelle, 12: Armorking, 13: Gunjack, 14: Anna, 15: Brian, 16: Heihachi, 17: Ganryu, 18: Julia, 19: Jun, 20: Kunimitsu, 21: Kazuya, 22: Bruce, 23: Kuma, 24: Jack-Z, 25: Lee, 26: Wang, 27: P.Jack, 28: Devil, 29: True Ogre, 30: Ogre, 31: Roger, 32: Tetsujin, 33: Panda, 34: Tiger, 35: Angel, 36: Alex, 37: Mokujin, 38: Unknown|
 | `ownChar2`/`oppChar2`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;38] | Index of second character selected<br>0: Xiaoyu, 1: Yoshimitsu, 2: Nina, 3: Law, 4: Hwoarang, 5: Eddy, 6: Paul, 7: King, 8: Lei, 9: Jin, 10: Baek, 11: Michelle, 12: Armorking, 13: Gunjack, 14: Anna, 15: Brian, 16: Heihachi, 17: Ganryu, 18: Julia, 19: Jun, 20: Kunimitsu, 21: Kazuya, 22: Bruce, 23: Kuma, 24: Jack-Z, 25: Lee, 26: Wang, 27: P.Jack, 28: Devil, 29: True Ogre, 30: Ogre, 31: Roger, 32: Tetsujin, 33: Panda, 34: Tiger, 35: Angel, 36: Alex, 37: Mokujin, 38: Unknown|
 | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;38] | Index of character in use<br>0: Xiaoyu, 1: Yoshimitsu, 2: Nina, 3: Law, 4: Hwoarang, 5: Eddy, 6: Paul, 7: King, 8: Lei, 9: Jin, 10: Baek, 11: Michelle, 12: Armorking, 13: Gunjack, 14: Anna, 15: Brian, 16: Heihachi, 17: Ganryu, 18: Julia, 19: Jun, 20: Kunimitsu, 21: Kazuya, 22: Bruce, 23: Kuma, 24: Jack-Z, 25: Lee, 26: Wang, 27: P.Jack, 28: Devil, 29: True Ogre, 30: Ogre, 31: Roger, 32: Tetsujin, 33: Panda, 34: Tiger, 35: Angel, 36: Alex, 37: Mokujin, 38: Unknown|
-| `ownHealth1`/`oppHealth1` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;638976]&#160;(1P&#160;Game) / [0,&#160;688128]&#160;(2P&#160;Game) | Health bar value for first character in use|
-| `ownHealth2`/`oppHealth2` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;638976]&#160;(1P&#160;Game) / [0,&#160;688128]&#160;(2P&#160;Game) | Health bar value for second character in use|
-| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;12] or [0,&#160;5]| Index of last attack action performed (no-attack, left punch, right punch, etc.) with, respectively, attack buttons combination active or not|
+| `ownHealth1`/`oppHealth1` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;182] | Health bar value for first character in use|
+| `ownHealth2`/`oppHealth2` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;182] | Health bar value for second character in use|
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of latest move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;12] or [0,&#160;5]| Index of latest attack action performed (no-attack, left punch, right punch, etc.) with, respectively, attack buttons combination active or not|
 | `ownActiveChar`/`oppActiveChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Index of the active character<br>0: first, 1: second |
 | `ownBarStatus`/`oppBarStatus`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;4]| Status of the background character health bar<br>0: reserve health bar almost filled, 1: small amount of health lost, recharging in progress, 2: large amount of health lost, recharging in progress, 3: rage mode on, combo attack ready, 4: no background character (final boss)|
