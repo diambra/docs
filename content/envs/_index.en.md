@@ -177,9 +177,9 @@ Environment settings depending on the specific game and shared among all of them
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|------|-----|
-| `difficulty`       | `int`| Default value if not specified | Min and Max values allowed for the specific game| Specifies game difficulty (1P only) |
-| `characters`| `string`       | Default characters if not specified (for both P1 and P2) | List of characters games that can be selected for the specific game | Specifies character(s) to use |
-| `char_outfits`| `int`      | Default values if not specified (for both P1 and P2) | Min and Max values allowed for the specific game | Defines the number of outfits to draw from at character selection  |
+| `difficulty` | `int`| Game-specific default value if not specified | Game-specific Min and Max values allowed | Specifies game difficulty (1P only) |
+| `characters` | `string` | Game-specific default characters if not specified (for both P1 and P2) | Game-specifc list of characters that can be selected | Specifies character(s) to use |
+| `char_outfits` | `int`  | Game-specific default values if not specified (for both P1 and P2) | Game-specific Min and Max values allowed | Defines the number of outfits to draw from at character selection  |
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
   <img src="../images/envs/outfits.png" style="margin-bottom:20px;">
@@ -192,24 +192,21 @@ Actions of the interfaced games can be grouped in two categories: move actions (
 
 For each of the two options, there is an additional differentiation available: if to use attack buttons combinations or not. This option is mainly available to reduce the action space size as much as possible, since combinations of attack buttons can be seen as additional attack buttons. The complete visual description of available action spaces is shown in the figure below, where all four choices are presented via the correspondent gamepad buttons configuration for Dead Or Alive ++.
 
-When run in 2P mode, the environment is provided with a <a href="https://github.com/openai/gym/blob/master/gym/spaces/dict.py" target="_blank">Dictionary</a> action space (type `gym.spaces.Dict`) populated with two items, identified by keys "P1" and "P2", whose values are either `gym.spaces.Discrete` or `gym.spaces.MultiDiscrete` as described above.
+When run in 2P mode, the environment is provided with a <a href="https://github.com/openai/gym/blob/master/gym/spaces/dict.py" target="_blank">Dictionary</a> action space (type `gym.spaces.Dict`) populated with two items, identified by keys `P1` and `P2`, whose values are either `gym.spaces.Discrete` or `gym.spaces.MultiDiscrete` as described above.
 
 Each game has specific action spaces since attack buttons (and their combinations) are, in general, game-dependent. For this reason, in each game-dedicated page, a table like the one found below is reported, describing all four actions spaces for the specific game.
 
-In Discrete action spaces:
+In <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="_blank">Discrete</a> action spaces:
 - There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions.
 - The total number of actions available is N<sub>m</sub> + N<sub>a</sub> − 1 where N<sub>m</sub> is the number of move actions (no-move included) and N<sub>a</sub> is the number of attack actions (no-attack included).
-Only one action, either move or attack, can be sent for
-each environment step.
+- Only one action, either move or attack, can be sent for each environment step.
 
-In MultiDiscrete action spaces:
+In <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="_blank">MultiDiscrete</a> action spaces:
 - There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions.
 - The total number of actions available is N<sub>m</sub> × N<sub>a</sub>.
 - Both move and attack actions can be sent at the same time for each environment step.
 
-All meaningful actions are made available per each game: they are sufficient to cover the entire spectrum of moves and combos for all the available characters.
-
-Only meaningful actions are made available per each game: if a specific game has Button-1 and Button-2 among its available actions, and not Button-1 + Button-2, it means that the latter has no effect in any circumstance, considering all characters in all conditions.
+All and only meaningful actions are made available per each game: they are sufficient to cover the entire spectrum of moves and combos for all the available characters. If a specific game has Button-1 and Button-2 among its available actions, and not Button-1 + Button-2, it means that the latter has no effect in any circumstance, considering all characters in all conditions.
 
 Some actions (especially attack buttons combinations) may have no effect for some of the characters: in some games combos requiring attack buttons combinations are valid only for a subset of characters.
 
@@ -244,8 +241,8 @@ Global elements of the observation space are unrelated to the player and they ar
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------| ------|-------| --------------|
-| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Min and max values for each dimension | Last game frame  (RGB pixel screen)|
-| `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  Min and max values | Current stage of the game |
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Game-specific Min and Max values for each dimension | Latest game frame  (RGB pixel screen)|
+| `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  Game-specific Min and Max values | Current stage of the game |
 
 #### Player specific
 
@@ -264,8 +261,8 @@ Typical values that are available for each game are reported and described in th
 | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use (for games where only one character is selected, this values is the same as "Character in Use")|
 | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use|
 | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Health Value]| Health bar value |
-| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of move actions - 1] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of attack actions - 1] | Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of move actions - 1] | Index of latest move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of attack actions - 1] | Index of latest attack action performed (no-attack, hold, punch, etc.) |
 
 ### Reward Function
 
