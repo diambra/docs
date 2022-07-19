@@ -3,7 +3,7 @@ title: Wrappers
 weight: 40
 ---
 
-### Index 
+### Index
 
 <div style="font-size:1.125rem;">
 
@@ -46,7 +46,7 @@ Use of these functionalities can be found in <a href="../gettingstarted/examples
 | `no_op_max`     | `int`| 0 | [0,&#160;12]| Performs a maximum of *Value* NoOp steps after episode reset. |
 
 ```python
-wrappers_settings["no_op_max"] = 0 
+wrappers_settings["no_op_max"] = 0
 ```
 
 ### Observation Wrappers
@@ -58,7 +58,7 @@ wrappers_settings["no_op_max"] = 0
 | `hwc_obs_resize`     | `list` of three `int` [H,&#160;W,&#160;C]| [84,&#160;84,&#160;0] | H,&#160;W:&#160;[1,&#160;512]<br>C:&#160;0, 1 or 3|Frame| Warps the frame from original Game resolution to H&#160;X&#160;W size.<br>C values:<br>0 - Deactivated;<br>1 - Grayscale;<br>3 - RGB;<br>Keeps observation element of type *Box*, changes its shape.  |
 
 ```python
-wrappers_settings["hwc_obs_resize"] = [128, 128, 1] 
+wrappers_settings["hwc_obs_resize"] = [128, 128, 1]
 ```
 
 #### Frame Stacking With Optional Dilation
@@ -80,7 +80,7 @@ wrappers_settings["dilation"] = 1
 | `actions_stack`   | `int` | 1|[1,&#160;48] | Actions-Move,<br>Actions-Attack | Stacks last *Value* actions together for both moves and attacks.<br>Changes observation element type from *Discrete* to *MultiDiscrete*, having *Value* elements, each with cardinality equal to the original *Discrete* one. |
 
 ```python
-wrappers_settings["actions_stack"] = 12 
+wrappers_settings["actions_stack"] = 12
 ```
 
 #### Scaling
@@ -97,7 +97,7 @@ wrappers_settings["scale_mod"] = 0
 
 ### Action Wrappers
 
-#### Actions Sticking 
+#### Actions Sticking
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> |<strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------|-------------| ------|------|------|

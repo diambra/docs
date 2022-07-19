@@ -17,7 +17,7 @@ weight: 50
 
 </div>
 
-DIAMBRA Arena comes with many different tools supporting development and debug. They provide different functionalities, all described below in the sections below where both code and output is reported. 
+DIAMBRA Arena comes with many different tools supporting development and debug. They provide different functionalities, all described below in the sections below where both code and output is reported.
 
 Source code can be found in the code repository, <a href="../wrappers/#reward-clipping" target="_blank">here ADD LINK</a>
 
@@ -200,7 +200,7 @@ There are two different methods, one to be used for the basic Gym Environment an
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a> and <a href="/gettingstarted/examples/multiplayerenv/">this</a> examples.
-{{% /notice %}}  
+{{% /notice %}}
 
 ```python
 from diambraArena.gymUtils import showGymObs
@@ -212,7 +212,7 @@ Output will be similar to what follows:
  - Frame visualization window:
 <figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/gymObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
-</figure> 
+</figure>
 
  - Terminal printout:
    ```txt
@@ -235,11 +235,11 @@ Output will be similar to what follows:
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/wrappersoptions/">this</a>, <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
-{{% /notice %}}  
+{{% /notice %}}
 
 {{% notice warning %}}
 This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the observation normalization wrapper is active.
-{{% /notice %}}  
+{{% /notice %}}
 
 ```python
 from diambraArena.gymUtils import showWrapObs
@@ -252,7 +252,7 @@ Output will be similar to what follows:
 - Frame stack visualization windows:
 <figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/wrapObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
-</figure> 
+</figure>
 
 - Terminal printout:
 
@@ -301,7 +301,7 @@ Output will be similar to what follows:
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
-{{% /notice %}}  
+{{% /notice %}}
 
 It allows to easily integrate a Game Pad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 

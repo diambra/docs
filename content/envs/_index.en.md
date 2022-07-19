@@ -11,8 +11,7 @@ math: true
 - <a href="./#overview">Overview</a>
 - <a href="./#interaction-basics">Interaction Basics</a>
 - <a href="./#settings">Settings</a>
-  - <a href="./#command-line-interface-settings">Command Line Interface Settings</a>
-  - <a href="./#general-settings">General Settings</a>
+  - <a href="./#general-environment-settings">General Environment Settings</a>
   - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
     - <a href="./#action-spaces-in-numbers">Action Spaces in Numbers</a>
@@ -29,74 +28,73 @@ This page describes in details all general aspects related to DIAMBRA Arena envi
 
 ### Overview
 
-DIAMBRA Arena is a software package featuring a collection of high-quality environments for Reinforcement Learning research and experimentation. It acts as an interface towards popular arcade emulated video games, offering a Python API fully compliant with OpenAI Gym standard, that makes its adoption smooth and straightforward.
-                                                                                
-It supports all major Operating Systems: Linux, Windows and MacOS, most of them via Docker, with a step by step installation guide available in this manual. It is completely free to use, the user only needs to register on the official website.
-                                                                                
-                                                                                
-In addition, its <a href="https://github.com/diambra/diambraArena" target="_blank">GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
-                                                                                
-#### Main Features                                                 
-                                                                                
+DIAMBRA Arena is a software package featuring a collection of high-quality environments for Reinforcement Learning research and experimentation. It provides a standard interface to popular arcade emulated video games, offering a Python API fully compliant with OpenAI Gym format, that makes its adoption smooth and straightforward.
+
+It supports all major Operating Systems (Linux, Windows and MacOS) and can be easily installed via Python PIP, as described in the <a href="/#installation">installation section</a>. It is completely free to use, the user only needs to register on the official website.
+
+In addition, its <a href="https://github.com/diambra/arena" target="_blank">GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
+
+#### Main Features
+
 All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side).
-                                                                                
-They all support both single player (1P) as well as two players (2P) mode, making them the perfect resource to explore all the following Reinforcement Learning sub-fields:
-                                                                                
-<div>                                                                           
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/AIvsCOM.png"/>
-   <figcaption align="middle">Standard RL</figcaption>                          
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/AIvsAI.png"/>
-   <figcaption align="middle">Competitive Multi-Agent</figcaption>              
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/AIvsHUM.png"/>
-   <figcaption align="middle">Competitive Human-Agent</figcaption>              
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/SP.png"/>
-   <figcaption align="middle">Self-Play</figcaption>                            
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/IL.png"/>
-   <figcaption align="middle">Imitation Learning</figcaption>                   
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../images/home/HITL.png"/>
-   <figcaption align="middle">Human-in-the-Loop</figcaption>                    
-  </figure>                                                                     
-</div>         
 
-#### Available Games 
+They all support both single player (1P) as well as two players (2P) mode, making them the perfect resource to explore all the following Reinforcement Learning subfields:
 
-Interfaced games have been selected among the most popular fighting retro-games. While sharing the same fundamental mechanics, they provide slightly different challenges, with specific features such as different type and number of characters, how to perform combos, health bars recharging, etc.
-                                                                                
+<div style="margin-bottom:0px;">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15%; min-height:120px;">
+   <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="/images/home/AIvsCOM.png"/>
+   <figcaption align="middle">Standard RL</figcaption>
+  </figure>
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
+   <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="/images/home/AIvsAI.png"/>
+   <figcaption align="middle">Competitive Multi-Agent</figcaption>
+  </figure>
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
+   <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="/images/home/AIvsHUM.png"/>
+   <figcaption align="middle">Competitive Human-Agent</figcaption>
+  </figure>
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
+   <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="/images/home/SP.png"/>
+   <figcaption align="middle">Self-Play</figcaption>
+  </figure>
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
+   <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="/images/home/IL.png"/>
+   <figcaption align="middle">Imitation Learning</figcaption>
+  </figure>
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15.0%; min-height:120px;">
+   <img style="margin-top:0px; margin-bottom:10px; border-radius: 10px;" src="/images/home/HITL.png"/>
+   <figcaption align="middle">Human-in-the-Loop</figcaption>
+  </figure>
+</div>
+
+#### Available Games
+
+Interfaced games have been selected among the most popular fighting retro-games. While sharing the same fundamental mechanics, they provide different challenges, with specific features such as different type and number of characters, how to perform combos, health bars recharging, etc.
+
 Whenever possible, games are released with all hidden/bonus characters unlocked.
-                                                                                
-Additional details can be found in their <a href="./games/">dedicated section</a>.
-                                                                                
-<div>                                                                           
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/doapp.jpg"/></a>
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/sfiii3n.jpg"/></a>
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/tektagt.jpg"/></a>
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/umk3.jpg"/></a>
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/samsh5sp.jpg"/></a>
-  </figure>                                                                     
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-bottom: 20px; border-radius: 10px;" src="../images/envs/kof98umh.jpg"/></a>
-  </figure>                                                                     
-</div>    
+
+Additional details can be found in their <a href="./envs/games/">dedicated section</a>.
+
+<div>
+  <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">
+   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
+  </figure>
+  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
+  </figure>
+  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
+  </figure>
+  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
+  </figure>
+  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
+  </figure>
+  <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
+  </figure>
+</div>
 
 ### Interaction Basics
 
@@ -111,10 +109,10 @@ The shortest snippet for a complete basic execution of an environment consists o
 
 ```python {linenos=inline}
  # DIAMBRA Arena module import
- import diambraArena
+ import diambra.arena
 
  # Environment creation
- env = diambraArena.make("doapp")
+ env = diambra.arena.make("doapp")
 
  # Environment reset
  observation = env.reset()
@@ -145,35 +143,16 @@ More complex and complete examples can be found in the <a href="../gettingstarte
 
 ### Settings
 
-#### Command Line Interface Settings
+#### General Environment Settings
 
-Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages. Settings that are shared among all games, are found in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
-
-{{% notice tip %}}
-Two ready-to-use examples showing how environment settings are used can be found <a href="../gettingstarted/examples/singleplayerenv/">here</a> and <a href="../gettingstarted/examples/multiplayerenv/">here</a>.
-{{% /notice %}}
-
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
-|-------------|-------------| ------|------|------|
-| `romsPath`\* | `string` | - | - |Defines the absolute path of the folder where all game ROMs are located |
-| `render` | `bool` | `True` | True / False | Activates game rendering|
-| `lockFps` | `bool` | `True` | True / False | Locks FPS to nominal value (60 FPS) |
-| `sound` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
-| `scale` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
-| `pull` | `bool` | settings["lockFps"] && settings["render"] | True / False  | Activates game sound |
-
-\*: Mandatory
-
-#### General Settings
-
-All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary passed to the environment creation method, as shown on line 8 in previous code example also reported below:
+All environments share a numerous set of options allowing to handle many different aspects, controlled by key-value pairs in a Python dictionary passed to the environment creation method, as shown below:
 
 ```python
-env = diambraArena.make("doapp", settings)
+env = diambra.arena.make("doapp", settings)
 ```
-The first argument, the only one that is mandatory, is the `gameId` string, it specifies the game to execute among those available (see games list and info).
+The first argument, the only one that is mandatory, is the `game_id` string, it specifies the game to execute among those available (see games list and info).
 
-Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages. 
+Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages.
 
 Game-specific settings that are shared among all games, are found in the table contained in the <a href="./#game-specific-settings">Game Specific Settings</a> section below.
 
@@ -183,13 +162,14 @@ Two ready-to-use examples showing how environment settings are used can be found
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
 |-------------|-------------| ------|------|------|
-| `player` | `string` | `Random` | 1P Mode: P1 (left), P2 (right), Random (50% P1, 50% P2)<br>2P Mode: P1P2 | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
+| `player` | `string` | `Random` | 1P Mode: `P1` (left), `P2` (right), `Random` (50% P1, 50% P2)<br>2P Mode: `P1P2` | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
 | `step_ratio` | `int` | 6 | [1, 6] | Defines how many steps the game (emulator) performs for every environment step |
 | `frame_shape` | `list` of three `int` [H,&#160;W,&#160;C]| [0,&#160;0,&#160;0] | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1| If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>[0,&#160;0,&#160;0] - Deactivated;<br>[H,&#160;W,&#160;0] - RBG frame resized to H&#160;X&#160;W;<br>[0,&#160;0,&#160;1] - Grayscale frame;<br>[H,&#160;W,&#160;1] - Grayscale frame resized to H&#160;X&#160;W. |
-| `conitnue_game` | `double` | `0.0` | (-inf, 1.0]<br>`[0.0, 1.0]`: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
-| `show_final` | `bool` | `True` | True / False | Activates displaying of final animation when game is completed |
-| `action_space` | `string` | `multi_discrete` | discrete / multi_discrete | Defines the type of the action space |
-| `attack_but_ccombination` | `bool` | `True` | True / False | Activates attack buttons combinations |
+| `conitnue_game` | `double` | 0.0 | [0.0, 1.0]: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
+| `show_final` | `bool` | `True` | `True` / `False` | Activates displaying of final animation when game is completed |
+| `action_space` | `string` | `multi_discrete` | `discrete` / `multi_discrete` | Defines the type of the action space |
+| `attack_but_combination` | `bool` | `True` | `True` / `False` | Activates attack buttons combinations |
+| `hardcore` | `bool` | `False` | `True` / `False` | Activates hardcore mode, in which the observation is only made of the game frame |
 
 #### Game Specific Settings
 
@@ -208,24 +188,24 @@ Environment settings depending on the specific game and shared among all of them
 
 ### Action Space(s)
 
-Actions of the interfaced games can be grouped in two categories: move actions (Up, Left, etc.) and attack ones (Punch, Kick, etc.). DIAMBRA Arena provides four different action spaces: the main distinction is between <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="_blank">Discrete</a> and <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="_blank">MultiDiscrete</a> ones. The former is a single list composed by the union of move and attack actions (of type `gym.spaces.Discrete`), while the latter consists of two sets combined, for move and attack actions respectively (of type `gym.spaces.MultiDiscrete`). 
+Actions of the interfaced games can be grouped in two categories: move actions (Up, Left, etc.) and attack ones (Punch, Kick, etc.). DIAMBRA Arena provides four different action spaces: the main distinction is between <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="_blank">Discrete</a> and <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="_blank">MultiDiscrete</a> ones. The former is a single list composed by the union of move and attack actions (of type `gym.spaces.Discrete`), while the latter consists of two sets combined, for move and attack actions respectively (of type `gym.spaces.MultiDiscrete`).
 
 For each of the two options, there is an additional differentiation available: if to use attack buttons combinations or not. This option is mainly available to reduce the action space size as much as possible, since combinations of attack buttons can be seen as additional attack buttons. The complete visual description of available action spaces is shown in the figure below, where all four choices are presented via the correspondent gamepad buttons configuration for Dead Or Alive ++.
 
-When run in 2P mode, the environment is provided with a <a href="https://github.com/openai/gym/blob/master/gym/spaces/dict.py" target="_blank">Dictionary</a> action space (type `gym.spaces.Dict`) populated with two items, identified by keys "P1" and "P2", whose values are either `gym.spaces.Discrete` or `gym.spaces.MultiDiscrete` as described above. 
+When run in 2P mode, the environment is provided with a <a href="https://github.com/openai/gym/blob/master/gym/spaces/dict.py" target="_blank">Dictionary</a> action space (type `gym.spaces.Dict`) populated with two items, identified by keys "P1" and "P2", whose values are either `gym.spaces.Discrete` or `gym.spaces.MultiDiscrete` as described above.
 
 Each game has specific action spaces since attack buttons (and their combinations) are, in general, game-dependent. For this reason, in each game-dedicated page, a table like the one found below is reported, describing all four actions spaces for the specific game.
 
-In Discrete action spaces: 
+In Discrete action spaces:
 - There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions.
 - The total number of actions available is N<sub>m</sub> + N<sub>a</sub> − 1 where N<sub>m</sub> is the number of move actions (no-move included) and N<sub>a</sub> is the number of attack actions (no-attack included).
 Only one action, either move or attack, can be sent for
 each environment step.
 
 In MultiDiscrete action spaces:
-- There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions. 
+- There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions.
 - The total number of actions available is N<sub>m</sub> × N<sub>a</sub>.
-- Both move and attack actions can be sent at the same time for each environment step. 
+- Both move and attack actions can be sent at the same time for each environment step.
 
 All meaningful actions are made available per each game: they are sufficient to cover the entire spectrum of moves and combos for all the available characters.
 
@@ -289,7 +269,7 @@ Typical values that are available for each game are reported and described in th
 
 ### Reward Function
 
-The default reward is defined as a function of characters health values so that, qualitatively, damage suffered by the agent corresponds to a negative reward, and damage inflicted to the opponent corresponds to a positive reward. The quantitative, general and formal reward function definition is as follows: 
+The default reward is defined as a function of characters health values so that, qualitatively, damage suffered by the agent corresponds to a negative reward, and damage inflicted to the opponent corresponds to a positive reward. The quantitative, general and formal reward function definition is as follows:
 
 $$
 \begin{equation}
@@ -299,9 +279,9 @@ $$
 
 Where:
 
-- $\bar{H}$ and $\hat{H}$ are health values for opponent’s character(s) and agent’s one(s) respectively; 
-- $t^-$ and $t$ are used to indicate conditions at ”state-time” and at ”new state-time” (i.e. before and after environment step); 
-- $N_c$ is the number of characters taking part in a round. Usually is $N_c = 1$ but there are some games where multiple characters are used, with the additional possible option of alternating them during gameplay, like Tekken Tag Tournament where 2 characters have to be selected and two opponents are faced every round (thus $N_c = 2$); 
+- $\bar{H}$ and $\hat{H}$ are health values for opponent’s character(s) and agent’s one(s) respectively;
+- $t^-$ and $t$ are used to indicate conditions at ”state-time” and at ”new state-time” (i.e. before and after environment step);
+- $N_c$ is the number of characters taking part in a round. Usually is $N_c = 1$ but there are some games where multiple characters are used, with the additional possible option of alternating them during gameplay, like Tekken Tag Tournament where 2 characters have to be selected and two opponents are faced every round (thus $N_c = 2$);
 
 
 The lower and upper bounds for the episode total cumulative reward are defined in the equations (Eqs. 2) below. They consider the default reward function for game execution with Continue Game option set equal to 0.0 (Continue not allowed).
@@ -317,9 +297,9 @@ $$
 
 Where:
 - $N_r$ is the number of rounds to win (or lose) in order to win (or lose) a stage;
-- $T_s$ is the terminal state, reached when either $N_r$ rounds are lost (for both 1P and 2P mode) or game is cleared (for 1P mode only); 
+- $T_s$ is the terminal state, reached when either $N_r$ rounds are lost (for both 1P and 2P mode) or game is cleared (for 1P mode only);
 - $t$ represents the environment step and for an episode goes from 0 to $T_s$;
-- $N_s$ is the maximum number of stages the agent can play before the game reaches $T_s$. 
+- $N_s$ is the maximum number of stages the agent can play before the game reaches $T_s$.
 - $\Delta H = H_{max} - H_{min}$ is the difference between the maximum and the mimnimum health values for the given game; ususally, but not always, $H_{min} = 0$.
 
 For 1P mode $N_s$ is game-dependent, while for 2P mode $N_s=1$, meaning the episode always ends after a single stage (so after $N_r$ rounds have been won / lost be the same player, either P1 or P2).

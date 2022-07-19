@@ -7,27 +7,27 @@ weight: 20
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
    <a href="./doapp/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/doapp.jpg"/>
    <figcaption align="middle">Dead or Alive ++</figcaption></a>
-  </figure>                                                                       
+  </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
    <a href="./sfiii3n/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/sfiii3n.jpg"/>
    <figcaption align="middle">Street Fighter III 3rd Strike</figcaption></a>
-  </figure>                                                                       
+  </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
    <a href="./tektagt/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/tektagt.jpg"/>
    <figcaption align="middle">Tekken Tag Tournament</figcaption></a>
-  </figure>                                                                       
+  </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
    <a href="./umk3/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/umk3.jpg"/>
    <figcaption align="middle">Ultimate Mortal Kombat 3</figcaption></a>
-  </figure>                                                                       
+  </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
    <a href="./samsh5sp/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/samsh5sp.jpg"/>
-   <figcaption align="middle">Samurai Showdown 5 Sp</figcaption></a>        
-  </figure>                                                                       
+   <figcaption align="middle">Samurai Showdown 5 Sp</figcaption></a>
+  </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
    <a href="./kof98umh/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/kof98umh.jpg"/>
    <figcaption align="middle">The King of Fighers '98 UMH</figcaption></a>
-  </figure>                                                                       
+  </figure>
 </div>
 
 <div>
@@ -60,7 +60,7 @@ For every released title, extensive testing has been carried out, being the mini
 </div>
 
 | <strong><span style="color:#5B5B60;">Title</span></strong> | <strong><span style="color:#5B5B60;">Status</span></strong> | <strong><span style="color:#5B5B60;">Game Id</span></strong>|
-|-------------|-------------| ------|                                    
+|-------------|-------------| ------|
 | <a href="./doapp/">Dead Or Alive ++</a>                  | Stable[^1]| `doapp`|
 | <a href="./sfiii3n/">Street Fighter III 3rd Strike</a>     | Stable[^1]| `sfiii3n`|
 | <a href="./tektagt/">Tekken Tag Tournament</a>             | Stable[^1]| `tektagt`|

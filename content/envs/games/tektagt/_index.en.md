@@ -8,15 +8,15 @@ weight: 30
   <img src="../../../images/envs/tektagt.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
-### Index                                                                       
-                                                                                
+### Index
+
 <div style="font-size:1.125rem;">
 
 - <a href="./#game-specific-info">Game Specific Info</a>
 - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Spaces</a>
 - <a href="./#observation-space">Observation Space</a>
-    - <a href="./#global">Global</a>                
+    - <a href="./#global">Global</a>
     - <a href="./#player-specific">Player Specific</a>
 
 </div>

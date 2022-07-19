@@ -12,7 +12,7 @@ weight: 60
 
 </div>
 
-With the goal of easing the usage of Imitation Learning, DIAMBRA Arena comes with two, easy-to-use, useful features: an environment wrapper allowing to record agent experience (to be used, for example, to save human expert demonstrations), and a loader class allowing to flawlessly serve stored trajectories. 
+With the goal of easing the usage of Imitation Learning, DIAMBRA Arena comes with two, easy-to-use, useful features: an environment wrapper allowing to record agent experience (to be used, for example, to save human expert demonstrations), and a loader class allowing to flawlessly serve stored trajectories.
 
 ### Experience Recording Wrapper
 
@@ -41,7 +41,7 @@ Use of this functionality can be found in <a href="../gettingstarted/examples/hu
 trajRecSettings["userName"] = "Alex"
 trajRecSettings["filePath"] = "/home/user/DIAMBRA/"
 trajRecSettings["ignoreP2"] = 0
-```     
+```
 
 ### Recorded Experience Loader
 

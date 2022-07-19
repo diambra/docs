@@ -8,15 +8,15 @@ weight: 20
   <img src="../../../images/envs/sfiii3n.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
-### Index                                                                       
-                                                                                
+### Index
+
 <div style="font-size:1.125rem;">
 
 - <a href="./#game-specific-info">Game Specific Info</a>
 - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Spaces</a>
 - <a href="./#observation-space">Observation Space</a>
-    - <a href="./#global">Global</a>                
+    - <a href="./#global">Global</a>
     - <a href="./#player-specific">Player Specific</a>
 
 </div>
@@ -50,7 +50,7 @@ weight: 20
 |-------------| ------|------| ----|---------|
 | `superArt`| `int`      | [0, 0] | [0, 3] | Selects the type of super move.<br>0: Random, 1-2-3: Super move 1-2-3|
 
-### Action Spaces 
+### Action Spaces
 
 | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons<br>Combination</span></strong> | <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
 |-------------|-------------| ------|
