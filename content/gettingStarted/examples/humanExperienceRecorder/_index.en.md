@@ -15,59 +15,57 @@ A dedicated section describing human experience recording wrapper settings is pr
 #### Modules import
 
 ```python
-import diambraArena
-from diambraArena.gymUtils import showWrapObs
-from diambraArena.utils.diambraGamepad import diambraGamepad
 import os
 from os.path import expanduser
+import diambra.arena
+from diambra.arena.utils.gamepad import DiambraGamepad
 ```
 #### Settings
 
 ```python
-# Environment settings
-
+# Environment Settings
 settings = {}
 settings["player"] = "Random"
-settings["stepRatio"] = 1
-settings["frameShape"] = [128, 128, 1]
-settings["actionSpace"] = "multiDiscrete"
-settings["attackButCombination"] = True
+settings["step_ratio"] = 1
+settings["frame_shape"] = [128, 128, 1]
+settings["action_space"] = "multi_discrete"
+settings["attack_but_combination"] = True
 
 # Gym wrappers settings
-wrappersSettings = {}
-wrappersSettings["rewardNormalization"] = True
-wrappersSettings["frameStack"] = 4
-wrappersSettings["actionsStack"] = 12
-wrappersSettings["scale"] = True
+wrappers_settings = {}
+wrappers_settings["reward_normalization"] = True
+wrappers_settings["frame_stack"] = 4
+wrappers_settings["actions_stack"] = 12
+wrappers_settings["scale"] = True
 ```
 
 #### Experience recording settings
 
 ```python
 # Gym trajectory recording wrapper kwargs
-trajRecSettings = {}
-homeDir = expanduser("~")
+traj_rec_settings = {}
+home_dir = expanduser("~")
 
 # Username
-trajRecSettings["userName"] = "Alex"
+traj_rec_settings["user_name"] = "Alex"
 
 # Path where to save recorderd trajectories
-gameId = "doapp"
-trajRecSettings["filePath"] = os.path.join(homeDir, "diambraArena/trajRecordings",
-                                           gameId)
+game_id = "doapp"
+traj_rec_settings["file_path"] = os.path.join(
+    home_dir, "diambraArena/trajRecordings", game_id)
 
 # If to ignore P2 trajectory (useful when collecting
 # only human trajectories while playing as a human against a RL agent)
-trajRecSettings["ignoreP2"] = 0
+traj_rec_settings["ignore_p2"] = 0
 ```
 
 #### Envionment execution
 
 ```python
-env = diambraArena.make(gameId, settings, wrappersSettings, trajRecSettings)
+env = diambra.arena.make(game_id, settings, wrappers_settings, traj_rec_settings)
 
 # GamePad(s) initialization
-gamepad = diambraGamepad(env.actionList)
+gamepad = DiambraGamepad(env.action_list)
 gamepad.start()
 
 observation = env.reset()
@@ -76,7 +74,7 @@ while True:
 
     env.render()
 
-    actions = gamepad.getActions()
+    actions = gamepad.get_actions()
 
     observation, reward, done, info = env.step(actions)
 

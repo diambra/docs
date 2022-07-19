@@ -11,19 +11,20 @@ This example focuses on:
  - Gym observation visualization
 
 {{% notice tip %}}
-A dedicated section describing environment settings is presented <a href="/envs/#settings">here</a>, while more info on gym observation visualization utils are presented <a href="/utils/#gym-observation">here</a>. They both provide additional details on usage and purpose. 
+A dedicated section describing environment settings is presented <a href="/envs/#settings">here</a>, while more info on gym observation visualization utils are presented <a href="/utils/#gym-observation">here</a>. They both provide additional details on usage and purpose.
 {{% /notice %}}
 
 #### Modules import
 
 ```python
-import diambraArena
-from diambraArena.gymUtils import showGymObs
+import diambra.arena
+from diambra.arena.utils.gym_utils import show_gym_obs
 import numpy as np
 ```
-#### Mandatory settings
+#### Environment settings
 
 ```python
+# Environment settings
 settings = {}
 
 # 2 Players game
@@ -33,20 +34,20 @@ settings["player"] = "P1P2"
 #### Action space settings
 
 ```python
-# If to use discrete or multiDiscrete action space
-settings["actionSpace"] = ["discrete", "discrete"]
+# If to use discrete or multi_discrete action space
+settings["action_space"] = ["discrete", "discrete"]
 
 # If to use attack buttons combinations actions
-settings["attackButCombination"] = [True, True]
+settings["attack_but_combination"] = [True, True]
 ```
 
 #### Environment execution
 
 ```python
-env = diambraArena.make("doapp", settings)
+env = diambra.arena.make("doapp", settings)
 
 observation = env.reset()
-showGymObs(observation, env.charNames)
+show_gym_obs(observation, env.char_names)
 
 while True:
 
@@ -54,14 +55,14 @@ while True:
     actions = np.append(actions["P1"], actions["P2"])
 
     observation, reward, done, info = env.step(actions)
-    showGymObs(observation, env.charNames)
+    show_gym_obs(observation, env.char_names)
     print("Reward: {}".format(reward))
     print("Done: {}".format(done))
     print("Info: {}".format(info))
 
     if done:
         observation = env.reset()
-        showGymObs(observation, env.charNames)
+        show_gym_obs(observation, env.char_names)
         break
 
 env.close()

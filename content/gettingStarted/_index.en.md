@@ -103,6 +103,8 @@ The entire folder where the launcher script is located will be loaded inside the
 
 ##### Using Python Notebooks
 
+{{< pybook diambraarenagist 700 >}}
+
 ##### Environment Native Rendering
 
 {{< tabs groupId="linuxSource">}}
