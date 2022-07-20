@@ -44,7 +44,7 @@ trajRecSettings["ignore_p2"] = 0
 
 ### Recorded Experience Loader
 
-To load and use recorded trajectories for training, DIAMBRA Arena provides a dedicated class. It needs the settings described in the following table in the form of a kwargs python dictionary. It also supports parallel environment executions, providing interfaces to easily integrate it with third party libraries.
+DIAMBRA Arena provides a dedicated class to load and use recorded trajectories for training. It needs the settings described in the following table in the form of a kwargs python dictionary. It also supports parallel environment executions, providing interfaces to easily integrate it with third party libraries.
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="../gettingstarted/examples/imitationlearning/">this</a> example.
