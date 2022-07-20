@@ -224,3 +224,18 @@ A virtual XServer that in our experience proved to be effective is <a href="http
 
 ##### Running Multiple Environments in Parallel
 
+It can be useful to run multiple environment instances in parallel, for example for Deep RL training. The CLI provides a flag to control this, it can be used both by the `run` and the `arena` commands. The former will load a string in the `DIAMBRA_ENVS` environment variable where connection addresses are listed and separated by a space, while the latter will print out in the terminal the same string. These values can then be used properly to setup multiple parallel connections.
+
+Running a script after having started 16 containers:
+
+```
+diambra run -s=16 python training_script.py
+```
+
+Starting 4 containers and printing their addresses in the terminal:
+
+```
+diambra arena -s=4 up
+Server listening on 0.0.0.0:50051
+127.0.0.1:49154 127.0.0.1:49155 127.0.0.1:49156 127.0.0.1:49157
+```
