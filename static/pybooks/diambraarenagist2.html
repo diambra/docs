@@ -13118,7 +13118,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">diambra.arena</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;doapp&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">diambra.arena</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;doapp&quot;</span><span class="p">, {</span><span class="s2">&quot;env_address&quot;</span><span class="p">:</span><span class="s2">&quot;127.0.0.1:49153&quot;</span><span class="p">})</span>
 <span class="n">observation</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </pre></div>
 
