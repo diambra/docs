@@ -87,19 +87,20 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
 
 - Install Docker Desktop: <a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a> | <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Windows</a> | <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">MacOS</a>
 
-- Install DIAMBRA Command Line Interface (system wide, <span style="color:#333333; font-weight:bolder;">not using</span> a virtual environment): `pip install diambra`
+- Install DIAMBRA Command Line Interface ( <span style="color:#333333; font-weight:bolder;">avoid using</span> a virtual environment*): `python3 -m pip install diambra`
 
-- Install DIAMBRA Arena (<span style="color:#333333; font-weight:bolder;">using</span> a virtual environment is strongly suggested): `pip install diambra-arena`
+- Install DIAMBRA Arena (<span style="color:#333333; font-weight:bolder;">using</span> a virtual environment is strongly suggested): `python3 -m pip install diambra-arena`
+
+*: If you use [ana]conda and have the base environment active, make sure to deactivate it with `conda deactivate`
 
 ### Quickstart
-
 
 ##### Download Game ROM(s) and Check Validity
 
 Check available games with the following command:
 
 ```shell
-./diambraArena.sh -l
+diambra arena list-roms
 ```
 
 Output example:
@@ -118,13 +119,13 @@ Output example:
 Search ROMs on the web using <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above. <span style="color:#333333; font-weight:bolder;">Pay attention, follow game-specific notes reported there, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
 {{% notice note %}}
-Specific game ROM files are required. Make sure to check ROMs validity of the downloaded file.
+Specific game ROM files are required, check validity of the downloaded ROMs as follows.
 {{% /notice %}}
 
 Check ROM(s) validity running:
 
 ```shell
-./diambraArena.sh -r "your/roms/local/path" -t romFileName.zip
+diambra arena check-roms your/roms/local/path/romFileName.zip
 ```
 
 The output for a valid ROM file would look like the following:
@@ -132,10 +133,6 @@ The output for a valid ROM file would look like the following:
 ```shell
 Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
 ```
-
-{{% notice tip %}}
-To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
-{{% /notice %}}
 
 {{% notice warning %}}
 Make sure to check out our <a href="https://diambra.ai/terms" target="_blank">Terms of Use</a>, and in particular Section 7. By using the software, you accept the in full.</span></ins>
@@ -171,6 +168,10 @@ To execute the script run:
 ```
 diambra run -r your/roms/local/path python script.py
 ```
+
+{{% notice tip %}}
+To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
+{{% /notice %}}
 
 ### Docs Structure
 
