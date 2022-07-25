@@ -17,7 +17,7 @@ weight: 50
 
 </div>
 
-DIAMBRA Arena comes with many different tools supporting development and debug. They provide different functionalities, all described below in the sections below where both code and output is reported. 
+DIAMBRA Arena comes with many different tools supporting development and debug. They provide different functionalities, all described below in the sections below where both code and output is reported.
 
 Source code can be found in the code repository, <a href="../wrappers/#reward-clipping" target="_blank">here ADD LINK</a>
 
@@ -26,8 +26,8 @@ Source code can be found in the code repository, <a href="../wrappers/#reward-cl
 Provides a list of available games and their most important details. It is executed as shown below:
 
 ```python
-import diambraArena
-diambraArena.availableGames(printOut=True, details=True)
+import diambra.arena
+diambra.arena.available_games(print_out=True, details=True)
 ```
 
 Output will be similar to what follows:
@@ -61,13 +61,13 @@ Output will be similar to what follows:
 
 Checks ROM SHA256 checksum to validate them.
 
-#### Without `gameId` specification
+#### Without `game_id` specification
 
-If no `gameId` is specified, the ROM file provided as first argument, will be verified against all available games. It is executed as shown below:
+If no `game_id` is specified, the ROM file provided as first argument, will be verified against all available games. It is executed as shown below:
 
 ```python
-import diambraArena
-diambraArena.checkGameSha256(path="path/to/specific/rom/doapp.zip", gameId=None)
+import diambra.arena
+diambra.arena.check_game_sha_256(path="path/to/specific/rom/doapp.zip", game_id=None)
 ```
 
 Output will be similar to what follows:
@@ -76,13 +76,13 @@ Output will be similar to what follows:
 Correct ROM file for Dead Or Alive ++, sha256 = d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e
 ```
 
-#### With `gameId` specification
+#### With `game_id` specification
 
-If `gameId` is specified, the ROM file provided checksum will be compared with the one of the specified game identified by `gameId`. It is executed as shown below:
+If `game_id` is specified, the checksum of the ROM file provided will be compared with the one of the specified game identified by `game_id`. It is executed as shown below:
 
 ```python
-import diambraArena
-diambraArena.checkGameSha256(path="path/to/specific/rom/doapp.zip", gameId="umk3")
+import diambra.arena
+diambra.arena.check_game_sha_256(path="path/to/specific/rom/doapp.zip", game_id="umk3")
 ```
 Output will be similar to what follows:
 
@@ -96,9 +96,9 @@ Retrieved SHA256 Checksum: d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489
 Prints out a summary of Environment's Observation and Action spaces showing nesting levels, keys, space types and low/high bounds where applicable. It is executed as shown below:
 
 ```python
-from diambraArena.gymUtils import envSpacesSummary
+from diambra.arena.gym_utils import env_spaces_summary
 ...
-envSpacesSummary(env=environment)
+env_spaces_summary(env=environment)
 ```
 Output will be similar to what follows:
 
@@ -192,7 +192,7 @@ action_space =  Discrete(12)
 
 ### Observation Inspection
 
-Prints out a detailed description of Environment's observation content, showing every level of it. The only element that is not printed in the terminal is the game frame that, when `viz` input argument is set to `True`, is shown is a dedicated graphical window. The `waitKey` parameter defines how this window behaves: when set equal to 0, it pauses waiting for the user to press a button, while if set different from zero, it waits the prescribed number of milliseconds before continuing.
+Prints out a detailed description of Environment's observation content, showing every level of it. The only element that is not printed in the terminal is the game frame that, when `viz` input argument is set to `True`, is shown is a dedicated graphical window. The `wait_key` parameter defines how this window behaves: when set equal to 0, it pauses waiting for the user to press a button, while if set different from zero, it waits the prescribed number of milliseconds before continuing.
 
 There are two different methods, one to be used for the basic Gym Environment and the other one specific for the wrapped one.
 
@@ -200,19 +200,19 @@ There are two different methods, one to be used for the basic Gym Environment an
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a> and <a href="/gettingstarted/examples/multiplayerenv/">this</a> examples.
-{{% /notice %}}  
+{{% /notice %}}
 
 ```python
-from diambraArena.gymUtils import showGymObs
+from diambra.arena.gym_utils import show_gym_obs
 ...
-showGymObs(observation=obs, charList=charactersNames, waitKey=1, viz=True)
+show_gym_obs(observation=obs, char_list=characters_names, wait_key=1, viz=True)
 ```
 Output will be similar to what follows:
 
  - Frame visualization window:
 <figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/gymObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
-</figure> 
+</figure>
 
  - Terminal printout:
    ```txt
@@ -234,17 +234,17 @@ Output will be similar to what follows:
 #### Wrapped Observation
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/wrappersoptions/">this</a>, <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
-{{% /notice %}}  
+Use of this functionality can be found in <a href="/gettingstarted/examples/wrappersoptions/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
+{{% /notice %}}
 
 {{% notice warning %}}
-This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the normalization wrapper is active.
-{{% /notice %}}  
+This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the observation normalization wrapper is active.
+{{% /notice %}}
 
 ```python
-from diambraArena.gymUtils import showWrapObs
+from diambra.arena.gym_utils import show_wrap_obs
 ...
-showWrapObs(observation=obs, nActionsStack=nActStack, charList=charactersNames, waitKey=1, viz=True)
+show_wrap_obs(observation=obs, n_actions_stack=n_act_stack, char_list=characters_names, wait_key=1, viz=True)
 ```
 
 Output will be similar to what follows:
@@ -252,7 +252,7 @@ Output will be similar to what follows:
 - Frame stack visualization windows:
 <figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/wrapObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
-</figure> 
+</figure>
 
 - Terminal printout:
 
@@ -301,17 +301,19 @@ Output will be similar to what follows:
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
-{{% /notice %}}  
+{{% /notice %}}
 
-It allows to easily integrate a Game Pad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
+It allows to easily integrate a common USB Gamepad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 
 ```python
-import diambraArena
-from diambraArena.utils.diambraGamepad import diambraGamepad
+import diambra.arena
+from diambra.arena.utils.gamepad import DiambraGamepad
 ...
-# GamePad(s) initialization
-gamepad = diambraGamepad(env.actionList)
+# Gamepad(s) initialization
+gamepad = DiambraGamepad(env.action_list)
 gamepad.start()
 ...
-actions = gamepad.getActions()
+actions = gamepad.get_actions()
+...
+gamepad.stop()
 ```

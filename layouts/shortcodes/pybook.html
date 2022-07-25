@@ -1,0 +1,4 @@
+<!--pybook.html--> 
+<h5><a href="/pybooks/{{ index .Params 0 }}.html">View in full screen</a></h5>
+ <iframe src="/pybooks/{{ index .Params 0 }}.html"
+        style="height:{{ index .Params 1}}px;width:100%;border:none;overflow:hidden;" scrolling="no"></iframe>

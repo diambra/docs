@@ -14,8 +14,8 @@ A dedicated section describing recorded experience loader is presented <a href="
 #### Modules import
 
 ```python
-import diambraArena
-from diambraArena.gymUtils import showWrapObs
+import diambra.arena
+from diambra.arena.utils.gym_utils import show_wrap_obs
 import os
 import numpy as np
 ```
@@ -24,47 +24,44 @@ import numpy as np
 
 ```python
 # Show files in folder
-basePath = os.path.dirname(os.path.abspath(__file__))
-recordedTrajectoriesFolder = os.path.join(basePath, "recordedTrajectories")
-recordedTrajectoriesFiles = [os.path.join(recordedTrajectoriesFolder, f)
-                             for f in os.listdir(recordedTrajectoriesFolder)
-                             if os.path.isfile(os.path.join(recordedTrajectoriesFolder, f))]
-print(recordedTrajectoriesFiles)
+base_path = os.path.dirname(os.path.abspath(__file__))
+recorded_traj_folder = os.path.join(base_path, "recordedTrajectories")
+recorded_traj_files = [os.path.join(recorded_traj_folder, f)
+                       for f in os.listdir(recorded_traj_folder)
+                       if os.path.isfile(os.path.join(recorded_traj_folder, f))]
+print(recorded_traj_files)
 
 # Imitation learning settings
 settings = {}
 
 # List of recorded trajectories files
-settings["trajFilesList"] = recordedTrajectoriesFiles
+settings["traj_files_list"] = recorded_traj_files
 
-# Number of parallel Imitation Learning environments that will be run in parallel
-settings["totalCpus"] = 2
+# Number of parallel Imitation Learning environments that will be run
+settings["total_cpus"] = 2
 
-# Number of parallel Imitation Learning environments that will be run in parallel
-settings["totalCpus"] = 2
-
-# Rank of the created environment                                               
-settings["rank"] = 0   
+# Rank of the created environment
+settings["rank"] = 0
 ```
 
 #### Environment execution
 
 ```python
-env = diambraArena.imitationLearning(**settings)
+env = diambra.arena.ImitationLearning(**settings)
 
 observation = env.reset()
 env.render(mode="human")
-showWrapObs(observation, env.nActionsStack, env.charNames)
+show_wrap_obs(observation, env.n_actions_stack, env.char_names)
 
 # Show trajectory summary
-env.trajSummary()
+env.traj_summary()
 
 while True:
 
-    dummyActions = 0
-    observation, reward, done, info = env.step(dummyActions)
+    dummy_actions = 0
+    observation, reward, done, info = env.step(dummy_actions)
     env.render(mode="human")
-    showWrapObs(observation, env.nActionsStack, env.charNames)
+    show_wrap_obs(observation, env.n_actions_stack, env.char_names)
     print("Reward: {}".format(reward))
     print("Done: {}".format(done))
     print("Info: {}".format(info))
@@ -75,7 +72,7 @@ while True:
     if done:
         observation = env.reset()
         env.render(mode="human")
-        showWrapObs(observation, env.nActionsStack, env.charNames)
+        show_wrap_obs(observation, env.n_actions_stack, env.char_names)
 
 env.close()
 ```

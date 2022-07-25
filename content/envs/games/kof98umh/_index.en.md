@@ -8,15 +8,15 @@ weight: 60
   <img src="../../../images/envs/kof98umh.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
-### Index                                                                       
-                                                                                
+### Index
+
 <div style="font-size:1.125rem;">
 
 - <a href="./#game-specific-info">Game Specific Info</a>
 - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Spaces</a>
 - <a href="./#observation-space">Observation Space</a>
-    - <a href="./#global">Global</a>                
+    - <a href="./#global">Global</a>
     - <a href="./#player-specific">Player Specific</a>
 
 </div>
@@ -40,16 +40,16 @@ weight: 60
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------| ------|------| ----|
-| `difficulty`       | `int`| 3 |[1, 8]|
+| `difficulty`       | `int`| 6 |[1, 8]|
 | `characters`| `string`       | [[`Random`], [`Random`]]| Kyo, Benimaru, Daimon, Terry, Andy, Joe, Ryo, Robert, Yuri, Leona, Ralf, Clark, Athena, Kensou, Chin, Chizuru, Mai, King, Kim, Chang, Choi, Yashiro, Shermie, Chris, Yamazaki, Mary, Billy, Iori, Mature, Vice, Heidern, Takuma, Saisyu, Heavy-D!, Lucky, Brian, Eiji, Kasumi, Shingo, Rugal, Geese, Krauser, Mr.Big |
-| `charOutfits`| `int`      | [2, 2] | [1, 4] |
+| `char_outfits`| `int`      | [2, 2] | [1, 4] |
 
 ##### Extended game settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong>
 |-------------| ------|------| ----|------|
-| `fightingStyle`       | `int`| [0, 0] |[0, 3]| Selects the fighting style.<br>0: Random, 1: Advanced, 2: Extra, 3: Ultimate
-| `ultimateStyle`       | `int`| [[0, 0, 0], [0, 0, 0]] |[0, 2]&#160;X&#160;[0, 2]&#160;X&#160;[0, 2]| Selects details about Ultimate Fighting Style for Dash, Evade and Bar features.<br>0: Random, 1: Advanced, 2: Extra |
+| `fighting_style`       | `int`| [0, 0] |[0, 3]| Selects the fighting style.<br>0: Random, 1: Advanced, 2: Extra, 3: Ultimate
+| `ultimate_style`       | `int`| [[0, 0, 0], [0, 0, 0]] |[0, 2]&#160;X&#160;[0, 2]&#160;X&#160;[0, 2]| Selects details about ultimate fighting style for Dash, Evade and Bar features.<br>0: Random, 1: Advanced, 2: Extra |
 
 ### Action Spaces
 
@@ -71,7 +71,7 @@ weight: 60
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------| ------|-------| --------------|
-| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [240&#160;X&#160;320&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [240&#160;X&#160;320&#160;X&#160;3] | Latest game frame  (RGB pixel screen)|
 | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 7]| Current stage of the game |
 
 #### Player specific
@@ -85,8 +85,8 @@ weight: 60
 | `ownChar3`/`oppChar3`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;44] | Index of third character selected<br>0: Kyo, 1: Benimaru, 2: Daimon, 3: Terry, 4: Andy, 5: Joe, 6: Ryo, 7: Robert, 8: Yuri, 9: Leona, 10: Ralf, 11: Clark, 12: Athena, 13: Kensou, 14: Chin, 15: Chizuru, 16: Mai, 17: King, 18: Kim, 19: Chang, 20: Choi, 21: Yashiro, 22: Shermie, 23: Chris, 24: Yamazaki, 25: Mary, 26: Billy, 27: Iori, 28: Mature, 29: Vice, 30: Heidern, 31: Takuma, 32: Saisyu, 33: Heavy-D!, 34: Lucky, 35: Brian, 36: Eiji, 37: Kasumi, 38: Shingo, 39: Rugal, 40: Geese, 41: Krauser, 42: Mr.Big, 43: Goenitz, 44: Orochi|
 | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;44] | Index of character in use<br>0: Kyo, 1: Benimaru, 2: Daimon, 3: Terry, 4: Andy, 5: Joe, 6: Ryo, 7: Robert, 8: Yuri, 9: Leona, 10: Ralf, 11: Clark, 12: Athena, 13: Kensou, 14: Chin, 15: Chizuru, 16: Mai, 17: King, 18: Kim, 19: Chang, 20: Choi, 21: Yashiro, 22: Shermie, 23: Chris, 24: Yamazaki, 25: Mary, 26: Billy, 27: Iori, 28: Mature, 29: Vice, 30: Heidern, 31: Takuma, 32: Saisyu, 33: Heavy-D!, 34: Lucky, 35: Brian, 36: Eiji, 37: Kasumi, 38: Shingo, 39: Rugal, 40: Geese, 41: Krauser, 42: Mr.Big, 43: Goenitz, 44: Orochi|
 | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [-1,&#160;119]| Health bar value |
-| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;7] or [0,&#160;3]| Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of latest move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;7] or [0,&#160;3]| Index of latest attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
 | `ownPowerBar`/`oppPowerBar` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;100]| Power bar value |
 | `ownSpecialAttacks`/`oppSpecialAttacks` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;5]| Number of special attacks available |
 | `ownActiveChar`/`oppActiveChar` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;2]| Index of the active character<br>0: first, 1: second, 2: third |
