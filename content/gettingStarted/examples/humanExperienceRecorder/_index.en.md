@@ -52,7 +52,7 @@ traj_rec_settings["user_name"] = "Alex"
 # Path where to save recorderd trajectories
 game_id = "doapp"
 traj_rec_settings["file_path"] = os.path.join(
-    home_dir, "diambraArena/trajRecordings", game_id)
+    home_dir, "diambra-arena/trajRecordings", game_id)
 
 # If to ignore P2 trajectory (useful when collecting
 # only human trajectories while playing as a human against a RL agent)
