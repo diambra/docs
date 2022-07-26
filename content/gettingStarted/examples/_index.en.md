@@ -11,7 +11,7 @@ These examples show how to leverage both single and two players modes, how to se
 Every example has a dedicated page that can be reached via the sidebar menu or the list below.
 
 {{% notice note %}}
-Source code for examples described in what follows can be found in the code repository, <a href="https://github.com/diambra/diambraArena/tree/main/examples" target="_blank">here</a>.
+Source code for examples described in what follows can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/examples" target="_blank">here</a>.
 {{% /notice %}}
 
 #### Examples List
@@ -25,4 +25,3 @@ Source code for examples described in what follows can be found in the code repo
 - <a href="./imitationlearning/">Imitation Learning</a>
 
 </div>
- 

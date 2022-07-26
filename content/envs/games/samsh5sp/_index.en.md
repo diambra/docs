@@ -8,15 +8,15 @@ weight: 50
   <img src="../../../images/envs/samsh5sp.jpg" style="margin-bottom:20px; border-radius: 10px;"/>
 </figure>
 
-### Index                                                                       
-                                                                                
+### Index
+
 <div style="font-size:1.125rem;">
 
 - <a href="./#game-specific-info">Game Specific Info</a>
 - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Spaces</a>
 - <a href="./#observation-space">Observation Space</a>
-    - <a href="./#global">Global</a>                
+    - <a href="./#global">Global</a>
     - <a href="./#player-specific">Player Specific</a>
 
 </div>
@@ -40,9 +40,9 @@ weight: 50
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>| <strong><span style="color:#5B5B60;">Value Range</span></strong>|
 |-------------| ------|------| ----|
-| `difficulty`       | `int`| 3 |[1, 8]|
+| `difficulty`       | `int`| 6 |[1, 8]|
 | `characters`| `string`       | [[`Random`], [`Random`]]| Kyoshiro, Jubei, Hanzo, Enja, Amakusa, Suija, Galford, Charlotte, Kusare, Sogetsu, Gaira, Ukyo, Yoshitora, Gaoh, Haohmaru, Genjuro, Shizumaru, Kazuki, Tamtam, Rasetsumaru, Rimururu, Mina, Zankuro, Nakoruru, Rera, Yunfei, Basara, Mizuki |
-| `charOutfits`| `int`      | [2, 2] | [1, 4] |
+| `char_outfits`| `int`      | [2, 2] | [1, 4] |
 
 ### Action Spaces
 
@@ -72,7 +72,7 @@ weight: 50
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
 |-------------| ------|-------| --------------|
-| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [224&#160;X&#160;320&#160;X&#160;3] | Last game frame  (RGB pixel screen)|
+| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> |[0,&#160;255] X [224&#160;X&#160;320&#160;X&#160;3] | Latest game frame  (RGB pixel screen)|
 | `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [1, 9]| Current stage of the game |
 
 #### Player specific
@@ -84,8 +84,8 @@ weight: 50
 | `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;27] | Index of first character selected (for games where only one character is selected, this values is the same as "Character in Use")<br>0: Kyoshiro, 1: Jubei, 2: Hanzo, 3: Enja, 4: Amakusa, 5: Suija , 6: Galford, 7: Charlotte, 8: Kusare, 9: Sogetsu, 10: Gaira, 11: Ukyo, 12: Yoshitora, 13: Gaoh, 14: Haohmaru, 15: Genjuro, 16: Shizumaru, 17: Kazuki, 18: Tamtam, 19: Rasetsumaru, 20: Rimururu, 21: Mina, 22: Zankuro, 23: Nakoruru, 24: Rera, 25: Yunfei, 26: Basara, 27: Mizuki|
 | `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;27] | Index of character in use<br>0: Kyoshiro, 1: Jubei, 2: Hanzo, 3: Enja, 4: Amakusa, 5: Suija , 6: Galford, 7: Charlotte, 8: Kusare, 9: Sogetsu, 10: Gaira, 11: Ukyo, 12: Yoshitora, 13: Gaoh, 14: Haohmaru, 15: Genjuro, 16: Shizumaru, 17: Kazuki, 18: Tamtam, 19: Rasetsumaru, 20: Rimururu, 21: Mina, 22: Zankuro, 23: Nakoruru, 24: Rera, 25: Yunfei, 26: Basara, 27: Mizuki|
 | `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;125]| Health bar value |
-| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of last move action performed (no-move, left, left+up, up, etc.)|
-| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;7] or [0,&#160;3]| Index of last attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
+| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;8] | Index of latest move action performed (no-move, left, left+up, up, etc.)|
+| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;7] or [0,&#160;3]| Index of latest attack action performed (no-attack, hold, punch, etc.) with, respectively, attack buttons combination active or not|
 | `ownRageOn`/`oppRageOn`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Rage on for the player<br>0: False, 1: True |
 | `ownRageUsed`/`oppRageUsed`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Rage used by the player<br>0: False, 1: True |
 | `ownWeaponLost`/`oppWeaponLost`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Weapon lost by the player<br>0: False, 1: True |
