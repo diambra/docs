@@ -177,7 +177,6 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 <div style="font-size:1.125rem;">
 
-- <a href="./#installation">Installation</a>
 - <a href="./gettingstarted/">Getting Started</a>
     - <a href="./gettingstarted/examples/">Examples</a>
 - <a href="./envs/">Environments</a>
