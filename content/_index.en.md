@@ -85,7 +85,7 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
 
 - <a href="https://diambra.ai/register/" target="_blank">Create an account on our website</a>, it requires just a few clicks and is 100% free
 
-- Install Docker Desktop: <a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a> | <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Windows</a> | <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">MacOS</a>
+- Install Docker Desktop (<a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a> | <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Windows</a> | <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">MacOS</a>) and <span style="color:#333333; font-weight:bolder;">make sure you have permissions to run it</span> (<a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">see here</a>). On Linux, it's usually enough to run `sudo usermod -aG docker $USER`, log out and log back in.
 
 - Install DIAMBRA Command Line Interface ( <span style="color:#333333; font-weight:bolder;">avoid using</span> a virtual environment*): `python3 -m pip install diambra`
 
