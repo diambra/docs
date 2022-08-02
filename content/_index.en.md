@@ -140,27 +140,27 @@ Make sure to check out our <a href="https://diambra.ai/terms" target="_blank">Te
 
 ##### Base script
 
-Running a complete episode with a random agent requires less than 20 python lines:
+A Python script to run a complete episode with a random agent requires less than 20 lines:
 
-```python {linenos=inline}
- import diambra.arena
+```python
+import diambra.arena
 
- env = diambra.arena.make("doapp")
+env = diambra.arena.make("doapp")
 
- observation = env.reset()
+observation = env.reset()
 
- while True:
-     env.render()
+while True:
+    env.render()
 
-     actions = env.action_space.sample()
+    actions = env.action_space.sample()
 
-     observation, reward, done, info = env.step(actions)
+    observation, reward, done, info = env.step(actions)
 
-     if done:
-         observation = env.reset()
-         break
+    if done:
+        observation = env.reset()
+        break
 
- env.close()
+env.close()
 ```
 
 To execute the script run:
