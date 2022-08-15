@@ -14,7 +14,7 @@ weight: 10
 
 </div>
 
-This page presents different resources that in our experience have been proven very effective in acquiring a good understanding of Reinforcement Learning and Deep Reinforcement Learning. This is by no means an exhaustive list, but it provides a good-enough set of sources to guide a newcomer from learning the basics to becoming familiar with state of the art methods and start experimenting them in the field. 
+This page presents different resources that, in our experience, have been proven very effective in acquiring a good understanding of Reinforcement Learning and Deep Reinforcement Learning. This is by no means an exhaustive list, but it provides a good-enough set of sources to guide a newcomer from learning the basics to becoming familiar with state of the art methods and start experimenting them in the field.
 
 ### Books
 
@@ -33,7 +33,7 @@ The first suggested step is to learn the basics of Reinforcement Learning. The b
 
 ### Courses / Video-lectures
 
-An additional useful resource is represented by courses and/or video-lectures. The two listed in this paragraph, in particular, are extremely valuable. The first one, "Berkeley Deep RL Bootcamp", as the title suggests, focuses specifically on Deep RL in particular and presents a wide overview of the most important, state-of-the-art methods in the field. The second one, "DeepMind Reinforcement Learning Lectures at University College London", deals with RL in general, as Sutton & Barto's does. Both extremely useful and available for free.
+An additional useful resource is represented by courses and/or video-lectures. The two listed in this paragraph, in particular, are extremely valuable. The first one, "Berkeley Deep RL Bootcamp", as the title suggests, focuses specifically on Deep RL, and presents a wide overview of the most important, state-of-the-art methods in the field. The second one, "DeepMind Reinforcement Learning Lectures at University College London", deals with RL in general, as Sutton & Barto's does. Both extremely useful and available for free.
 
 <div>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:15%; float:left; width:35.0%">
@@ -48,7 +48,7 @@ An additional useful resource is represented by courses and/or video-lectures. T
 
 ### Research Publications
 
-After having acquired solid fundamentals, as usual in the whole ML domain, one should rely on publications to keep the pace of field advancements. Conference papers, peer-reviewed journal and open access publications are all options to consider. 
+After having acquired solid fundamentals, as usual in the whole ML domain, one should rely on publications to keep the pace of field advancements. Conference papers, peer-reviewed journal and open access publications are all options to consider.
 
 A good starting point is to read the reference paper for all state-of-the-art algorithms implemented in the most important [RL libraries (see next section)](/deeprltraining/endtoendtraining/#rl-libraries), as found for example <a href="https://stable-baselines3.readthedocs.io/en/master/guide/algos.html" target="_blank">here (SB3)</a> and <a href="https://docs.ray.io/en/latest/rllib/rllib-algorithms.html" target="_blank">here (RAY RLlib)</a>.
 
@@ -63,7 +63,7 @@ A good starting point is to read the reference paper for all state-of-the-art al
   </figure>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%;">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/papers_journals.png"/>
-   <figcaption align="middle">Peer-reviewed Journals (<a href="https://www.jmlr.org/" target="_blank">JMLR</a>, etc.)</figcaption>
+   <figcaption align="middle">Peer-reviewed Journals (<a href="https://www.journals.elsevier.com/artificial-intelligence" target="_blank">ELSEVIER</a>, <a href="https://www.springer.com/journal/10458" target="_blank">Springer</a>, etc.)</figcaption>
   </figure>
 </div>
 

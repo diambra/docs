@@ -5,8 +5,9 @@ weight: 40
 ---
 
 This example focuses on:
- - Wrapppers settings configuration
- - Wrapped observation visualization
+
+- Wrapppers settings configuration
+- Wrapped observation visualization
 
 {{% notice tip %}}
 A dedicated section describing environment wrappers settings is presented <a href="/wrappers/">here</a>, while more info on wrapped observation visualization utils are presented <a href="/utils/#wrapped-observation">here</a>. They both provide additional details on usage and purpose.
@@ -63,6 +64,13 @@ wrappers_settings["scale"] = True
 
 # Scaling interval (0 = [0.0, 1.0], 1 = [-1.0, 1.0])
 wrappers_settings["scale_mod"] = 0
+
+# Flattening observation dictionary and filtering
+# a sub-set of the additional observations
+wrappers_settings["flatten"] = True
+wrappers_settings["filter_keys"] = ["stage", "P1_ownSide", "P1_oppSide",
+                                    "P1_ownHealth", "P1_oppChar",
+                                    "P1_actions_move", "P1_actions_attack"]
 ```
 
 #### Environment execution
