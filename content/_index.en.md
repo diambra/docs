@@ -23,7 +23,7 @@ In addition, its <a href="https://github.com/diambra/arena" target="_blank">GitH
 
 All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side).
 
-They all  <span style="color:#333333; font-weight:bolder;">support both single player (1P) as well as two players (2P) mode</span>, making them the perfect resource to explore all the following Reinforcement Learning subfields:
+They all <span style="color:#333333; font-weight:bolder;">support both single player (1P) as well as two players (2P) mode</span>, making them the perfect resource to explore all the following Reinforcement Learning subfields:
 
 <div style="margin-bottom:0px;">
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:110px; max-width:15%; min-height:120px;">
@@ -87,11 +87,11 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
 
 - Install Docker Desktop (<a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a> | <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Windows</a> | <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">MacOS</a>) and <span style="color:#333333; font-weight:bolder;">make sure you have permissions to run it</span> (<a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">see here</a>). On Linux, it's usually enough to run `sudo usermod -aG docker $USER`, log out and log back in.
 
-- Install DIAMBRA Command Line Interface ( <span style="color:#333333; font-weight:bolder;">avoid using</span> a virtual environment*): `python3 -m pip install diambra`
+- Install DIAMBRA Command Line Interface ( <span style="color:#333333; font-weight:bolder;">avoid using</span> a virtual environment\*): `python3 -m pip install diambra`
 
 - Install DIAMBRA Arena (<span style="color:#333333; font-weight:bolder;">using</span> a virtual environment is strongly suggested): `python3 -m pip install diambra-arena`
 
-*: If you use [ana]conda and have the base environment active, make sure to deactivate it with `conda deactivate`
+\*: If you use [ana]conda and have the base environment active, make sure to deactivate it with `conda deactivate`
 
 ### Quickstart
 
@@ -178,9 +178,9 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 <div style="font-size:1.125rem;">
 
 - <a href="./gettingstarted/">Getting Started</a>
-    - <a href="./gettingstarted/examples/">Examples</a>
+  - <a href="./gettingstarted/examples/">Examples</a>
 - <a href="./envs/">Environments</a>
-    - <a href="./envs/games/">Games & Specifics</a>
+  - <a href="./envs/games/">Games & Specifics</a>
 - <a href="./wrappers/">Wrappers</a>
 - <a href="./utils/">Utils</a>
 - <a href="./imitationlearning/">Imitation Learning</a>
@@ -218,6 +218,5 @@ To request features or report bugs, use the <a href="https://github.com/diambra/
 ### Terms of Use
 
 DIAMBRA Arena software package is subject to our <a href="https://diambra.ai/terms" target="_blank">Terms of Use</a>. By using it, you accept them in full.
-
 
 ###### DIAMBRA™ is a Trade Mark, © Copyright 2018-2022. All Rights Reserved.

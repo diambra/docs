@@ -57,7 +57,7 @@ weight: 10
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
   <img src="../../../images/envs/doappData.png" style="margin-bottom:20px;">
-  <figcaption align="middle">Some examples of Dead Or Alive ++ additional observations</figcaption>
+  <figcaption align="middle">Some examples of Dead Or Alive ++ RAM states</figcaption>
 </figure>
 
 #### Global
