@@ -176,7 +176,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
     background-color: #322A38;
     position: fixed;
     top: 0;
-    width: 300px;
+    width: 400px;
     bottom: 0;
     left: 0;
     font-weight: 400;
@@ -324,7 +324,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 }
 #body {
     position: relative;
-    margin-left: 300px;
+    margin-left: 400px;
     min-height: 100vh;
     max-width: 900px;
     background: #f0f0f5;
@@ -1020,16 +1020,16 @@ td {
 }
 @media only all and (max-width: 59.938em) {
     #sidebar {
-        width: 230px;
+        width: 380px;
     }
     #body {
-        margin-left: 230px;
+        margin-left: 380px;
     }
 }
 @media only all and (max-width: 47.938em) {
     #sidebar {
-        width: 230px;
-        left: -230px;
+        width: 380px;
+        left: -380px;
     }
     #body {
         margin-left: 0;
@@ -1042,7 +1042,7 @@ td {
         left: 0;
     }
     .sidebar-hidden #body {
-        margin-left: 230px;
+        margin-left: 380px;
         overflow: hidden;
     }
     .sidebar-hidden #overlay {
