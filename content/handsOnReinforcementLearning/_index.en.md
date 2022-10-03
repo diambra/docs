@@ -1,22 +1,26 @@
 ---
-title: Learning RL
-weight: 10
+title: Hands-on Reinforcement Learning
+weight: 70
 ---
 
 <div style="font-size:1.125rem;">
 
 ### Index
 
-- <a href="./#books">Books</a>
-- <a href="./#courses--video-lectures">Courses / Video-Lectures</a>
-- <a href="./#research-publications">Research Publications</a>
-- <a href="./#more">More</a>
+- <a href="./#learning-reinforcement-learning">Learning RL</a>
+- <a href="./#end-to-end-deep-reinforcement-learning">End-To-End DeepRL</a>
 
 </div>
 
-This page presents different resources that, in our experience, have been proven very effective in acquiring a good understanding of Reinforcement Learning and Deep Reinforcement Learning. This is by no means an exhaustive list, but it provides a good-enough set of sources to guide a newcomer from learning the basics to becoming familiar with state of the art methods and start experimenting them in the field.
+What is the best path leading a passionate coder to the creation of a trained AI agent capable of effectively playing a videogame? It consists in two steps: learning reinforcement learning and applying it.
 
-### Books
+[Learning RL](./learningrl) section below deals with how to get started with RL: it presents resources that cover from the basics up to the most advanced details of the latest, best-performing algorithms.
+
+Then, in the [End-to-end DeepRL](./endtoenddeeprl) section, some of the most important tech tools are presented together with a step-by-step guide showing how to successfully train a Deep RL agent in our environments.
+
+### Learning Reinforcement Learning
+
+#### Books
 
 The first suggested step is to learn the basics of Reinforcement Learning. The best option to do so is Sutton & Barto's book "Reinforcement Learning: An Introduction", that can be considered the reference text for the field. An additional option is Packt's "The Reinforcement Learning Workshop" that covers theory but also a good amount of practice, being very hands-on and complemented by a GitHub repo with worked exercises.
 
@@ -31,7 +35,7 @@ The first suggested step is to learn the basics of Reinforcement Learning. The b
   </figure>
 </div>
 
-### Courses / Video-lectures
+#### Courses / Video-lectures
 
 An additional useful resource is represented by courses and/or video-lectures. The two listed in this paragraph, in particular, are extremely valuable. The first one, "Berkeley Deep RL Bootcamp", as the title suggests, focuses specifically on Deep RL, and presents a wide overview of the most important, state-of-the-art methods in the field. The second one, "DeepMind Reinforcement Learning Lectures at University College London", deals with RL in general, as Sutton & Barto's does. Both extremely useful and available for free.
 
@@ -46,7 +50,7 @@ An additional useful resource is represented by courses and/or video-lectures. T
   </figure>
 </div>
 
-### Research Publications
+#### Research Publications
 
 After having acquired solid fundamentals, as usual in the whole ML domain, one should rely on publications to keep the pace of field advancements. Conference papers, peer-reviewed journal and open access publications are all options to consider.
 
@@ -67,7 +71,7 @@ A good starting point is to read the reference paper for all state-of-the-art al
   </figure>
 </div>
 
-### More
+#### More
 
 Finally, additional sources of useful information to better understand this field are two films presenting notable milestones achieved by two of the best AI labs in the world, DeepMind and OpenAI. They present their masterpieces AlphaGo/AlphaZero and OpenAI Five, mastering the games of Go and DOTA 2 respectively.
 
@@ -81,3 +85,41 @@ Finally, additional sources of useful information to better understand this fiel
    <figcaption align="middle">OpenAI - Artificial Gamer Film • <a href="https://youtu.be/J0KPNpro2J8?t=1211" target="_blank">Link</a></figcaption>
   </figure>
 </div>
+
+### End-to-End Deep Reinforcement Learning
+
+#### Reinforcement Learning Libraries
+
+If one wants to rely on already implemented RL algorithms, focusing his efforts on higher level aspects such as policy network architecture, features selection, hyper-parameters tuning, and so on, the best choice is to leverage state-of-the-art RL libraries as the ones shown below. There are many different options, here we list those that, in our experience, are recognized as the leaders in the field, and have been proven to achieve good performances in DIAMBRA Arena environments.
+
+There are multiple advantages related to the use of these libraries, to name a few: they provide high quality RL algorithms, efficiently implemented and continuously tested, they allow to natively parallelize environment execution, and in some cases they even support distributed training using multiple GPUs in a single workstation or even in cluster contexts.
+
+We will provide guidance and examples using some of the options listed down here.
+
+<div>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_sb3.png"/>
+   <figcaption align="middle">Stable Baselines 3 • <a href="https://stable-baselines3.readthedocs.io/en/master/" target="_blank">Link</a></figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:30.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_rayrllib.png"/>
+   <figcaption align="middle">Ray RLlib • <a href="https://docs.ray.io/en/latest/rllib/index.html" target="_blank">Link</a></figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_rlcoach.png"/>
+   <figcaption align="middle">Intel RL Coach • <a href="https://intellabs.github.io/coach/" target="_blank">Link</a></figcaption>
+  </figure>
+</div>
+
+#### DeepRL Agent Training Tutorials
+
+<div style="font-size:1.125rem;">
+
+- <a href="./stablebaselines3/">Stable Baselines 3</a>
+- <a href="./rayrllib/">Ray RLlib</a>
+
+</div>
+
+#### GitHub Repository
+
+#### RL Libraries Tutorials and Examples
