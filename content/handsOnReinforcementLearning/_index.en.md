@@ -113,13 +113,13 @@ We will provide guidance and examples using some of the options listed down here
 
 #### DeepRL Agent Training Tutorials
 
+{{% notice tip %}}
+All the examples presented in the following sections (plus additional code) showing how to interface DIAMBRA Arena with the major reinforcement learning libraries outthere, can be found in our open source repository <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>.</span>
+{{% /notice %}}
+
 <div style="font-size:1.125rem;">
 
 - <a href="./stablebaselines3/">Stable Baselines 3</a>
 - <a href="./rayrllib/">Ray RLlib</a>
 
 </div>
-
-#### GitHub Repository
-
-#### RL Libraries Tutorials and Examples

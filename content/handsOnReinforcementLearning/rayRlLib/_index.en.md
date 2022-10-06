@@ -1,6 +1,6 @@
 ---
-title: Stable Baselines 3
-weight: 10
+title: Ray RLlib
+weight: 20
 ---
 
 <div style="font-size:1.125rem;">
@@ -18,12 +18,12 @@ This page aims at guiding the user, who is expected to be at least familiar with
 ### Getting Ready
 
 ```shell
-conda create -n diambra-arena-sb3 python=3.8
-conda activate diambra-arena-sb3
+conda create -n diambra-arena-ray python=3.8
+conda activate diambra-arena-ray
 ```
 
 ```shell
-pip install diambra-arena[stable-baselines3]
+pip install diambra-arena[ray-rllib]
 ```
 
 <a href="https://stable-baselines3.readthedocs.io/en/master/guide/install.html" target="_blank">Stable-Baselines3 Installation Docs</a>
@@ -246,170 +246,4 @@ if __name__ == "__main__":
             break
 
     env.close()
-```
-
-#### Complete Training Script
-
-```python
-import os
-import time
-import yaml
-import json
-import argparse
-from diambra.arena.stable_baselines3.make_sb3_env import make_sb3_env
-from diambra.arena.stable_baselines3.sb3_utils import linear_schedule, AutoSave
-from stable_baselines3 import PPO
-
-if __name__ == "__main__":
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--cfgFile", type=str, required=True,
-                        help="Configuration file")
-    opt = parser.parse_args()
-    print(opt)
-
-    # Read the cfg file
-    yaml_file = open(opt.cfgFile)
-    params = yaml.load(yaml_file, Loader=yaml.FullLoader)
-    print("Config parameters = ", json.dumps(params, sort_keys=True, indent=4))
-    yaml_file.close()
-
-    time_dep_seed = int((time.time() - int(time.time() - 0.5)) * 1000)
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    model_folder = os.path.join(base_path, params["folders"]["parent_dir"],
-                                params["settings"]["game_id"],
-                                params["folders"]["model_name"], "model")
-    tensor_board_folder = os.path.join(base_path, params["folders"]["parent_dir"],
-                                       params["settings"]["game_id"],
-                                       params["folders"]["model_name"], "tb")
-
-    os.makedirs(model_folder, exist_ok=True)
-
-    # Settings
-    settings = params["settings"]
-
-    # Wrappers Settings
-    wrappers_settings = params["wrappers_settings"]
-
-    # Create environment
-    env, num_envs = make_sb3_env(params["settings"]["game_id"],
-                                 settings, wrappers_settings, seed=time_dep_seed)
-    print("Activated {} environment(s)".format(num_envs))
-
-    print("Observation space =", env.observation_space)
-    print("Act_space =", env.action_space)
-
-    # Policy param
-    policy_kwargs = params["policy_kwargs"]
-
-    # PPO settings
-    ppo_settings = params["ppo_settings"]
-    gamma = ppo_settings["gamma"]
-    model_checkpoint = ppo_settings["model_checkpoint"]
-
-    learning_rate = linear_schedule(ppo_settings["learning_rate"][0],
-                                    ppo_settings["learning_rate"][1])
-    clip_range = linear_schedule(ppo_settings["clip_range"][0],
-                                 ppo_settings["clip_range"][1])
-    clip_range_vf = clip_range
-    batch_size = ppo_settings["batch_size"]
-    n_epochs = ppo_settings["n_epochs"]
-    n_steps = ppo_settings["n_steps"]
-
-    if model_checkpoint == "0M":
-        # Initialize the agent
-        agent = PPO("MultiInputPolicy", env, verbose=1,
-                    gamma=gamma, batch_size=batch_size,
-                    n_epochs=n_epochs, n_steps=n_steps,
-                    learning_rate=learning_rate, clip_range=clip_range,
-                    clip_range_vf=clip_range_vf, policy_kwargs=policy_kwargs,
-                    tensorboard_log=tensor_board_folder)
-    else:
-        # Load the trained agent
-        agent = PPO.load(os.path.join(model_folder, model_checkpoint), env=env,
-                         gamma=gamma, learning_rate=learning_rate,
-                         clip_range=clip_range, clip_range_vf=clip_range_vf,
-                         policy_kwargs=policy_kwargs,
-                         tensorboard_log=tensor_board_folder)
-
-
-    # Print policy network architecture
-    print("Policy architecure:")
-    print(agent.policy)
-
-    # Create the callback: autosave every USER DEF steps
-    autosave_freq = ppo_settings["autosave_freq"]
-    auto_save_callback = AutoSave(check_freq=autosave_freq, num_envs=num_envs,
-                                  save_path=os.path.join(model_folder,
-                                                         model_checkpoint + "_"))
-
-    # Train the agent
-    time_steps = ppo_settings["time_steps"]
-    agent.learn(total_timesteps=time_steps, callback=auto_save_callback)
-
-    # Save the agent
-    new_model_checkpoint = str(int(model_checkpoint[:-1]) + time_steps) + "M"
-    model_path = os.path.join(model_folder, new_model_checkpoint)
-    agent.save(model_path)
-
-    # Close the environment
-    env.close()
-```
-
-```yaml
-folders:
-  parent_dir: "./results/"
-  model_name: "sr6_128x4_das_nc"
-
-settings:
-  game_id: "doapp"
-  characters: [["Kasumi"], ["Kasumi"]]
-  difficulty: 3
-  step_ratio: 6
-  frame_shape: [128, 128, 1]
-  continue_game: 0.0
-  action_space: "discrete"
-  attack_but_combination: false
-  char_outfits: [2, 2]
-  player: "Random"
-  show_final: false
-
-wrappers_settings:
-  frame_stack: 4
-  dilation: 1
-  actions_stack: 12
-  reward_normalization: true
-  scale: true
-  exclude_image_scaling: true
-  flatten: true
-  filter_keys:
-    [
-      "stage",
-      "P1_ownHealth",
-      "P1_oppHealth",
-      "P1_ownSide",
-      "P1_oppSide",
-      "P1_oppChar",
-      "P1_actions_move",
-      "P1_actions_attack",
-    ]
-
-policy_kwargs:
-  #net_arch: [{ pi: [64, 64], vf: [32, 32] }]
-  net_arch: [64, 64]
-
-ppo_settings:
-  gamma: 0.94
-  model_checkpoint: "0M"
-  learning_rate: [2.5e-4, 2.5e-6] # To start
-  clip_range: [0.15, 0.025] # To start
-  #learning_rate: [5.0e-5, 2.5e-6] # Fine Tuning
-  #clip_range: [0.075, 0.025] # Fine Tuning
-  batch_size:
-    256 # 8 #nminibatches gave different batch size depending on
-    # the number of environments: batch_size = (n_steps * n_envs) // nminibatches
-  n_epochs: 4
-  n_steps: 128
-  autosave_freq: 256
-  time_steps: 512
 ```
