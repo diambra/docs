@@ -15,7 +15,7 @@ weight: 20
 
 ### Getting Ready
 
-We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tools should work too.
+We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tool should work too.
 
 Create and activate a new dedicated virtual environment:
 
@@ -30,9 +30,9 @@ Install DIAMBRA Arena with Stable Baselines 3 interface:
 pip install diambra-arena[ray-rllib]
 ```
 
-This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://docs.ray.io/en/latest/rllib/index.html" target="_blank">Ray RLlib documentation</a> for specific needs.
+This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://docs.ray.io/en/latest/rllib/index.html" target="_blank">Ray RLlib documentation</a> or reach out on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord server</a> for specific needs.
 
-All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">DIAMBRA Agents - Ray RLlib</a>.
+All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">DIAMBRA Agents - Ray RLlib</a>. They have been created following the high level approach found on <a href="https://docs.ray.io/en/latest/rllib/rllib-examples.html" target="_blank">Ray RLlib examples</a> page and their related <a href="https://github.com/ray-project/ray/tree/master/rllib/examples" target="_blank">repository collection</a>, thus allowing to easily extend them and to understand how they interface with the different components.
 
 ### Basic
 

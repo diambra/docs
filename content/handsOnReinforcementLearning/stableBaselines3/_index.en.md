@@ -15,7 +15,7 @@ weight: 10
 
 ### Getting Ready
 
-We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tools should work too.
+We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tool should work too.
 
 Create and activate a new dedicated virtual environment:
 
@@ -30,13 +30,52 @@ Install DIAMBRA Arena with Stable Baselines 3 interface:
 pip install diambra-arena[stable-baselines3]
 ```
 
-This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://stable-baselines3.readthedocs.io/en/master/guide/install.html" target="_blank">Stable Baselines 3 documentation</a> for specific needs.
+This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://stable-baselines3.readthedocs.io/en/master/guide/install.html" target="_blank">Stable Baselines 3 documentation</a> or reach out on our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord server</a> for specific needs.
 
-All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents - Stable Baselines 3</a>.
+All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents - Stable Baselines 3</a>. They have been created following the high level approach found on <a href="https://stable-baselines3.readthedocs.io/en/master/guide/examples.html" target="_blank">Stable Baselines 3 examples</a> page, thus allowing to easily extend them and to understand how they interface with the different components.
+
+These examples only aims at demonstrating the core functionalities and high level aspects, they will not generate well performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like: policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping and other similar ones.
+
+#### Native interface
+
+DIAMBRA Arena native interface with Stable Baselines 3 covers a wide range of use cases and
+
+```python
+def make_sb3_env(game_id, env_settings={}, wrappers_settings=None,
+                 use_subprocess=True, seed=0, log_dir_base="/tmp/DIAMBRALog/",
+                 start_index=0, allow_early_resets=True,
+                 start_method=None, no_vec=False):
+```
+
+| <strong><span style="color:#5B5B60;">Argument</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                        |
+| ------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `game_id`                                                     | `string`                                                  | -                                                                     | Game environment identifier.                                                                                                                                            |
+| `env_settings`                                                | `dict`                                                    | `{}`                                                                  | Environment settings (<a href="/envs/#settings">see more</a>).                                                                                                          |
+| `wrappers_settings`                                           | `dict`                                                    | `None`                                                                | Wrappers settings (<a href="/wrappers/">see more</a>).                                                                                                                  |
+| `use_subprocess`                                              | `bool`                                                    | `True`                                                                | If to use subprocesses for multi-threaded parallelization.                                                                                                              |
+| `seed`                                                        | `int`                                                     | 0                                                                     | Random number generator seed.                                                                                                                                           |
+| `log_dir_base`                                                | `string`                                                  | `"/tmp/DIAMBRALog/"`                                                  | Folder where to save execution logs.                                                                                                                                    |
+| `start_index`                                                 | `int`                                                     | 0                                                                     | Starting process rank index.                                                                                                                                            |
+| `allow_early_resets`                                          | `bool`                                                    | `True`                                                                | Monitor wrapper argument to allow environment reset before it is done                                                                                                   |
+| `start_method`                                                | `string`                                                  | `None`                                                                | Method to spawn subprocesses when active (<a href="https://stable-baselines3.readthedocs.io/en/master/guide/vec_envs.html#subprocvecenv" target="_blank">see more</a>). |
+| `no_vec`                                                      | `bool`                                                    | `False`                                                               | If `True` avoids using vectorized environments (valid only when using a single instance). reset.                                                                        |
+
+{{% notice note %}}
+For the interface low level details, users can review the correspondent source code <a href="https://github.com/diambra/arena/tree/main/diambra/arena/stable_baselines3" target="_blank">here</a>.
+{{% /notice %}}
 
 ### Basic
 
+For all the basic examples, the environment will be used in `hardcore` mode, so that the observation space will be only of type `Box` composed by screen pixels, as in the majority of simple examples found in tutorials and docs. This allows to directly use it without the need of further processing.
+
 #### Basic Example
+
+This example demonstrates how to:
+
+- Instantiate a new DIAMBRA Arena environment with its settings
+- Interface it with one of Stable Baselines 3's algorithms
+- Train the algorithm
+- Run the trained agent in the environment for one episode
 
 ```python
 import diambra.arena
@@ -44,7 +83,8 @@ from stable_baselines3 import A2C
 
 if __name__ == "__main__":
 
-    env = diambra.arena.make("doapp", {"hardcore": True, "frame_shape": [128, 128, 1]})
+    env = diambra.arena.make("doapp", {"hardcore": True,
+                                       "frame_shape": [128, 128, 1]})
 
     print("\nStarting training ...\n")
     agent = A2C('CnnPolicy', env, verbose=1)
@@ -70,6 +110,12 @@ if __name__ == "__main__":
 
 #### Saving, loading and evaluating
 
+In addition to what seen in the previous example, this one demonstrates how to:
+
+- Save a trained agent
+- Load a saved agent
+- Evaluate an agent on a given number of episodes
+
 ```python
 import diambra.arena
 from stable_baselines3 import A2C
@@ -78,7 +124,8 @@ from stable_baselines3.common.evaluation import evaluate_policy
 if __name__ == "__main__":
 
     # Create environment
-    env = diambra.arena.make("doapp", {"hardcore": True, "frame_shape": [128, 128, 1]})
+    env = diambra.arena.make("doapp", {"hardcore": True,
+                                       "frame_shape": [128, 128, 1]})
 
     # Instantiate the agent
     agent = A2C('CnnPolicy', env, verbose=1)
@@ -123,6 +170,13 @@ if __name__ == "__main__":
 ```
 
 #### Parallel Environments
+
+In addition to what seen in previous examples, this one demonstrates how to:
+
+- Leverage DIAMBRA Arena native Stable Baselines 3 interface
+- Activate environment wrappers
+- Run training using parallel environments
+- Print out the policy network architecture
 
 ```python
 import diambra.arena
