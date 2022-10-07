@@ -38,7 +38,7 @@ These examples only aims at demonstrating the core functionalities and high leve
 
 #### Native interface
 
-DIAMBRA Arena native interface with Stable Baselines 3 covers a wide range of use cases and
+DIAMBRA Arena native interface with Stable Baselines 3 covers a wide range of use cases, automating handling of vectorized environments and monitoring wrappers. In the majority of cases it will be sufficient for users to directly import and use it, with no need for additional customization. Below is reported its interface and a table describing its arguments.
 
 ```python
 def make_sb3_env(game_id, env_settings={}, wrappers_settings=None,
@@ -209,7 +209,7 @@ if __name__ == '__main__':
     agent = PPO('CnnPolicy', env, verbose=1)
 
     # Print policy network architecture
-    print("Policy architecure:")
+    print("Policy architecture:")
     print(agent.policy)
 
     # Train the agent
@@ -274,7 +274,7 @@ if __name__ == "__main__":
     agent = PPO("MultiInputPolicy", env, verbose=1)
 
     # Print policy network architecture
-    print("Policy architecure:")
+    print("Policy architecture:")
     print(agent.policy)
 
     # Train the agent
@@ -386,7 +386,7 @@ if __name__ == "__main__":
 
 
     # Print policy network architecture
-    print("Policy architecure:")
+    print("Policy architecture:")
     print(agent.policy)
 
     # Create the callback: autosave every USER DEF steps
