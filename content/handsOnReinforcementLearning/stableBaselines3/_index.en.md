@@ -13,28 +13,26 @@ weight: 10
 
 </div>
 
-This page aims at guiding the user, who is expected to be at least familiar with the basic concepts of RL ([see Learning RL page](/deeprltraining/learningrl/)), in a step-by-step process that will make him able to train a state-of-the-art DeepRL agent capable of obtaining good performances in our environments.
-
 ### Getting Ready
+
+We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tools should work too.
+
+Create and activate a new dedicated virtual environment:
 
 ```shell
 conda create -n diambra-arena-sb3 python=3.8
 conda activate diambra-arena-sb3
 ```
 
+Install DIAMBRA Arena with Stable Baselines 3 interface:
+
 ```shell
 pip install diambra-arena[stable-baselines3]
 ```
 
-<a href="https://stable-baselines3.readthedocs.io/en/master/guide/install.html" target="_blank">Stable-Baselines3 Installation Docs</a>
+This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://stable-baselines3.readthedocs.io/en/master/guide/install.html" target="_blank">Stable Baselines 3 documentation</a> for specific needs.
 
-If one wants to rely on already implemented RL algorithms, focusing his efforts on higher level aspects such as policy network architecture, features selection, hyper-parameters tuning, and so on, the best choice is to leverage state-of-the-art RL libraries as the ones shown below. There are many different options, here we list those that, in our experience, are recognized as the leaders in the field, and have been proven to achieve good performances in DIAMBRA Arena environments.
-
-There are multiple advantages related to the use of these libraries, to name a few: they provide high quality RL algorithms, efficiently implemented and continuously tested, they allow to natively parallelize environment execution, and in some cases they even support distributed training using multiple GPUs in a single workstation or even in cluster contexts.
-
-We will provide guidance and examples using some of the options listed down here.
-
-<a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents Repo - Stable Baselines3 Examples</a>
+All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents - Stable Baselines 3</a>.
 
 ### Basic
 

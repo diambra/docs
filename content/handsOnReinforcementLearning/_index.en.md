@@ -12,7 +12,7 @@ weight: 70
 
 </div>
 
-What is the best path leading a passionate coder to the creation of a trained AI agent capable of effectively playing a videogame? It consists in two steps: learning reinforcement learning and applying it.
+What is the best path leading a passionate coder to the creation of a trained AI agent capable of effectively playing a video game? It consists in two steps: learning reinforcement learning and applying it.
 
 [Learning RL](./learningrl) section below deals with how to get started with RL: it presents resources that cover from the basics up to the most advanced details of the latest, best-performing algorithms.
 
@@ -94,7 +94,7 @@ If one wants to rely on already implemented RL algorithms, focusing his efforts 
 
 There are multiple advantages related to the use of these libraries, to name a few: they provide high quality RL algorithms, efficiently implemented and continuously tested, they allow to natively parallelize environment execution, and in some cases they even support distributed training using multiple GPUs in a single workstation or even in cluster contexts.
 
-We will provide guidance and examples using some of the options listed down here.
+The next section provides guidance and examples using some of the options listed down here.
 
 <div>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
@@ -111,11 +111,7 @@ We will provide guidance and examples using some of the options listed down here
   </figure>
 </div>
 
-#### DeepRL Agent Training Tutorials
-
-{{% notice tip %}}
-All the examples presented in the following sections (plus additional code) showing how to interface DIAMBRA Arena with the major reinforcement learning libraries outthere, can be found in our open source repository <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>.</span>
-{{% /notice %}}
+#### DeepRL Agent Training
 
 <div style="font-size:1.125rem;">
 
@@ -123,3 +119,13 @@ All the examples presented in the following sections (plus additional code) show
 - <a href="./rayrllib/">Ray RLlib</a>
 
 </div>
+
+DIAMBRA Arena natively provides interfaces to both Stable Baselines 3 and Ray RLlib, allowing to easily train models with them on our environments. Each library-dedicated page presents some basic and advanced examples.
+
+{{% notice tip %}}
+All the examples presented in the following sections (plus additional code) showing how to interface DIAMBRA Arena with the major reinforcement learning libraries, can be found in our open source repository <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>.</span>
+{{% /notice %}}
+
+{{% notice note %}}
+DIAMBRA Arena provides a working interface with Stable Baselines 2 too, but it is deprecated and will be discontinued in the near future.
+{{% /notice %}}

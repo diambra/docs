@@ -13,28 +13,26 @@ weight: 20
 
 </div>
 
-This page aims at guiding the user, who is expected to be at least familiar with the basic concepts of RL ([see Learning RL page](/deeprltraining/learningrl/)), in a step-by-step process that will make him able to train a state-of-the-art DeepRL agent capable of obtaining good performances in our environments.
-
 ### Getting Ready
+
+We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tools should work too.
+
+Create and activate a new dedicated virtual environment:
 
 ```shell
 conda create -n diambra-arena-ray python=3.8
 conda activate diambra-arena-ray
 ```
 
+Install DIAMBRA Arena with Stable Baselines 3 interface:
+
 ```shell
 pip install diambra-arena[ray-rllib]
 ```
 
-<a href="https://stable-baselines3.readthedocs.io/en/master/guide/install.html" target="_blank">Stable-Baselines3 Installation Docs</a>
+This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://docs.ray.io/en/latest/rllib/index.html" target="_blank">Ray RLlib documentation</a> for specific needs.
 
-If one wants to rely on already implemented RL algorithms, focusing his efforts on higher level aspects such as policy network architecture, features selection, hyper-parameters tuning, and so on, the best choice is to leverage state-of-the-art RL libraries as the ones shown below. There are many different options, here we list those that, in our experience, are recognized as the leaders in the field, and have been proven to achieve good performances in DIAMBRA Arena environments.
-
-There are multiple advantages related to the use of these libraries, to name a few: they provide high quality RL algorithms, efficiently implemented and continuously tested, they allow to natively parallelize environment execution, and in some cases they even support distributed training using multiple GPUs in a single workstation or even in cluster contexts.
-
-We will provide guidance and examples using some of the options listed down here.
-
-<a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents Repo - Stable Baselines3 Examples</a>
+All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">DIAMBRA Agents - Ray RLlib</a>.
 
 ### Basic
 
@@ -42,29 +40,57 @@ We will provide guidance and examples using some of the options listed down here
 
 ```python
 import diambra.arena
-from stable_baselines3 import A2C
+from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
+from ray.rllib.algorithms.ppo import PPO
 
 if __name__ == "__main__":
 
-    env = diambra.arena.make("doapp", {"hardcore": True, "frame_shape": [128, 128, 1]})
+    # Settings
+    settings = {}
+    settings["hardcore"] = True
+    settings["frame_shape"] = [84, 84, 1]
 
+    config = {
+        # Define and configure the environment
+        "env": DiambraArena,
+        "env_config": {
+            "game_id": "doapp",
+            "settings": settings,
+        },
+        "num_workers": 0,
+        "train_batch_size": 200,
+    }
+
+    # Update config file
+    config = preprocess_ray_config(config)
+
+    # Create the RLlib Agent.
+    agent = PPO(config=config)
+
+    # Run it for n training iterations
     print("\nStarting training ...\n")
-    agent = A2C('CnnPolicy', env, verbose=1)
-    agent.learn(total_timesteps=200)
+    for idx in range(1):
+        print("Training iteration:", idx + 1)
+        agent.train()
     print("\n .. training completed.")
 
+    # Run the trained agent (and render each timestep output).
     print("\nStarting trained agent execution ...\n")
-    observation = env.reset()
+
+    env = diambra.arena.make("doapp", settings)
+
+    obs = env.reset()
     while True:
         env.render()
 
-        action, _state = agent.predict(observation, deterministic=True)
+        action = agent.compute_single_action(obs)
 
-        observation, reward, done, info = env.step(action)
+        obs, reward, done, info = env.step(action)
 
         if done:
-            observation = env.reset()
+            obs = env.reset()
             break
+
     print("\n... trained agent execution completed.\n")
 
     env.close()
@@ -74,113 +100,123 @@ if __name__ == "__main__":
 
 ```python
 import diambra.arena
-from stable_baselines3 import A2C
-from stable_baselines3.common.evaluation import evaluate_policy
+from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
+from ray.rllib.algorithms.ppo import PPO
+from ray.tune.logger import pretty_print
 
 if __name__ == "__main__":
 
-    # Create environment
-    env = diambra.arena.make("doapp", {"hardcore": True, "frame_shape": [128, 128, 1]})
+    # Settings
+    settings = {}
+    settings["hardcore"] = True
+    settings["frame_shape"] = [84, 84, 1]
 
-    # Instantiate the agent
-    agent = A2C('CnnPolicy', env, verbose=1)
-    # Train the agent
-    agent.learn(total_timesteps=200)
+    config = {
+        # Define and configure the environment
+        "env": DiambraArena,
+        "env_config": {
+            "game_id": "doapp",
+            "settings": settings,
+        },
+        "num_workers": 0,
+        "train_batch_size": 200,
+        "framework": "torch",
+    }
+
+    # Update config file
+    config = preprocess_ray_config(config)
+
+    # Create the RLlib Agent.
+    agent = PPO(config=config)
+    print("Policy architecture =\n{}".format(agent.get_policy().model))
+
+    # Run it for n training iterations
+    print("\nStarting training ...\n")
+    for idx in range(1):
+        print("Training iteration:", idx + 1)
+        results = agent.train()
+    print("\n .. training completed.")
+    print("Training results:\n{}".format(pretty_print(results)))
+
     # Save the agent
-    agent.save("a2c_doapp")
-    # Delete trained agent to demonstrate loading
-    del agent
+    checkpoint = agent.save()
+    print("Checkpoint saved at {}".format(checkpoint))
+    del agent  # delete trained model to demonstrate loading
 
     # Load the trained agent
-    # NOTE: if you have loading issue, you can pass `print_system_info=True`
-    # to compare the system on which the agent was trained vs the current one
-    # agent = A2C.load("a2c_doapp", env=env, print_system_info=True)
-    agent = A2C.load("a2c_doapp", env=env)
+    agent = PPO(config=config)
+    agent.restore(checkpoint)
+    print("Agent loaded")
 
-    # Evaluate the agent
-    # NOTE: If you use wrappers with your environment that modify rewards,
-    #       this will be reflected here. To evaluate with original rewards,
-    #       wrap environment in a "Monitor" wrapper before other wrappers.
-    mean_reward, std_reward = evaluate_policy(agent, agent.get_env(), n_eval_episodes=3)
-    print("Reward: {} (avg) ± {} (std)".format(mean_reward, std_reward))
-
-    # Run trained agent
-    observation = env.reset()
-    cumulative_reward = 0
-    while True:
-        env.render()
-
-        action, _state = agent.predict(observation, deterministic=True)
-
-        observation, reward, done, info = env.step(action)
-        cumulative_reward += reward
-        if (reward != 0):
-            print("Cumulative reward =", cumulative_reward)
-
-        if done:
-            observation = env.reset()
-            break
-
-    env.close()
+    # Evaluate the trained agent (and render each timestep to the shell's
+    # output).
+    print("\nStarting evaluation ...\n")
+    results = agent.evaluate()
+    print("\n... evaluation completed.\n")
+    print("Evaluation results:\n{}".format(pretty_print(results)))
 ```
 
 #### Parallel Environments
 
 ```python
 import diambra.arena
-from diambra.arena.stable_baselines3.make_sb3_env import make_sb3_env
-from stable_baselines3 import PPO
+from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
+from ray.rllib.algorithms.ppo import PPO
+from ray.tune.logger import pretty_print
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     # Settings
     settings = {}
     settings["hardcore"] = True
-    settings["frame_shape"] = [128, 128, 1]
-    settings["characters"] = [["Kasumi"], ["Kasumi"]]
+    settings["frame_shape"] = [84, 84, 3]
 
-    # Wrappers Settings
-    wrappers_settings = {}
-    wrappers_settings["reward_normalization"] = True
-    wrappers_settings["frame_stack"] = 5
+    config = {
+        # Define and configure the environment
+        "env": DiambraArena,
+        "env_config": {
+            "game_id": "doapp",
+            "settings": settings,
+        },
 
-    # Create environment
-    env, num_envs = make_sb3_env("doapp", settings, wrappers_settings)
-    print("Activated {} environment(s)".format(num_envs))
+        "train_batch_size": 200,
 
-    print("Observation space shape =", env.observation_space.shape)
-    print("Observation space type =", env.observation_space.dtype)
+        # Use 2 rollout workers
+        "num_workers": 2,
+        # Use a vectorized env with 2 sub-envs.
+        "num_envs_per_worker": 2,
 
-    print("Act_space =", env.action_space)
+        # Evaluate once per training iteration.
+        "evaluation_interval": 1,
+        # Run evaluation on (at least) two episodes
+        "evaluation_duration": 2,
+        # ... using one evaluation worker (setting this to 0 will cause
+        # evaluation to run on the local evaluation worker, blocking
+        # training until evaluation is done).
+        "evaluation_num_workers": 1,
+        # Special evaluation config. Keys specified here will override
+        # the same keys in the main config, but only for evaluation.
+        "evaluation_config": {
+            # Render the env while evaluating.
+            # Note that this will always only render the 1st RolloutWorker's
+            # env and only the 1st sub-env in a vectorized env.
+            "render_env": True,
+        },
+    }
 
-    # Instantiate the agent
-    agent = PPO('CnnPolicy', env, verbose=1)
+    # Update config file
+    config = preprocess_ray_config(config)
 
-    # Print policy network architecture
-    print("Policy architecure:")
-    print(agent.policy)
+    # Create the RLlib Agent.
+    agent = PPO(config=config)
 
-    # Train the agent
-    agent.learn(total_timesteps=200)
-
-    # Run trained agent
-    observation = env.reset()
-    cumulative_reward = [0.0 for _ in range(num_envs)]
-    while True:
-        env.render()
-
-        action, _state = agent.predict(observation, deterministic=True)
-
-        observation, reward, done, info = env.step(action)
-        cumulative_reward += reward
-        if any(x != 0 for x in reward):
-            print("Cumulative reward(s) =", cumulative_reward)
-
-        if done.any():
-            observation = env.reset()
-            break
-
-    env.close()
+    # Run it for n training iterations
+    print("\nStarting training ...\n")
+    for idx in range(2):
+        print("Training iteration:", idx + 1)
+        results = agent.train()
+    print("\n .. training completed.")
+    print("Training results:\n{}".format(pretty_print(results)))
 ```
 
 ### Advanced
@@ -189,14 +225,15 @@ if __name__ == '__main__':
 
 ```python
 import diambra.arena
-from diambra.arena.stable_baselines3.make_sb3_env import make_sb3_env
-from stable_baselines3 import PPO
+from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
+from ray.rllib.algorithms.ppo import PPO
+from ray.tune.logger import pretty_print
 
 if __name__ == "__main__":
 
     # Settings
     settings = {}
-    settings["frame_shape"] = [128, 128, 1]
+    settings["frame_shape"] = [84, 84, 1]
     settings["characters"] = [["Kasumi"], ["Kasumi"]]
 
     # Wrappers Settings
@@ -205,45 +242,40 @@ if __name__ == "__main__":
     wrappers_settings["actions_stack"] = 12
     wrappers_settings["frame_stack"] = 5
     wrappers_settings["scale"] = True
-    wrappers_settings["exclude_image_scaling"] = True
-    wrappers_settings["flatten"] = True
-    wrappers_settings["filter_keys"] = ["stage", "P1_ownHealth", "P1_oppHealth",
-                                        "P1_ownSide", "P1_oppSide", "P1_oppChar",
-                                        "P1_actions_move", "P1_actions_attack"]
+    wrappers_settings["process_discrete_binary"] = True
 
-    # Create environment
-    env, num_envs = make_sb3_env("doapp", settings, wrappers_settings)
-    print("Activated {} environment(s)".format(num_envs))
+    config = {
+        # Define and configure the environment
+        "env": DiambraArena,
+        "env_config": {
+            "game_id": "doapp",
+            "settings": settings,
+            "wrappers_settings": wrappers_settings,
+        },
+        "num_workers": 0,
+        "train_batch_size": 200,
+        "framework": "torch",
+    }
 
-    print("Observation space =", env.observation_space)
-    print("Act_space =", env.action_space)
+    # Update config file
+    config = preprocess_ray_config(config)
 
-    # Instantiate the agent
-    agent = PPO("MultiInputPolicy", env, verbose=1)
+    # Create the RLlib Agent.
+    agent = PPO(config=config)
+    print("Policy architecture =\n{}".format(agent.get_policy().model))
 
-    # Print policy network architecture
-    print("Policy architecure:")
-    print(agent.policy)
+    # Run it for n training iterations
+    print("\nStarting training ...\n")
+    for idx in range(1):
+        print("Training iteration:", idx + 1)
+        results = agent.train()
+    print("\n .. training completed.")
+    print("Training results:\n{}".format(pretty_print(results)))
 
-    # Train the agent
-    agent.learn(total_timesteps=200)
-
-    # Run trained agent
-    observation = env.reset()
-    cumulative_reward = [0.0 for _ in range(num_envs)]
-    while True:
-        env.render()
-
-        action, _state = agent.predict(observation, deterministic=True)
-
-        observation, reward, done, info = env.step(action)
-        cumulative_reward += reward
-        if any(x != 0 for x in reward):
-            print("Cumulative reward(s) =", cumulative_reward)
-
-        if done.any():
-            observation = env.reset()
-            break
-
-    env.close()
+    # Evaluate the trained agent (and render each timestep to the shell's
+    # output).
+    print("\nStarting evaluation ...\n")
+    results = agent.evaluate()
+    print("\n... evaluation completed.\n")
+    print("Evaluation results:\n{}".format(pretty_print(results)))
 ```
