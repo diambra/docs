@@ -287,7 +287,7 @@ In addition to what seen in previous examples, this one demonstrates how to:
 - Activate a complete set of environment wrappers
 - How to properly handle dictionary observations for Ray RLlib
 
-There are two main things to note in this example: how to handle observation normalization and dictionary observations. As it can be seen from the snippet below, the normalization wrapper is applied on all elements prescribing one-hot encoding to be applied on binary discrete observations too, that is usually not needed nor suggested, but it is requested by Ray RLlib to automatically handle this observation type. On the other hand, the library does not have constraints on dictionary observation spaces, being able to handle nested ones too.
+There are two main things to note in this example: how to handle observation normalization and dictionary observations. As it can be seen from the snippet below, the normalization wrapper is applied on all elements prescribing one-hot encoding to be applied on binary discrete observations too. This is usually not needed nor suggested, but it is requested by Ray RLlib to automatically handle this observation type. On the other hand, the library does not have constraints on dictionary observation spaces, being able to handle nested ones too.
 
 The policy network is automatically generated, properly handling different types of inputs. Model architecture is then printed to the console output, allowing to clearly identify all the different contributions.
 
