@@ -77,6 +77,8 @@ This example demonstrates how to:
 - Train the algorithm
 - Run the trained agent in the environment for one episode
 
+It uses the A2C algorithm, with a `CnnPolicy` policy network to properly process the game frame observation as input. For demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.
+
 ```python
 import diambra.arena
 from stable_baselines3 import A2C
@@ -108,6 +110,12 @@ if __name__ == "__main__":
     env.close()
 ```
 
+How to run it:
+
+```shell
+diambra run python basic.py
+```
+
 #### Saving, loading and evaluating
 
 In addition to what seen in the previous example, this one demonstrates how to:
@@ -115,6 +123,8 @@ In addition to what seen in the previous example, this one demonstrates how to:
 - Save a trained agent
 - Load a saved agent
 - Evaluate an agent on a given number of episodes
+
+The same conditions of the previous example for algorithm, policy and training steps are used in this one too.
 
 ```python
 import diambra.arena
@@ -169,6 +179,12 @@ if __name__ == "__main__":
     env.close()
 ```
 
+How to run it:
+
+```shell
+diambra run python saving_loading_evaluating.py
+```
+
 #### Parallel Environments
 
 In addition to what seen in previous examples, this one demonstrates how to:
@@ -177,6 +193,10 @@ In addition to what seen in previous examples, this one demonstrates how to:
 - Activate environment wrappers
 - Run training using parallel environments
 - Print out the policy network architecture
+
+In this example, the PPO algorithm is used, with the same `CnnPolicy` seen before. This policy network works even if in this example an environment wrapper is used to stack multiple game frames, as they are piled along the channel dimension. In this example the policy architecture is also printed to the console output, allowing to visualize how inputs are processed and "translated" to actions probabilities.
+
+This example also runs multiple environments, automatically detecting the number of instances created by DIAMBRA CLI when running the script.
 
 ```python
 import diambra.arena
@@ -235,9 +255,26 @@ if __name__ == '__main__':
     env.close()
 ```
 
+How to run it:
+
+```shell
+diambra run -s=2 python parallel_envs.py
+```
+
 ### Advanced
 
+The nex examples make use of the complete observation space of our environments. This is of type `Dict`, in which different elements are organized as key-value pairs and they can be of different type.
+
 #### Dictionary Observations
+
+In addition to what seen in previous examples, this one demonstrates how to:
+
+- Activate a complete set of environment wrappers
+- How to properly handle dictionary observations for Stable Baselines 3
+
+There are two main things to note in this example: how to handle observation normalization and dictionary observations. As it can be seen from the snippet below, the normalization wrapper is applied on all elements but the image frame, as Stable Baselines 3 automatically normalizes images and expects their pixels to be in the range [0 - 255]. The library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a flattening wrapper that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.
+
+In this case, the policy network needs to be of class `MultiInputPolicy`, since it will handle different types of inputs. Stable Baselines 3 automatically defines the network architecture, properly matching the input type. The architecture is then printed to the console output, allowing to clearly identify all the different contributions.
 
 ```python
 import diambra.arena
@@ -300,7 +337,28 @@ if __name__ == "__main__":
     env.close()
 ```
 
+How to run it:
+
+```shell
+diambra run python dict_obs_space.py
+```
+
 #### Complete Training Script
+
+In addition to what seen in previous examples, this one demonstrates how to:
+
+- Build a complete training script to be used with Stable Baselines via a config fila
+- How to properly handle hyper-parameters scheduling via callbacks
+- How to use callbacks for auto-saving
+- How to control some policy network models and optimizer parameters
+
+This example show exactly how we trained our own models on these environments. It should be considered a starting point from where to explore and experiment, the following are just a few options among the most obvious ones:
+
+- Tweak hyper-parameters for the chosen algorithm
+- Evolve the policy network architecture
+- Test different algorithms, both on and off-policy
+- Try to leverage behavioral cloning / imitation learning
+- Modify the reward function to guide learning in other directions
 
 ```python
 import os
@@ -407,6 +465,14 @@ if __name__ == "__main__":
     # Close the environment
     env.close()
 ```
+
+How to run it:
+
+```shell
+diambra run python training.py --cfgFile path/to/config.yaml
+```
+
+and the configuration file to be used with this training script is reported below:
 
 ```yaml
 folders:

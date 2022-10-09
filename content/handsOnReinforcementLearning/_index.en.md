@@ -111,7 +111,78 @@ The next section provides guidance and examples using some of the options listed
   </figure>
 </div>
 
-#### DeepRL Agent Training
+#### Creating an Agent
+
+{{% notice tip %}}
+All the examples presented in these sections (plus additional code) showing how to interface DIAMBRA Arena with the major reinforcement learning libraries, can be found in our open source repository <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>.</span>
+{{% /notice %}}
+
+##### Scripted Agents
+
+The classical way to create an agent able to play a game is to hand-code the rules governing its behavior. These rules can vary from very simple heuristics to very complex behavioral trees, but they all have in common the need of an expert coder that knows the game and is able to distill the key elements of it to craft the scripted bot.
+
+The following are two examples of (very simple) scripted agents interfaced with our environments, and they are available here: <a href="https://github.com/diambra/agents/tree/main/basic" target="_blank">DIAMBRA Agents - Basic</a>.
+
+###### No-Action Agent
+
+This agent simply performs the "No-Action" action at every step. By convention it is the action with index 0, and it needs to be a single value for `Discrete` action spaces, and a tuple of 0s for `MultiDiscrete` ones, as shown in the snippet below.
+
+```python
+import diambra.arena
+
+if __name__ == "__main__":
+
+    env = diambra.arena.make("doapp")
+
+    observation = env.reset()
+
+    while True:
+        env.render()
+
+        action = 0 if env.env_settings["action_space"][0] == "discrete" else [0, 0]
+
+        observation, reward, done, info = env.step(action)
+
+        if done:
+            observation = env.reset()
+            break
+
+    env.close()
+```
+
+###### Random Agent
+
+This agent simply performs a random action at every step. In this case, the sampling method takes care of generating an action that is consistent with the environment action space.
+
+```python
+import diambra.arena
+
+if __name__ == "__main__":
+
+    env = diambra.arena.make("doapp", settings)
+
+    observation = env.reset()
+
+    while True:
+
+        actions = env.action_space.sample()
+
+        observation, reward, done, info = env.step(actions)
+
+        if done:
+            observation = env.reset()
+            break
+
+    env.close()
+```
+
+More complex scripts can be built in similar ways, for example continuously performing user-defined combos moves, or adding some more complex choice mechanics. But this would still require to decide the tactics in advance, properly translating knowledge into code. A different approach would be to leverage reinforcement learning, so that the agent will improve leveraging its own experience.
+
+##### DeepRL Trained Agents
+
+An alternative approach to scripted agents is adopting reinforcement learning, and the following sections provide examples on how to do that with the most important libraries in the domain.
+
+DIAMBRA Arena natively provides interfaces to both Stable Baselines 3 and Ray RLlib, allowing to easily train models with them on our environments. Each library-dedicated page presents some basic and advanced examples.
 
 <div style="font-size:1.125rem;">
 
@@ -119,12 +190,6 @@ The next section provides guidance and examples using some of the options listed
 - <a href="./rayrllib/">Ray RLlib</a>
 
 </div>
-
-DIAMBRA Arena natively provides interfaces to both Stable Baselines 3 and Ray RLlib, allowing to easily train models with them on our environments. Each library-dedicated page presents some basic and advanced examples.
-
-{{% notice tip %}}
-All the examples presented in the following sections (plus additional code) showing how to interface DIAMBRA Arena with the major reinforcement learning libraries, can be found in our open source repository <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>.</span>
-{{% /notice %}}
 
 {{% notice note %}}
 DIAMBRA Arena provides a working interface with Stable Baselines 2 too, but it is deprecated and will be discontinued in the near future.

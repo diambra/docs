@@ -24,7 +24,7 @@ conda create -n diambra-arena-ray python=3.8
 conda activate diambra-arena-ray
 ```
 
-Install DIAMBRA Arena with Stable Baselines 3 interface:
+Install DIAMBRA Arena with Ray RLlib interface:
 
 ```shell
 pip install diambra-arena[ray-rllib]
@@ -34,9 +34,30 @@ This should be enough to prepare your system to execute the following examples. 
 
 All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">DIAMBRA Agents - Ray RLlib</a>. They have been created following the high level approach found on <a href="https://docs.ray.io/en/latest/rllib/rllib-examples.html" target="_blank">Ray RLlib examples</a> page and their related <a href="https://github.com/ray-project/ray/tree/master/rllib/examples" target="_blank">repository collection</a>, thus allowing to easily extend them and to understand how they interface with the different components.
 
+These examples only aims at demonstrating the core functionalities and high level aspects, they will not generate well performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like: policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping and other similar ones.
+
+#### Native interface
+
+DIAMBRA Arena native interface with Ray RLlib covers a wide range of use cases, automating handling of key things like parallelization. In the majority of cases it will be sufficient for users to directly import and use it, with no need for additional customization.
+
+{{% notice note %}}
+For the interface low level details, users can review the correspondent source code <a href="https://github.com/diambra/arena/blob/main/diambra/arena/ray_rllib/" target="_blank">here</a>.
+{{% /notice %}}
+
 ### Basic
 
+For all the basic examples, the environment will be used in `hardcore` mode, so that the observation space will be only of type `Box` composed by screen pixels, as in the majority of simple examples found in tutorials and docs. This allows to directly use it without the need of further processing.
+
 #### Basic Example
+
+This example demonstrates how to:
+
+- Build the config dictionary for Ray RLlib
+- Interface one of Ray RLlib's algorithms with DIAMBRA Arena using the native interface
+- Train the algorithm
+- Run the trained agent in the environment for one episode
+
+It uses the PPO algorithm and, for demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.
 
 ```python
 import diambra.arena
@@ -79,24 +100,39 @@ if __name__ == "__main__":
 
     env = diambra.arena.make("doapp", settings)
 
-    obs = env.reset()
+    observation = env.reset()
     while True:
         env.render()
 
-        action = agent.compute_single_action(obs)
+        action = agent.compute_single_action(observation)
 
-        obs, reward, done, info = env.step(action)
+        observation, reward, done, info = env.step(action)
 
         if done:
-            obs = env.reset()
+            observation = env.reset()
             break
-
     print("\n... trained agent execution completed.\n")
 
     env.close()
 ```
 
+How to run it:
+
+```shell
+diambra run python basic.py
+```
+
 #### Saving, loading and evaluating
+
+In addition to what seen in the previous example, this one demonstrates how to:
+
+- Print out the policy network architecture
+- Save a trained agent
+- Load a saved agent
+- Evaluate an agent on a given number of episodes
+- Print training and evaluation results
+
+The same conditions of the previous example for algorithm, policy and training steps are used in this one too.
 
 ```python
 import diambra.arena
@@ -156,7 +192,22 @@ if __name__ == "__main__":
     print("Evaluation results:\n{}".format(pretty_print(results)))
 ```
 
+How to run it:
+
+```shell
+diambra run python saving_loading_evaluating.py
+```
+
 #### Parallel Environments
+
+In addition to what seen in previous examples, this one demonstrates how to:
+
+- Run training and evaluation using parallel environments
+
+This example runs multiple environments. In order to properly execute it, the user needs to specify the correct number of environments instances to be created via DIAMBRA CLI when running the script. In particular, in this case, 6 different instances are needed:
+
+- 2 rollout workers with 2 environments each, accounting for 4 environments
+- 1 evaluation worker with 2 environments, accounting for the remaining 2 environments
 
 ```python
 import diambra.arena
@@ -219,9 +270,26 @@ if __name__ == "__main__":
     print("Training results:\n{}".format(pretty_print(results)))
 ```
 
+How to run it:
+
+```shell
+diambra run -s=6 python parallel_envs.py
+```
+
 ### Advanced
 
+The nex example make use of the complete observation space of our environments. This is of type `Dict`, in which different elements are organized as key-value pairs and they can be of different type.
+
 #### Dictionary Observations
+
+In addition to what seen in previous examples, this one demonstrates how to:
+
+- Activate a complete set of environment wrappers
+- How to properly handle dictionary observations for Ray RLlib
+
+There are two main things to note in this example: how to handle observation normalization and dictionary observations. As it can be seen from the snippet below, the normalization wrapper is applied on all elements prescribing one-hot encoding to be applied on binary discrete observations too, that is usually not needed nor suggested, but it is requested by Ray RLlib to automatically handle this observation type. On the other hand, the library does not have constraints on dictionary observation spaces, being able to handle nested ones too.
+
+The policy network is automatically generated, properly handling different types of inputs. Model architecture is then printed to the console output, allowing to clearly identify all the different contributions.
 
 ```python
 import diambra.arena
