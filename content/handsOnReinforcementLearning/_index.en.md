@@ -14,9 +14,9 @@ weight: 70
 
 What is the best path leading a passionate coder to the creation of a trained AI agent capable of effectively playing a video game? It consists in two steps: learning reinforcement learning and applying it.
 
-[Learning RL](./learningrl) section below deals with how to get started with RL: it presents resources that cover from the basics up to the most advanced details of the latest, best-performing algorithms.
+[Learning RL](./#learning-reinforcement-learning) section below deals with how to get started with RL: it presents resources that cover from the basics up to the most advanced details of the latest, best-performing algorithms.
 
-Then, in the [End-to-end DeepRL](./endtoenddeeprl) section, some of the most important tech tools are presented together with a step-by-step guide showing how to successfully train a Deep RL agent in our environments.
+Then, in the [End-to-end Deep Reinforcement Learning](./#end-to-end-deep-reinforcement-learning) section, some of the most important tech tools are presented together with a step-by-step guide showing how to successfully train a Deep RL agent in our environments.
 
 ### Learning Reinforcement Learning
 
