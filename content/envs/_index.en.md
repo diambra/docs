@@ -14,17 +14,15 @@ math: true
   - <a href="./#general-environment-settings">General Environment Settings</a>
   - <a href="./#game-specific-settings">Game Specific Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
-    - <a href="./#action-spaces-in-numbers">Action Spaces in Numbers</a>
+  - <a href="./#action-spaces-in-numbers">Action Spaces in Numbers</a>
 - <a href="./#observation-space">Observation Space</a>
-    - <a href="./#global">Global</a>
-    - <a href="./#player-specific">Player Specific</a>
+  - <a href="./#global">Global</a>
+  - <a href="./#player-specific">Player Specific</a>
 - <a href="./#reward-function">Reward Function</a>
-
 
 </div>
 
 This page describes in details all general aspects related to DIAMBRA Arena environments. For game-specific details visit <a href="./games">Games & Specifics</a> page.
-
 
 ### Overview
 
@@ -36,7 +34,7 @@ In addition, its <a href="https://github.com/diambra/arena" target="_blank">GitH
 
 #### Main Features
 
-All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM values like characters health bars or characters stage side).
+All environments are episodic Reinforcement Learning tasks, with discrete actions (gamepad buttons) and observations composed by screen pixels plus additional numerical data (RAM states like characters health bars or characters stage side).
 
 They all support both single player (1P) as well as two players (2P) mode, making them the perfect resource to explore all the following Reinforcement Learning subfields:
 
@@ -150,6 +148,7 @@ All environments share a numerous set of options allowing to handle many differe
 ```python
 env = diambra.arena.make("doapp", settings)
 ```
+
 The first argument, the only one that is mandatory, is the `game_id` string, it specifies the game to execute among those available (see games list and info).
 
 Next table summarizes and describes the general, game-independent, settings, while the game-specific ones are presented in the game dedicated pages.
@@ -160,26 +159,26 @@ Game-specific settings that are shared among all games, are found in the table c
 Two ready-to-use examples showing how environment settings are used can be found <a href="../gettingstarted/examples/singleplayerenv/">here</a> and <a href="../gettingstarted/examples/multiplayerenv/">here</a>.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
-|-------------|-------------| ------|------|------|
-| `player` | `string` | `Random` | 1P Mode: `P1` (left), `P2` (right), `Random` (50% P1, 50% P2)<br>2P Mode: `P1P2` | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right) |
-| `step_ratio` | `int` | 6 | [1, 6] | Defines how many steps the game (emulator) performs for every environment step |
-| `frame_shape` | `list` of three `int` [H,&#160;W,&#160;C]| [0,&#160;0,&#160;0] | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1| If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>[0,&#160;0,&#160;0] - Deactivated;<br>[H,&#160;W,&#160;0] - RBG frame resized to H&#160;X&#160;W;<br>[0,&#160;0,&#160;1] - Grayscale frame;<br>[H,&#160;W,&#160;1] - Grayscale frame resized to H&#160;X&#160;W. |
-| `conitnue_game` | `double` | 0.0 | [0.0, 1.0]: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition |
-| `show_final` | `bool` | `True` | `True` / `False` | Activates displaying of final animation when game is completed |
-| `action_space` | `string` | `multi_discrete` | `discrete` / `multi_discrete` | Defines the type of the action space |
-| `attack_but_combination` | `bool` | `True` | `True` / `False` | Activates attack buttons combinations |
-| `hardcore` | `bool` | `False` | `True` / `False` | Activates hardcore mode, in which the observation is only made of the game frame |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                                                         | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                                                                                                                            |
+| -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `player`                                                 | `string`                                                  | `Random`                                                              | 1P Mode: `P1` (left), `P2` (right), `Random` (50% P1, 50% P2)<br>2P Mode: `P1P2`                                                                         | Selects single player (1P) or two players (2P) mode, and to select on which side to play (left/right)                                                                                                                                                                                                       |
+| `step_ratio`                                             | `int`                                                     | 6                                                                     | [1, 6]                                                                                                                                                   | Defines how many steps the game (emulator) performs for every environment step                                                                                                                                                                                                                              |
+| `frame_shape`                                            | `list` of three `int` [H,&#160;W,&#160;C]                 | [0,&#160;0,&#160;0]                                                   | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1                                                                                                          | If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>[0,&#160;0,&#160;0] - Deactivated;<br>[H,&#160;W,&#160;0] - RBG frame resized to H&#160;X&#160;W;<br>[0,&#160;0,&#160;1] - Grayscale frame;<br>[H,&#160;W,&#160;1] - Grayscale frame resized to H&#160;X&#160;W. |
+| `conitnue_game`                                          | `double`                                                  | 0.0                                                                   | [0.0, 1.0]: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition                                                                                                                                                                                                              |
+| `show_final`                                             | `bool`                                                    | `True`                                                                | `True` / `False`                                                                                                                                         | Activates displaying of final animation when game is completed                                                                                                                                                                                                                                              |
+| `action_space`                                           | `string`                                                  | `multi_discrete`                                                      | `discrete` / `multi_discrete`                                                                                                                            | Defines the type of the action space                                                                                                                                                                                                                                                                        |
+| `attack_but_combination`                                 | `bool`                                                    | `True`                                                                | `True` / `False`                                                                                                                                         | Activates attack buttons combinations                                                                                                                                                                                                                                                                       |
+| `hardcore`                                               | `bool`                                                    | `False`                                                               | `True` / `False`                                                                                                                                         | Activates hardcore mode, in which the observation is only made of the game frame                                                                                                                                                                                                                            |
 
 #### Game Specific Settings
 
 Environment settings depending on the specific game and shared among all of them are reported in the table below. Additional ones (if present) are reported in game-dedicated pages.
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>|<strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------|-------------| ------|------|-----|
-| `difficulty` | `int`| Game-specific default value if not specified | Game-specific Min and Max values allowed | Specifies game difficulty (1P only) |
-| `characters` | `string` | Game-specific default characters if not specified (for both P1 and P2) | Game-specifc list of characters that can be selected | Specifies character(s) to use |
-| `char_outfits` | `int`  | Game-specific default values if not specified (for both P1 and P2) | Game-specific Min and Max values allowed | Defines the number of outfits to draw from at character selection  |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong>  | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>  |
+| -------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `difficulty`                                             | `int`                                                     | Game-specific default value if not specified                           | Game-specific Min and Max values allowed                         | Specifies game difficulty (1P only)                               |
+| `characters`                                             | `string`                                                  | Game-specific default characters if not specified (for both P1 and P2) | Game-specifc list of characters that can be selected             | Specifies character(s) to use                                     |
+| `char_outfits`                                           | `int`                                                     | Game-specific default values if not specified (for both P1 and P2)     | Game-specific Min and Max values allowed                         | Defines the number of outfits to draw from at character selection |
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
   <img src="../images/envs/outfits.png" style="margin-bottom:20px;">
@@ -197,11 +196,13 @@ When run in 2P mode, the environment is provided with a <a href="https://github.
 Each game has specific action spaces since attack buttons (and their combinations) are, in general, game-dependent. For this reason, in each game-dedicated page, a table like the one found below is reported, describing all four actions spaces for the specific game.
 
 In <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="_blank">Discrete</a> action spaces:
+
 - There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions.
 - The total number of actions available is N<sub>m</sub> + N<sub>a</sub> − 1 where N<sub>m</sub> is the number of move actions (no-move included) and N<sub>a</sub> is the number of attack actions (no-attack included).
 - Only one action, either move or attack, can be sent for each environment step.
 
 In <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="_blank">MultiDiscrete</a> action spaces:
+
 - There is only one ”no-op” action, that covers both the ”no-move” and ”no-attack” actions.
 - The total number of actions available is N<sub>m</sub> × N<sub>a</sub>.
 - Both move and attack actions can be sent at the same time for each environment step.
@@ -219,30 +220,29 @@ Some actions (especially attack buttons combinations) may have no effect for som
 
 For every game, a table containing the following info is reported. It provides numerical details about action spaces sizes.
 
-| <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Attack Buttons Combination</span></strong> | <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
-|-------------|-------------| ------|
-| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> / <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a>  | Active / Not Active  | Total number of actions available, divided in move and attack actions |
+| <strong><span style="color:#5B5B60;">Type</span></strong>                                                                                                                                                                    | <strong><span style="color:#5B5B60;">Attack Buttons Combination</span></strong> | <strong><span style="color:#5B5B60;">Space Size (Number of Actions)</span></strong> |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> / <a href="https://github.com/openai/gym/tree/master/gym/spaces/multi_discrete.py" target="blank_">MultiDiscrete</a> | Active / Not Active                                                             | Total number of actions available, divided in move and attack actions               |
 
 ### Observation Space
 
-Environment observations are composed by two main elements: a visual one (the game frame) and an aggregation of quantitative values called Additional Observations (stage number, health values, etc.). Both of them are exposed through an observation space of type <a href="https://github.com/openai/gym/tree/master/gym/spaces/" target="blank_">`gym.spaces.Dict`</a>. It consists of global elements and player-specific ones, they are presented and described in the tables below. To give additional context, next figure shows an example of Dead Or Alive ++ observation where some of the Additional Observations are highlighted, superimposed on the game frame.
+Environment observations are composed by two main elements: a visual one (the game frame) and an aggregation of quantitative values called RAM states (stage number, health values, etc.). Both of them are exposed through an observation space of type <a href="https://github.com/openai/gym/tree/master/gym/spaces/" target="blank_">`gym.spaces.Dict`</a>. It consists of global elements and player-specific ones, they are presented and described in the tables below. To give additional context, next figure shows an example of Dead Or Alive ++ observation where some of the RAM States are highlighted, superimposed on the game frame.
 
 Each game specifies and extends the set presented here with its custom one, described in the game-dedicated page.
 
-
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
   <img src="../images/envs/doappData.png" style="margin-bottom:20px;">
-  <figcaption align="middle">An example of Dead Or Alive ++ additional observations</figcaption>
+  <figcaption align="middle">An example of Dead Or Alive ++ RAM states</figcaption>
 </figure>
 
 #### Global
 
 Global elements of the observation space are unrelated to the player and they are currently limited to those presented and described in the following table. The same table is found on each game-dedicated page reporting its specs:
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------| ------|-------| --------------|
-| `frame`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Game-specific Min and Max values for each dimension | Latest game frame  (RGB pixel screen)|
-| `stage` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  Game-specific Min and Max values | Current stage of the game |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong>                                     | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `frame`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Game-specific Min and Max values for each dimension              | Latest game frame (RGB pixel screen)                             |
+| `stage`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Game-specific Min and Max values                                 | Current stage of the game                                        |
 
 #### Player specific
 
@@ -254,15 +254,15 @@ ownSideVar = observation["P1"]["ownSide"]
 
 Typical values that are available for each game are reported and described in the table below. The same table is found in every game-dedicated page, specifying and extending (if needed) the observation elements set.
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>| <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------|-------------| ------|-------| --------------|
-| `ownSide`/`oppSide`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1] | Side of the stage where the player is<br>0: Left, 1: Right |
-| `ownWins`/`oppWins` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Number of Rounds]| Number of rounds won by the player |
-| `ownChar1`/`oppChar1`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use (for games where only one character is selected, this values is the same as "Character in Use")|
-| `ownChar`/`oppChar`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max Number of Characters - 1] | Index of character in use|
-| `ownHealth`/`oppHealth` | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>   |  [0,&#160;Max Health Value]| Health bar value |
-| `actions`+`move`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of move actions - 1] | Index of latest move action performed (no-move, left, left+up, up, etc.)|
-| `actions`+`attack`       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> | [0,&#160;Max number of attack actions - 1] | Index of latest attack action performed (no-attack, hold, punch, etc.) |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong>                                                        | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                          |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `ownSide`/`oppSide`                                      | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1]                                                      | Side of the stage where the player is<br>0: Left, 1: Right                                                                |
+| `ownWins`/`oppWins`                                      | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>                    | [0,&#160;Max Number of Rounds]                                   | Number of rounds won by the player                                                                                        |
+| `ownChar1`/`oppChar1`                                    | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;Max Number of Characters - 1]                           | Index of character in use (for games where only one character is selected, this values is the same as "Character in Use") |
+| `ownChar`/`oppChar`                                      | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;Max Number of Characters - 1]                           | Index of character in use                                                                                                 |
+| `ownHealth`/`oppHealth`                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a>                    | [0,&#160;Max Health Value]                                       | Health bar value                                                                                                          |
+| `actions`+`move`                                         | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;Max number of move actions - 1]                         | Index of latest move action performed (no-move, left, left+up, up, etc.)                                                  |
+| `actions`+`attack`                                       | <a href="https://github.com/openai/gym/tree/master/gym/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;Max number of attack actions - 1]                       | Index of latest attack action performed (no-attack, hold, punch, etc.)                                                    |
 
 ### Reward Function
 
@@ -280,7 +280,6 @@ Where:
 - $t^-$ and $t$ are used to indicate conditions at ”state-time” and at ”new state-time” (i.e. before and after environment step);
 - $N_c$ is the number of characters taking part in a round. Usually is $N_c = 1$ but there are some games where multiple characters are used, with the additional possible option of alternating them during gameplay, like Tekken Tag Tournament where 2 characters have to be selected and two opponents are faced every round (thus $N_c = 2$);
 
-
 The lower and upper bounds for the episode total cumulative reward are defined in the equations (Eqs. 2) below. They consider the default reward function for game execution with Continue Game option set equal to 0.0 (Continue not allowed).
 
 $$
@@ -293,6 +292,7 @@ $$
 $$
 
 Where:
+
 - $N_r$ is the number of rounds to win (or lose) in order to win (or lose) a stage;
 - $T_s$ is the terminal state, reached when either $N_r$ rounds are lost (for both 1P and 2P mode) or game is cleared (for 1P mode only);
 - $t$ represents the environment step and for an episode goes from 0 to $T_s$;
@@ -304,12 +304,14 @@ For 1P mode $N_s$ is game-dependent, while for 2P mode $N_s=1$, meaning the epis
 For 2P mode, P1 reward is defined as $R$ in the reward Eq. 1 and P2 reward is equal to $-R$ (zero-sum games). Eq. 1 describes the default reward function. It is of course possible to tweak it at will by means of custom <a href="../wrappers/#reward-wrappers">Reward Wrappers</a>.
 
 The minimum and maximum total cumulative reward for the round can be <strong><span style="color:#5B5B60;">different than</span></strong> $N_c\Delta H$ in some cases. This may happen because:
- - When multiple characters are used at the same time, the "Round Done" condition can be different for different games (e.g. either at least one character has zero health or all characters have zero health) impacting on the amount of reward collected.
- - For some games health bars can be recharged (e.g. the character in background in Tekken Tag Tournament, or Gill's resurrection move in Street Fighter III), making available an extra amount of reward to be collected or lost in that round.
- - For some games, in some stages, additional opponents may be faced (opponent $N_c$ not constant through stages), making available an extra amount of reward to be collected (e.g. the endurance stages in Ultimate Mortal Kombat 3).
- - For some games, not all characters share the same maximum health. $H_{max}$ and $H_{min}$ are always the extremes for a given game, among all characters.
+
+- When multiple characters are used at the same time, the "Round Done" condition can be different for different games (e.g. either at least one character has zero health or all characters have zero health) impacting on the amount of reward collected.
+- For some games health bars can be recharged (e.g. the character in background in Tekken Tag Tournament, or Gill's resurrection move in Street Fighter III), making available an extra amount of reward to be collected or lost in that round.
+- For some games, in some stages, additional opponents may be faced (opponent $N_c$ not constant through stages), making available an extra amount of reward to be collected (e.g. the endurance stages in Ultimate Mortal Kombat 3).
+- For some games, not all characters share the same maximum health. $H_{max}$ and $H_{min}$ are always the extremes for a given game, among all characters.
 
 Lower and upper bounds of episode total cumulative reward may, in some cases, deviate from what defined by Eqs. 2, because:
+
 - The absolute value of minimum / maximum total cumulative reward for the round can be different from $N_c\Delta H$ (see above).
 - For some games, $N_r$ is not the same for all the stages (1P mode only), for example for Tekken Tag Tournament the final stage is made of a single round while all previous ones require two wins.
 
@@ -326,6 +328,7 @@ R_t = \frac{\sum_i^{0,N_c}\left(\bar{H_i}^{t^-} - \bar{H_i}^{t} - \left(\hat{H_i
 $$
 
 With the following additional term at the denominator:
+
 - $N_k$ is the reward normalization factor defined through our [Reward Nomralization Wrapper](/wrappers/#reward-normalization).
 
 The normalization term at the denominator ensures that a round won with a perfect (i.e. without losing any health), generates always the same maximum total cumulative reward (for the round) accross all games, equal to $N_c/N_k$.
