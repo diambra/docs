@@ -184,7 +184,7 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 - <a href="./wrappers/">Wrappers</a>
 - <a href="./utils/">Utils</a>
 - <a href="./imitationlearning/">Imitation Learning</a>
-- <a href="./deeprltraining/">First steps in Deep RL</a>
+- <a href="./handsonreinforcementlearning/">Hands-on Reinforcement Learning</a>
 
 </div>
 
