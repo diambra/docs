@@ -37,16 +37,20 @@ The first suggested step is to learn the basics of Reinforcement Learning. The b
 
 #### Courses / Video-lectures
 
-An additional useful resource is represented by courses and/or video-lectures. The two listed in this paragraph, in particular, are extremely valuable. The first one, "Berkeley Deep RL Bootcamp", as the title suggests, focuses specifically on Deep RL, and presents a wide overview of the most important, state-of-the-art methods in the field. The second one, "DeepMind Reinforcement Learning Lectures at University College London", deals with RL in general, as Sutton & Barto's does. Both extremely useful and available for free.
+An additional useful resource is represented by courses and/or video-lectures. The three listed in this paragraph, in particular, are extremely valuable. The first one, "DeepMind Reinforcement Learning Lectures at University College London", is a collection of lectures dealing with RL in general, as Sutton & Barto's book, providing the solid foundations of the field. The second one, "OpenAI Spinning Up with Deep RL", is a very useful website providing a step-by-step primer focused on Deep RL, guiding the reader from the basics to understanding the most important algorithms down to the implementation details. The third one, "Berkeley Deep RL Bootcamp", provides video and slides dealing specifically with Deep RL too, and presents a wide overview of the most important, state-of-the-art methods in the field. These are all extremely useful and available for free.
 
 <div>
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:15%; float:left; width:35.0%">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/courses_deepRlBoot.png"/>
-   <figcaption align="middle">Berkeley Deep RL Bootcamp • <a href="https://sites.google.com/view/deep-rl-bootcamp/lectures" target="_blank">Link</a></figcaption>
-  </figure>
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:35.0%;">
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/courses_deepminducl.png"/>
    <figcaption align="middle">DeepMind Reinforcement Learning Lectures at University College London • <a href="https://www.deepmind.com/learning-resources/reinforcement-learning-lecture-series-2021" target="_blank">Link</a></figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:30.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/courses_spinningup.jpg"/>
+   <figcaption align="middle">OpenAI Spinning Up with Deep RL • <a href="https://spinningup.openai.com/en/latest/" target="_blank">Link</a></figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%;">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/courses_deepRlBoot.png"/>
+   <figcaption align="middle">Berkeley Deep RL Bootcamp • <a href="https://sites.google.com/view/deep-rl-bootcamp/lectures" target="_blank">Link</a></figcaption>
   </figure>
 </div>
 
