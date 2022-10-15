@@ -33,7 +33,7 @@ home = [ "HTML", "RSS", "JSON"]
 
 [Languages]
 [Languages.en]
-title = "DIAMBRA Arena Docs"
+title = "DIAMBRA Docs"
 weight = 1
 languageName = "English"
 landingPageURL = "./"
@@ -48,7 +48,7 @@ weight = 10
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-fw fa-github'></i> GitHub"
 identifier = "github"
-url = "https://github.com/diambra/arena"
+url = "https://github.com/diambra/"
 weight = 11
 
 [[Languages.en.menu.shortcuts]]

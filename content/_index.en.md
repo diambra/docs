@@ -2,11 +2,13 @@
 title: "Home"
 ---
 
-# DIAMBRA Arena Docs
+# DIAMBRA Docs
 
 <figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
   <img src="./images/home/envCover.png" style="margin-top:0px;">
 </figure>
+
+## DIAMBRA Arena
 
 DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It provides a standard interface to popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym format</span>, that makes its adoption smooth and straightforward.
 
@@ -192,12 +194,15 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 To receive support, use the dedicated channel in our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>.
 
-To request features or report bugs, use the <a href="https://github.com/diambra/arena/issues" target="_blank">GitHub Issue Tracker</a>.
+To request features or report bugs, use the GitHub issue tracker for the specific repository:
+
+- <a href="https://github.com/diambra/arena/issues" target="_blank">DIAMBRA Arena</a>
+- <a href="https://github.com/diambra/agents/issues" target="_blank">DIAMBRA Agents</a>
 
 ### References
 
 - Website: <a href="https://diambra.ai" target="_blank">https://diambra.ai</a>
-- GitHub: <a href="https://github.com/diambra/arena" target="_blank">https://github.com/diambra/arena</a>
+- GitHub: <a href="https://github.com/diambra/" target="_blank">https://github.com/diambra/</a>
 - Linkedin: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
 - Discord: <a href="https://discord.gg/tFDS2UN5sv" target="_blank">https://discord.gg/tFDS2UN5sv</a>
 - Twitch: <a href="https://www.twitch.tv/diambra_ai" target="_blank">https://www.twitch.tv/diambra_ai</a>
