@@ -1,5 +1,5 @@
 <a href="https://docs.diambra.ai">
-<img src="https://github.com/diambra/docs/blob/deepRLTraining/static/images/logoMeta.png?raw=true" alt="diambra" width="100%"/>
+<img src="https://github.com/diambra/docs/blob/main/static/images/logoMeta.png?raw=true" alt="diambra" width="100%"/>
 </a>
 
 <p align="center">
