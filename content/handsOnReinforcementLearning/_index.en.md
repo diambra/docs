@@ -77,16 +77,20 @@ A good starting point is to read the reference paper for all state-of-the-art al
 
 #### More
 
-Finally, additional sources of useful information to better understand this field are two films presenting notable milestones achieved by two of the best AI labs in the world, DeepMind and OpenAI. They present their masterpieces AlphaGo/AlphaZero and OpenAI Five, mastering the games of Go and DOTA 2 respectively.
+Finally, additional sources of useful information to better understand this field, and to get inspired by its great potential, are documentaries presenting notable milestones achieved by some of the best AI labs in the world. They showcase reinforcement learning masterpieces, such as AlphaGo/AlphaZero, OpenAI Five and Gran Turismo Sophy, mastering the games of Go, DOTA 2 and Gran Turismo® 7 respectively.
 
 <div>
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:15%; float:left; width:35.0%">
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/film_alphago.png"/>
-   <figcaption align="middle">DeepMind - AlphaGo The Movie • <a href="https://www.youtube.com/watch?v=WXuK6gekU1Y" target="_blank">Link</a></figcaption>
+   <figcaption align="middle">DeepMind<br>AlphaGo The Movie • <a href="https://www.youtube.com/watch?v=WXuK6gekU1Y" target="_blank">Link</a></figcaption>
   </figure>
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:35.0%">
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:30.0%">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/film_artificialGamer.jpg"/>
-   <figcaption align="middle">OpenAI - Artificial Gamer Film • <a href="https://youtu.be/J0KPNpro2J8?t=1211" target="_blank">Link</a></figcaption>
+   <figcaption align="middle">OpenAI<br>Artificial Gamer • <a href="https://youtu.be/J0KPNpro2J8?t=1211" target="_blank">Link</a></figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/film_granTurismoSophy.jpg"/>
+   <figcaption align="middle">Sony AI<br>Gran Turismo® Sophy • <a href="https://www.youtube.com/watch?v=qP1gjgtKyYc&ab_channel=SonyAI" target="_blank">Link</a></figcaption>
   </figure>
 </div>
 
