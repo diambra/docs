@@ -10,6 +10,23 @@ title: "Home"
 
 ## DIAMBRA Arena
 
+### Index
+
+<div style="font-size:1.125rem;">
+
+- <a href="./#overview">Overview</a>
+- <a href="./#installation">Installation</a>
+- <a href="./#quickstart">Quickstart</a>
+- <a href="./#docs-structure">Docs Stucture</a>
+- <a href="./#support-feature-requests--bugs-reports">Support, Feature Requests & Bugs Reports</a>
+- <a href="./#references">References</a>
+- <a href="./#citation">Citation</a>
+- <a href="./#terms-of-use">Terms of Use</a>
+
+</div>
+
+### Overview
+
 DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It provides a standard interface to popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym format</span>, that makes its adoption smooth and straightforward.
 
 It <span style="color:#333333; font-weight:bolder;">supports all major Operating Systems</span> (Linux, Windows and MacOS) and <span style="color:#333333; font-weight:bolder;">can be easily installed via Python PIP</span>, as described in the <a href="./#installation">installation section</a> below. It is <span style="color:#333333; font-weight:bolder;">completely free to use</span>, the user only needs to register on the official website.
@@ -212,12 +229,19 @@ To request features or report bugs, use the GitHub issue tracker for the specifi
 ### Citation
 
 ```LaTex
-  @misc{diambra2022
-    author = {DIAMBRA Team},
-    title = {DIAMBRA Arena: built with OpenAI Gym Python interface, easy to use, transforms popular video games into Reinforcement Learning environments.},
-    year = {2022},
-    howpublished = {\url{https://github.com/diambra/arena}},
-  }
+@article{Palmas22,
+    author = {{Palmas}, Alessandro},
+    title = "{DIAMBRA Arena: a New Reinforcement Learning Platform for Research and Experimentation}",
+    journal = {arXiv e-prints},
+    keywords = {reinforcement learning, transfer learning, multi-agent, games},
+    year = 2022,
+    month = oct,
+    eid = {arXiv:2210.10595},
+    pages = {arXiv:2210.10595},
+    archivePrefix = {arXiv},
+    eprint = {2210.10595},
+    primaryClass = {cs.AI}
+ }
 ```
 
 ### Terms of Use

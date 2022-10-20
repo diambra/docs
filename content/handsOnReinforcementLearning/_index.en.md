@@ -3,9 +3,9 @@ title: Hands-on Reinforcement Learning
 weight: 70
 ---
 
-<div style="font-size:1.125rem;">
-
 ### Index
+
+<div style="font-size:1.125rem;">
 
 - <a href="./#learning-reinforcement-learning">Learning RL</a>
 - <a href="./#end-to-end-deep-reinforcement-learning">End-To-End DeepRL</a>
