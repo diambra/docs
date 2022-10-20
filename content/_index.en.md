@@ -220,6 +220,7 @@ To request features or report bugs, use the GitHub issue tracker for the specifi
 
 - Website: <a href="https://diambra.ai" target="_blank">https://diambra.ai</a>
 - GitHub: <a href="https://github.com/diambra/" target="_blank">https://github.com/diambra/</a>
+- Paper: <a href="https://arxiv.org/abs/2210.10595" target="_blank">https://arxiv.org/abs/2210.10595</a>
 - Linkedin: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
 - Discord: <a href="https://discord.gg/tFDS2UN5sv" target="_blank">https://discord.gg/tFDS2UN5sv</a>
 - Twitch: <a href="https://www.twitch.tv/diambra_ai" target="_blank">https://www.twitch.tv/diambra_ai</a>
@@ -227,6 +228,8 @@ To request features or report bugs, use the GitHub issue tracker for the specifi
 - Twitter: <a href="https://twitter.com/diambra_ai" target="_blank">https://twitter.com/diambra_ai</a>
 
 ### Citation
+
+Paper: <a href="https://arxiv.org/abs/2210.10595" target="_blank">https://arxiv.org/abs/2210.10595</a>
 
 ```LaTex
 @article{Palmas22,
