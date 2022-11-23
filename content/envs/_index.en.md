@@ -186,7 +186,7 @@ Environment settings depending on the specific game and shared among all of them
 </figure>
 
 {{% notice note %}}
-Of these general settings, `action_space`, `attack_but_combination`, `characters`, and `char_outfits` needs to be provided as tuples of two elements (the first for P1 and the second for P2) when using the environment in two players mode. The same applies to some game-specific settings, they are listed in the game-dedicated page.
+Of these general settings, `action_space`, `attack_but_combination`, `characters`, and `char_outfits` need to be provided as tuples of two elements (the first for P1 and the second for P2) when using the environments in two players mode. The same applies to some game-specific settings, they are listed in the game-dedicated page.
 {{% /notice %}}
 
 ### Action Space(s)
