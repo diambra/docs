@@ -9,14 +9,14 @@ weight: 20
 
 - <a href="./#prerequisites">Prerequisites</a>
 - <a href="./#running-the-environment">Running the Environment</a>
-    - <a href="./#basic-script">Basic Script</a>
-    - <a href="./#diambra-command-line-interface-cli">DIAMBRA Command Line Interface (CLI)</a>
-    - <a href="./#script-execution">Script Execution</a>
+  - <a href="./#basic-script">Basic Script</a>
+  - <a href="./#diambra-command-line-interface-cli">DIAMBRA Command Line Interface (CLI)</a>
+  - <a href="./#script-execution">Script Execution</a>
 - <a href="./#advanced-usage">Advanced Usage</a>
-    - <a href="./#diambra-cli-advanced-options">DIAMBRA CLI Advanced Options</a>
-    - <a href="./#using-python-notebooks">Using Python Notebooks</a>
-    - <a href="./#environment-native-rendering">Environment Native Rendering</a>
-    - <a href="./#running-multiple-environments-in-parallel">Running Multiple Environments in Parallel</a>
+  - <a href="./#diambra-cli-advanced-options">DIAMBRA CLI Advanced Options</a>
+  - <a href="./#using-python-notebooks">Using Python Notebooks</a>
+  - <a href="./#environment-native-rendering">Environment Native Rendering</a>
+  - <a href="./#running-multiple-environments-in-parallel">Running Multiple Environments in Parallel</a>
 
 </div>
 
@@ -84,9 +84,9 @@ diambra run [flags] <command-to-execute>
 
 The only flag needed for simple executions is listed below. Advanced usage and options can be found in the <a href="./#diambra-cli-advanced-options">CLI Advanced Options</a> section below.
 
-| <strong><span style="color:#5B5B60;">Flag</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
-|-------------|-------------| ------|
-| `-r, --path.roms`      | `string` | Path to ROMs (default to DIAMBRAROMSPATH env var if set) |
+| <strong><span style="color:#5B5B60;">Flag</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
+| --------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------- |
+| `-r, --path.roms`                                         | `str`                                                     | Path to ROMs (default to DIAMBRAROMSPATH env var if set)         |
 
 [^1]: Currently available only for Linux systems. Successfully trained Deep RL Agent in Single Player mode.
 
@@ -120,18 +120,18 @@ It runs a command after brining up DIAMBRA Arena containerized environment(s). I
 
 The table below lists all available options for this command.
 
-| <strong><span style="color:#5B5B60;">Flag</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>
-|-------------|-------------| ------|
-| `-h, --help`              | -        | Help for run command |
-| `-r, --path.roms`         | `string` | Path to ROMs (default to DIAMBRAROMSPATH env var if set) |
-| `-g, --engine.render*` | -        | Render graphics server side |
-| `-l, --engine.lockfps`    | -        | Lock FPS |
-| `-n, --engine.sound`      | -        | Enable sound |
-| `-s, --env.scale`         | `int`        | Number of environments to run (default 1) |
-| `--path.credentials`  | `string` | Path to credentials file (default "$HOME/.diambra/credentials") |
-| `-e, --env.image`   | `string`   | Env image to use (default "diambra/engine:main") |
-| `-p, --images.pull`   | `bool`   | (Always) pull image before running (default true) |
-| `--env.mount`   | `string`        | Host mounts for env container (/host/path:/container/path) |
+| <strong><span style="color:#5B5B60;">Flag</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
+| --------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------- |
+| `-h, --help`                                              | -                                                         | Help for run command                                             |
+| `-r, --path.roms`                                         | `str`                                                     | Path to ROMs (default to DIAMBRAROMSPATH env var if set)         |
+| `-g, --engine.render*`                                    | -                                                         | Render graphics server side                                      |
+| `-l, --engine.lockfps`                                    | -                                                         | Lock FPS                                                         |
+| `-n, --engine.sound`                                      | -                                                         | Enable sound                                                     |
+| `-s, --env.scale`                                         | `int`                                                     | Number of environments to run (default 1)                        |
+| `--path.credentials`                                      | `str`                                                     | Path to credentials file (default "$HOME/.diambra/credentials")  |
+| `-e, --env.image`                                         | `str`                                                     | Env image to use (default "diambra/engine:main")                 |
+| `-p, --images.pull`                                       | `bool`                                                    | (Always) pull image before running (default true)                |
+| `--env.mount`                                             | `str`                                                     | Host mounts for env container (/host/path:/container/path)       |
 
 `*`: Currently available only for Linux systems. For additional info and for Windows/MacOS alternatives, see <a href="./#environment-native-rendering">Environment Native Rendering</a> section below.
 
@@ -149,10 +149,10 @@ The table below lists all available commands for this mode.
 
 Flags reported for the Run command above apply also to this mode.
 
-| <strong><span style="color:#5B5B60;">Command</span></strong> |  <strong><span style="color:#5B5B60;">Description</span></strong>
-|-------------|------|
-| `down` | Stop DIAMBRA Arena container(s)|
-| `up`   | Start DIAMBRA Arena container(s) |
+| <strong><span style="color:#5B5B60;">Command</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
+| ------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `down`                                                       | Stop DIAMBRA Arena container(s)                                  |
+| `up`                                                         | Start DIAMBRA Arena container(s)                                 |
 
 ##### Using Python Notebooks
 
@@ -213,7 +213,6 @@ A virtual XServer that in our experience proved to be effective is <a href="http
 
 {{% /tab %}}
 {{% tab name="MacOs" %}}
-
 
 To run environments with native emulator GUI support on MacOS, currently requires the user to setup a virtual XServer and connect it to the container. We cannot provide support for this use case at the moment, but we plan to implement this feature in the near future.
 

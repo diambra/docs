@@ -41,7 +41,7 @@ weight: 10
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                      |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `difficulty`                                             | `int`                                                     | 3                                                                     | [1, 4]                                                                                |
-| `characters`                                             | `string` or `tuple` of maximum three `string`             | `Random`                                                              | Kasumi, Zack, Hayabusa, Bayman, Lei-Fang, Raidou, Gen-Fu, Tina, Bass, Jann-Lee, Ayane |
+| `characters`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Kasumi, Zack, Hayabusa, Bayman, Lei-Fang, Raidou, Gen-Fu, Tina, Bass, Jann-Lee, Ayane |
 | `char_outfits`                                           | `int`                                                     | 2                                                                     | [1, 4]                                                                                |
 
 {{% notice note %}}
