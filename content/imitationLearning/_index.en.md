@@ -30,17 +30,21 @@ Implementation examples and templates can be found in the code repository, <a hr
 Use of this functionality can be found in <a href="../gettingstarted/examples/humanexperiencerecorder/">this</a> example.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------|-------------| ------|------|-----|
-| `user_name`     | `string`| - | - | Provides an identifier to be associated with the recorded trajectory  |
-| `file_path`     | `string`| - | - | Specifies the path where to save recorded experiences |
-| `ignore_p2`     | `int`| - | [0,&#160;1] | Specifies if to ignore P2 experience. Useful for example when recording expert demonstrations of a human player (P1) who is playing against an RL agent (P2) |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                             |
+| -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `username`                                               | `string`                                                  | -                                                                     | -                                                                | Provides an identifier to be associated with the recorded trajectory                                                                                         |
+| `file_path`                                              | `string`                                                  | -                                                                     | -                                                                | Specifies the path where to save recorded experiences                                                                                                        |
+| `ignore_p2`                                              | `int`                                                     | -                                                                     | [0,&#160;1]                                                      | Specifies if to ignore P2 experience. Useful for example when recording expert demonstrations of a human player (P1) who is playing against an RL agent (P2) |
 
 ```python
-trajRecSettings["user_name"] = "Alex"
+trajRecSettings["username"] = "user"
 trajRecSettings["file_path"] = "/home/user/DIAMBRA/"
 trajRecSettings["ignore_p2"] = 0
 ```
+
+{{% notice note %}}
+In order to use this wrapper, the <a href="../wrappers/#flattening-and-filtering">Flattening and Filtering</a> wrapper must be disabled.
+{{% /notice %}}
 
 ### Recorded Experience Loader
 
@@ -50,17 +54,18 @@ DIAMBRA Arena provides a dedicated class to load and use recorded trajectories f
 Use of this functionality can be found in <a href="../gettingstarted/examples/imitationlearning/">this</a> example.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
-|-------------|-------------| ------|------|-----|
-| `traj_files_list`     | `string`| - | - | Contains the list of recorded experience files, specified as absolute paths |
-| `total_cpus`     | `int`| 1 | [1, inf) | Specifies the number of parallel environments one wants to run at the same time |
-| `rank`     | `int`| 0 | [0,&#160;settings["total_cpus"]-1] | Assigns a rank number to the environment to identify the instance number when using parallel environments |
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                          |
+| -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `traj_files_list`                                        | `string`                                                  | -                                                                     | -                                                                | Contains the list of recorded experience files, specified as absolute paths                               |
+| `total_cpus`                                             | `int`                                                     | 1                                                                     | [1, inf)                                                         | Specifies the number of parallel environments one wants to run at the same time                           |
+| `rank`                                                   | `int`                                                     | 0                                                                     | [0,&#160;settings["total_cpus"]-1]                               | Assigns a rank number to the environment to identify the instance number when using parallel environments |
 
 ```python
 settings["traj_files_list"] = recorded_trajectories_files
 settings["total_cpus"] = 1
 settings["rank"] = 0
 ```
+
 Once settings dictionary has been properly setup, the environment is created as shown in the next code block:
 
 ```python
