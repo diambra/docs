@@ -42,7 +42,7 @@ weight: 20
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `difficulty`                                             | `int`                                                     | 3                                                                     | [1, 8]                                                                                                                  |
 | `characters`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
-| `char_outfits`                                           | `int`                                                     | 2                                                                     | [1, 7]                                                                                                                  |
+| `char_outfits`                                           | `int`                                                     | 1                                                                     | [1, 7]                                                                                                                  |
 
 ##### Extended Game Settings
 

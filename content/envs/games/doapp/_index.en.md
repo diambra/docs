@@ -42,7 +42,7 @@ weight: 10
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `difficulty`                                             | `int`                                                     | 3                                                                     | [1, 4]                                                                                |
 | `characters`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Kasumi, Zack, Hayabusa, Bayman, Lei-Fang, Raidou, Gen-Fu, Tina, Bass, Jann-Lee, Ayane |
-| `char_outfits`                                           | `int`                                                     | 2                                                                     | [1, 4]                                                                                |
+| `char_outfits`                                           | `int`                                                     | 1                                                                     | [1, 4]                                                                                |
 
 {{% notice note %}}
 `characters` and `char_outfits` need to be provided as tuples of two elements (the first for P1 and the second for P2) when using this environment in two players mode.
