@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # Settings
     settings = {}
     settings["hardcore"] = True
-    settings["frame_shape"] = [84, 84, 1]
+    settings["frame_shape"] = (84, 84, 1)
 
     config = {
         # Define and configure the environment
@@ -145,7 +145,7 @@ if __name__ == "__main__":
     # Settings
     settings = {}
     settings["hardcore"] = True
-    settings["frame_shape"] = [84, 84, 1]
+    settings["frame_shape"] = (84, 84, 1)
 
     config = {
         # Define and configure the environment
@@ -220,7 +220,7 @@ if __name__ == "__main__":
     # Settings
     settings = {}
     settings["hardcore"] = True
-    settings["frame_shape"] = [84, 84, 3]
+    settings["frame_shape"] = (84, 84, 3)
 
     config = {
         # Define and configure the environment
@@ -301,8 +301,8 @@ if __name__ == "__main__":
 
     # Settings
     settings = {}
-    settings["frame_shape"] = [84, 84, 1]
-    settings["characters"] = [["Kasumi"], ["Kasumi"]]
+    settings["frame_shape"] = (84, 84, 1)
+    settings["characters"] = ("Kasumi")
 
     # Wrappers Settings
     wrappers_settings = {}
