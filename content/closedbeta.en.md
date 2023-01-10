@@ -3,11 +3,14 @@ title: Closed Beta Guide
 disableToc: true
 ---
 
-#### [TAT](https://ovh.github.io/tat/overview/) by OVH
-![TAT image](/images/showcase/tat.png?width=50pc)
 
-#### [Tshark.dev](https://tshark.dev) by Ross Jacobs
-![Tshark.dev image](/images/showcase/tshark_dev.png?width=50pc)
+```
+mkdir agent
+cd agent
+diambra agent ini .
+docker build -t foo/bar .
+docker push foo/bar
+diambra agent submit --manifest submission.yaml -secret token=<my-secret token>
+```
 
-#### [inteliver](https://docs.inteliver.com) by Amir Lavasani
-![docs.inteliver.com image](/images/showcase/inteliver_docs.png?width=50pc)
+I think this should already print out a url to watch the submission status. If not, fill me an GH issue. The `--secret` stuff is only needed if you reference secrets in `manifest.yaml`.
