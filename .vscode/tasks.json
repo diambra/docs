@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Hugo Server",
+            "type": "shell",
+            "command": "hugo",
+            "args": ["server", "-v"],
+            "group": {
+                "kind": "build"
+            }
+        }
+    ]
+}
