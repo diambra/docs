@@ -5,7 +5,7 @@
             "label": "Run Hugo Server",
             "type": "shell",
             "command": "hugo",
-            "args": ["server", "-v"],
+            "args": ["server", "-w"],
             "group": {
                 "kind": "build"
             }
