@@ -30,18 +30,18 @@ In our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agent
 
 In what follows, we guide you through this process, starting from the easiest use case and building upon it to teach you how to leverage the most advanced features.
 
-#### Submit a pre-built Random Agent
+#### Submit a pre-built Agent
 
 In <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents repo</a>, together with different source code examples, we also provide <a href="https://github.com/orgs/diambra/packages?repo_name=agents" target="_blank">pre-built docker images (packages)</a> for some of them. For example, <a href="https://github.com/diambra/agents/pkgs/container/agent-random-1" target="_blank">here</a> you find the pre-built docker image for the random agent correspondent to <a href="https://github.com/diambra/agents/blob/main/basic/random_1/agent.py" target="_blank">this</a> source code.
 
-As indicated by the python script settings, this random agent will play using a "Random" character in "Dead Or Alive++" game, at the highest difficulty level. 
+As indicated by the python script settings, this random agent will play using a "Random" character in "Dead Or Alive++" game. 
 
 Using this pre-built docker image you can easily perform your first submission ever on DIAMBRA platform, and appear in the official online leaderboard by simply typing in your preferred shell the following command:
 
 ```shell
 diambra agent submit <docker image>
 ```
-where instead of `<docker image>` you will use the `name:tag` indicated at the top of the package page (i.e. `ghcr.io/diambra/agent-random-1:681c7768c51e5cbaa6e24ba5c026242cd2339037`, making sure to use the latest available tag).
+where instead of `<docker image>` you will use the `repository/name:tag` indicated at the top of the package page (i.e. `ghcr.io/diambra/agent-random-1:681c7768c51e5cbaa6e24ba5c026242cd2339037`, making sure to use the latest available tag).
 
 You will receive a confirmation of the submission, its identification number as well as the url where to see the results, something similar to the following:
 
@@ -51,12 +51,16 @@ diambra agent submit ghcr.io/diambra/agent-random-1:681c7768c51e5cbaa6e24ba5c026
 ```
 
 {{% notice note %}}
-Note that, for the closed beta version the previous url needs to be manually tweaked, adding `r.` before the domain, thus becoming `https://r.diambra.ai/submission/178`
+For the closed beta version the previous url needs to be manually tweaked, adding `r.` before the domain, thus becoming `https://r.diambra.ai/submission/178`
 {{% /notice %}}
 
-#### Submit your own Random Agent
+{{% notice note %}}
+By default, the submission will select the highest difficulty level (`"Hard"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --difficulty Medium`)
+{{% /notice %}}
 
-If instead of using a pre-built image featuring a random agent, you can create your own, taking advantage of our Command Line Interface once again:
+#### Submit your own Agent
+
+Instead of using a pre-built image featuring a random agent, you can create your own, taking advantage of our Command Line Interface:
 
 1. Generate the base files:
 
@@ -68,7 +72,7 @@ If instead of using a pre-built image featuring a random agent, you can create y
 2. Build the Docker image:
 
    ```shell
-   docker build -t <registry>/<image> .
+   docker build -t <registry>/<name>:<tag> .
    ```
 
    This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://dockerhub.com" target="_blank">dockerhub</a>, but make sure the image is public. 
@@ -76,7 +80,7 @@ If instead of using a pre-built image featuring a random agent, you can create y
 3. Push the image to the registry:
 
     ```shell
-    docker push <registry>/<image>
+    docker push <registry>/<name>:<tag>
     ```
 
 Once these steps are completed, you can submit the agent to the platform as shown above:
@@ -85,11 +89,57 @@ Once these steps are completed, you can submit the agent to the platform as show
 diambra agent submit <docker image>
 ```
 
-where this time the `<docker image>` will be the image your just pushed, `<registry>/<image>`.
+where this time the `<docker image>` will be the image your just pushed, `<registry>/<name>:<tag>`.
 
-#### Submit your own Random Agent hiding your source code
+#### Submit your own Agent hiding your source code
 
 In the previous example, all your code has been added to the docker image that you pushed in a container registry and made public. It means that the code and data contained in it are accessible to everyone. 
+
+If you want to avoid that, we got you covered. The process is very similar to the previous one:
+
+1. Generate the base files with the `--secret` argument:
+
+    ```shell
+    diambra agent init --secret .
+    ```
+    this command will generate the same files as in the previous case, so the base random agent code (`agent.py`), the requirements (`requirements.txt`) and the Dockerfile (`Dockerfile`). But this time, there are two major differences:
+    * The Docker file will not have the `COPY . .` instruction, as you don't want to copy in it your source code, nor the `ENTRYPOINT`. You will specify them both in the submission manifest (see next point)
+    * A new yaml file is generated (`submission.yaml`), it is an example of the submission manifest, a file in which you can specify the different parameters of your submission. It contains things like the docker image to be used, the difficulty level, but most importantly:
+      * The source files to be downloaded and added to your docker image
+      * The command to be executed inside the docker image
+    in particular, the source files can be specified making use of secret tokens to avoid them to be publicly available, as the secret tokens will only be provided as argument to the submission API via our Command Line Interface.
+
+2. Build the Docker image:
+
+   ```shell
+   docker build -t <registry>/<name>:<tag> .
+   ```
+
+   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://dockerhub.com" target="_blank">dockerhub</a>, but make sure the image is public. 
+
+3. Push the image to the registry:
+
+    ```shell
+    docker push <registry>/<name>:<tag>
+    ```
+
+4. 
+
+5. Edit the submission manifest (`submission.yaml`) in the following fields:
+   * `image`: indicating your docker image `<registry>/<name>:<tag>`
+   * `command`: indicating the command you want to execute, in this example it consists of two lines `python` and `"/sources/agent.py"` as we want to run the `agent.py` python script
+   * ``
+
+Once these steps are completed, you can submit the agent to the platform as shown above:
+
+```shell
+diambra agent submit <docker image>
+```
+
+where this time the `<docker image>` will be the image your just pushed, `<registry>/<name>:<tag>`.
+
+#### Submit your Agent, hiding the source code and leveraging pre-build dependencies images
+
 
 ```
 mkdir agent
@@ -101,3 +151,5 @@ diambra agent submit --manifest submission.yaml -secret token=<my-secret token>
 ```
 
 I think this should already print out a url to watch the submission status. If not, fill me an GH issue. The `--secret` stuff is only needed if you reference secrets in `manifest.yaml`.
+
+
