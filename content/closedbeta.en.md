@@ -55,7 +55,7 @@ For the closed beta version the previous url needs to be manually tweaked, addin
 {{% /notice %}}
 
 {{% notice note %}}
-By default, the submission will select the highest difficulty level (`"Hard"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --difficulty Medium`)
+By default, the submission will select the highest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --difficulty Medium`)
 {{% /notice %}}
 
 #### Submit your own Agent
@@ -93,6 +93,10 @@ where this time the `<docker image>` will be the image your just pushed, `<regis
 
 #### Submit your own Agent hiding your source code
 
+{{% notice note %}}
+To hide your code you will need to use secret tokens, a common secure way to access private file via command line and APIs. Every hosting service has its specific procedure to generate them, we will use GitHub that provides clear guidance: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token" target="_blank">Creating personal access token (GitHub)</a>.
+{{% /notice %}}
+
 In the previous example, all your code has been added to the docker image that you pushed in a container registry and made public. It means that the code and data contained in it are accessible to everyone. 
 
 If you want to avoid that, we got you covered. The process is very similar to the previous one:
@@ -124,6 +128,9 @@ If you want to avoid that, we got you covered. The process is very similar to th
     ```
 
 4. 
+
+
+
 
 5. Edit the submission manifest (`submission.yaml`) in the following fields:
    * `image`: indicating your docker image `<registry>/<name>:<tag>`
