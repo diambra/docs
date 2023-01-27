@@ -3,18 +3,7 @@ title: Closed Beta Guide
 disableToc: true
 ---
 
-### Index
-
-<div style="font-size:1.125rem;">
-
-- <a href="./#submit-an-agent">Submit an Agent</a>
-
-</div>
-
-
-Welcome Vanguard Team!
-
-## Submit an Agent
+## How to Submit an Agent
 
 {{% notice note %}}
 Make sure you <a href="https://diambra.ai/register/" target="_blank">registered on our website</a>, correctly <a href="/#installation" target="_blank">installed DIAMBRA Arena</a> and run it at least once, so that your credentials are stored locally.
@@ -94,7 +83,7 @@ where this time the `<docker image>` will be the image your just pushed, `<regis
 #### Submit your own Agent hiding your source code
 
 {{% notice note %}}
-To hide your code you will need to use secret tokens, a common secure way to access private file via command line and APIs. Every hosting service has its specific procedure to generate them, we will use GitHub that provides clear guidance: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token" target="_blank">Creating personal access token (GitHub)</a>.
+To hide your code you will need to use secret tokens, a common secure way to access private file via command line and APIs. Every hosting service has its specific procedure to generate them, we will use GitHub that provides clear guidance: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">Creating personal access token (GitHub)</a>.
 {{% /notice %}}
 
 In the previous example, all your code has been added to the docker image that you pushed in a container registry and made public. It means that the code and data contained in it are accessible to everyone. 
@@ -111,52 +100,61 @@ If you want to avoid that, we got you covered. The process is very similar to th
     * A new yaml file is generated (`submission.yaml`), it is an example of the submission manifest, a file in which you can specify the different parameters of your submission. It contains things like the docker image to be used, the difficulty level, but most importantly:
       * The source files to be downloaded and added to your docker image
       * The command to be executed inside the docker image
-    in particular, the source files can be specified making use of secret tokens to avoid them to be publicly available, as the secret tokens will only be provided as argument to the submission API via our Command Line Interface.
+    
+    Point 3 below explains how to properly edit the submission manifest. 
 
-2. Build the Docker image:
+2. Build the Docker image and push it:
 
    ```shell
    docker build -t <registry>/<name>:<tag> .
+   docker push <registry>/<name>:<tag>
    ```
 
-   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://dockerhub.com" target="_blank">dockerhub</a>, but make sure the image is public. 
-
-3. Push the image to the registry:
-
-    ```shell
-    docker push <registry>/<name>:<tag>
-    ```
-
-4. 
-
-
-
-
-5. Edit the submission manifest (`submission.yaml`) in the following fields:
+3. Edit the submission manifest (`submission.yaml`) in the following fields:
    * `image`: indicating your docker image `<registry>/<name>:<tag>`
    * `command`: indicating the command you want to execute, in this example it consists of two lines `python` and `"/sources/agent.py"` as we want to run the `agent.py` python script
-   * ``
+   * `sources`: adding the source, and the correspondent placeholder for the token, to retrieve the python script containing your agent
 
-Once these steps are completed, you can submit the agent to the platform as shown above:
+    Here is how the `submission.yaml` file should look like:
+
+    ```txt
+    ---
+    mode: AIvsCOM
+    image: <registry>/<name>:<tag>
+    command:
+    - python
+    - "/sources/agent.py"
+    sources:
+        agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/random-agent/agent.py
+    ```
+
+{{% notice warning %}}
+**Do not add your tokens directly in the in the submission YAML file, they will be publicly visible.**
+{{% /notice %}}
+
+Once these steps are completed, you can submit the agent to the platform as follows:
 
 ```shell
-diambra agent submit <docker image>
+diambra agent submit --submission.manifest submission.yaml --submission.secret token=<my-secret token>
 ```
 
-where this time the `<docker image>` will be the image your just pushed, `<registry>/<name>:<tag>`.
+where `<my-secret token>` will be the token you created for your private hosting.
 
-#### Submit your Agent, hiding the source code and leveraging pre-build dependencies images
+If, in addition to the agent script, you have other files you want to keep hidden, for example the weights of your neural network, you can easily extend the submission manifest. Let's say that your weights are a zip file that needs to be provided as input argument to your script, the `submission.yaml` would become:
 
-
+```txt
+---
+mode: AIvsCOM
+image: <registry>/<name>:<tag>
+command:
+- python
+- "/sources/agent.py"
+- "/sources/model.zip"
+sources:
+    agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/agent.py
+    model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/model.zip
 ```
-mkdir agent
-cd agent
-diambra agent ini .
-docker build -t foo/bar .
-docker push foo/bar
-diambra agent submit --manifest submission.yaml -secret token=<my-secret token>
-```
 
-I think this should already print out a url to watch the submission status. If not, fill me an GH issue. The `--secret` stuff is only needed if you reference secrets in `manifest.yaml`.
+#### Submit your secret Agent leveraging pre-build dependencies images
 
 
