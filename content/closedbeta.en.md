@@ -14,8 +14,10 @@ Submitting an agent requires the following steps:
 {{% notice tip %}}
 In our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents repo</a> we provide many examples, ranging from a trivial random agent to RL agents trained with state-of-the-art RL libraries.
 {{% /notice %}}
-2. Creating a docker image containing all dependencies needed to run such agent and push it to a **public** container registry
-3. Submitting the created docker image to the platform using our Command Line Interface
+2. Either:
+    - Creating a docker image containing all dependencies needed to run such agent and push it to a **public** container registry
+    - Selecting one of the pre-built public dependencies docker images we provide (<a href="http://localhost:1313/closedbeta/#submit-your-secret-agent-leveraging-pre-built-dependencies-images">see example below</a>), they contain all is needed for typical use cases, such as agents based on Stable-Baselines3 and Ray RL Lib
+3. Submitting the docker image to the platform using our Command Line Interface
 
 In what follows, we guide you through this process, starting from the easiest use case and building upon it to teach you how to leverage the most advanced features.
 
@@ -44,7 +46,7 @@ For the closed beta version the previous url needs to be manually tweaked, addin
 {{% /notice %}}
 
 {{% notice note %}}
-By default, the submission will select the highest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --difficulty Medium`)
+By default, the submission will select the lowest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --difficulty Medium`)
 {{% /notice %}}
 
 #### Submit your own Agent
@@ -56,7 +58,7 @@ Instead of using a pre-built image featuring a random agent, you can create your
     ```shell
     diambra agent init .
     ```
-    this command will generate the base random agent code (`agent.py`), the requirements with the essential dependencies (`requirements.txt`) and the Dockerfile to create a docker image with it (`Dockerfile`). So instead of writing your random agent from scratch, together with its dependencies list and the Dockerfile, you have a hot start! (You could also leverage the agent we provide <a href="https://github.com/diambra/agents" target="_blank">here</a>)
+    this command will generate the base random agent code (`agent.py`), the requirements with the essential dependencies (`requirements.txt`) and the Dockerfile to create a docker image with it (`Dockerfile`). So instead of writing your random agent from scratch, together with its dependencies list and the Dockerfile, you have a head start! (You could also leverage the agent we provide <a href="https://github.com/diambra/agents" target="_blank">here</a>)
 
 2. Build the Docker image:
 
@@ -129,7 +131,7 @@ If you want to avoid that, we got you covered. The process is very similar to th
     ```
 
 {{% notice warning %}}
-**Do not add your tokens directly in the in the submission YAML file, they will be publicly visible.**
+**Do not add your tokens directly in the submission YAML file, they will be publicly visible.**
 {{% /notice %}}
 
 Once these steps are completed, you can submit the agent to the platform as follows:
@@ -155,6 +157,6 @@ sources:
     model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/model.zip
 ```
 
-#### Submit your secret Agent leveraging pre-build dependencies images
+#### Submit your secret Agent leveraging pre-built dependencies images
 
 
