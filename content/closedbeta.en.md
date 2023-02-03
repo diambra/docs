@@ -9,14 +9,12 @@ disableToc: true
 Make sure you <a href="https://diambra.ai/register/" target="_blank">registered on our website</a>, correctly <a href="/#installation" target="_blank">installed DIAMBRA Arena</a> and run it at least once, so that your credentials are stored locally.
 {{% /notice %}}
 
-Submitting an agent requires the following steps:
+The basic process to submit an agent consists in three steps:
 1. Writing a python script in which your agent interact with the environment exactly as if you were performing evaluation in your local machine
 {{% notice tip %}}
 In our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents repo</a> we provide many examples, ranging from a trivial random agent to RL agents trained with state-of-the-art RL libraries.
 {{% /notice %}}
-2. Either:
-    - Creating a docker image containing all dependencies needed to run such agent and push it to a **public** container registry
-    - Selecting one of the pre-built public dependencies docker images we provide (<a href="http://localhost:1313/closedbeta/#submit-your-secret-agent-leveraging-pre-built-dependencies-images">see example below</a>), they contain all is needed for typical use cases, such as agents based on Stable-Baselines3 and Ray RL Lib
+2. Creating a docker image containing all dependencies needed to run such agent and push it to a **public** container registry
 3. Submitting the docker image to the platform using our Command Line Interface
 
 In what follows, we guide you through this process, starting from the easiest use case and building upon it to teach you how to leverage the most advanced features.
@@ -85,7 +83,7 @@ where this time the `<docker image>` will be the image your just pushed, `<regis
 #### Submit your own Agent hiding your source code
 
 {{% notice note %}}
-To hide your code you will need to use secret tokens, a common secure way to access private file via command line and APIs. Every hosting service has its specific procedure to generate them, we will use GitHub that provides clear guidance: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">Creating personal access token (GitHub)</a>.
+To hide your code you will need to use secret tokens, a common secure way to access private files via command line and APIs. Every hosting service has its specific procedure to generate them, we will use GitHub that provides clear guidance: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">Creating personal access token (GitHub).</a> **Make sure to tick the "repo" flag in the "select scopes" section.**
 {{% /notice %}}
 
 In the previous example, all your code has been added to the docker image that you pushed in a container registry and made public. It means that the code and data contained in it are accessible to everyone. 
@@ -100,12 +98,13 @@ If you want to avoid that, we got you covered. The process is very similar to th
     this command will generate the same files as in the previous case, so the base random agent code (`agent.py`), the requirements (`requirements.txt`) and the Dockerfile (`Dockerfile`). But this time, there are two major differences:
     * The Docker file will not have the `COPY . .` instruction, as you don't want to copy in it your source code, nor the `ENTRYPOINT`. You will specify them both in the submission manifest (see next point)
     * A new yaml file is generated (`submission.yaml`), it is an example of the submission manifest, a file in which you can specify the different parameters of your submission. It contains things like the docker image to be used, the difficulty level, but most importantly:
-      * The source files to be downloaded and added to your docker image
       * The command to be executed inside the docker image
+      * The source files to be downloaded and added to your docker image
+      
     
     Point 3 below explains how to properly edit the submission manifest. 
 
-2. Build the Docker image and push it:
+2. Build the Docker image containing all your required dependencies and push it:
 
    ```shell
    docker build -t <registry>/<name>:<tag> .
@@ -159,4 +158,8 @@ sources:
 
 #### Submit your secret Agent leveraging pre-built dependencies images
 
+If you are using the state of the art RL libraries we natively support (Stable Baselines, Stable Baselines 3 and Ray RL Lib) or simply need to use the DIAMBRA Arena base, instead of building your own image from scratch, you can directly leverage the pre-built ones we publicly provide! You can find all of them in the <a href="https://github.com/orgs/diambra/packages?repo_name=arena" target="_blank">Packages section</a> of the GitHub repo.
 
+You can use them in at least two ways:
+* Directly specifying them in your YAML submission file, in the `image` field (i.e. `image: ghcr.io/diambra/agent-base-on3.7-bullseye:e23d74bf1a68c2c480abd56f5dd61013bd07040c`)
+* Building your own custom Docker image based on them, so using the `FROM` instruction in your Dockerfile (i.e. `FROM ghcr.io/diambra/agent-base-on3.7-bullseye:e23d74bf1a68c2c480abd56f5dd61013bd07040c`)
