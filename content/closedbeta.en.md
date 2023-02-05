@@ -54,12 +54,12 @@ For the closed beta version the previous url needs to be manually tweaked, addin
 {{% /notice %}}
 
 {{% notice note %}}
-By default, the submission will select the lowest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --difficulty Medium`)
+By default, the submission will select the lowest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--submission.difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --submission.difficulty Medium`)
 {{% /notice %}}
 
 #### Submit your own Agent
 
-Instead of using a pre-built image featuring a random agent, you can create your own, taking advantage of our Command Line Interface:
+Instead of using a pre-built image featuring a random agent, you can create your own. Our Command Line Interface allows you to start easily:
 
 1. Generate the base files:
 
@@ -74,7 +74,7 @@ Instead of using a pre-built image featuring a random agent, you can create your
    docker build -t <registry>/<name>:<tag> .
    ```
 
-   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://dockerhub.com" target="_blank">dockerhub</a>, but make sure the image is public. 
+   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://dockerhub.com" target="_blank">dockerhub,</a> but make sure the image is public. 
 
 3. Push the image to the registry:
 
