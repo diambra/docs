@@ -118,7 +118,7 @@ If you want to avoid that, we got you covered. The process is very similar to th
 
     Here is how the `submission.yaml` file should look like:
 
-    ```txt
+    ```yaml
     ---
     mode: AIvsCOM
     image: <registry>/<name>:<tag>
@@ -143,7 +143,7 @@ where `<my-secret token>` will be the token you created for your private hosting
 
 If, in addition to the agent script, you have other files you want to keep hidden, for example the weights of your neural network, you can easily extend the submission manifest. Let's say that your weights are a zip file that needs to be provided as input argument to your script, the `submission.yaml` would become:
 
-```txt
+```yaml
 ---
 mode: AIvsCOM
 image: <registry>/<name>:<tag>
@@ -154,6 +154,21 @@ command:
 sources:
     agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/agent.py
     model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/model.zip
+```
+
+If, for some reason, you need to organize your files in subfolders, just write the path you expect your files to have in the sources section of the submission manifest, and we will took care of the rest. If, for example, you want to store your models weights in a nested folder named "models", you would modify the previous submission manifest as follows:
+
+```yaml
+---
+mode: AIvsCOM
+image: <registry>/<name>:<tag>
+command:
+- python
+- "/sources/agent.py"
+- "/sources/models/model.zip"
+sources:
+    agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/agent.py
+    models/model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/model.zip
 ```
 
 #### Submit your secret Agent leveraging pre-built dependencies images
