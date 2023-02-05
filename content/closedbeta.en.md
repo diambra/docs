@@ -3,7 +3,17 @@ title: Closed Beta Guide
 disableToc: true
 ---
 
-## How to Submit an Agent
+### How to Submit an Agent
+
+<div style="font-size:1.125rem;">
+
+- <a href="./#submit-a-pre-built-agent">Submit a pre-built Agent</a>
+- <a href="./#submit-your-own-agent">Submit your own Agent</a>
+- <a href="./#hide-your-source-code">Hide your source code</a>
+- <a href="./#leverage-pre-built-dependencies-images">Leverage pre-built dependencies images</a>
+
+
+</div>
 
 {{% notice note %}}
 Make sure you <a href="https://diambra.ai/register/" target="_blank">registered on our website</a>, correctly <a href="/#installation" target="_blank">installed DIAMBRA Arena</a> and run it at least once, so that your credentials are stored locally.
@@ -80,7 +90,7 @@ diambra agent submit <docker image>
 
 where this time the `<docker image>` will be the image your just pushed, `<registry>/<name>:<tag>`.
 
-#### Submit your own Agent hiding your source code
+#### Hide your source code
 
 {{% notice note %}}
 To hide your code you will need to use secret tokens, a common secure way to access private files via command line and APIs. Every hosting service has its specific procedure to generate them, we will use GitHub that provides clear guidance: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">Creating personal access token (GitHub).</a> **Make sure to tick the "repo" flag in the "select scopes" section.**
@@ -171,7 +181,7 @@ sources:
     models/model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/model.zip
 ```
 
-#### Submit your secret Agent leveraging pre-built dependencies images
+#### Leverage pre-built dependencies images
 
 If you are using the state of the art RL libraries we natively support (Stable Baselines, Stable Baselines 3 and Ray RL Lib) or simply need to use the DIAMBRA Arena base, instead of building your own image from scratch, you can directly leverage the pre-built ones we publicly provide! You can find all of them in the <a href="https://github.com/orgs/diambra/packages?repo_name=arena" target="_blank">Packages section</a> of the GitHub repo.
 
