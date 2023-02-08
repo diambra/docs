@@ -347,3 +347,9 @@ if __name__ == "__main__":
     print("\n... evaluation completed.\n")
     print("Evaluation results:\n{}".format(pretty_print(results)))
 ```
+
+How to run it:
+
+```shell
+diambra run python dict_obs_space.py
+```
