@@ -5,7 +5,7 @@ title: "Home"
 # DIAMBRA Docs
 
 <figure style="margin-bottom:40px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
-  <img src="./images/home/envCover.png" style="margin-top:0px;">
+  <img src="./images/home/docsCover.jpg" style="margin-top:0px;">
 </figure>
 
 ## DIAMBRA Arena
