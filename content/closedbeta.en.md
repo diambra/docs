@@ -186,5 +186,5 @@ sources:
 If you are using the state of the art RL libraries we natively support (Stable Baselines, Stable Baselines 3 and Ray RL Lib) or simply need to use the DIAMBRA Arena base, instead of building your own image from scratch, you can directly leverage the pre-built ones we publicly provide! You can find all of them in the <a href="https://github.com/orgs/diambra/packages?repo_name=arena" target="_blank">Packages section</a> of the GitHub repo.
 
 You can use them in at least two ways:
-* Directly specifying them in your YAML submission file, in the `image` field (i.e. `image: ghcr.io/diambra/agent-base-on3.7-bullseye:e23d74bf1a68c2c480abd56f5dd61013bd07040c`)
-* Building your own custom Docker image based on them, so using the `FROM` instruction in your Dockerfile (i.e. `FROM ghcr.io/diambra/agent-base-on3.7-bullseye:e23d74bf1a68c2c480abd56f5dd61013bd07040c`)
+* Directly specifying them in your YAML submission file, in the `image` field (i.e. `image: ghcr.io/diambra/arena-base-on3.7-bullseye:main`)
+* Building your own custom Docker image based on them, so using the `FROM` instruction in your Dockerfile (i.e. `FROM ghcr.io/diambra/arena-base-on3.7-bullseye:main`)
