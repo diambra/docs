@@ -106,11 +106,13 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
 
 - Install Docker Desktop (<a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a> | <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Windows</a> | <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">MacOS</a>) and <span style="color:#333333; font-weight:bolder;">make sure you have permissions to run it</span> (<a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">see here</a>). On Linux, it's usually enough to run `sudo usermod -aG docker $USER`, log out and log back in.
 
-- Install DIAMBRA Command Line Interface ( <span style="color:#333333; font-weight:bolder;">avoid using</span> a virtual environment\*): `python3 -m pip install diambra`
+- Install DIAMBRA Command Line Interface: `python3 -m pip install diambra`
 
-- Install DIAMBRA Arena (<span style="color:#333333; font-weight:bolder;">using</span> a virtual environment is strongly suggested): `python3 -m pip install diambra-arena`
+- Install DIAMBRA Arena: `python3 -m pip install diambra-arena`
 
-\*: If you use [ana]conda and have the base environment active, make sure to deactivate it with `conda deactivate`
+{{% notice tip %}}
+Using a virtual environment to isolate your python packages installation is strongly suggested
+{{% /notice %}}
 
 ### Quickstart
 
