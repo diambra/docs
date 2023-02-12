@@ -40,12 +40,12 @@ Using this pre-built docker image you can easily perform your first submission e
 ```shell
 diambra agent submit <docker image>
 ```
-where instead of `<docker image>` you will use the `repository/name:tag` indicated at the top of the package page (i.e. `ghcr.io/diambra/agent-random-1:681c7768c51e5cbaa6e24ba5c026242cd2339037`, making sure to use the latest available tag).
+where instead of `<docker image>` you will use the `repository/name:tag` indicated at the top of the package page (i.e. `ghcr.io/diambra/agent-random-1:main`, making sure to use the latest available tag).
 
 You will receive a confirmation of the submission, its identification number as well as the url where to see the results, something similar to the following:
 
 ```
-diambra agent submit ghcr.io/diambra/agent-random-1:681c7768c51e5cbaa6e24ba5c026242cd2339037
+diambra agent submit ghcr.io/diambra/agent-random-1:main
 🖥️  (178) Agent submitted: https://diambra.ai/submission/178
 ```
 
