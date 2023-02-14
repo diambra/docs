@@ -13,7 +13,7 @@ weight: 50
 - <a href="./#observation-inspection">Observation Inspection</a>
     - <a href="./#gym-observation">Gym Observation</a>
     - <a href="./#wrapped-observation">Wrapped Observation</a>
-- <a href="./#gamepad-interface">Gamepad Interface</a>
+- <a href="./#controller-interface">Controller Interface</a>
 
 </div>
 
@@ -297,23 +297,27 @@ Output will be similar to what follows:
    [1 0 0 0]]
   ```
 
-### Gamepad Interface
+### Controller Interface
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
 {{% /notice %}}
 
-It allows to easily integrate a common USB Gamepad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
+{{% notice note %}}
+Depending on the Operating System used, specific permissions may be needed in order to read the keyboard inputs.<br><br> - On Windows, by default no specific permissions are needed. However, if you have some third-party security software you may need to white-list Python.<br> - On Linux you need to add the user the `input` group: `sudo usermod -aG input $USER`<br> - On Mac, it is possible you need to use the settings application to allow your program to access the input devices (see <a href="https://inputs.readthedocs.io/en/latest/user/install.html#mac-permissions" target="_blank">this reference</a>).<br><br>Official `inputs` python package reference guide can be found at <a href="https://inputs.readthedocs.io/en/latest/user/install.html#windows-permissions" target="_blank">this link</a>
+{{% /notice %}}
+
+It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Arena environments, to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 
 ```python
 import diambra.arena
-from diambra.arena.utils.gamepad import DiambraGamepad
+from diambra.arena.utils.controller import get_diambra_controller
 ...
-# Gamepad(s) initialization
-gamepad = DiambraGamepad(env.action_list)
-gamepad.start()
+# Controller initialization
+controller = get_diambra_controller(env.action_list)
+controller.start()
 ...
-actions = gamepad.get_actions()
+actions = controller.get_actions()
 ...
-gamepad.stop()
+controller.stop()
 ```
