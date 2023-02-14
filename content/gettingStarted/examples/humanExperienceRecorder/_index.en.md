@@ -7,7 +7,7 @@ weight: 50
 This example focuses on:
 
 - Human experience recording settings configuration
-- Gamepad interfacing
+- Controller interfacing (Gamepad or Keyboard)
 
 {{% notice tip %}}
 A dedicated section describing human experience recording wrapper settings is presented <a href="/imitationlearning/#experience-recording-wrapper">here</a> and provides additional details on their usage and purpose.
@@ -19,7 +19,7 @@ A dedicated section describing human experience recording wrapper settings is pr
 import os
 from os.path import expanduser
 import diambra.arena
-from diambra.arena.utils.gamepad import DiambraGamepad
+from diambra.arena.utils.controller import get_diambra_controller
 ```
 
 #### Settings
@@ -65,9 +65,9 @@ traj_rec_settings["ignore_p2"] = False
 ```python
 env = diambra.arena.make(game_id, settings, wrappers_settings, traj_rec_settings)
 
-# GamePad(s) initialization
-gamepad = DiambraGamepad(env.action_list)
-gamepad.start()
+# Controller initialization
+controller = get_diambra_controller(env.action_list)
+controller.start()
 
 observation = env.reset()
 
@@ -75,7 +75,7 @@ while True:
 
     env.render()
 
-    actions = gamepad.get_actions()
+    actions = controller.get_actions()
 
     observation, reward, done, info = env.step(actions)
 
@@ -83,6 +83,6 @@ while True:
         observation = env.reset()
         break
 
-gamepad.stop()
+controller.stop()
 env.close()
 ```

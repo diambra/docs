@@ -13,7 +13,7 @@ weight: 50
 - <a href="./#observation-inspection">Observation Inspection</a>
     - <a href="./#gym-observation">Gym Observation</a>
     - <a href="./#wrapped-observation">Wrapped Observation</a>
-- <a href="./#gamepad-interface">Gamepad Interface</a>
+- <a href="./#controller-interface">Controller Interface</a>
 
 </div>
 
@@ -297,23 +297,23 @@ Output will be similar to what follows:
    [1 0 0 0]]
   ```
 
-### Gamepad Interface
+### Controller Interface
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
 {{% /notice %}}
 
-It allows to easily integrate a common USB Gamepad to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
+It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Arena environments, to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 
 ```python
 import diambra.arena
-from diambra.arena.utils.gamepad import DiambraGamepad
+from diambra.arena.utils.controller import get_diambra_controller
 ...
-# Gamepad(s) initialization
-gamepad = DiambraGamepad(env.action_list)
-gamepad.start()
+# Controller initialization
+controller = get_diambra_controller(env.action_list)
+controller.start()
 ...
-actions = gamepad.get_actions()
+actions = controller.get_actions()
 ...
-gamepad.stop()
+controller.stop()
 ```
