@@ -14,7 +14,7 @@ A dedicated section describing human experience recording wrapper settings is pr
 {{% /notice %}}
 
 {{% notice note %}}
-On Linux systems, the user needs specific permissions in order to read the keyboard inputs. To grant them, you need to add it the `input` group as follows: `sudo usermod -aG input $USER`
+Depending on the Operating System used, specific permissions may be needed in order to read the keyboard inputs.<br><br> - On Windows, by default no specific permissions are needed. However, if you have some third-party security software you may need to white-list Python.<br> - On Linux you need to add the user the `input` group: `sudo usermod -aG input $USER`<br> - On Mac, it is possible you need to use the settings application to allow your program to access the input devices (see <a href="https://inputs.readthedocs.io/en/latest/user/install.html#mac-permissions" target="_blank">this reference</a>).<br><br>Official `inputs` python package reference guide can be found at <a href="https://inputs.readthedocs.io/en/latest/user/install.html#windows-permissions" target="_blank">this link</a>
 {{% /notice %}}
 
 #### Modules import

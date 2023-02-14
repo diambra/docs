@@ -304,7 +304,7 @@ Use of this functionality can be found in <a href="/gettingstarted/examples/huma
 {{% /notice %}}
 
 {{% notice note %}}
-On Linux systems, the user needs specific permissions in order to read the keyboard inputs. To grant them, you need to add it the `input` group as follows: `sudo usermod -aG input $USER`
+Depending on the Operating System used, specific permissions may be needed in order to read the keyboard inputs.<br><br> - On Windows, by default no specific permissions are needed. However, if you have some third-party security software you may need to white-list Python.<br> - On Linux you need to add the user the `input` group: `sudo usermod -aG input $USER`<br> - On Mac, it is possible you need to use the settings application to allow your program to access the input devices (see <a href="https://inputs.readthedocs.io/en/latest/user/install.html#mac-permissions" target="_blank">this reference</a>).<br><br>Official `inputs` python package reference guide can be found at <a href="https://inputs.readthedocs.io/en/latest/user/install.html#windows-permissions" target="_blank">this link</a>
 {{% /notice %}}
 
 It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Arena environments, to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
