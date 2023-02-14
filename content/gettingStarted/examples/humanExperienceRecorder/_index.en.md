@@ -13,6 +13,10 @@ This example focuses on:
 A dedicated section describing human experience recording wrapper settings is presented <a href="/imitationlearning/#experience-recording-wrapper">here</a> and provides additional details on their usage and purpose.
 {{% /notice %}}
 
+{{% notice note %}}
+On Linux systems, the user needs specific permissions in order to read the keyboard inputs. To grant them, you need to add it the `input` group as follows: `sudo usermod -aG input $USER`
+{{% /notice %}}
+
 #### Modules import
 
 ```python

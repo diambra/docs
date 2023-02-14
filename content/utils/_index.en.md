@@ -303,6 +303,10 @@ Output will be similar to what follows:
 Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
 {{% /notice %}}
 
+{{% notice note %}}
+On Linux systems, the user needs specific permissions in order to read the keyboard inputs. To grant them, you need to add it the `input` group as follows: `sudo usermod -aG input $USER`
+{{% /notice %}}
+
 It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Arena environments, to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 
 ```python
