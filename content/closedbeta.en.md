@@ -7,10 +7,12 @@ disableToc: true
 
 <div style="font-size:1.125rem;">
 
+- <a href="./#anatomy-of-an-agent-script-for-submission">Anatomy of an Agent script for submission</a>
 - <a href="./#submit-a-pre-built-agent">Submit a pre-built Agent</a>
 - <a href="./#submit-your-own-agent">Submit your own Agent</a>
 - <a href="./#hide-your-source-code">Hide your source code</a>
 - <a href="./#leverage-pre-built-dependencies-images">Leverage pre-built dependencies images</a>
+- <a href="./#test-your-agent-before-submitting">Test your Agent before submitting</a>
 
 
 </div>
@@ -29,6 +31,19 @@ In our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agent
 
 In what follows, we guide you through this process, starting from the easiest use case and building upon it to teach you how to leverage the most advanced features.
 
+#### Anatomy of an Agent script for submission
+
+<figure style="margin-bottom:40px; margin-top:20px; margin-right:auto; margin-left:auto; width: 100%;">
+  <img src="/images/agent.jpg" style="margin-top:0px;margin-bottom:20px; margin-right:0px; margin-left:0px;">
+  <figcaption align="middle">Structure of an Agent script ready to be submitted</figcaption>
+</figure>
+
+The central element of a submission is the agent python script. Its structure is always composed by two main parts, highlighted in the picture above: the preparation step, where the agent and the environment setup is completed, and the interaction loop, where the classical agent-environment interaction happens. 
+
+To prepare your agent for a submission on DIAMBRA platform, you just need to implement a classic loop as described above: after a first call to the reset method, you start iterating alternating the action selection step to the environment stepping instruction, resetting the environment when the episode is done. That's it, we take care of the rest. 
+
+There is one thing that is worth noticing: since we want your submission to be the same no matter how many episodes are needed to evaluate it, you need to implement the while loop in a way that it continues to iterate (`while True:`), and you only exit (the `break` statement) when the value `info["env_done"]` is true. This value is set by us and used to let the agent know that the evaluation has been completed. In this way, the same script can be used to run evaluations made of 3, 5, 10 or whatever number of episodes you want, without changing a single line. 
+
 #### Submit a pre-built Agent
 
 In <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents repo</a>, together with different source code examples, we also provide <a href="https://github.com/orgs/diambra/packages?repo_name=agents" target="_blank">pre-built docker images (packages)</a> for some of them. For example, <a href="https://github.com/diambra/agents/pkgs/container/agent-random-1" target="_blank">here</a> you find the pre-built docker image for the random agent correspondent to <a href="https://github.com/diambra/agents/blob/main/basic/random_1/agent.py" target="_blank">this</a> source code.
@@ -40,7 +55,7 @@ Using this pre-built docker image you can easily perform your first submission e
 ```shell
 diambra agent submit <docker image>
 ```
-where instead of `<docker image>` you will use the `repository/name:tag` indicated at the top of the package page (i.e. `ghcr.io/diambra/agent-random-1:main`, making sure to use the latest available tag).
+where instead of `<docker image>` you will use the `registry/name:tag` indicated at the top of the package page (i.e. `ghcr.io/diambra/agent-random-1:main`, making sure to use the latest available tag).
 
 You will receive a confirmation of the submission, its identification number as well as the url where to see the results, something similar to the following:
 
@@ -188,3 +203,19 @@ If you are using the state of the art RL libraries we natively support (Stable B
 You can use them in at least two ways:
 * Directly specifying them in your YAML submission file, in the `image` field (i.e. `image: ghcr.io/diambra/arena-base-on3.7-bullseye:main`)
 * Building your own custom Docker image based on them, so using the `FROM` instruction in your Dockerfile (i.e. `FROM ghcr.io/diambra/arena-base-on3.7-bullseye:main`)
+
+#### Test your Agent before submitting
+
+If you want to test your agent locally before submitting it for evaluation on the platform, you can use the specific feature provided by our command line interface. The pattern of the command is the very same used for submission, except that instead of the `submit` option you will use `test`. 
+
+It can be used to make sure the agent behaves as expected, and to debug it in case it fails, without waiting for the online evaluation pipeline.
+
+It works with both plain docker images as well as submission manifests with privately hosted files and secret tokens, using respectively, the following commands:
+
+```shell
+diambra agent test <docker image>
+```
+or
+```shell
+diambra agent test --submission.manifest submission.yaml --submission.secret token=<my-secret token>
+```
