@@ -65,7 +65,7 @@ diambra agent submit ghcr.io/diambra/agent-random-1:main
 ```
 
 {{% notice note %}}
-For the closed beta version the previous url needs to be manually tweaked, adding `r.` before the domain, thus becoming `https://r.diambra.ai/submission/178`
+For the closed beta, when pasting in your browser the url returned by the cli, remember to add `r.` before the domain, (in this case you would obtain `https://r.diambra.ai/submission/178`).
 {{% /notice %}}
 
 {{% notice note %}}
