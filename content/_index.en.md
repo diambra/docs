@@ -137,6 +137,10 @@ Output example:
 [...]
 ```
 
+{{% notice note %}}
+If you are using Windows 10 "N" editions and get this error `ImportError: DLL load failed while importing cv2`, you might need to install the <a href=" https://support.microsoft.com/en-us/topic/media-feature-pack-list-for-windows-n-editions-c1c6fffa-d052-8338-7a79-a4bb980a700a" target="_blank">"Media Feature Pack".</a>
+{{% /notice %}}
+
 Search ROMs on the web using <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above. <span style="color:#333333; font-weight:bolder;">Pay attention, follow game-specific notes reported there, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
 
 {{% notice note %}}

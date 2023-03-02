@@ -17,13 +17,13 @@ weight: 20
   - <a href="./#using-python-notebooks">Using Python Notebooks</a>
   - <a href="./#environment-native-rendering">Environment Native Rendering</a>
   - <a href="./#running-multiple-environments-in-parallel">Running Multiple Environments in Parallel</a>
+  - <a href="./#run-diambra-engine-without-cli">Run DIAMBRA Engine without CLI</a>
 
 </div>
 
 ### Prerequisites
 
 - Installation completed and tested as described in <a href="/#installation">Installation</a> and <a href="/#quickstart">Quickstart</a> homepage sections
-- <a href="https://github.com/diambra/arena/tree/main/examples" target="_blank">Examples</a> provided with DIAMBRA Arena repo downloaded
 - ROMs downloaded and placed all in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`
 
 {{% notice tip %}}
@@ -34,7 +34,7 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 ##### Basic Script
 
-The most straightforward and simple script to use DIAMBRA Arena is reported below (also found in the examples as `diambra_arena_gist.py`). It features a random agent playing Dead Or Alive ++, but it represents the general interaction shema to be used for every game and context of DIAMBRA Arena.
+The most straightforward and simple script to use DIAMBRA Arena is reported below. It features a random agent playing Dead Or Alive ++, and it represents the general interaction schema to be used for every game and context of DIAMBRA Arena.
 
 ```python
 # DIAMBRA Arena module import
@@ -129,9 +129,12 @@ The table below lists all available options for this command.
 | `-n, --engine.sound`                                      | -                                                         | Enable sound                                                     |
 | `-s, --env.scale`                                         | `int`                                                     | Number of environments to run (default 1)                        |
 | `--path.credentials`                                      | `str`                                                     | Path to credentials file (default "$HOME/.diambra/credentials")  |
-| `-e, --env.image`                                         | `str`                                                     | Env image to use (default "diambra/engine:main")                 |
+| `--env.image`                                             | `str`                                                     | Env image to use, omit to detect from diambra-arena version      |
 | `-p, --images.pull`                                       | `bool`                                                    | (Always) pull image before running (default true)                |
 | `--env.mount`                                             | `str`                                                     | Host mounts for env container (/host/path:/container/path)       |
+| `-x, --env.autoremove                                     | -                                                         | Remove containers on exit (default true)                         |
+| `--env.seccomp`                                           | `str`                                                     | Path to seccomp profile to use for env (may slow down environment). Set to "" for runtime's default profile. (default "unconfined")  |
+| `-i, --interactive`                                       | -                                                         | Open stdin for interactions with arena and agent (default true)  |
 
 `*`: Currently available only for Linux systems. For additional info and for Windows/MacOS alternatives, see <a href="./#environment-native-rendering">Environment Native Rendering</a> section below.
 
@@ -149,10 +152,14 @@ The table below lists all available commands for this mode.
 
 Flags reported for the Run command above apply also to this mode.
 
-| <strong><span style="color:#5B5B60;">Command</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
-| ------------------------------------------------------------ | ---------------------------------------------------------------- |
-| `down`                                                       | Stop DIAMBRA Arena container(s)                                  |
-| `up`                                                         | Start DIAMBRA Arena container(s)                                 |
+| <strong><span style="color:#5B5B60;">Command</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
+| ------------------------------------------------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `down`                                                       | -                                                                | Stop DIAMBRA Arena container(s)                                  |
+| `up`                                                         | -                                                                | Start DIAMBRA Arena container(s)                                 |
+| `check-roms`                                                 | `str`                                                            | Check rom file specified with the absolute path                  |
+| `list-roms`                                                  | -                                                                | List currently available roms                                    |
+| `status`                                                     | -                                                                | Show status of DIAMBRA arena                                     |
+| `version`                                                    | -                                                                | Show DIAMBRA Arena Version                                       |
 
 ##### Using Python Notebooks
 
@@ -191,7 +198,7 @@ diambra arena down
 
 It is possible to activate emulator native rendering while running environments (i.e. bringing up the emulator graphics window). The CLI provides a specific flag for this purpose, but currently this is supported only on Linux, while Windows and MacOS users have to configure a Xserver and link it to the environment container. The next tabs provide hints for each context.
 
-{{< tabs groupId="linuxSource">}}
+{{< tabs groupId="nativeRendering">}}
 {{% tab name="Linux" %}}
 
 On Linux, the CLI allows to render emulator natively on the host, the user only needs to add the `-g` flag to the run command, as follows:
@@ -212,7 +219,7 @@ To run environments with native emulator GUI support on Windows, currently requi
 A virtual XServer that in our experience proved to be effective is <a href="https://sourceforge.net/projects/vcxsrv/" target="_blank">VcXsrv Windows X Server</a>.
 
 {{% /tab %}}
-{{% tab name="MacOs" %}}
+{{% tab name="MacOS" %}}
 
 To run environments with native emulator GUI support on MacOS, currently requires the user to setup a virtual XServer and connect it to the container. We cannot provide support for this use case at the moment, but we plan to implement this feature in the near future.
 
@@ -237,4 +244,64 @@ Starting 4 containers and printing their addresses in the terminal:
 diambra arena -s=4 up
 Server listening on 0.0.0.0:50051
 127.0.0.1:49154 127.0.0.1:49155 127.0.0.1:49156 127.0.0.1:49157
+```
+
+##### Run DIAMBRA Engine without CLI
+
+Agents connect via network using gRPC to DIAMBRA Engine running in a Docker container. The `diambra` CLI's `run` command starts the DIAMBRA Engine in a Docker container and sets up the environment to make it easy to connect to the Engine. For troubleshooting it might be useful to run the Engine manually, using host networking.
+
+
+{{% notice note %}}
+Creating the `~/.diambra` and `~/.diambra/credentials` is only needed when you never ran the diambra CLI before. Otherwise this step can be skipped.
+{{% /notice %}}
+
+###### Start Engine
+
+{{< tabs groupId="manualEngineDocker">}}
+{{% tab name="Linux/MacOS" %}}
+
+```bash
+mkdir ~/.diambra
+touch ~/.diambra/credentials
+
+docker run -d --rm --name engine \
+  -v $HOME/.diambra/credentials:/tmp/.diambra/credentials \
+  -v /path/to/roms:/opt/diambraArena/roms \
+  --net=host docker.io/diambra/engine:latest
+```
+
+{{% /tab %}}
+{{% tab name="Win (cmd)" %}}
+
+```cmd
+mkdir %userprofile%/.diambra
+echo > %userprofile%/.diambra/credentials
+ 
+docker run --rm -ti --name engine ^
+  -v %userprofile%/.diambra/credentials:/tmp/.diambra/credentials ^
+  -v %userprofile%/.diambra/roms:/opt/diambraArena/roms ^
+  --net=host docker.io/diambra/engine:latest
+```
+
+{{% /tab %}}
+{{% tab name="Win (PowerShell)" %}}
+
+```powershell
+mkdir $Env:userprofile/.diambra
+echo "" > $Env:userprofile/.diambra/credentials
+ 
+docker run --rm -ti --name engine `
+  -v $Env:userprofile/.diambra/credentials:/tmp/.diambra/credentials `
+  -v $Env:userprofile/.diambra/roms:/opt/diambraArena/roms `
+  --net=host docker.io/diambra/engine:latest
+```
+{{% /tab %}}
+{{< /tabs >}}
+
+###### Connect to Engine
+
+Now you can run the script that uses DIAMBRA Arena by opening a new terminal and setting `DIAMBRA_ENVS` environment variable followed by the python command:
+
+```bash
+DIAMBRA_ENVS=localhost:50051 python ./script.py
 ```
