@@ -31,6 +31,11 @@ In our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agent
 
 In what follows, we guide you through this process, starting from the easiest use case and building upon it to teach you how to leverage the most advanced features.
 
+
+{{% notice warning %}}
+Currently, we can only process Docker images built for amd64 CPU architecture. So, if you are using MacOS with M1 or M2 CPUs, you need to explicitly tell Docker to do that at build time as follows:<br><br>1. Open Docker Desktop dashboard / Preferences (cog icon) / Turn Experimental Features on & apply<br>2. Create a new builder instance with `docker buildx create --use`<br>3. Run `docker buildx build --platform linux/amd64 --push -t <image-tag> .`<br><br>Note that:<br>- If you can’t see an “Experimental Features” option, sign up for the <a href="https://www.docker.com/community/get-involved/developer-preview/" target="_blank">Docker developer program</a><br>- You have to push directly to a repository instead of doing it after build
+{{% /notice %}}
+
 #### Anatomy of an Agent script for submission
 
 <figure style="margin-bottom:40px; margin-top:20px; margin-right:auto; margin-left:auto; width: 100%;">
