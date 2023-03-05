@@ -1,6 +1,7 @@
 ---
 title: Closed Beta Guide
 disableToc: true
+math: true
 ---
 
 ### How to Submit an Agent
@@ -8,10 +9,12 @@ disableToc: true
 <div style="font-size:1.125rem;">
 
 - <a href="./#anatomy-of-an-agent-script-for-submission">Anatomy of an Agent script for submission</a>
+- <a href="./#submission-evaluation">Submission evaluation</a>
 - <a href="./#submit-a-pre-built-agent">Submit a pre-built Agent</a>
 - <a href="./#submit-your-own-agent">Submit your own Agent</a>
 - <a href="./#hide-your-source-code">Hide your source code</a>
 - <a href="./#leverage-pre-built-dependencies-images">Leverage pre-built dependencies images</a>
+- <a href="./#append-args-or-override-submissions-entrypoint-via-cli">Append args or override submissions entrypoint via CLI</a>
 - <a href="./#test-your-agent-before-submitting">Test your Agent before submitting</a>
 
 
@@ -28,9 +31,11 @@ In our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agent
 {{% /notice %}}
 2. Creating a docker image containing all dependencies needed to run such agent and push it to a **public** container registry
 3. Submitting the docker image to the platform using our Command Line Interface
+{{% notice note %}}
+If you do not specify any tag when submitting a Docker image, the tag `latest` will be used by default. It that tag is not present, the submission will fail.
+{{% /notice %}}
 
 In what follows, we guide you through this process, starting from the easiest use case and building upon it to teach you how to leverage the most advanced features.
-
 
 {{% notice warning %}}
 Currently, we can only process Docker images built for amd64 CPU architecture. So, if you are using MacOS with M1 or M2 CPUs, you need to explicitly tell Docker to do that at build time as follows:<br><br>1. Open Docker Desktop Dashboard / Preferences (cog icon) / Turn "Experimental Features" on & apply<br>2. Create a new builder instance with `docker buildx create --use`<br>3. Run `docker buildx build --platform linux/amd64 --push -t <image-tag> .`<br><br>Note that:<br>- If you can’t see an “Experimental Features” option, sign up for the <a href="https://www.docker.com/community/get-involved/developer-preview/" target="_blank">Docker developer program</a><br>- You have to push directly to a repository instead of doing it after build
@@ -45,9 +50,43 @@ Currently, we can only process Docker images built for amd64 CPU architecture. S
 
 The central element of a submission is the agent python script. Its structure is always composed by two main parts, highlighted in the picture above: the preparation step, where the agent and the environment setup is completed, and the interaction loop, where the classical agent-environment interaction happens. 
 
-To prepare your agent for a submission on DIAMBRA platform, you just need to implement a classic loop as described above: after a first call to the reset method, you start iterating alternating the action selection step to the environment stepping instruction, resetting the environment when the episode is done. That's it, we take care of the rest. 
+To prepare your agent for a submission on DIAMBRA platform, you just need to implement a classic loop as described above: after a first call to the reset method, you start iterating alternating action selection and environment stepping, resetting the environment when the episode is done. That's it, we take care of the rest. 
 
-There is one thing that is worth noticing: since we want your submission to be the same no matter how many episodes are needed to evaluate it, you need to implement the while loop in a way that it continues to iterate (`while True:`), and you only exit (the `break` statement) when the value `info["env_done"]` is true. This value is set by us and used to let the agent know that the evaluation has been completed. In this way, the same script can be used to run evaluations made of 3, 5, 10 or whatever number of episodes you want, without changing a single line. 
+There is one thing that is worth noticing: since we want your submission to be the same no matter how many episodes are needed to evaluate it, you need to implement the while loop in a way that it keeps iterating indefinitely (`while True:`) and only exits (the `break` statement) when the value `info["env_done"]` is true. This value is set by us and used to let the agent know that the evaluation has been completed. In this way, the same script can be used to run evaluations made of 3, 5, 10 or whatever number of episodes you want, without changing a single line. 
+
+#### Submission evaluation
+
+Each time you submit an agent, it will be run for five consecutive episodes. Every submission will thus generate both a score, that decides leaderboard positioning, and unlocked achievements. 
+
+The score is a function of both the total cumulative reward and the submission difficulty you selected at submission time, which can be either "Easy", "Medium" or "Hard". Every game has a different difficulty level scale, so a specific mapping is applied and is represented by the following table:
+
+| <strong><span style="color:#5B5B60;">Game</span></strong> | <strong><span style="color:#5B5B60;">Easy</span></strong> | <strong><span style="color:#5B5B60;">Medium</span></strong> | <strong><span style="color:#5B5B60;">Hard</span></strong> |
+| ------------------------------------------------------------ | :----------------------------------------------------------------: | :----------------------------------------------------------------: | :----------------------------------------------------------------: |
+| Dead Or Alive ++                                               | 2 | 3 | 4 |
+| Street Fighter III                                             | 4 | 6 | 8 |
+| Tekken Tag Tournament                                          | 5 | 7 | 9 |
+| Ultimate Mortal Kombat 3                                       | 3 | 4 | 5 |
+| Samurai Showdown 5                                             | 4 | 6 | 8 |
+| King of Fighters '98                                           | 4 | 6 | 8 |
+
+The relation that links score with total cumulative reward and difficulty is shown in the following picture: when "Easy" is selected, the score is exactly equal to the total cumulative reward. When "Medium" (or "Hard") is selected, the score is obtained multiplying the total cumulative reward by a weighting value that varies linearly with the total cumulative reward obtained, which is equal to 1 if you obtain the lowest possible total cumulative reward (i.e. same score as if "Easy" was selected), and is equal to the ratio between the game difficulty level for "Medium" (or "Hard") and the game difficulty level for "Easy" if you obtain the highest possible total cumulative reward.
+
+So, for example, for Dead or Alive ++, the weighting values for "Medium" and "Hard" vary linearly between
+
+$$
+\begin{equation}
+\begin{gathered}
+k_M = \left[1.0,  \frac{3}{2} \right] = \left[1.0,  1.5 \right] \\\\
+k_H = \left[1.0,  \frac{4}{2} \right] = \left[1.0,  2.0 \right]
+\end{gathered}
+\end{equation}
+$$
+
+<figure style="margin-bottom:40px; margin-top:20px; margin-right:auto; margin-left:auto; width: 100%;">
+  <img src="/images/score_chart.jpg" style="margin-top:0px;margin-bottom:20px; margin-right:0px; margin-left:0px;">
+  <figcaption align="middle">Scoring as a function of Total Cumulative Reward and Submission Difficulty</figcaption>
+</figure>
+
 
 #### Submit a pre-built Agent
 
@@ -62,7 +101,11 @@ diambra agent submit <docker image>
 ```
 where instead of `<docker image>` you will use the `registry/name:tag` indicated at the top of the package page (i.e. `ghcr.io/diambra/agent-random-1:main`, making sure to use the latest available tag).
 
-You will receive a confirmation of the submission, its identification number as well as the url where to see the results, something similar to the following:
+{{% notice note %}}
+By default, the random agent will randomly select the game on which to run. If you want to specify it, use the `--gameId` command line argument that our pre-built image accepts, leveraging the command line interface when submitting the docker image as follows: `diambra agent submit <docker image> "--gameId" "tektagt"`. Additional similar use cases are covered in the <a href="./#append-args-or-override-submissions-entrypoint-via-cli">"Append args or override submissions entrypoint via CLI"</a> section below.
+{{% /notice %}}
+
+After running the command, you will receive a submission confirmation, its identification number as well as the url where to see the results, something similar to the following:
 
 ```
 diambra agent submit ghcr.io/diambra/agent-random-1:main
@@ -208,6 +251,76 @@ If you are using the state of the art RL libraries we natively support (Stable B
 You can use them in at least two ways:
 * Directly specifying them in your YAML submission file, in the `image` field (i.e. `image: ghcr.io/diambra/arena-base-on3.7-bullseye:main`)
 * Building your own custom Docker image based on them, so using the `FROM` instruction in your Dockerfile (i.e. `FROM ghcr.io/diambra/arena-base-on3.7-bullseye:main`)
+
+#### Append args or override submissions entrypoint via CLI
+
+In case you want to specify command line arguments and/or overriding the image entrypoint at submission time, you can leverage the command line interface. Here are the different use cases covered:
+
+##### Add arguments to a given docker image
+
+```shell
+diambra agent submit <docker image> arg1 arg2
+```
+the correspondent submission manifest would use a new `args` keyword as follows:
+```yaml
+---
+image: <docker image>
+mode: AIvsCOM
+difficulty: easy
+args:
+- arg1
+- arg2
+```
+##### Add arguments to a given submission manifest
+
+```shell
+diambra agent submit --submission.manifest manifest.yaml arg1 arg2 arg3
+```
+the resulting submission manifest sent to the platform would be
+```yaml
+---
+image: diambra/agent-random-1:main
+mode: AIvsCOM
+difficulty: easy
+args:
+- arg1
+- arg2
+- arg3
+```
+
+##### Override entrypoint of a given image
+
+```shell
+diambra agent submit --submission.set-command <docker image> command arg1 arg2
+```
+the correspondent submission manifest would be:
+```yaml
+---
+image: <docker image>
+mode: AIvsCOM
+difficulty: easy
+command:
+- command
+- arg1
+- arg2
+```
+
+##### Override entrypoint of an image specified in a given submission manifest
+
+```shell
+diambra agent submit --submission.set-command --submission.manifest manifest.yaml command arg1 arg2
+```
+the resulting submission manifest sent to the platform would be
+```yaml
+---
+image: diambra/agent-random-1:main
+mode: AIvsCOM
+difficulty: easy
+command:
+- command
+- arg1
+- arg2
+```
 
 #### Test your Agent before submitting
 
