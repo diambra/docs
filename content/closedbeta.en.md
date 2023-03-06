@@ -117,7 +117,7 @@ For the closed beta, when pasting in your browser the url returned by the cli, r
 {{% /notice %}}
 
 {{% notice note %}}
-By default, the submission will select the lowest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--submission.difficulty` argument to the previous command (e.g. `diambra agent submit <docker image> --submission.difficulty Medium`)
+By default, the submission will select the lowest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--submission.difficulty` argument to the previous command (e.g. `diambra agent submit --submission.difficulty Medium <docker image>`)
 {{% /notice %}}
 
 #### Submit your own Agent
@@ -209,7 +209,7 @@ If you want to avoid that, we got you covered. The process is very similar to th
 Once these steps are completed, you can submit the agent to the platform as follows:
 
 ```shell
-diambra agent submit --submission.manifest submission.yaml --submission.secret token=<my-secret token>
+diambra agent submit  --submission.secret token=<my-secret token> --submission.manifest submission.yaml
 ```
 
 where `<my-secret token>` will be the token you created for your private hosting.
@@ -335,5 +335,5 @@ diambra agent test <docker image>
 ```
 or
 ```shell
-diambra agent test --submission.manifest submission.yaml --submission.secret token=<my-secret token>
+diambra agent test  --submission.secret token=<my-secret token> --submission.manifest submission.yaml
 ```
