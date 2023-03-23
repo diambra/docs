@@ -1,10 +1,10 @@
 ---
-title: Closed Beta Guide
-disableToc: true
+title: Competition Platform
+weight: 80
 math: true
 ---
 
-### How to Submit an Agent
+### Index
 
 <div style="font-size:1.125rem;">
 
@@ -16,8 +16,6 @@ math: true
 - <a href="./#leverage-pre-built-dependencies-images">Leverage pre-built dependencies images</a>
 - <a href="./#append-args-or-override-submissions-entrypoint-via-cli">Append args or override submissions entrypoint via CLI</a>
 - <a href="./#test-your-agent-before-submitting">Test your Agent before submitting</a>
-
-
 </div>
 
 {{% notice note %}}
