@@ -10,22 +10,20 @@ The basic process to submit an agent consists in three steps:
 {{% notice tip %}}
 In our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents repo</a> we provide many examples, ranging from a trivial random agent to RL agents trained with state-of-the-art RL libraries.
 {{% /notice %}}
-2. Creating a docker image containing all dependencies needed to run such agent and push it to a **public** container registry
+2. Creating a docker image that contains the agent script and all its dependencies, and pushing it to a **public** container registry
 3. Submitting the docker image to the platform using our Command Line Interface
 {{% notice note %}}
-If you do not specify any tag when submitting a Docker image, the tag `latest` will be used by default. It that tag is not present, the submission will fail.
+If you do not specify any tag when submitting a Docker image, the tag `latest` will be used by default. If that tag is not present, the submission will fail.
 {{% /notice %}}
 
-In what follows, we guide you through this process, starting from the easiest use case and building upon it to teach you how to leverage the most advanced features.
+In the subsections linked below, we guide you through this process, starting from the easiest use case and building upon it to show you how to leverage the most advanced features.
 
 <div style="font-size:1.125rem;">
 
-- <a href="./#submit-a-pre-built-agent">Submit a pre-built Agent</a>
-- <a href="./#submit-your-own-agent">Submit your own Agent</a>
-- <a href="./#hide-your-source-code">Hide your source code</a>
+- <a href="./submitprebuiltagents/">Submit pre-built Agents</a>
+- <a href="./submityourownagent/">Submit your own Agent</a>
+- <a href="./keepyouragentprivate/">Keep your Agent private</a>
 </div>
-
-
 
 {{% notice note %}}
 You need to be <a href="https://diambra.ai/register/" target="_blank">registered on our website</a> in order to submit your agent.

@@ -17,6 +17,7 @@ title: "Home"
 - <a href="./#overview">Overview</a>
 - <a href="./#installation">Installation</a>
 - <a href="./#quickstart">Quickstart</a>
+- <a href="./#competition-platform">Competition Platform</a>
 - <a href="./#docs-structure">Docs Stucture</a>
 - <a href="./#support-feature-requests--bugs-reports">Support, Feature Requests & Bugs Reports</a>
 - <a href="./#references">References</a>
@@ -198,18 +199,19 @@ diambra run -r your/roms/local/path python script.py
 To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
 {{% /notice %}}
 
+### Competition Platform
+
 ### Docs Structure
 
 <div style="font-size:1.125rem;">
 
 - <a href="./gettingstarted/">Getting Started</a>
-  - <a href="./gettingstarted/examples/">Examples</a>
 - <a href="./envs/">Environments</a>
-  - <a href="./envs/games/">Games & Specifics</a>
 - <a href="./wrappers/">Wrappers</a>
 - <a href="./utils/">Utils</a>
 - <a href="./imitationlearning/">Imitation Learning</a>
 - <a href="./handsonreinforcementlearning/">Hands-on Reinforcement Learning</a>
+- <a href="./competitionplatform/">Competition Platform</a>
 
 </div>
 
@@ -219,8 +221,8 @@ To receive support, use the dedicated channel in our <a href="https://discord.gg
 
 To request features or report bugs, use the GitHub issue tracker for the specific repository:
 
-- <a href="https://github.com/diambra/arena/issues" target="_blank">DIAMBRA Arena</a>
-- <a href="https://github.com/diambra/agents/issues" target="_blank">DIAMBRA Agents</a>
+- <a href="https://github.com/diambra/arena/issues" target="_blank">DIAMBRA Arena Issue Tracker</a>
+- <a href="https://github.com/diambra/agents/issues" target="_blank">DIAMBRA Agents Issue Tracker</a>
 
 ### References
 

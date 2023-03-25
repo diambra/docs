@@ -267,9 +267,10 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 }
 
 /* #sidebar ul.topics li.parent ul, #sidebar ul.topics > li.active ul { /* <- OLD VERSION ALL CHILDREN EXPANDED */
-#sidebar ul.topics li.parent ul, #sidebar ul.topics li.active > ul {  /* <- NEW VERSION ONLY FIRST CHILDREN EXPANDED */
+#sidebar ul.topics li.parent > ul, #sidebar ul.topics li.active > ul {  /* <- NEW VERSION ONLY FIRST CHILDREN EXPANDED */
     display: block;
-}
+}  
+
 #sidebar ul.topics > li > a {
     line-height: 2rem;
     font-size: 1.1rem;
