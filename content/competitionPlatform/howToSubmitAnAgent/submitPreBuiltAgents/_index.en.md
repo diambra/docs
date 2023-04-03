@@ -29,3 +29,8 @@ diambra agent submit ghcr.io/diambra/agent-random-1:main
 {{% notice note %}}
 By default, the submission will select the lowest difficulty level (`"Easy"`) of the three available (`"Easy"`, `"Medium"`, `"Hard"`). To change this, you can add the `--submission.difficulty` argument to the previous command (e.g. `diambra agent submit --submission.difficulty Medium <docker image>`)
 {{% /notice %}}
+
+
+{{% notice warning %}}
+As shown here, it is possible to embed your agent files (i.e. scripts and weights) in the dependencies docker image and submit only that. Keep in mind that this image needs to be public and will be visible on the platform, so every user will be able to use it for his own submissions.
+{{% /notice %}}
