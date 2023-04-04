@@ -17,6 +17,7 @@ title: "Home"
 - <a href="./#overview">Overview</a>
 - <a href="./#installation">Installation</a>
 - <a href="./#quickstart">Quickstart</a>
+- <a href="./#competition-platform">Competition Platform</a>
 - <a href="./#docs-structure">Docs Stucture</a>
 - <a href="./#support-feature-requests--bugs-reports">Support, Feature Requests & Bugs Reports</a>
 - <a href="./#references">References</a>
@@ -198,18 +199,37 @@ diambra run -r your/roms/local/path python script.py
 To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
 {{% /notice %}}
 
+### Competition Platform
+
+<figure style="margin-bottom:0px; margin-top:40px; margin-right:auto; margin-left:auto; width: 100%;">
+  <img src="../images/competitionPlatform/leaderboard.jpg" style="margin-top:0px;margin-bottom:30px;">
+</figure>
+
+Our competition platform allows you to submit your agents and compete with other coders around the globe in epic video games tournaments!
+
+It features a public global leaderboard where users are ranked by the best score achieved by their agents in our different environments. 
+
+It also offers you the possibility to unlock cool achievements depending on the performances of your agent. 
+
+<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
+  <img src="../images/competitionPlatform/achievements.jpg" style="margin-top:0px;margin-bottom:30px;">
+</figure>
+
+Submitted agents are evaluated and their episodes are streamed on our Twitch channel.
+
+We aimed at making the submission process as smooth as possible, try it now!
+
 ### Docs Structure
 
 <div style="font-size:1.125rem;">
 
 - <a href="./gettingstarted/">Getting Started</a>
-  - <a href="./gettingstarted/examples/">Examples</a>
 - <a href="./envs/">Environments</a>
-  - <a href="./envs/games/">Games & Specifics</a>
 - <a href="./wrappers/">Wrappers</a>
 - <a href="./utils/">Utils</a>
 - <a href="./imitationlearning/">Imitation Learning</a>
 - <a href="./handsonreinforcementlearning/">Hands-on Reinforcement Learning</a>
+- <a href="./competitionplatform/">Competition Platform</a>
 
 </div>
 
@@ -219,8 +239,8 @@ To receive support, use the dedicated channel in our <a href="https://discord.gg
 
 To request features or report bugs, use the GitHub issue tracker for the specific repository:
 
-- <a href="https://github.com/diambra/arena/issues" target="_blank">DIAMBRA Arena</a>
-- <a href="https://github.com/diambra/agents/issues" target="_blank">DIAMBRA Agents</a>
+- <a href="https://github.com/diambra/arena/issues" target="_blank">DIAMBRA Arena Issue Tracker</a>
+- <a href="https://github.com/diambra/agents/issues" target="_blank">DIAMBRA Agents Issue Tracker</a>
 
 ### References
 
