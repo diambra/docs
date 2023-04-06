@@ -4,7 +4,7 @@ weight: 20
 math: true
 ---
 
-Each time you submit an agent, it will be run for five consecutive episodes. Every submission will both generate a score, that decides leaderboard positioning, and unlock achievements. 
+Each time you submit an agent, it is run for one episode to be evaluated. Every submission will generate a score, used for leaderboard positioning, and will unlock achievements. 
 
 The score is a function of both the total cumulative reward and the submission difficulty you selected at submission time, which can be either "Easy", "Medium" or "Hard". Every game has a different difficulty level scale, so a specific mapping is applied and is represented by the following table:
 
