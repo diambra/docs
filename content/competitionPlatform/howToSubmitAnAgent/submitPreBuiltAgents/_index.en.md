@@ -14,7 +14,7 @@ Using this pre-built docker image you can easily perform your first submission e
 diambra agent submit diambra/agent-random-1:main
 ```
 {{% notice note %}}
-If you want to specify the game on which to run the random agent, use the `--gameId` command line argument that our pre-built image accepts, when submitting the docker image as follows: `diambra agent submit --gameId tektagt diambra/agent-random-1:main`. Additional similar use cases are covered in the <a href="../../argumentsandcommands/">"Arguments and Commands"</a> page.
+If you want to specify the game on which to run the random agent, use the `--gameId` command line argument that our pre-built image accepts, when submitting the docker image as follows: `diambra agent submit diambra/agent-random-1:main --gameId tektagt`. Additional similar use cases are covered in the <a href="../../argumentsandcommands/">"Arguments and Commands"</a> page.
 {{% /notice %}}
 
 After running the command, you will receive a submission confirmation, its identification number as well as the url where to see the results, something similar to the following:
