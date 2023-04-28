@@ -230,6 +230,7 @@ We aimed at making the submission process as smooth as possible, try it now!
 - <a href="./imitationlearning/">Imitation Learning</a>
 - <a href="./handsonreinforcementlearning/">Hands-on Reinforcement Learning</a>
 - <a href="./competitionplatform/">Competition Platform</a>
+- <a href="./projects/">Projects</a>
 
 </div>
 
