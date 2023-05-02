@@ -66,3 +66,20 @@ Replace `your_gh_token` with the GitHub token you saved earlier.
 {{% notice warning %}}
 **Do not add your tokens directly in the submission YAML file, they will be publicly visible.**
 {{% /notice %}}
+
+#### Example 3: Automatically Unzip Sources
+
+In case you have multiple source files you need to use, and you want to avoid to list them all, you can add them to a zip archive and leverage the automatic unzip feature. To do so, assuming a situation as the one seen in the previous examples, you need to tweak the submission manifest (or the command line command) as follows:
+
+```yaml
+mode: AIvsCOM
+image: diambra/arena-stable-baselines3-on3.10-bullseye:main
+command:
+  - python
+  - "/sources/data/agent.py"
+  - "/sources/data/models/model.zip"
+sources:
+  data: https+unzip://{{.Secrets.token}}@raw.githubusercontent.com/path/to/data/data.zip
+```
+
+Note that in the url of the zip file to be downloaded there is an additional `+unzip` string following `https`, to let the platform know that you want that zip file to be extracted after download.
