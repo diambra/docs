@@ -69,7 +69,7 @@ Replace `your_gh_token` with the GitHub token you saved earlier.
 
 #### Example 3: Automatically Unzip Sources
 
-In case you have multiple source files you need to use, and you want to avoid to list them all, you can add them to a zip archive and leverage the automatic unzip feature. To do so, assuming a situation as the one seen in the previous examples, you need to tweak the submission manifest (or the command line command) as follows:
+In case you have multiple source files you need to use, and you want to avoid to list them all, you can add them to a zip archive and leverage the automatic unzip feature. To do so, assuming a situation as the one seen in the previous examples, you need to tweak the submission manifest (or the command line entry) as follows:
 
 ```yaml
 mode: AIvsCOM
