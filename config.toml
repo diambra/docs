@@ -53,7 +53,7 @@ weight = 11
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-discord'></i> Discord"
-url = "https://discord.gg/tFDS2UN5sv"
+url = "https://diambra.ai/discord"
 weight = 12
 
 [[Languages.en.menu.shortcuts]]

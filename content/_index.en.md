@@ -236,7 +236,7 @@ We aimed at making the submission process as smooth as possible, try it now!
 
 ### Support, Feature Requests & Bugs Reports
 
-To receive support, use the dedicated channel in our <a href="https://discord.gg/tFDS2UN5sv" target="_blank">Discord Server</a>.
+To receive support, use the dedicated channel in our <a href="https://diambra.ai/discord" target="_blank">Discord Server</a>.
 
 To request features or report bugs, use the GitHub issue tracker for the specific repository:
 
@@ -249,7 +249,7 @@ To request features or report bugs, use the GitHub issue tracker for the specifi
 - GitHub: <a href="https://github.com/diambra/" target="_blank">https://github.com/diambra/</a>
 - Paper: <a href="https://arxiv.org/abs/2210.10595" target="_blank">https://arxiv.org/abs/2210.10595</a>
 - Linkedin: <a href="https://www.linkedin.com/company/diambra" target="_blank">https://www.linkedin.com/company/diambra</a>
-- Discord: <a href="https://discord.gg/tFDS2UN5sv" target="_blank">https://discord.gg/tFDS2UN5sv</a>
+- Discord: <a href="https://diambra.ai/discord" target="_blank">https://diambra.ai/discord</a>
 - Twitch: <a href="https://www.twitch.tv/diambra_ai" target="_blank">https://www.twitch.tv/diambra_ai</a>
 - YouTube: <a href="https://www.youtube.com/c/diambra_ai" target="_blank">https://www.youtube.com/c/diambra_ai</a>
 - Twitter: <a href="https://twitter.com/diambra_ai" target="_blank">https://twitter.com/diambra_ai</a>
