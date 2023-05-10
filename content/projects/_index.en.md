@@ -4,11 +4,9 @@ weight: 90
 math: true
 ---
 
-<!-- Cover Image for projects
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
-  <img src="../../images/projects/cover.jpg" style="margin-top:0px;margin-bottom:30px;">
+  <img src="../../images/projects/cover.png" style="margin-top:0px;margin-bottom:30px;">
 </figure>
- -->
 
 This section contains a collection of projects that have been developed using DIAMBRA. 
 
