@@ -450,8 +450,7 @@ if __name__ == "__main__":
     # Create the callback: autosave every USER DEF steps
     autosave_freq = ppo_settings["autosave_freq"]
     auto_save_callback = AutoSave(check_freq=autosave_freq, num_envs=num_envs,
-                                  save_path=os.path.join(model_folder,
-                                                         model_checkpoint + "_"))
+                                  save_path=model_folder, filename_prefix=model_checkpoint + "_")
 
     # Train the agent
     time_steps = ppo_settings["time_steps"]
