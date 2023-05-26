@@ -8,10 +8,20 @@ weight: 20
 ### Index
 
 - <a href="./#getting-ready">Getting Ready</a>
+  - <a href="./#native-interface">Native Interface</a>
 - <a href="./#basic">Basic</a>
+  - <a href="./#basic-example">Basic Example</a>
+  - <a href="./#saving-loading-and-evaluating">Saving, Loading and Evaluating</a>
+  - <a href="./#parallel-environments">Parallel Environments</a>
 - <a href="./#advanced">Advanced</a>
+  - <a href="./#dictionary-observations">Dictionary Observations</a>
+  - <a href="./#agent-script-for-competition">Agent Script for Competition</a>
 
 </div>
+
+{{% notice tip %}}
+The source code of all examples described in this section is available in our <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">DIAMBRA Agents</a> repository.
+{{% /notice %}}
 
 ### Getting Ready
 
@@ -352,4 +362,106 @@ How to run it:
 
 ```shell
 diambra run python dict_obs_space.py
+```
+
+#### Agent Script for Competition
+
+Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our competition platform! To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.
+
+{{% notice tip %}}
+To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
+{{% /notice %}}
+
+```python
+import os
+import time
+import yaml
+import json
+import argparse
+import diambra.arena
+from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
+from ray.rllib.algorithms.ppo import PPO
+
+# Reference: https://github.com/ray-project/ray/blob/ray-2.0.0/rllib/examples/inference_and_serving/policy_inference_after_training.py
+
+"""This is an example agent based on RL Lib.
+
+Usage:
+diambra run python agent.py --trainedModel /absolute/path/to/checkpoint/ --envSpaces /absolute/path/to/environment/spaces/descriptor/
+"""
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--trainedModel", type=str, required=True, help="Model path")
+    parser.add_argument("--envSpaces", type=str, required=True, help="Environment spaces descriptor file path")
+    opt = parser.parse_args()
+    print(opt)
+
+    time_dep_seed = int((time.time() - int(time.time() - 0.5)) * 1000)
+
+    # Settings
+    settings = {}
+    settings["frame_shape"] = (84, 84, 1)
+    settings["characters"] = ("Kasumi")
+
+    # Wrappers Settings
+    wrappers_settings = {}
+    wrappers_settings["reward_normalization"] = True
+    wrappers_settings["actions_stack"] = 12
+    wrappers_settings["frame_stack"] = 5
+    wrappers_settings["scale"] = True
+    wrappers_settings["process_discrete_binary"] = True
+
+    config = {
+        # Define and configure the environment
+        "env": DiambraArena,
+        "env_config": {
+            "game_id": "doapp",
+            "settings": settings,
+            "wrappers_settings": wrappers_settings,
+            "load_spaces_from_file": True,
+            "env_spaces_file_name": opt.envSpaces,
+        },
+        "num_workers": 0,
+        "train_batch_size": 200,
+        "framework": "torch",
+    }
+
+    # Update config file
+    config = preprocess_ray_config(config)
+
+    # Load the trained agent
+    agent = PPO(config=config)
+    agent.restore(opt.trainedModel)
+    print("Agent loaded")
+
+    # Print the agent policy architecture
+    print("Policy architecture =\n{}".format(agent.get_policy().model))
+
+    env = diambra.arena.make("doapp", settings, wrappers_settings)
+
+    obs = env.reset()
+
+    while True:
+
+        env.render()
+
+        action = agent.compute_single_action(observation=obs, explore=True, policy_id="default_policy")
+
+        obs, reward, done, info = env.step(action)
+
+        if done:
+            obs = env.reset()
+            if info["env_done"]:
+                break
+
+    # Close the environment
+    env.close()
+```
+
+How to run it locally:
+
+```shell
+diambra run python agent.py --trainedModel /absolute/path/to/checkpoint/ --envSpaces /absolute/path/to/environment/spaces/descriptor/
 ```

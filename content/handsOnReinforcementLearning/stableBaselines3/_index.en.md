@@ -8,10 +8,21 @@ weight: 10
 ### Index
 
 - <a href="./#getting-ready">Getting Ready</a>
+  - <a href="./#native-interface">Native Interface</a>
 - <a href="./#basic">Basic</a>
+  - <a href="./#basic-example">Basic Example</a>
+  - <a href="./#saving-loading-and-evaluating">Saving, Loading and Evaluating</a>
+  - <a href="./#parallel-environments">Parallel Environments</a>
 - <a href="./#advanced">Advanced</a>
+  - <a href="./#dictionary-observations">Dictionary Observations</a>
+  - <a href="./#complete-training-script">Complete Training Script</a>
+  - <a href="./#agent-script-for-competition">Agent Script for Competition</a>
 
 </div>
+
+{{% notice tip %}}
+The source code of all examples described in this section is available in our <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents</a> repository.
+{{% /notice %}}
 
 ### Getting Ready
 
@@ -468,7 +479,7 @@ if __name__ == "__main__":
 How to run it:
 
 ```shell
-diambra run python training.py --cfgFile path/to/config.yaml
+diambra run python training.py --cfgFile /absolute/path/to/config.yaml
 ```
 
 and the configuration file to be used with this training script is reported below:
@@ -530,3 +541,94 @@ ppo_settings:
   autosave_freq: 256
   time_steps: 512
 ```
+
+#### Agent Script for Competition
+
+Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our competition platform! To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.
+
+{{% notice tip %}}
+To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
+{{% /notice %}}
+
+```python
+import os
+import time
+import yaml
+import json
+import argparse
+from diambra.arena.stable_baselines3.make_sb3_env import make_sb3_env
+from stable_baselines3 import PPO
+
+"""This is an example agent based on stable baselines 3.
+
+Usage:
+diambra run python stable_baselines3/agent.py --cfgFile $PWD/stable_baselines3/cfg_files/doapp/sr6_128x4_das_nc.yaml --trainedModel "model_name"
+"""
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cfgFile", type=str, required=True, help="Configuration file")
+    parser.add_argument("--trainedModel", type=str, default="model", help="Model checkpoint")
+    opt = parser.parse_args()
+    print(opt)
+
+    # Read the cfg file
+    yaml_file = open(opt.cfgFile)
+    params = yaml.load(yaml_file, Loader=yaml.FullLoader)
+    print("Config parameters = ", json.dumps(params, sort_keys=True, indent=4))
+    yaml_file.close()
+
+    time_dep_seed = int((time.time() - int(time.time() - 0.5)) * 1000)
+
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    model_folder = os.path.join(base_path, params["folders"]["parent_dir"], params["settings"]["game_id"],
+                                params["folders"]["model_name"], "model")
+
+    # Settings
+    settings = params["settings"]
+    settings["player"] = "P1"
+
+    # Wrappers Settings
+    wrappers_settings = params["wrappers_settings"]
+    wrappers_settings["reward_normalization"] = False
+
+    # Create environment
+    env, num_envs = make_sb3_env(params["settings"]["game_id"], settings, wrappers_settings, seed=time_dep_seed, no_vec=True)
+    print("Activated {} environment(s)".format(num_envs))
+
+    print("Observation space =", env.observation_space)
+    print("Act_space =", env.action_space)
+
+    # Load the trained agent
+    model_path = os.path.join(model_folder, opt.trainedModel)
+    agent = PPO.load(model_path)
+
+    # Print policy network architecture
+    print("Policy architecture:")
+    print(agent.policy)
+
+    obs = env.reset()
+
+    while True:
+
+        action, _ = agent.predict(obs, deterministic=False)
+
+        obs, reward, done, info = env.step(action.tolist())
+
+        if done:
+            obs = env.reset()
+            if info["env_done"]:
+                break
+
+    # Close the environment
+    env.close()
+```
+
+How to run it locally:
+
+```shell
+diambra run python agent.py --cfgFile /absolute/path/to/config.yaml --trainedModel "model_name"
+```
+
+and the configuration file to be used is the same that was used for training it, like the one reported in the previous paragraph.

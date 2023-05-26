@@ -17,6 +17,8 @@ title: "Home"
 - <a href="./#overview">Overview</a>
 - <a href="./#installation">Installation</a>
 - <a href="./#quickstart">Quickstart</a>
+- <a href="./#examples">Examples</a>
+- <a href="./#rl-libs-compatibility--state-of-the-art-agents">RL Libs Compatibility & State-of-the-Art Agents</a>
 - <a href="./#competition-platform">Competition Platform</a>
 - <a href="./#docs-structure">Docs Stucture</a>
 - <a href="./#support-feature-requests--bugs-reports">Support, Feature Requests & Bugs Reports</a>
@@ -199,6 +201,28 @@ diambra run -r your/roms/local/path python script.py
 To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
 {{% /notice %}}
 
+### Examples
+
+We provide multiple examples covering the most important use-cases, and can be used as templates and starting points to explore all the features of the software package.
+
+They show how to leverage both single and two players modes, how to set up environment wrappers with all their options, how to record human expert demonstrations and how to load them to apply imitation learning.
+
+Every example has a <a href="/gettingstarted/examples/">dedicated page</a> in this documentation, and the source code is available in the <a href="https://github.com/diambra/arena/tree/main/examples" target="_blank">code repository.</a>
+
+### RL Libs Compatibility & State-of-the-Art Agents
+
+<figure style="margin-bottom:0px; margin-top:40px; margin-right:auto; margin-left:auto; width: 100%;">
+  <img src="https://github.com/diambra/agents/blob/main/img/agents.jpg?raw=true" style="margin-top:0px;margin-bottom:30px;">
+</figure>
+
+DIAMBRA Arena is built to maximize compatibility will all major Reinforcement Learning libraries. It natively provides interfaces with the two most import packages: Stable Baselines 3 and Ray RLlib, while Stable Baselines is also available but deprecated. Their usage is illustrated in detail in the <a href="/handsonreinforcementlearning/">dedicated section</a> of this documentation and in the <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>  repository. It can easily be interfaced with any other package in a similar way.
+
+Native interfaces, installed with the specific options listed below, are tested with the following versions:
+
+- Stable Baselines 3 (1.6.1) | `pip install diambra-arena[stable-baselines3]` <a href="https://stable-baselines3.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/DLR-RM/stable-baselines3" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines3/" target="_blank">Pypi</a>
+- Ray RLlib (2.0.0) | `pip install diambra-arena[ray-rllib]` <a href="https://docs.ray.io/en/latest/index.html" target="_blank">Docs</a>-<a href="https://github.com/ray-project/ray" target="_blank">GitHub</a>-<a href="https://pypi.org/project/ray/" target="_blank">Pypi</a>
+- Stable Baselines (2.10.2) | `pip install diambra-arena[stable-baselines]` <a href="https://stable-baselines.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/hill-a/stable-baselines" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines/" target="_blank">Pypi</a>
+
 ### Competition Platform
 
 <figure style="margin-bottom:0px; margin-top:40px; margin-right:auto; margin-left:auto; width: 100%;">
@@ -207,9 +231,9 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 Our competition platform allows you to submit your agents and compete with other coders around the globe in epic video games tournaments!
 
-It features a public global leaderboard where users are ranked by the best score achieved by their agents in our different environments. 
+It features a public global leaderboard where users are ranked by the best score achieved by their agents in our different environments.
 
-It also offers you the possibility to unlock cool achievements depending on the performances of your agent. 
+It also offers you the possibility to unlock cool achievements depending on the performances of your agent.
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
   <img src="../images/competitionPlatform/achievements.jpg" style="margin-top:0px;margin-bottom:30px;">

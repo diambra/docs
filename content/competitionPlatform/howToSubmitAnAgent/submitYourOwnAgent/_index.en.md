@@ -17,6 +17,10 @@ These are the steps to submit your own agent:
    - Choose the appropriate dependencies docker image for your submission. We provide <a href="https://github.com/orgs/diambra/packages?repo_name=arena" target="_blank">different pre-built ones</a> giving access to various common third party libraries
    - Submit your agent as shown in the following examples
 
+{{% notice tip %}}
+To favor an easy start, we provide example agents files (scripts and weights) that work out-of-the-box (but are only minimally trained) in our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a> repository, for both <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">Stable Baselines 3</a> and <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">Ray RLlib.</a>
+{{% /notice %}}
+
 #### Example 1: Command Line Interface Command
 
 Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image and have your agent's files stored on GitHub:
@@ -32,7 +36,7 @@ diambra agent submit \
   python "/sources/agent.py" "/sources/models/model.zip"
 
 ```
-  
+
 Replace `your_gh_token`, `your_agent.py` and `your_model.zip` with the appropriate values.
 
 The `--submission.source` flag takes `URL<->path/in/container` mappings to download files to the specified path. The `{{ .Secrets.<something> }}` can be used to include secrets specified in the `--submission.secret` flag. Combining both flags, you can create a submission that includes secrets and sources to download your weights from your private repository.
@@ -60,7 +64,7 @@ Then, submit your agent using the manifest file:
 ```sh
 diambra agent submit  --submission.secret token=your_gh_token --submission.manifest submission-manifest.yaml
 ```
-  
+
 Replace `your_gh_token` with the GitHub token you saved earlier.
 
 {{% notice warning %}}
