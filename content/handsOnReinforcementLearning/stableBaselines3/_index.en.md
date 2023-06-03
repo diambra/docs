@@ -437,7 +437,7 @@ if __name__ == "__main__":
     n_epochs = ppo_settings["n_epochs"]
     n_steps = ppo_settings["n_steps"]
 
-    if model_checkpoint == "0M":
+    if model_checkpoint == "0":
         # Initialize the agent
         agent = PPO("MultiInputPolicy", env, verbose=1,
                     gamma=gamma, batch_size=batch_size,
@@ -468,7 +468,7 @@ if __name__ == "__main__":
     agent.learn(total_timesteps=time_steps, callback=auto_save_callback)
 
     # Save the agent
-    new_model_checkpoint = str(int(model_checkpoint[:-1]) + time_steps) + "M"
+    new_model_checkpoint = str(int(model_checkpoint) + time_steps)
     model_path = os.path.join(model_folder, new_model_checkpoint)
     agent.save(model_path)
 
@@ -528,7 +528,7 @@ policy_kwargs:
 
 ppo_settings:
   gamma: 0.94
-  model_checkpoint: "0M"
+  model_checkpoint: "0"
   learning_rate: [2.5e-4, 2.5e-6] # To start
   clip_range: [0.15, 0.025] # To start
   #learning_rate: [5.0e-5, 2.5e-6] # Fine Tuning
