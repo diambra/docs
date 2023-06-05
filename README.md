@@ -13,3 +13,7 @@
   <a href="https://www.youtube.com/c/diambra_ai">YouTube</a> •
   <a href="https://twitter.com/diambra_ai">Twitter</a>
 </p>
+
+<p align="center">
+<a href="https://docs.diambra.ai/"><img src="https://img.shields.io/github/last-commit/diambra/docs/main?label=last%20update&logo=readthedocs" alt="Last Docs Update"/></a>
+</p>
