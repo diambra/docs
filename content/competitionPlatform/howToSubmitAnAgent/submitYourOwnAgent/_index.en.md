@@ -21,6 +21,10 @@ These are the steps to submit your own agent:
 To favor an easy start, we provide example agents files (scripts and weights) that work out-of-the-box (but are only minimally trained) in our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a> repository, for both <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">Stable Baselines 3</a> and <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">Ray RLlib.</a>
 {{% /notice %}}
 
+{{% notice warning %}}
+**Do not add your tokens directly in the submission YAML file, they will be publicly visible.**
+{{% /notice %}}
+
 #### Example 1: Command Line Interface Command
 
 Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image and have your agent's files stored on GitHub:
@@ -67,13 +71,33 @@ diambra agent submit  --submission.secret token=your_gh_token --submission.manif
 
 Replace `your_gh_token` with the GitHub token you saved earlier.
 
-{{% notice warning %}}
-**Do not add your tokens directly in the submission YAML file, they will be publicly visible.**
-{{% /notice %}}
+#### Example 3: Adding Multiple Sources Easily
 
-#### Example 3: Automatically Unzip Sources
+In case you have multiple source files you need to use, and you want to avoid to list them all, you have two options:
+ - Clone the whole repository directly and leverage our automatic `git clone` feature
+ - Add the source files to a zip archive, store it in your repository and leverage our automatic `unzip` feature
 
-In case you have multiple source files you need to use, and you want to avoid to list them all, you can add them to a zip archive and leverage the automatic unzip feature. To do so, assuming a situation as the one seen in the previous examples, you need to tweak the submission manifest (or the command line entry) as follows:
+the two examples that follow show how the submission manifest is modified to use these features.
+
+##### Clone a Sources Repository
+
+Note that the url of the git repository to be cloned is prefixed with an additional `git+` string.
+
+```yaml
+---
+mode: AIvsCOM
+image: diambra/arena-stable-baselines3-on3.10-bullseye:main
+command:
+  - python
+  - "/sources/agent.py"
+  - "/sources/models/model.zip"
+sources:
+  .: git+https://{{.Secrets.token}}@github.com/path/to/your_repo.git#ref=branch_name
+```
+
+##### Automatically Unzip Sources
+
+Note that in the url of the zip file to be downloaded there is an additional `+unzip` string following `https`.
 
 ```yaml
 mode: AIvsCOM
@@ -85,5 +109,3 @@ command:
 sources:
   data: https+unzip://{{.Secrets.token}}@raw.githubusercontent.com/path/to/data/data.zip
 ```
-
-Note that in the url of the zip file to be downloaded there is an additional `+unzip` string following `https`, to let the platform know that you want that zip file to be extracted after download.
