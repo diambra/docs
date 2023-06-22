@@ -118,25 +118,41 @@ diambra run [flags] <command-to-execute>
 
 It runs a command after brining up DIAMBRA Arena containerized environment(s). It sets the `DIAMBRA_ENVS` environment variable to list the endpoints of all running environments.
 
-The table below lists all available options for this command.
+The next snippet shows the help message for this command, where all available options are reported:
 
-| <strong><span style="color:#5B5B60;">Flag</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
-| --------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------- |
-| `-h, --help`                                              | -                                                         | Help for run command                                             |
-| `-r, --path.roms`                                         | `str`                                                     | Path to ROMs (default to DIAMBRAROMSPATH env var if set)         |
-| `-g, --engine.render*`                                    | -                                                         | Render graphics server side                                      |
-| `-l, --engine.lockfps`                                    | -                                                         | Lock FPS                                                         |
-| `-n, --engine.sound`                                      | -                                                         | Enable sound                                                     |
-| `-s, --env.scale`                                         | `int`                                                     | Number of environments to run (default 1)                        |
-| `--path.credentials`                                      | `str`                                                     | Path to credentials file (default "$HOME/.diambra/credentials")  |
-| `--env.image`                                             | `str`                                                     | Env image to use, omit to detect from diambra-arena version      |
-| `-p, --images.pull`                                       | `bool`                                                    | (Always) pull image before running (default true)                |
-| `--env.mount`                                             | `str`                                                     | Host mounts for env container (/host/path:/container/path)       |
-| `-x, --env.autoremove                                     | -                                                         | Remove containers on exit (default true)                         |
-| `--env.seccomp`                                           | `str`                                                     | Path to seccomp profile to use for env (may slow down environment). Set to "" for runtime's default profile. (default "unconfined")  |
-| `-i, --interactive`                                       | -                                                         | Open stdin for interactions with arena and agent (default true)  |
+```shell
+Version: 0.0.14
+Usage:
+  diambra run [flags] command [args...]
 
-`*`: Currently available only for Linux systems. For additional info and for Windows/MacOS alternatives, see <a href="./#environment-native-rendering">Environment Native Rendering</a> section below.
+Flags:
+  -a, --agent.image string        Run given agent command in container
+  -l, --engine.lockfps            Lock FPS
+  -g, --engine.render             Render graphics server side
+      --engine.sound              Enable sound
+  -x, --env.autoremove            Remove containers on exit (default true)
+      --env.containerip           Use <containerIP>:<containerPort> instead of <env.host/localhost>:<hostPort>
+      --env.host string           Host to bind ports on (default "127.0.0.1")
+      --env.image string          Env image to use, omit to detect from diambra-arena version
+      --env.mount strings         Host mounts for env container (/host/path:/container/path)
+      --env.preallocateport       Preallocate port for env container. Workaround for port conflicts on Windows
+  -s, --env.scale int             Number of environments to run (default 1)
+      --env.seccomp string        Path to seccomp profile to use for env (may slow down environment). Set to "" for runtime's default profile. (default "unconfined")
+  -h, --help                      help for run
+  -n, --images.no-pull            Do not try to pull image before running
+      --init.image string         Init image to use (default "ghcr.io/diambra/init:main")
+  -i, --interactive               Open stdin for interactions with arena and agent (default true)
+      --path.credentials string   Path to credentials file (default "/home/alexpalms/.diambra/credentials")
+  -r, --path.roms string          Path to ROMs (default to DIAMBRAROMSPATH env var if set) (default "/home/alexpalms/work/diambra/roms")
+
+Global Flags:
+  -d, --log.debug           Enable debug logging
+      --log.format string   Set logging output format (logfmt, json, fancy) (default "fancy")
+```
+
+{{% notice note %}}
+Currently, the `-g, --engine.render` option to render graphics server side, is only available for Linux systems. For additional info and for Windows/MacOS alternatives, see <a href="./#environment-native-rendering">Environment Native Rendering</a> section below.
+{{% /notice %}}
 
 ###### Arena Command
 
@@ -148,18 +164,30 @@ diambra arena [flags] [command]
 
 It brings up DIAMBRA Arena containerized environment(s) and returns to the terminal output the endpoints of all running environments.
 
-The table below lists all available commands for this mode.
+The snippet below lists all available commands for this mode.
 
 Flags reported for the Run command above apply also to this mode.
 
-| <strong><span style="color:#5B5B60;">Command</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
-| ------------------------------------------------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `down`                                                       | -                                                                | Stop DIAMBRA Arena container(s)                                  |
-| `up`                                                         | -                                                                | Start DIAMBRA Arena container(s)                                 |
-| `check-roms`                                                 | `str`                                                            | Check rom file specified with the absolute path                  |
-| `list-roms`                                                  | -                                                                | List currently available roms                                    |
-| `status`                                                     | -                                                                | Show status of DIAMBRA arena                                     |
-| `version`                                                    | -                                                                | Show DIAMBRA Arena Version                                       |
+```shell
+Version: 0.0.14
+Usage:
+  diambra arena [command]
+
+Available Commands:
+  check-roms  check roms
+  down        Stop DIAMBRA Arena
+  list-roms   list roms
+  status      Show status of DIAMBRA arena
+  up          Start DIAMBRA arena
+  version     version
+
+Flags:
+  -h, --help   help for arena
+
+Global Flags:
+  -d, --log.debug           Enable debug logging
+      --log.format string   Set logging output format (logfmt, json, fancy) (default "fancy")
+```
 
 ##### Using Python Notebooks
 
@@ -276,7 +304,7 @@ docker run -d --rm --name engine \
 ```cmd
 mkdir %userprofile%/.diambra
 echo > %userprofile%/.diambra/credentials
- 
+
 docker run --rm -ti --name engine ^
   -v %userprofile%/.diambra/credentials:/tmp/.diambra/credentials ^
   -v %userprofile%/.diambra/roms:/opt/diambraArena/roms ^
@@ -289,7 +317,7 @@ docker run --rm -ti --name engine ^
 ```powershell
 mkdir $Env:userprofile/.diambra
 echo "" > $Env:userprofile/.diambra/credentials
- 
+
 docker run --rm -ti --name engine `
   -v $Env:userprofile/.diambra/credentials:/tmp/.diambra/credentials `
   -v $Env:userprofile/.diambra/roms:/opt/diambraArena/roms `
