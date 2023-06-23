@@ -111,8 +111,6 @@ Observation space:
 
     observation_space["P1"]["oppChar"]: Discrete(11)
 
-    observation_space["P1"]["oppChar1"]: Discrete(11)
-
     observation_space["P1"]["oppHealth"]: Box()
         Space type = int32
         Space high bound = 208
@@ -126,8 +124,6 @@ Observation space:
         Space low bound = 0
 
     observation_space["P1"]["ownChar"]: Discrete(11)
-
-    observation_space["P1"]["ownChar1"]: Discrete(11)
 
     observation_space["P1"]["ownHealth"]: Box()
         Space type = int32
@@ -218,8 +214,6 @@ Output will be similar to what follows:
    ```txt
    observation["frame"].shape: (480, 512, 3)
    observation["stage"]: 1
-   observation["P1"]["ownChar1"]: Kasumi
-   observation["P1"]["oppChar1"]: Bayman
    observation["P1"]["ownChar"]: Kasumi
    observation["P1"]["oppChar"]: Bayman
    observation["P1"]["ownHealth"]: 66
@@ -259,8 +253,6 @@ Output will be similar to what follows:
   ```txt
   observation["frame"].shape: (128, 128, 4)
   observation["stage"]: 0.0
-  observation["P1"]["ownChar1"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
-  observation["P1"]["oppChar1"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
   observation["P1"]["ownChar"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
   observation["P1"]["oppChar"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
   observation["P1"]["ownHealth"]: 0.8173076923076923

@@ -10,7 +10,7 @@ These are the steps to submit your own agent:
 2. Create your personal access token (<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">official docs here</a>):
    - Go to "Settings" in the top-right corner of the GitHub website.
    - Click "Developer settings" at the bottom-left of the page.
-   - Click "Personal access tokens" and then "Generate new token."
+   - Click "Personal access tokens", "Tokens (classic)" and then "Generate new token".
    - Give your token a name, select the necessary scopes (e.g., "repo" for accessing private repositories), and click "Generate token."
    - Copy the generated token and save it somewhere safe, as you won't be able to see it again.
 3. Submit your AI agent:
