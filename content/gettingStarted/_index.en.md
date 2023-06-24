@@ -142,8 +142,8 @@ Flags:
   -n, --images.no-pull            Do not try to pull image before running
       --init.image string         Init image to use (default "ghcr.io/diambra/init:main")
   -i, --interactive               Open stdin for interactions with arena and agent (default true)
-      --path.credentials string   Path to credentials file (default "/home/alexpalms/.diambra/credentials")
-  -r, --path.roms string          Path to ROMs (default to DIAMBRAROMSPATH env var if set) (default "/home/alexpalms/work/diambra/roms")
+      --path.credentials string   Path to credentials file (default "$HOME/.diambra/credentials")
+  -r, --path.roms string          Path to ROMs (default to DIAMBRAROMSPATH env var if set)
 
 Global Flags:
   -d, --log.debug           Enable debug logging
