@@ -67,8 +67,7 @@ For every released title, extensive testing has been carried out, being the mini
 | <a href="./sfiii3n/">Street Fighter III 3rd Strike</a>                  | Stable[^1]                                                  | `sfiii3n`                                                    |
 | <a href="./tektagt/">Tekken Tag Tournament</a>                          | Stable[^1]                                                  | `tektagt`                                                    |
 | <a href="./umk3/">Ultimate Mortal Kombat 3</a>                          | Stable[^1]                                                  | `umk3`                                                       |
-| <a href="./samsh5sp/">Samurai Showdown 5 Special</a>                    | Beta[^2]                                                    | `samsh5sp`                                                   |
-| <a href="./kof98umh/">The King of Fighters '98: Ultimate Match Hero</a> | Beta[^2]                                                    | `kof98umh`                                                   |
+| <a href="./samsh5sp/">Samurai Showdown 5 Special</a>                    | Stable[^1]                                                     | `samsh5sp`                                                   |
+| <a href="./kof98umh/">The King of Fighters '98: Ultimate Match Hero</a> | Stable[^1]                                                     | `kof98umh`                                                   |
 
-[^1]: Stable = Successfully trained Deep RL agent in single player mode.
-[^2]: Beta = Passing all quality assurance tests.
+[^1]: Stable = Passing all quality assurance tests
