@@ -77,9 +77,9 @@ identifier = "twitter"
 url = "https://twitter.com/diambra_ai"
 weight = 16
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-heart'></i> Support"
-identifier = "support"
-url = "https://streamlabs.com/diambra_ai/tip"
-weight = 30
+#[[Languages.en.menu.shortcuts]]
+#name = "<i class='fas fa-heart'></i> Support"
+#identifier = "support"
+#url = "https://streamlabs.com/diambra_ai/tip"
+#weight = 30
 
