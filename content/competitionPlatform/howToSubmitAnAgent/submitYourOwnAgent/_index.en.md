@@ -25,29 +25,9 @@ To favor an easy start, we provide example agents files (scripts and weights) th
 **Do not add your tokens directly in the submission YAML file, they will be publicly visible.**
 {{% /notice %}}
 
-#### Example 1: Command Line Interface Command
+#### Example 1: Using a Manifest File (Suggested)
 
-Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image and have your agent's files stored on GitHub:
-
-```sh
-diambra agent submit \
-  --submission.mode AIvsCOM \
-  --submission.source agent.py=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py \
-  --submission.source models/model.zip=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip \
-  --submission.secret token=your_gh_token \
-  --submission.set-command \
-  arena-stable-baselines3-on3.10-bullseye \
-  python "/sources/agent.py" "/sources/models/model.zip"
-
-```
-
-Replace `your_gh_token`, `your_agent.py` and `your_model.zip` with the appropriate values.
-
-The `--submission.source` flag takes `URL<->path/in/container` mappings to download files to the specified path. The `{{ .Secrets.<something> }}` can be used to include secrets specified in the `--submission.secret` flag. Combining both flags, you can create a submission that includes secrets and sources to download your weights from your private repository.
-
-#### Example 2: Using a Manifest File
-
-Alternatively, you can use a manifest file to define your submission. Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image and have your agent's files stored on GitHub, create a file named `submission-manifest.yaml` with the following content:
+Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image, and have your agent's files stored on GitHub, create a file named `submission-manifest.yaml` with the following content:
 
 ```yaml
 mode: AIvsCOM
@@ -57,11 +37,10 @@ command:
   - "/sources/agent.py"
   - "/sources/models/model.zip"
 sources:
-  agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py
-  models/model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip
+  .: git+https://username:{{.Secrets.token}}@github.com/username/repository_name.git#ref=branch_name
 ```
 
-Replace `your_agent.py` and `your_model.zip` with the appropriate values.
+Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values, and change `image` and `command` fields according to your specific use case.
 
 Then, submit your agent using the manifest file:
 
@@ -71,17 +50,15 @@ diambra agent submit  --submission.secret token=your_gh_token --submission.manif
 
 Replace `your_gh_token` with the GitHub token you saved earlier.
 
-#### Example 3: Adding Multiple Sources Easily
+Note that this will clone your entire repository (including Git LFS files) and put its content inside the `/sources/` folder directly.
 
-In case you have multiple source files you need to use, and you want to avoid to list them all, you have two options:
- - Clone the whole repository directly and leverage our automatic `git clone` feature
- - Add the source files to a zip archive, store it in your repository and leverage our automatic `unzip` feature
+##### Specify Sources Explicitly
 
-the two examples that follow show how the submission manifest is modified to use these features.
+{{% notice warning %}}
+Explicit sources specification will now work with Git LFS files, to submit them, the only option is to use the automatic `git clone` mechanism described above.
+{{% /notice %}}
 
-##### Clone a Sources Repository
-
-Note that the url of the git repository to be cloned is prefixed with an additional `git+` string.
+In case you don't want to clone all your repository, you can explicitly specify the source files you want to download as follows:
 
 ```yaml
 ---
@@ -92,12 +69,11 @@ command:
   - "/sources/agent.py"
   - "/sources/models/model.zip"
 sources:
-  .: git+https://{{.Secrets.token}}@github.com/path/to/your_repo.git#ref=branch_name
+  agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/username/repo_name/path/to/trained-agent/your_agent.py
+  models/model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/username/repo_name/path/to/nn-weights/your_model.zip
 ```
 
-##### Automatically Unzip Sources
-
-Note that in the url of the zip file to be downloaded there is an additional `+unzip` string following `https`.
+In case you have multiple source files you need to use, and you want to avoid to list them all, the best way to proceed is to leverage our automatic `git clone` feature described above. But if you really do not want to use it, you can add the source files to a zip archive, store it in your repository and leverage our automatic `unzip` feature as follows:
 
 ```yaml
 mode: AIvsCOM
@@ -107,5 +83,26 @@ command:
   - "/sources/data/agent.py"
   - "/sources/data/models/model.zip"
 sources:
-  data: https+unzip://{{.Secrets.token}}@raw.githubusercontent.com/path/to/data/data.zip
+  data: https+unzip://{{.Secrets.token}}@raw.githubusercontent.com/username/repo_name/path/to/data/data.zip
 ```
+
+Note that in the url of the zip file to be downloaded there is an additional `+unzip` string following `https`.
+
+#### Example 2: Command Line Interface Only
+
+If you want to avoid using submission files, you can use the command line to directly submit your agent. Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image and have your agent's files stored on GitHub:
+
+```sh
+diambra agent submit \
+  --submission.mode AIvsCOM \
+  --submission.source .=git+https://username:{{.Secrets.token}}@github.com/username/repository_name.git#ref=branch_name \
+  --submission.secret token=your_gh_token \
+  --submission.set-command \
+  arena-stable-baselines3-on3.10-bullseye \
+  python "/sources/agent.py" "/sources/models/model.zip"
+
+```
+
+Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values and `your_gh_token` with the GitHub token you saved earlier.
+
+Note that, in this case, the dependencies `image` and `command` fields we discussed above are merged together and provided as values to the last argument `--submission.set-command`. Use the same order and change their values according to your specific use case.
