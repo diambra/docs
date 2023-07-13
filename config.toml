@@ -36,6 +36,7 @@ home = [ "HTML", "RSS", "JSON"]
 title = "DIAMBRA Docs"
 weight = 1
 languageName = "English"
+[Languages.en.params]
 landingPageURL = "./"
 landingPageName = "<i class='fas fa-home'></i> Home"
 
