@@ -36,35 +36,7 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 The most straightforward and simple script to use DIAMBRA Arena is reported below. It features a random agent playing Dead Or Alive ++, and it represents the general interaction schema to be used for every game and context of DIAMBRA Arena.
 
-```python
-# DIAMBRA Arena module import
-import diambra.arena
-
-# Environment creation
-env = diambra.arena.make("doapp")
-
-# Environment reset
-observation = env.reset()
-
-# Agent-Environment interaction loop
-while True:
-    # (Optional) Environment rendering
-    env.render()
-
-    # Action random sampling
-    actions = env.action_space.sample()
-
-    # Environment stepping
-    observation, reward, done, info = env.step(actions)
-
-    # Episode end (Done condition) check
-    if done:
-        observation = env.reset()
-        break
-
-# Environment close
-env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/diambra_arena_gist.py" >}}
 
 {{% notice note %}}
 More complex and complete examples can be found in the <a href="./examples/">Examples</a> section.
