@@ -24,10 +24,10 @@ weight: 20
 ### Prerequisites
 
 - Installation completed and tested as described in <a href="/#installation">Installation</a> and <a href="/#quickstart">Quickstart</a> homepage sections
-- ROMs downloaded and placed all in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`
+- ROMs downloaded and placed all in the same folder, whose absolute path will be referred in the following as `/absolute/path/to/roms/folder/`
 
 {{% notice tip %}}
-To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
+To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=/absolute/path/to/roms/folder/`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
 {{% /notice %}}
 
 ### Running the Environment
@@ -67,7 +67,7 @@ The only flag needed for simple executions is listed below. Advanced usage and o
 To run a python script using the CLI, one can just execute the following command:
 
 ```shell
-diambra run -r /path/to/roms/folder/ python diambra_arena_gist.py
+diambra run -r /absolute/path/to/roms/folder/ python diambra_arena_gist.py
 ```
 
 This will start a new container with the environment, load in the `DIAMBRA_ENVS` environment variable the port on which the environment accepts connections, and run the script where the DIAMBRA Arena python module is imported and used to instantiate a new environment, that will automatically retrieve the port and connect to it.
@@ -266,7 +266,7 @@ touch ~/.diambra/credentials
 
 docker run -d --rm --name engine \
   -v $HOME/.diambra/credentials:/tmp/.diambra/credentials \
-  -v /path/to/roms:/opt/diambraArena/roms \
+  -v /absolute/path/to/roms/folder/:/opt/diambraArena/roms \
   --net=host docker.io/diambra/engine:latest
 ```
 

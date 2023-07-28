@@ -152,7 +152,7 @@ Output example:
 If you are using Windows 10 "N" editions and get this error `ImportError: DLL load failed while importing cv2`, you might need to install the <a href=" https://support.microsoft.com/en-us/topic/media-feature-pack-list-for-windows-n-editions-c1c6fffa-d052-8338-7a79-a4bb980a700a" target="_blank">"Media Feature Pack".</a>
 {{% /notice %}}
 
-Search ROMs on the web using <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above. <span style="color:#333333; font-weight:bolder;">Pay attention, follow game-specific notes reported there, and store all ROMs in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`</span>.
+Search ROMs on the web using <span style="color:#333333; font-weight:bolder;">Search Keywords</span> provided by the game list command reported above. <span style="color:#333333; font-weight:bolder;">Pay attention, follow game-specific notes reported there, and store all ROMs in the same folder, whose absolute path will be referred in the following as `/absolute/path/to/roms/folder/`</span>.
 
 {{% notice note %}}
 Specific game ROM files are required, check validity of the downloaded ROMs as follows.
@@ -161,7 +161,7 @@ Specific game ROM files are required, check validity of the downloaded ROMs as f
 Check ROM(s) validity running:
 
 ```shell
-diambra arena check-roms your/roms/local/path/romFileName.zip
+diambra arena check-roms /absolute/path/to/roms/folder/romFileName.zip
 ```
 
 The output for a valid ROM file would look like the following:
@@ -202,11 +202,11 @@ env.close()
 To execute the script run:
 
 ```
-diambra run -r your/roms/local/path python script.py
+diambra run -r /absolute/path/to/roms/folder/ python script.py
 ```
 
 {{% notice tip %}}
-To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
+To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=/absolute/path/to/roms/folder/`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
 {{% /notice %}}
 
 ### Examples
