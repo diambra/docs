@@ -69,62 +69,7 @@ This example demonstrates how to:
 
 It uses the PPO algorithm and, for demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.
 
-```python
-import diambra.arena
-from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
-from ray.rllib.algorithms.ppo import PPO
-
-if __name__ == "__main__":
-
-    # Settings
-    settings = {}
-    settings["hardcore"] = True
-    settings["frame_shape"] = (84, 84, 1)
-
-    config = {
-        # Define and configure the environment
-        "env": DiambraArena,
-        "env_config": {
-            "game_id": "doapp",
-            "settings": settings,
-        },
-        "num_workers": 0,
-        "train_batch_size": 200,
-    }
-
-    # Update config file
-    config = preprocess_ray_config(config)
-
-    # Create the RLlib Agent.
-    agent = PPO(config=config)
-
-    # Run it for n training iterations
-    print("\nStarting training ...\n")
-    for idx in range(1):
-        print("Training iteration:", idx + 1)
-        agent.train()
-    print("\n .. training completed.")
-
-    # Run the trained agent (and render each timestep output).
-    print("\nStarting trained agent execution ...\n")
-
-    env = diambra.arena.make("doapp", settings)
-
-    observation = env.reset()
-    while True:
-        env.render()
-
-        action = agent.compute_single_action(observation)
-
-        observation, reward, done, info = env.step(action)
-
-        if done:
-            observation = env.reset()
-            break
-    print("\n... trained agent execution completed.\n")
-
-    env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/basic.py" >}}
 
 How to run it:
 
@@ -144,63 +89,7 @@ In addition to what seen in the previous example, this one demonstrates how to:
 
 The same conditions of the previous example for algorithm, policy and training steps are used in this one too.
 
-```python
-import diambra.arena
-from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
-from ray.rllib.algorithms.ppo import PPO
-from ray.tune.logger import pretty_print
-
-if __name__ == "__main__":
-
-    # Settings
-    settings = {}
-    settings["hardcore"] = True
-    settings["frame_shape"] = (84, 84, 1)
-
-    config = {
-        # Define and configure the environment
-        "env": DiambraArena,
-        "env_config": {
-            "game_id": "doapp",
-            "settings": settings,
-        },
-        "num_workers": 0,
-        "train_batch_size": 200,
-        "framework": "torch",
-    }
-
-    # Update config file
-    config = preprocess_ray_config(config)
-
-    # Create the RLlib Agent.
-    agent = PPO(config=config)
-    print("Policy architecture =\n{}".format(agent.get_policy().model))
-
-    # Run it for n training iterations
-    print("\nStarting training ...\n")
-    for idx in range(1):
-        print("Training iteration:", idx + 1)
-        results = agent.train()
-    print("\n .. training completed.")
-    print("Training results:\n{}".format(pretty_print(results)))
-
-    # Save the agent
-    checkpoint = agent.save()
-    print("Checkpoint saved at {}".format(checkpoint))
-    del agent  # delete trained model to demonstrate loading
-
-    # Load the trained agent
-    agent = PPO(config=config)
-    agent.restore(checkpoint)
-    print("Agent loaded")
-
-    # Evaluate the trained agent (and render each timestep to the shell's
-    # output).
-    print("\nStarting evaluation ...\n")
-    results = agent.evaluate()
-    print("\n... evaluation completed.\n")
-    print("Evaluation results:\n{}".format(pretty_print(results)))
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/saving_loading_evaluating.py" >}}
 
 How to run it:
 
@@ -219,66 +108,7 @@ This example runs multiple environments. In order to properly execute it, the us
 - 2 rollout workers with 2 environments each, accounting for 4 environments
 - 1 evaluation worker with 2 environments, accounting for the remaining 2 environments
 
-```python
-import diambra.arena
-from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
-from ray.rllib.algorithms.ppo import PPO
-from ray.tune.logger import pretty_print
-
-if __name__ == "__main__":
-
-    # Settings
-    settings = {}
-    settings["hardcore"] = True
-    settings["frame_shape"] = (84, 84, 3)
-
-    config = {
-        # Define and configure the environment
-        "env": DiambraArena,
-        "env_config": {
-            "game_id": "doapp",
-            "settings": settings,
-        },
-
-        "train_batch_size": 200,
-
-        # Use 2 rollout workers
-        "num_workers": 2,
-        # Use a vectorized env with 2 sub-envs.
-        "num_envs_per_worker": 2,
-
-        # Evaluate once per training iteration.
-        "evaluation_interval": 1,
-        # Run evaluation on (at least) two episodes
-        "evaluation_duration": 2,
-        # ... using one evaluation worker (setting this to 0 will cause
-        # evaluation to run on the local evaluation worker, blocking
-        # training until evaluation is done).
-        "evaluation_num_workers": 1,
-        # Special evaluation config. Keys specified here will override
-        # the same keys in the main config, but only for evaluation.
-        "evaluation_config": {
-            # Render the env while evaluating.
-            # Note that this will always only render the 1st RolloutWorker's
-            # env and only the 1st sub-env in a vectorized env.
-            "render_env": True,
-        },
-    }
-
-    # Update config file
-    config = preprocess_ray_config(config)
-
-    # Create the RLlib Agent.
-    agent = PPO(config=config)
-
-    # Run it for n training iterations
-    print("\nStarting training ...\n")
-    for idx in range(2):
-        print("Training iteration:", idx + 1)
-        results = agent.train()
-    print("\n .. training completed.")
-    print("Training results:\n{}".format(pretty_print(results)))
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/parallel_envs.py" >}}
 
 How to run it:
 
@@ -301,62 +131,7 @@ There are two main things to note in this example: how to handle observation nor
 
 The policy network is automatically generated, properly handling different types of inputs. Model architecture is then printed to the console output, allowing to clearly identify all the different contributions.
 
-```python
-import diambra.arena
-from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
-from ray.rllib.algorithms.ppo import PPO
-from ray.tune.logger import pretty_print
-
-if __name__ == "__main__":
-
-    # Settings
-    settings = {}
-    settings["frame_shape"] = (84, 84, 1)
-    settings["characters"] = ("Kasumi")
-
-    # Wrappers Settings
-    wrappers_settings = {}
-    wrappers_settings["reward_normalization"] = True
-    wrappers_settings["actions_stack"] = 12
-    wrappers_settings["frame_stack"] = 5
-    wrappers_settings["scale"] = True
-    wrappers_settings["process_discrete_binary"] = True
-
-    config = {
-        # Define and configure the environment
-        "env": DiambraArena,
-        "env_config": {
-            "game_id": "doapp",
-            "settings": settings,
-            "wrappers_settings": wrappers_settings,
-        },
-        "num_workers": 0,
-        "train_batch_size": 200,
-        "framework": "torch",
-    }
-
-    # Update config file
-    config = preprocess_ray_config(config)
-
-    # Create the RLlib Agent.
-    agent = PPO(config=config)
-    print("Policy architecture =\n{}".format(agent.get_policy().model))
-
-    # Run it for n training iterations
-    print("\nStarting training ...\n")
-    for idx in range(1):
-        print("Training iteration:", idx + 1)
-        results = agent.train()
-    print("\n .. training completed.")
-    print("Training results:\n{}".format(pretty_print(results)))
-
-    # Evaluate the trained agent (and render each timestep to the shell's
-    # output).
-    print("\nStarting evaluation ...\n")
-    results = agent.evaluate()
-    print("\n... evaluation completed.\n")
-    print("Evaluation results:\n{}".format(pretty_print(results)))
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/dict_obs_space.py" >}}
 
 How to run it:
 
@@ -372,93 +147,7 @@ Finally, after the agent training is completed, besides running it locally in yo
 To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
 {{% /notice %}}
 
-```python
-import os
-import time
-import yaml
-import json
-import argparse
-import diambra.arena
-from diambra.arena.ray_rllib.make_ray_env import DiambraArena, preprocess_ray_config
-from ray.rllib.algorithms.ppo import PPO
-
-# Reference: https://github.com/ray-project/ray/blob/ray-2.0.0/rllib/examples/inference_and_serving/policy_inference_after_training.py
-
-"""This is an example agent based on RL Lib.
-
-Usage:
-diambra run python agent.py --trainedModel /absolute/path/to/checkpoint/ --envSpaces /absolute/path/to/environment/spaces/descriptor/
-"""
-
-if __name__ == "__main__":
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--trainedModel", type=str, required=True, help="Model path")
-    parser.add_argument("--envSpaces", type=str, required=True, help="Environment spaces descriptor file path")
-    opt = parser.parse_args()
-    print(opt)
-
-    time_dep_seed = int((time.time() - int(time.time() - 0.5)) * 1000)
-
-    # Settings
-    settings = {}
-    settings["frame_shape"] = (84, 84, 1)
-    settings["characters"] = ("Kasumi")
-
-    # Wrappers Settings
-    wrappers_settings = {}
-    wrappers_settings["reward_normalization"] = True
-    wrappers_settings["actions_stack"] = 12
-    wrappers_settings["frame_stack"] = 5
-    wrappers_settings["scale"] = True
-    wrappers_settings["process_discrete_binary"] = True
-
-    config = {
-        # Define and configure the environment
-        "env": DiambraArena,
-        "env_config": {
-            "game_id": "doapp",
-            "settings": settings,
-            "wrappers_settings": wrappers_settings,
-            "load_spaces_from_file": True,
-            "env_spaces_file_name": opt.envSpaces,
-        },
-        "num_workers": 0,
-        "train_batch_size": 200,
-        "framework": "torch",
-    }
-
-    # Update config file
-    config = preprocess_ray_config(config)
-
-    # Load the trained agent
-    agent = PPO(config=config)
-    agent.restore(opt.trainedModel)
-    print("Agent loaded")
-
-    # Print the agent policy architecture
-    print("Policy architecture =\n{}".format(agent.get_policy().model))
-
-    env = diambra.arena.make("doapp", settings, wrappers_settings)
-
-    obs = env.reset()
-
-    while True:
-
-        env.render()
-
-        action = agent.compute_single_action(observation=obs, explore=True, policy_id="default_policy")
-
-        obs, reward, done, info = env.step(action)
-
-        if done:
-            obs = env.reset()
-            if info["env_done"]:
-                break
-
-    # Close the environment
-    env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/agent.py" >}}
 
 How to run it locally:
 

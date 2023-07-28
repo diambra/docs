@@ -135,54 +135,13 @@ The following are two examples of (very simple) scripted agents interfaced with 
 
 This agent simply performs the "No-Action" action at every step. By convention it is the action with index 0, and it needs to be a single value for `Discrete` action spaces, and a tuple of 0s for `MultiDiscrete` ones, as shown in the snippet below.
 
-```python
-import diambra.arena
-
-if __name__ == "__main__":
-
-    env = diambra.arena.make("doapp")
-
-    observation = env.reset()
-
-    while True:
-        env.render()
-
-        action = 0 if env.env_settings["action_space"][0] == "discrete" else [0, 0]
-
-        observation, reward, done, info = env.step(action)
-
-        if done:
-            observation = env.reset()
-            break
-
-    env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/basic/no_action/agent.py" >}}
 
 ###### Random Agent
 
 This agent simply performs a random action at every step. In this case, the sampling method takes care of generating an action that is consistent with the environment action space.
 
-```python
-import diambra.arena
-
-if __name__ == "__main__":
-
-    env = diambra.arena.make("doapp", settings)
-
-    observation = env.reset()
-
-    while True:
-
-        actions = env.action_space.sample()
-
-        observation, reward, done, info = env.step(actions)
-
-        if done:
-            observation = env.reset()
-            break
-
-    env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/basic/random_1/agent.py" >}}
 
 More complex scripts can be built in similar ways, for example continuously performing user-defined combos moves, or adding some more complex choice mechanics. But this would still require to decide the tactics in advance, properly translating knowledge into code. A different approach would be to leverage reinforcement learning, so that the agent will improve leveraging its own experience.
 

@@ -24,10 +24,10 @@ weight: 20
 ### Prerequisites
 
 - Installation completed and tested as described in <a href="/#installation">Installation</a> and <a href="/#quickstart">Quickstart</a> homepage sections
-- ROMs downloaded and placed all in the same folder, whose absolute path will be referred in the following as `your/roms/local/path`
+- ROMs downloaded and placed all in the same folder, whose absolute path will be referred in the following as `/absolute/path/to/roms/folder/`
 
 {{% notice tip %}}
-To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=your/roms/local/path`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
+To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=/absolute/path/to/roms/folder/`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
 {{% /notice %}}
 
 ### Running the Environment
@@ -36,35 +36,7 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 The most straightforward and simple script to use DIAMBRA Arena is reported below. It features a random agent playing Dead Or Alive ++, and it represents the general interaction schema to be used for every game and context of DIAMBRA Arena.
 
-```python
-# DIAMBRA Arena module import
-import diambra.arena
-
-# Environment creation
-env = diambra.arena.make("doapp")
-
-# Environment reset
-observation = env.reset()
-
-# Agent-Environment interaction loop
-while True:
-    # (Optional) Environment rendering
-    env.render()
-
-    # Action random sampling
-    actions = env.action_space.sample()
-
-    # Environment stepping
-    observation, reward, done, info = env.step(actions)
-
-    # Episode end (Done condition) check
-    if done:
-        observation = env.reset()
-        break
-
-# Environment close
-env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/diambra_arena_gist.py" >}}
 
 {{% notice note %}}
 More complex and complete examples can be found in the <a href="./examples/">Examples</a> section.
@@ -95,7 +67,7 @@ The only flag needed for simple executions is listed below. Advanced usage and o
 To run a python script using the CLI, one can just execute the following command:
 
 ```shell
-diambra run -r /path/to/roms/folder/ python diambra_arena_gist.py
+diambra run -r /absolute/path/to/roms/folder/ python diambra_arena_gist.py
 ```
 
 This will start a new container with the environment, load in the `DIAMBRA_ENVS` environment variable the port on which the environment accepts connections, and run the script where the DIAMBRA Arena python module is imported and used to instantiate a new environment, that will automatically retrieve the port and connect to it.
@@ -294,7 +266,7 @@ touch ~/.diambra/credentials
 
 docker run -d --rm --name engine \
   -v $HOME/.diambra/credentials:/tmp/.diambra/credentials \
-  -v /path/to/roms:/opt/diambraArena/roms \
+  -v /absolute/path/to/roms/folder/:/opt/diambraArena/roms \
   --net=host docker.io/diambra/engine:latest
 ```
 
