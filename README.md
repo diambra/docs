@@ -15,5 +15,6 @@
 </p>
 
 <p align="center">
+<a href="https://github.com/diambra/docs/actions/workflows/gh-pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/diambra/docs/gh-pages.yml?label=docs%20build&logo=github" alt="Docs Build"/></a>
 <a href="https://docs.diambra.ai/"><img src="https://img.shields.io/github/last-commit/diambra/docs/main?label=last%20update&logo=readthedocs" alt="Last Docs Update"/></a>
 </p>
