@@ -56,7 +56,7 @@ Whenever possible, games are released with all hidden/bonus characters unlocked.
 {{% /notice %}}
 
 {{% notice info %}}
-For every released title, extensive testing has been carried out, being the minimum requirement for a game to be released in beta. After that, the next internal step is training a Deep RL agent to play, and possibly complete it, making sure the 1P mode is playable with no bugs up until game end. This is the condition under which titles are moved from beta to stable status.
+For every released title, extensive testing has been carried out, making sure the 1P mode is playable with no bugs up until game end.
 {{% /notice %}}
 
 </div>

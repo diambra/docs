@@ -188,58 +188,49 @@ action_space =  Discrete(12)
 
 ### Observation Inspection
 
-Prints out a detailed description of Environment's observation content, showing every level of it. The only element that is not printed in the terminal is the game frame that, when `viz` input argument is set to `True`, is shown is a dedicated graphical window. The `wait_key` parameter defines how this window behaves: when set equal to 0, it pauses waiting for the user to press a button, while if set different from zero, it waits the prescribed number of milliseconds before continuing.
+Prints out a detailed description of Environment's observation content, showing every level of it. The only element that is not printed in the terminal is the game frame that, when `viz` input argument is set to `True`, is shown in dedicated graphical windows, one per channel (i.e. RGB channels are shown separately). The `wait_key` parameter defines how this window(s) behaves: when set equal to 0, it pauses waiting for the user to press a button, while if set different from zero, it waits the prescribed number of milliseconds before continuing.
 
-There are two different methods, one to be used for the basic Gym Environment and the other one specific for the wrapped one.
-
-#### Gym Observation
-
-{{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a> and <a href="/gettingstarted/examples/multiplayerenv/">this</a> examples.
-{{% /notice %}}
+The same method works on both the basic Gym Environment and the wrapped one.
 
 ```python
-from diambra.arena.gym_utils import show_gym_obs
-...
-show_gym_obs(observation=obs, char_list=characters_names, wait_key=1, viz=True)
+env.show_obs(observation=obs, wait_key=1, viz=True)
 ```
+
+{{% notice warning %}}
+This functionality currently does not support all possible wrappers configurations but only a part of them, so the behavior varies a lot depending on the execution settings.
+{{% /notice %}}
+
+{{% notice tip %}}
+Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a>, <a href="/gettingstarted/examples/multiplayerenv/">this</a>, <a href="/gettingstarted/examples/wrappersoptions/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
+{{% /notice %}}
+
+#### Base Environment
+
 Output will be similar to what follows:
 
- - Frame visualization window:
+ - Frame(s) visualization window(s):
 <figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/gymObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
 </figure>
 
  - Terminal printout:
    ```txt
-   observation["frame"].shape: (480, 512, 3)
-   observation["stage"]: 1
-   observation["P1"]["ownChar"]: Kasumi
-   observation["P1"]["oppChar"]: Bayman
-   observation["P1"]["ownHealth"]: 66
-   observation["P1"]["oppHealth"]: 184
+   observation["frame"]: shape (128, 128, 3) - min 0 - max 255
+   observation["stage"]: [1]
+   observation["timer"]: [30]
+   observation["P1"]["ownChar"]: 0 / Kasumi
+   observation["P1"]["oppChar"]: 3 / Bayman
+   observation["P1"]["ownHealth"]: [66]
+   observation["P1"]["oppHealth"]: [184]
    observation["P1"]["ownSide"]: 0
    observation["P1"]["oppSide"]: 1
-   observation["P1"]["ownWins"]: 0
-   observation["P1"]["oppWins"]: 0
-   observation["P1"]["actions"]: {'move': 0, 'attack': 3}
+   observation["P1"]["ownWins"]: [0]
+   observation["P1"]["oppWins"]: [0]
+   observation["P1"]["actions"]["move"]: 0
+   observation["P1"]["actions"]["attack"]: 3
    ```
 
 #### Wrapped Observation
-
-{{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/wrappersoptions/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
-{{% /notice %}}
-
-{{% notice warning %}}
-This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the observation normalization wrapper is active.
-{{% /notice %}}
-
-```python
-from diambra.arena.gym_utils import show_wrap_obs
-...
-show_wrap_obs(observation=obs, n_actions_stack=n_act_stack, char_list=characters_names, wait_key=1, viz=True)
-```
 
 Output will be similar to what follows:
 
@@ -251,17 +242,18 @@ Output will be similar to what follows:
 - Terminal printout:
 
   ```txt
-  observation["frame"].shape: (128, 128, 4)
-  observation["stage"]: 0.0
-  observation["P1"]["ownChar"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
-  observation["P1"]["oppChar"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
-  observation["P1"]["ownHealth"]: 0.8173076923076923
-  observation["P1"]["oppHealth"]: 0.8028846153846154
-  observation["P1"]["ownSide"]: 1
-  observation["P1"]["oppSide"]: 0
-  observation["P1"]["ownWins"]: 0.0
-  observation["P1"]["oppWins"]: 0.0
-  observation["P1"]["actions"]["move"]:
+  observation["frame"]: shape (128, 128, 4) - min 0 - max 255
+  observation["stage"]: [0.0]
+  observation["timer"]: [0.875]
+  observation["P1"]["ownChar"]: [0 0 0 1 0 0 0 0 0 0 0] / Bayman
+  observation["P1"]["oppChar"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
+  observation["P1"]["ownHealth"]: [0.8173076923076923]
+  observation["P1"]["oppHealth"]: [0.8028846153846154]
+  observation["P1"]["ownSide"]: [0 1]
+  observation["P1"]["oppSide"]: [1 0]
+  observation["P1"]["ownWins"]: [0.]
+  observation["P1"]["oppWins"]: [0.]
+  observation["P1"]["actions"]["move"] (reshaped for visualization):
   [[1 0 0 0 0 0 0 0 0]
    [1 0 0 0 0 0 0 0 0]
    [0 0 0 0 0 0 0 0 1]
@@ -274,7 +266,7 @@ Output will be similar to what follows:
    [0 0 0 0 0 0 1 0 0]
    [0 0 0 1 0 0 0 0 0]
    [0 0 0 0 0 0 0 0 1]]
-  observation["P1"]["actions"]["attack"]:
+  observation["P1"]["actions"]["attack"]  (reshaped for visualization):
   [[1 0 0 0]
    [1 0 0 0]
    [1 0 0 0]

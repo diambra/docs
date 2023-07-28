@@ -80,6 +80,7 @@ weight: 20
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `frame`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;255] X [224&#160;X&#160;384&#160;X&#160;3]              | Latest game frame (RGB pixel screen)                             |
 | `stage`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [1, 10]                                                          | Current stage of the game                                        |
+| `timer`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0, 100]                                                           | Round time remaining                                        |
 
 #### Player specific
 

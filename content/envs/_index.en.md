@@ -219,6 +219,7 @@ Global elements of the observation space are unrelated to the player and they ar
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `frame`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Game-specific min and max values for each dimension              | Latest game frame (RGB pixel screen)                             |
 | `stage`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | Game-specific min and max values                                 | Current stage of the game                                        |
+| `timer`                                                  | <a href="https://github.com/openai/gym/tree/master/gym/spaces/box.py" target="blank_">Box</a> | [0,&#160;round duration]                                 | Round time remaining                                        |
 
 #### Player specific
 
