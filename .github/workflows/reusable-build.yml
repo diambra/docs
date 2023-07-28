@@ -2,7 +2,7 @@ on:
   workflow_call:
 
 jobs:
-  reusable-test:
+  reusable-build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
