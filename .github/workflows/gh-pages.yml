@@ -24,13 +24,13 @@ jobs:
           hugo-version: '0.112.3'
           extended: true
 
-      - name: Build
-        run: hugo --minify
-
       - id: get-path
         run: echo "path=v${GITHUB_REF_NAME#release-}" >> $GITHUB_OUTPUT
         if: github.event_name == 'push' && github.ref_name != 'main'
         
+      - name: Build
+        run: hugo --minify --baseURL https://docs.diambra.ai/${{ github.ref_name == 'main' && '' || steps.get-path.outputs.path }}
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.event_name == 'push' || github.event_name == 'repository_dispatch'
