@@ -114,15 +114,47 @@ a:hover {
 }
 
 #homelinks {
-  background: var(--MENU-HEADER-BG-color);
-  background-color: var(--MENU-HEADER-BORDER-color);
-  border-bottom-color: var(--MENU-HEADER-BORDER-color);
+    background: var(--MENU-HEADER-BG-color);
+    background-color: var(--MENU-HEADER-BORDER-color);
+    border-bottom-color: var(--MENU-HEADER-BORDER-color);
 }
 
 #homelinks a {
-  color: var(--MENU-HOME-LINK-color);
+    color: var(--MENU-HOME-LINK-color);
 }
 
 #homelinks a:hover {
-  color: var(--MENU-HOME-LINK-HOVERED-color);
+    color: var(--MENU-HOME-LINK-HOVERED-color);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    background: var(--MENU-HEADER-BG-color);
+    background-color: var(--MENU-HEADER-BORDER-color);
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-toggle {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }

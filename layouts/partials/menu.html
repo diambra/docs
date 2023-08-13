@@ -19,6 +19,15 @@
       </ul>
     </section>
   {{end}}
+  <section id="versions" class="dropdown">
+    <a class="dropdown-toggle">Versions ▼</a>
+    <div class="dropdown-content">
+      <a href="/">Latest</a>
+    {{ range $.Site.Data.versions.versions }}
+        <a href="/v{{ . }}">{{ . }}</a>
+    {{ end }}
+    </div>
+  </section>
 
     <div class="highlightable">
     <ul class="topics">
