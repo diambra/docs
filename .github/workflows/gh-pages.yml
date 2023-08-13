@@ -47,4 +47,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           cname: docs.diambra.ai
+          keep_files: ${{ github.ref_name == 'main' }}
           destination_dir: ${{ github.ref_name == 'main' && '' || steps.get-path.outputs.path }}
