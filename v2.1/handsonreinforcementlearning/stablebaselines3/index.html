@@ -1,0 +1,510 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.112.3"><meta name=description content="Official documentation for DIAMBRA, the platform where coders create AI agents to compete in video games tournaments."><meta name=author content="DIAMBRA Team"><meta name=keywords content="Documentation,Reinforcement Learning,Deep Reinforcement Learning,AI Tournaments,Video Games Environments,RL Environments,DIAMBRA,DIAMBRA Documentation,AI Competitions,Artificial Intelligence"><meta itemprop=name content="DIAMBRA Docs"><meta itemprop=description content="Official documentation for DIAMBRA, the platform where coders create AI agents to compete in video games tournaments."><meta itemprop=image content="https://docs.diambra.ai/v2.1/images/logoMeta.png"><meta property="og:site_name" content="DIAMBRA Docs"><meta property="og:title" content="DIAMBRA Docs"><meta property="og:description" content="Official documentation for DIAMBRA, the platform where coders create AI agents to compete in video games tournaments."><meta property="og:image" content="https://docs.diambra.ai/v2.1/images/logoMeta.png"><meta property="og:url" content="https://docs.diambra.ai"><meta property="og:type" content="website"><meta name=publish_date property="og:publish_date" content="2022-01-15T00:00:00-0600"><meta charset=utf-8><link rel=icon href=/v2.1/images/favicon.png type=image/png><title>Stable Baselines 3 :: DIAMBRA Docs</title><link href=/v2.1/css/nucleus.css?1691925477 rel=stylesheet><link href=/v2.1/css/fontawesome-all.min.css?1691925477 rel=stylesheet><link href=/v2.1/css/hybrid.css?1691925477 rel=stylesheet><link href=/v2.1/css/featherlight.min.css?1691925477 rel=stylesheet><link href=/v2.1/css/perfect-scrollbar.min.css?1691925477 rel=stylesheet><link href=/v2.1/css/auto-complete.css?1691925477 rel=stylesheet><link href=/v2.1/css/atom-one-dark-reasonable.css?1691925477 rel=stylesheet><link href=/v2.1/css/theme.css?1691925477 rel=stylesheet><link href=/v2.1/css/tabs.css?1691925477 rel=stylesheet><link href=/v2.1/css/hugo-theme.css?1691925477 rel=stylesheet><link href=/v2.1/css/theme-diambra.css?1691925477 rel=stylesheet><script src=/v2.1/js/jquery-3.3.1.min.js?1691925477></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><style type=text/css>pre code{white-space:pre}</style></head><body data-url=/v2.1/handsonreinforcementlearning/stablebaselines3/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=https://docs.diambra.ai/v2.1><img src=https://docs.diambra.ai/v2.1/images/logo.png></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/v2.1/js/lunr.min.js?1691925477></script>
+<script type=text/javascript src=/v2.1/js/auto-complete.js?1691925477></script>
+<script type=text/javascript>var baseurl="https://docs.diambra.ai/v2.1"</script><script type=text/javascript src=/v2.1/js/search.js?1691925477></script></div><section id=homelinks><ul><li><a class=padding href=https://docs.diambra.ai/v2.1><i class='fas fa-home'></i> Home</a></li></ul></section><div class=highlightable><ul class=topics><li data-nav-id=/v2.1/gettingstarted/ title="Getting Started" class=dd-item><a href=/v2.1/gettingstarted/>Getting Started
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/gettingstarted/examples/ title=Examples class=dd-item><a href=/v2.1/gettingstarted/examples/>Examples
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/gettingstarted/examples/singleplayerenv/ title="Single Player Environment" class=dd-item><a href=/v2.1/gettingstarted/examples/singleplayerenv/>Single Player Environment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/gettingstarted/examples/multiplayerenv/ title="Multi Player Environment" class=dd-item><a href=/v2.1/gettingstarted/examples/multiplayerenv/>Multi Player Environment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/gettingstarted/examples/wrappersoptions/ title="Wrappers Options" class=dd-item><a href=/v2.1/gettingstarted/examples/wrappersoptions/>Wrappers Options
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/gettingstarted/examples/humanexperiencerecorder/ title="Human Experience Recorder" class=dd-item><a href=/v2.1/gettingstarted/examples/humanexperiencerecorder/>Human Experience Recorder
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/gettingstarted/examples/imitationlearning/ title="Imitation Learning" class=dd-item><a href=/v2.1/gettingstarted/examples/imitationlearning/>Imitation Learning
+<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li><li data-nav-id=/v2.1/envs/ title=Environments class=dd-item><a href=/v2.1/envs/>Environments
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/envs/games/ title="Games & Specifics" class=dd-item><a href=/v2.1/envs/games/>Games & Specifics
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/envs/games/doapp/ title="Dead Or Alive ++" class=dd-item><a href=/v2.1/envs/games/doapp/>Dead Or Alive ++
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/envs/games/sfiii3n/ title="Street Fighter III 3rd Strike" class=dd-item><a href=/v2.1/envs/games/sfiii3n/>Street Fighter III 3rd Strike
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/envs/games/tektagt/ title="Tekken Tag Tournament" class=dd-item><a href=/v2.1/envs/games/tektagt/>Tekken Tag Tournament
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/envs/games/umk3/ title="Ultimate Mortal Kombat 3" class=dd-item><a href=/v2.1/envs/games/umk3/>Ultimate Mortal Kombat 3
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/envs/games/samsh5sp/ title="Samurai Showdown 5 Special" class=dd-item><a href=/v2.1/envs/games/samsh5sp/>Samurai Showdown 5 Special
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/envs/games/kof98umh/ title="The King of Fighers '98 UMH" class=dd-item><a href=/v2.1/envs/games/kof98umh/>The King of Fighers '98 UMH
+<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li><li data-nav-id=/v2.1/wrappers/ title=Wrappers class=dd-item><a href=/v2.1/wrappers/>Wrappers
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/utils/ title=Utils class=dd-item><a href=/v2.1/utils/>Utils
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/imitationlearning/ title="Imitation Learning" class=dd-item><a href=/v2.1/imitationlearning/>Imitation Learning
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/handsonreinforcementlearning/ title="Hands-on Reinforcement Learning" class="dd-item
+parent"><a href=/v2.1/handsonreinforcementlearning/>Hands-on Reinforcement Learning
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/handsonreinforcementlearning/stablebaselines3/ title="Stable Baselines 3" class="dd-item
+active"><a href=/v2.1/handsonreinforcementlearning/stablebaselines3/>Stable Baselines 3
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/handsonreinforcementlearning/rayrllib/ title="Ray RLlib" class=dd-item><a href=/v2.1/handsonreinforcementlearning/rayrllib/>Ray RLlib
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/v2.1/competitionplatform/ title="Competition Platform" class=dd-item><a href=/v2.1/competitionplatform/>Competition Platform
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/competitionplatform/basicagentscript/ title="Basic Agent Script" class=dd-item><a href=/v2.1/competitionplatform/basicagentscript/>Basic Agent Script
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/competitionplatform/submissionevaluation/ title="Submission Evaluation" class=dd-item><a href=/v2.1/competitionplatform/submissionevaluation/>Submission Evaluation
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/competitionplatform/howtosubmitanagent/ title="How To Submit An Agent" class=dd-item><a href=/v2.1/competitionplatform/howtosubmitanagent/>How To Submit An Agent
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/competitionplatform/howtosubmitanagent/submitprebuiltagents/ title="Submit Pre-Built Agents" class=dd-item><a href=/v2.1/competitionplatform/howtosubmitanagent/submitprebuiltagents/>Submit Pre-Built Agents
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/competitionplatform/howtosubmitanagent/submityourownagent/ title="Submit Your Own Agent" class=dd-item><a href=/v2.1/competitionplatform/howtosubmitanagent/submityourownagent/>Submit Your Own Agent
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/competitionplatform/howtosubmitanagent/customdependenciesimage/ title="Custom Dependencies Image" class=dd-item><a href=/v2.1/competitionplatform/howtosubmitanagent/customdependenciesimage/>Custom Dependencies Image
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/v2.1/competitionplatform/argumentsandcommands/ title="Arguments and Commands" class=dd-item><a href=/v2.1/competitionplatform/argumentsandcommands/>Arguments and Commands
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/competitionplatform/testyouragentlocally/ title="Test Your Agent Locally" class=dd-item><a href=/v2.1/competitionplatform/testyouragentlocally/>Test Your Agent Locally
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/v2.1/projects/ title=Projects class=dd-item><a href=/v2.1/projects/>Projects
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/v2.1/projects/rlztournament/ title="RLZ Tournament" class=dd-item><a href=/v2.1/projects/rlztournament/>RLZ Tournament
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/v2.1/projects/gamepainter/ title="Game Painter" class=dd-item><a href=/v2.1/projects/gamepainter/>Game Painter
+<i class="fas fa-check read-icon"></i></a></li></ul></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://diambra.ai target=_blank><i class='fas fa-globe'></i> Website</a></li><li><a class=padding href=https://github.com/diambra/ target=_blank><i class='fab fa-fw fa-github'></i> GitHub</a></li><li><a class=padding href=https://diambra.ai/discord target=_blank><i class='fab fa-discord'></i> Discord</a></li><li><a class=padding href=https://www.twitch.tv/diambra_ai target=_blank><i class='fab fa-twitch'></i> Twitch</a></li><li><a class=padding href=https://www.linkedin.com/company/diambra target=_blank><i class='fab fa-linkedin'></i> Linkedin</a></li><li><a class=padding href=https://www.youtube.com/c/diambra_ai target=_blank><i class='fab fa-youtube'></i> YouTube</a></li><li><a class=padding href=https://twitter.com/diambra_ai target=_blank><i class='fab fa-fw fa-twitter'></i> Twitter</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><center><a class=github-button href=https://github.com/diambra/arena/archive/refs/heads/main.zip data-icon=octicon-download aria-label="Download DIAMBRA Arena from GitHub">Download</a>
+<a class=github-button href=https://github.com/diambra/arena data-icon=octicon-star data-show-count=true aria-label="Star DIAMBRA Arena on GitHub">Star</a>
+<a class=github-button href=https://github.com/diambra/arena/fork data-icon=octicon-repo-forked data-show-count=true aria-label="Fork DIAMBRA Arena on GitHub">Fork</a></center>
+<script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=/v2.1/>Home</a> > <a href=/v2.1/handsonreinforcementlearning/>Hands-on Reinforcement Learning</a> > Stable Baselines 3</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li><a href=#index>Index</a></li><li><a href=#getting-ready>Getting Ready</a></li><li><a href=#basic>Basic</a></li><li><a href=#advanced>Advanced</a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Stable Baselines 3</h1><div style=font-size:1.125rem><h3 id=index>Index</h3><ul><li><a href=./#getting-ready>Getting Ready</a><ul><li><a href=./#native-interface>Native Interface</a></li></ul></li><li><a href=./#basic>Basic</a><ul><li><a href=./#basic-example>Basic Example</a></li><li><a href=./#saving-loading-and-evaluating>Saving, Loading and Evaluating</a></li><li><a href=./#parallel-environments>Parallel Environments</a></li></ul></li><li><a href=./#advanced>Advanced</a><ul><li><a href=./#dictionary-observations>Dictionary Observations</a></li><li><a href=./#complete-training-script>Complete Training Script</a></li><li><a href=./#agent-script-for-competition>Agent Script for Competition</a></li></ul></li></ul></div><div class="notices tip"><p>The source code of all examples described in this section is available in our <a href=https://github.com/diambra/agents/tree/main/stable_baselines3 target=_blank>DIAMBRA Agents</a> repository.</p></div><h3 id=getting-ready>Getting Ready</h3><p>We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tool should work too.</p><p>Create and activate a new dedicated virtual environment:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>conda create -n diambra-arena-sb3 python<span style=color:#f92672>=</span>3.8
+</span></span><span style=display:flex><span>conda activate diambra-arena-sb3
+</span></span></code></pre></div><p>Install DIAMBRA Arena with Stable Baselines 3 interface:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>pip install diambra-arena<span style=color:#f92672>[</span>stable-baselines3<span style=color:#f92672>]</span>
+</span></span></code></pre></div><p>This should be enough to prepare your system to execute the following examples. You can refer to the official <a href=https://stable-baselines3.readthedocs.io/en/master/guide/install.html target=_blank>Stable Baselines 3 documentation</a> or reach out on our <a href=https://diambra.ai/discord target=_blank>Discord server</a> for specific needs.</p><p>All the examples presented below are available here: <a href=https://github.com/diambra/agents/tree/main/stable_baselines3 target=_blank>DIAMBRA Agents - Stable Baselines 3</a>. They have been created following the high level approach found on <a href=https://stable-baselines3.readthedocs.io/en/master/guide/examples.html target=_blank>Stable Baselines 3 examples</a> page, thus allowing to easily extend them and to understand how they interface with the different components.</p><p>These examples only aims at demonstrating the core functionalities and high level aspects, they will not generate well performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like: policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping and other similar ones.</p><h4 id=native-interface>Native interface</h4><p>DIAMBRA Arena native interface with Stable Baselines 3 covers a wide range of use cases, automating handling of vectorized environments and monitoring wrappers. In the majority of cases it will be sufficient for users to directly import and use it, with no need for additional customization. Below is reported its interface and a table describing its arguments.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>make_sb3_env</span>(game_id: str, env_settings: dict<span style=color:#f92672>=</span>{}, wrappers_settings: dict<span style=color:#f92672>=</span>{},
+</span></span><span style=display:flex><span>                 use_subprocess: bool<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, seed: int<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>, log_dir_base: str<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/tmp/DIAMBRALog/&#34;</span>,
+</span></span><span style=display:flex><span>                 start_index: int<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>, allow_early_resets: bool<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>,
+</span></span><span style=display:flex><span>                 start_method: str<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>, no_vec: bool<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span></code></pre></div><table><thead><tr><th><strong><span style=color:#5b5b60>Argument</span></strong></th><th><strong><span style=color:#5b5b60>Type</span></strong></th><th><strong><span style=color:#5b5b60>Default Value(s)</span></strong></th><th><strong><span style=color:#5b5b60>Description</span></strong></th></tr></thead><tbody><tr><td><code>game_id</code></td><td><code>str</code></td><td>-</td><td>Game environment identifier</td></tr><tr><td><code>env_settings</code></td><td><code>dict</code></td><td><code>{}</code></td><td>Environment settings (<a href=/envs/#settings>see more</a>)</td></tr><tr><td><code>wrappers_settings</code></td><td><code>dict</code></td><td><code>{}</code></td><td>Wrappers settings (<a href=/wrappers/>see more</a>)</td></tr><tr><td><code>use_subprocess</code></td><td><code>bool</code></td><td><code>True</code></td><td>If to use subprocesses for multi-threaded parallelization</td></tr><tr><td><code>seed</code></td><td><code>int</code></td><td>0</td><td>Random number generator seed</td></tr><tr><td><code>log_dir_base</code></td><td><code>str</code></td><td><code>"/tmp/DIAMBRALog/"</code></td><td>Folder where to save execution logs</td></tr><tr><td><code>start_index</code></td><td><code>int</code></td><td>0</td><td>Starting process rank index</td></tr><tr><td><code>allow_early_resets</code></td><td><code>bool</code></td><td><code>True</code></td><td>Monitor wrapper argument to allow environment reset before it is done</td></tr><tr><td><code>start_method</code></td><td><code>str</code></td><td><code>None</code></td><td>Method to spawn subprocesses when active (<a href=https://stable-baselines3.readthedocs.io/en/master/guide/vec_envs.html#subprocvecenv target=_blank>see more</a>)</td></tr><tr><td><code>no_vec</code></td><td><code>bool</code></td><td><code>False</code></td><td>If <code>True</code> avoids using vectorized environments (valid only when using a single instance)</td></tr></tbody></table><div class="notices note"><p>For the interface low level details, users can review the correspondent source code <a href=https://github.com/diambra/arena/tree/main/diambra/arena/stable_baselines3 target=_blank>here</a>.</p></div><h3 id=basic>Basic</h3><p>For all the basic examples, the environment will be used in <code>hardcore</code> mode, so that the observation space will be only of type <code>Box</code> composed by screen pixels, as in the majority of simple examples found in tutorials and docs. This allows to directly use it without the need of further processing.</p><h4 id=basic-example>Basic Example</h4><p>This example demonstrates how to:</p><ul><li>Instantiate a new DIAMBRA Arena environment with its settings</li><li>Interface it with one of Stable Baselines 3&rsquo;s algorithms</li><li>Train the algorithm</li><li>Run the trained agent in the environment for one episode</li></ul><p>It uses the A2C algorithm, with a <code>CnnPolicy</code> policy network to properly process the game frame observation as input. For demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> diambra.arena
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> stable_baselines3 <span style=color:#f92672>import</span> A2C
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>    env <span style=color:#f92672>=</span> diambra<span style=color:#f92672>.</span>arena<span style=color:#f92672>.</span>make(<span style=color:#e6db74>&#34;doapp&#34;</span>, {<span style=color:#e6db74>&#34;hardcore&#34;</span>: <span style=color:#66d9ef>True</span>, <span style=color:#e6db74>&#34;frame_shape&#34;</span>: (<span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>1</span>)})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>Starting training ...</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> A2C(<span style=color:#e6db74>&#34;CnnPolicy&#34;</span>, env, verbose<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>    agent<span style=color:#f92672>.</span>learn(total_timesteps<span style=color:#f92672>=</span><span style=color:#ae81ff>200</span>)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74> .. training completed.&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>Starting trained agent execution ...</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
+</span></span><span style=display:flex><span>        env<span style=color:#f92672>.</span>render()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        action, _state <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>predict(observation, deterministic<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        observation, reward, done, info <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>step(action)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> done:
+</span></span><span style=display:flex><span>            observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>... trained agent execution completed.</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Close the environment</span>
+</span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Return success</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    main()
+</span></span></code></pre></div><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python basic.py
+</span></span></code></pre></div><h4 id=saving-loading-and-evaluating>Saving, loading and evaluating</h4><p>In addition to what seen in the previous example, this one demonstrates how to:</p><ul><li>Save a trained agent</li><li>Load a saved agent</li><li>Evaluate an agent on a given number of episodes</li></ul><p>The same conditions of the previous example for algorithm, policy and training steps are used in this one too.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> diambra.arena
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> stable_baselines3 <span style=color:#f92672>import</span> A2C
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> stable_baselines3.common.evaluation <span style=color:#f92672>import</span> evaluate_policy
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create environment</span>
+</span></span><span style=display:flex><span>    env <span style=color:#f92672>=</span> diambra<span style=color:#f92672>.</span>arena<span style=color:#f92672>.</span>make(<span style=color:#e6db74>&#34;doapp&#34;</span>, {<span style=color:#e6db74>&#34;hardcore&#34;</span>: <span style=color:#66d9ef>True</span>, <span style=color:#e6db74>&#34;frame_shape&#34;</span>: (<span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>1</span>)})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Instantiate the agent</span>
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> A2C(<span style=color:#e6db74>&#34;CnnPolicy&#34;</span>, env, verbose<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Train the agent</span>
+</span></span><span style=display:flex><span>    agent<span style=color:#f92672>.</span>learn(total_timesteps<span style=color:#f92672>=</span><span style=color:#ae81ff>200</span>)
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Save the agent</span>
+</span></span><span style=display:flex><span>    agent<span style=color:#f92672>.</span>save(<span style=color:#e6db74>&#34;a2c_doapp&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>del</span> agent  <span style=color:#75715e># delete trained agent to demonstrate loading</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Load the trained agent</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># NOTE: if you have loading issue, you can pass `print_system_info=True`</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># to compare the system on which the agent was trained vs the current one</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># agent = A2C.load(&#34;a2c_doapp&#34;, env=env, print_system_info=True)</span>
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> A2C<span style=color:#f92672>.</span>load(<span style=color:#e6db74>&#34;a2c_doapp&#34;</span>, env<span style=color:#f92672>=</span>env)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Evaluate the agent</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># NOTE: If you use wrappers with your environment that modify rewards,</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#       this will be reflected here. To evaluate with original rewards,</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>#       wrap environment in a &#34;Monitor&#34; wrapper before other wrappers.</span>
+</span></span><span style=display:flex><span>    mean_reward, std_reward <span style=color:#f92672>=</span> evaluate_policy(agent, agent<span style=color:#f92672>.</span>get_env(), n_eval_episodes<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span>)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Reward: </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> (avg) ± </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> (std)&#34;</span><span style=color:#f92672>.</span>format(mean_reward, std_reward))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Run trained agent</span>
+</span></span><span style=display:flex><span>    observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>    cumulative_reward <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
+</span></span><span style=display:flex><span>        env<span style=color:#f92672>.</span>render()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        action, _state <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>predict(observation, deterministic<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        observation, reward, done, info <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>step(action)
+</span></span><span style=display:flex><span>        cumulative_reward <span style=color:#f92672>+=</span> reward
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (reward <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>):
+</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>&#34;Cumulative reward =&#34;</span>, cumulative_reward)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> done:
+</span></span><span style=display:flex><span>            observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Close the environment</span>
+</span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Return success</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    main()</span></span></code></pre></div><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python saving_loading_evaluating.py
+</span></span></code></pre></div><h4 id=parallel-environments>Parallel Environments</h4><p>In addition to what seen in previous examples, this one demonstrates how to:</p><ul><li>Leverage DIAMBRA Arena native Stable Baselines 3 interface</li><li>Activate environment wrappers</li><li>Run training using parallel environments</li><li>Print out the policy network architecture</li></ul><p>In this example, the PPO algorithm is used, with the same <code>CnnPolicy</code> seen before. This policy network works even if in this example an environment wrapper is used to stack multiple game frames, as they are piled along the channel dimension. In this example the policy architecture is also printed to the console output, allowing to visualize how inputs are processed and &ldquo;translated&rdquo; to actions probabilities.</p><p>This example also runs multiple environments, automatically detecting the number of instances created by DIAMBRA CLI when running the script.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>from</span> diambra.arena.stable_baselines3.make_sb3_env <span style=color:#f92672>import</span> make_sb3_env
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> stable_baselines3 <span style=color:#f92672>import</span> PPO
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Settings</span>
+</span></span><span style=display:flex><span>    settings <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>    settings[<span style=color:#e6db74>&#34;hardcore&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    settings[<span style=color:#e6db74>&#34;frame_shape&#34;</span>] <span style=color:#f92672>=</span> (<span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>    settings[<span style=color:#e6db74>&#34;characters&#34;</span>] <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#34;Kasumi&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Wrappers Settings</span>
+</span></span><span style=display:flex><span>    wrappers_settings <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;reward_normalization&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;frame_stack&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create environment</span>
+</span></span><span style=display:flex><span>    env, num_envs <span style=color:#f92672>=</span> make_sb3_env(<span style=color:#e6db74>&#34;doapp&#34;</span>, settings, wrappers_settings)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Activated </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> environment(s)&#34;</span><span style=color:#f92672>.</span>format(num_envs))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Observation space shape =&#34;</span>, env<span style=color:#f92672>.</span>observation_space<span style=color:#f92672>.</span>shape)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Observation space type =&#34;</span>, env<span style=color:#f92672>.</span>observation_space<span style=color:#f92672>.</span>dtype)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Act_space =&#34;</span>, env<span style=color:#f92672>.</span>action_space)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Instantiate the agent</span>
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> PPO(<span style=color:#e6db74>&#34;CnnPolicy&#34;</span>, env, verbose<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Print policy network architecture</span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Policy architecture:&#34;</span>)
+</span></span><span style=display:flex><span>    print(agent<span style=color:#f92672>.</span>policy)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Train the agent</span>
+</span></span><span style=display:flex><span>    agent<span style=color:#f92672>.</span>learn(total_timesteps<span style=color:#f92672>=</span><span style=color:#ae81ff>200</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Run trained agent</span>
+</span></span><span style=display:flex><span>    observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>    cumulative_reward <span style=color:#f92672>=</span> [<span style=color:#ae81ff>0.0</span> <span style=color:#66d9ef>for</span> _ <span style=color:#f92672>in</span> range(num_envs)]
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
+</span></span><span style=display:flex><span>        env<span style=color:#f92672>.</span>render()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        action, _state <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>predict(observation, deterministic<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        observation, reward, done, info <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>step(action)
+</span></span><span style=display:flex><span>        cumulative_reward <span style=color:#f92672>+=</span> reward
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> any(x <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span> <span style=color:#66d9ef>for</span> x <span style=color:#f92672>in</span> reward):
+</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>&#34;Cumulative reward(s) =&#34;</span>, cumulative_reward)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> done<span style=color:#f92672>.</span>any():
+</span></span><span style=display:flex><span>            observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Close the environment</span>
+</span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Return success</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    main()
+</span></span></code></pre></div><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run -s<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> python parallel_envs.py
+</span></span></code></pre></div><h3 id=advanced>Advanced</h3><p>The nex examples make use of the complete observation space of our environments. This is of type <code>Dict</code>, in which different elements are organized as key-value pairs and they can be of different type.</p><h4 id=dictionary-observations>Dictionary Observations</h4><p>In addition to what seen in previous examples, this one demonstrates how to:</p><ul><li>Activate a complete set of environment wrappers</li><li>How to properly handle dictionary observations for Stable Baselines 3</li></ul><p>There are two main things to note in this example: how to handle observation normalization and dictionary observations. As it can be seen from the snippet below, the normalization wrapper is applied on all elements but the image frame, as Stable Baselines 3 automatically normalizes images and expects their pixels to be in the range [0 - 255]. The library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a flattening wrapper that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.</p><p>In this case, the policy network needs to be of class <code>MultiInputPolicy</code>, since it will handle different types of inputs. Stable Baselines 3 automatically defines the network architecture, properly matching the input type. The architecture is then printed to the console output, allowing to clearly identify all the different contributions.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>from</span> diambra.arena.stable_baselines3.make_sb3_env <span style=color:#f92672>import</span> make_sb3_env
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> stable_baselines3 <span style=color:#f92672>import</span> PPO
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Settings</span>
+</span></span><span style=display:flex><span>    settings <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>    settings[<span style=color:#e6db74>&#34;frame_shape&#34;</span>] <span style=color:#f92672>=</span> (<span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>    settings[<span style=color:#e6db74>&#34;characters&#34;</span>] <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#34;Kasumi&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Wrappers Settings</span>
+</span></span><span style=display:flex><span>    wrappers_settings <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;reward_normalization&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;actions_stack&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>12</span>
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;frame_stack&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;scale&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;exclude_image_scaling&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;flatten&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;filter_keys&#34;</span>] <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;stage&#34;</span>, <span style=color:#e6db74>&#34;P1_ownHealth&#34;</span>, <span style=color:#e6db74>&#34;P1_oppHealth&#34;</span>, <span style=color:#e6db74>&#34;P1_ownSide&#34;</span>,
+</span></span><span style=display:flex><span>                                        <span style=color:#e6db74>&#34;P1_oppSide&#34;</span>, <span style=color:#e6db74>&#34;P1_oppChar&#34;</span>, <span style=color:#e6db74>&#34;P1_actions_move&#34;</span>, <span style=color:#e6db74>&#34;P1_actions_attack&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create environment</span>
+</span></span><span style=display:flex><span>    env, num_envs <span style=color:#f92672>=</span> make_sb3_env(<span style=color:#e6db74>&#34;doapp&#34;</span>, settings, wrappers_settings)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Activated </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> environment(s)&#34;</span><span style=color:#f92672>.</span>format(num_envs))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Observation space =&#34;</span>, env<span style=color:#f92672>.</span>observation_space)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Act_space =&#34;</span>, env<span style=color:#f92672>.</span>action_space)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Instantiate the agent</span>
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> PPO(<span style=color:#e6db74>&#34;MultiInputPolicy&#34;</span>, env, verbose<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Print policy network architecture</span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Policy architecture:&#34;</span>)
+</span></span><span style=display:flex><span>    print(agent<span style=color:#f92672>.</span>policy)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Train the agent</span>
+</span></span><span style=display:flex><span>    agent<span style=color:#f92672>.</span>learn(total_timesteps<span style=color:#f92672>=</span><span style=color:#ae81ff>200</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Run trained agent</span>
+</span></span><span style=display:flex><span>    observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>    cumulative_reward <span style=color:#f92672>=</span> [<span style=color:#ae81ff>0.0</span> <span style=color:#66d9ef>for</span> _ <span style=color:#f92672>in</span> range(num_envs)]
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
+</span></span><span style=display:flex><span>        env<span style=color:#f92672>.</span>render()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        action, _state <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>predict(observation, deterministic<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        observation, reward, done, info <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>step(action)
+</span></span><span style=display:flex><span>        cumulative_reward <span style=color:#f92672>+=</span> reward
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> any(x <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span> <span style=color:#66d9ef>for</span> x <span style=color:#f92672>in</span> reward):
+</span></span><span style=display:flex><span>            print(<span style=color:#e6db74>&#34;Cumulative reward(s) =&#34;</span>, cumulative_reward)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> done<span style=color:#f92672>.</span>any():
+</span></span><span style=display:flex><span>            observation <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Close the environment</span>
+</span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Return success</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    main()
+</span></span></code></pre></div><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python dict_obs_space.py
+</span></span></code></pre></div><h4 id=complete-training-script>Complete Training Script</h4><p>In addition to what seen in previous examples, this one demonstrates how to:</p><ul><li>Build a complete training script to be used with Stable Baselines via a config fila</li><li>How to properly handle hyper-parameters scheduling via callbacks</li><li>How to use callbacks for auto-saving</li><li>How to control some policy network models and optimizer parameters</li></ul><p>This example show exactly how we trained our own models on these environments. It should be considered a starting point from where to explore and experiment, the following are just a few options among the most obvious ones:</p><ul><li>Tweak hyper-parameters for the chosen algorithm</li><li>Evolve the policy network architecture</li><li>Test different algorithms, both on and off-policy</li><li>Try to leverage behavioral cloning / imitation learning</li><li>Modify the reward function to guide learning in other directions</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> yaml
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> json
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> argparse
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> diambra.arena.stable_baselines3.make_sb3_env <span style=color:#f92672>import</span> make_sb3_env
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> diambra.arena.stable_baselines3.sb3_utils <span style=color:#f92672>import</span> linear_schedule, AutoSave
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> stable_baselines3 <span style=color:#f92672>import</span> PPO
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># diambra run -s 8 python stable_baselines3/training.py --cfgFile $PWD/stable_baselines3/cfg_files/sfiii3n/sr6_128x4_das_nc.yaml</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>(cfg_file):
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Read the cfg file</span>
+</span></span><span style=display:flex><span>    yaml_file <span style=color:#f92672>=</span> open(cfg_file)
+</span></span><span style=display:flex><span>    params <span style=color:#f92672>=</span> yaml<span style=color:#f92672>.</span>load(yaml_file, Loader<span style=color:#f92672>=</span>yaml<span style=color:#f92672>.</span>FullLoader)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Config parameters = &#34;</span>, json<span style=color:#f92672>.</span>dumps(params, sort_keys<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, indent<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span>))
+</span></span><span style=display:flex><span>    yaml_file<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    time_dep_seed <span style=color:#f92672>=</span> int((time<span style=color:#f92672>.</span>time() <span style=color:#f92672>-</span> int(time<span style=color:#f92672>.</span>time() <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span>)) <span style=color:#f92672>*</span> <span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>    base_path <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>dirname(os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>abspath(__file__))
+</span></span><span style=display:flex><span>    model_folder <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(base_path, params[<span style=color:#e6db74>&#34;folders&#34;</span>][<span style=color:#e6db74>&#34;parent_dir&#34;</span>], params[<span style=color:#e6db74>&#34;settings&#34;</span>][<span style=color:#e6db74>&#34;game_id&#34;</span>],
+</span></span><span style=display:flex><span>                                params[<span style=color:#e6db74>&#34;folders&#34;</span>][<span style=color:#e6db74>&#34;model_name&#34;</span>], <span style=color:#e6db74>&#34;model&#34;</span>)
+</span></span><span style=display:flex><span>    tensor_board_folder <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(base_path, params[<span style=color:#e6db74>&#34;folders&#34;</span>][<span style=color:#e6db74>&#34;parent_dir&#34;</span>], params[<span style=color:#e6db74>&#34;settings&#34;</span>][<span style=color:#e6db74>&#34;game_id&#34;</span>],
+</span></span><span style=display:flex><span>                                        params[<span style=color:#e6db74>&#34;folders&#34;</span>][<span style=color:#e6db74>&#34;model_name&#34;</span>], <span style=color:#e6db74>&#34;tb&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    os<span style=color:#f92672>.</span>makedirs(model_folder, exist_ok<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Settings</span>
+</span></span><span style=display:flex><span>    settings <span style=color:#f92672>=</span> params[<span style=color:#e6db74>&#34;settings&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Wrappers Settings</span>
+</span></span><span style=display:flex><span>    wrappers_settings <span style=color:#f92672>=</span> params[<span style=color:#e6db74>&#34;wrappers_settings&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create environment</span>
+</span></span><span style=display:flex><span>    env, num_envs <span style=color:#f92672>=</span> make_sb3_env(params[<span style=color:#e6db74>&#34;settings&#34;</span>][<span style=color:#e6db74>&#34;game_id&#34;</span>], settings, wrappers_settings, seed<span style=color:#f92672>=</span>time_dep_seed)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Activated </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> environment(s)&#34;</span><span style=color:#f92672>.</span>format(num_envs))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Observation space =&#34;</span>, env<span style=color:#f92672>.</span>observation_space)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Act_space =&#34;</span>, env<span style=color:#f92672>.</span>action_space)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Policy param</span>
+</span></span><span style=display:flex><span>    policy_kwargs <span style=color:#f92672>=</span> params[<span style=color:#e6db74>&#34;policy_kwargs&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># PPO settings</span>
+</span></span><span style=display:flex><span>    ppo_settings <span style=color:#f92672>=</span> params[<span style=color:#e6db74>&#34;ppo_settings&#34;</span>]
+</span></span><span style=display:flex><span>    gamma <span style=color:#f92672>=</span> ppo_settings[<span style=color:#e6db74>&#34;gamma&#34;</span>]
+</span></span><span style=display:flex><span>    model_checkpoint <span style=color:#f92672>=</span> ppo_settings[<span style=color:#e6db74>&#34;model_checkpoint&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    learning_rate <span style=color:#f92672>=</span> linear_schedule(ppo_settings[<span style=color:#e6db74>&#34;learning_rate&#34;</span>][<span style=color:#ae81ff>0</span>], ppo_settings[<span style=color:#e6db74>&#34;learning_rate&#34;</span>][<span style=color:#ae81ff>1</span>])
+</span></span><span style=display:flex><span>    clip_range <span style=color:#f92672>=</span> linear_schedule(ppo_settings[<span style=color:#e6db74>&#34;clip_range&#34;</span>][<span style=color:#ae81ff>0</span>], ppo_settings[<span style=color:#e6db74>&#34;clip_range&#34;</span>][<span style=color:#ae81ff>1</span>])
+</span></span><span style=display:flex><span>    clip_range_vf <span style=color:#f92672>=</span> clip_range
+</span></span><span style=display:flex><span>    batch_size <span style=color:#f92672>=</span> ppo_settings[<span style=color:#e6db74>&#34;batch_size&#34;</span>]
+</span></span><span style=display:flex><span>    n_epochs <span style=color:#f92672>=</span> ppo_settings[<span style=color:#e6db74>&#34;n_epochs&#34;</span>]
+</span></span><span style=display:flex><span>    n_steps <span style=color:#f92672>=</span> ppo_settings[<span style=color:#e6db74>&#34;n_steps&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> model_checkpoint <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;0&#34;</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Initialize the agent</span>
+</span></span><span style=display:flex><span>        agent <span style=color:#f92672>=</span> PPO(<span style=color:#e6db74>&#34;MultiInputPolicy&#34;</span>, env, verbose<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>                    gamma<span style=color:#f92672>=</span>gamma, batch_size<span style=color:#f92672>=</span>batch_size,
+</span></span><span style=display:flex><span>                    n_epochs<span style=color:#f92672>=</span>n_epochs, n_steps<span style=color:#f92672>=</span>n_steps,
+</span></span><span style=display:flex><span>                    learning_rate<span style=color:#f92672>=</span>learning_rate, clip_range<span style=color:#f92672>=</span>clip_range,
+</span></span><span style=display:flex><span>                    clip_range_vf<span style=color:#f92672>=</span>clip_range_vf, policy_kwargs<span style=color:#f92672>=</span>policy_kwargs,
+</span></span><span style=display:flex><span>                    tensorboard_log<span style=color:#f92672>=</span>tensor_board_folder)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Load the trained agent</span>
+</span></span><span style=display:flex><span>        agent <span style=color:#f92672>=</span> PPO<span style=color:#f92672>.</span>load(os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(model_folder, model_checkpoint), env<span style=color:#f92672>=</span>env,
+</span></span><span style=display:flex><span>                         gamma<span style=color:#f92672>=</span>gamma, learning_rate<span style=color:#f92672>=</span>learning_rate, clip_range<span style=color:#f92672>=</span>clip_range,
+</span></span><span style=display:flex><span>                         clip_range_vf<span style=color:#f92672>=</span>clip_range_vf, policy_kwargs<span style=color:#f92672>=</span>policy_kwargs,
+</span></span><span style=display:flex><span>                         tensorboard_log<span style=color:#f92672>=</span>tensor_board_folder)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Print policy network architecture</span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Policy architecture:&#34;</span>)
+</span></span><span style=display:flex><span>    print(agent<span style=color:#f92672>.</span>policy)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create the callback: autosave every USER DEF steps</span>
+</span></span><span style=display:flex><span>    autosave_freq <span style=color:#f92672>=</span> ppo_settings[<span style=color:#e6db74>&#34;autosave_freq&#34;</span>]
+</span></span><span style=display:flex><span>    auto_save_callback <span style=color:#f92672>=</span> AutoSave(check_freq<span style=color:#f92672>=</span>autosave_freq, num_envs<span style=color:#f92672>=</span>num_envs,
+</span></span><span style=display:flex><span>                                  save_path<span style=color:#f92672>=</span>model_folder, filename_prefix<span style=color:#f92672>=</span>model_checkpoint <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;_&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Train the agent</span>
+</span></span><span style=display:flex><span>    time_steps <span style=color:#f92672>=</span> ppo_settings[<span style=color:#e6db74>&#34;time_steps&#34;</span>]
+</span></span><span style=display:flex><span>    agent<span style=color:#f92672>.</span>learn(total_timesteps<span style=color:#f92672>=</span>time_steps, callback<span style=color:#f92672>=</span>auto_save_callback)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Save the agent</span>
+</span></span><span style=display:flex><span>    new_model_checkpoint <span style=color:#f92672>=</span> str(int(model_checkpoint) <span style=color:#f92672>+</span> time_steps)
+</span></span><span style=display:flex><span>    model_path <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(model_folder, new_model_checkpoint)
+</span></span><span style=display:flex><span>    agent<span style=color:#f92672>.</span>save(model_path)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Close the environment</span>
+</span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Return success</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    parser <span style=color:#f92672>=</span> argparse<span style=color:#f92672>.</span>ArgumentParser()
+</span></span><span style=display:flex><span>    parser<span style=color:#f92672>.</span>add_argument(<span style=color:#e6db74>&#34;--cfgFile&#34;</span>, type<span style=color:#f92672>=</span>str, required<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, help<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Configuration file&#34;</span>)
+</span></span><span style=display:flex><span>    opt <span style=color:#f92672>=</span> parser<span style=color:#f92672>.</span>parse_args()
+</span></span><span style=display:flex><span>    print(opt)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    main(opt<span style=color:#f92672>.</span>cfgFile)</span></span></code></pre></div><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python training.py --cfgFile /absolute/path/to/config.yaml
+</span></span></code></pre></div><p>and the configuration file to be used with this training script is reported below:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>folders</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>parent_dir</span>: <span style=color:#e6db74>&#34;./results/&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>model_name</span>: <span style=color:#e6db74>&#34;sr6_128x4_das_nc&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>settings</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>game_id</span>: <span style=color:#e6db74>&#34;doapp&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>characters</span>: <span style=color:#e6db74>&#34;Kasumi&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>difficulty</span>: <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>step_ratio</span>: <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>frame_shape</span>: <span style=color:#75715e>!!python/tuple</span> [<span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>128</span>, <span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>  <span style=color:#f92672>continue_game</span>: <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>action_space</span>: <span style=color:#e6db74>&#34;multi_discrete&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>attack_but_combination</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>char_outfits</span>: <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>player</span>: <span style=color:#e6db74>&#34;Random&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>show_final</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>wrappers_settings</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>frame_stack</span>: <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dilation</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>actions_stack</span>: <span style=color:#ae81ff>12</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>reward_normalization</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>scale</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>exclude_image_scaling</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>flatten</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>filter_keys</span>:
+</span></span><span style=display:flex><span>    [
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;stage&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;P1_ownHealth&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;P1_oppHealth&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;P1_ownSide&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;P1_oppSide&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;P1_oppChar&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;P1_actions_move&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;P1_actions_attack&#34;</span>,
+</span></span><span style=display:flex><span>    ]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>policy_kwargs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#net_arch: [{ pi: [64, 64], vf: [32, 32] }]</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>net_arch</span>: [<span style=color:#ae81ff>64</span>, <span style=color:#ae81ff>64</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>ppo_settings</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>gamma</span>: <span style=color:#ae81ff>0.94</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>model_checkpoint</span>: <span style=color:#e6db74>&#34;0&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>learning_rate</span>: [<span style=color:#ae81ff>2.5e-4</span>, <span style=color:#ae81ff>2.5e-6</span>] <span style=color:#75715e># To start</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>clip_range</span>: [<span style=color:#ae81ff>0.15</span>, <span style=color:#ae81ff>0.025</span>] <span style=color:#75715e># To start</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#learning_rate: [5.0e-5, 2.5e-6] # Fine Tuning</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#clip_range: [0.075, 0.025] # Fine Tuning</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>batch_size: 256 #8 #nminibatches gave different batch size depending on the number of environments</span>: <span style=color:#ae81ff>batch_size = (n_steps * n_envs) // nminibatches</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>n_epochs</span>: <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>n_steps</span>: <span style=color:#ae81ff>128</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>autosave_freq</span>: <span style=color:#ae81ff>256</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>time_steps</span>: <span style=color:#ae81ff>512</span>
+</span></span></code></pre></div><h4 id=agent-script-for-competition>Agent Script for Competition</h4><p>Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our competition platform! To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.</p><div class="notices tip"><p>To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href=/competitionplatform/howtosubmitanagent/>&ldquo;How to Submit an Agent&rdquo;</a> section.</p></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> time
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> yaml
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> json
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> argparse
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> diambra.arena.stable_baselines3.make_sb3_env <span style=color:#f92672>import</span> make_sb3_env
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> stable_baselines3 <span style=color:#f92672>import</span> PPO
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;This is an example agent based on stable baselines 3.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Usage:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>diambra run python stable_baselines3/agent.py --cfgFile $PWD/stable_baselines3/cfg_files/doapp/sr6_128x4_das_nc.yaml --trainedModel &#34;model_name&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>(cfg_file, trained_model):
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Read the cfg file</span>
+</span></span><span style=display:flex><span>    yaml_file <span style=color:#f92672>=</span> open(cfg_file)
+</span></span><span style=display:flex><span>    params <span style=color:#f92672>=</span> yaml<span style=color:#f92672>.</span>load(yaml_file, Loader<span style=color:#f92672>=</span>yaml<span style=color:#f92672>.</span>FullLoader)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Config parameters = &#34;</span>, json<span style=color:#f92672>.</span>dumps(params, sort_keys<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, indent<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span>))
+</span></span><span style=display:flex><span>    yaml_file<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    time_dep_seed <span style=color:#f92672>=</span> int((time<span style=color:#f92672>.</span>time() <span style=color:#f92672>-</span> int(time<span style=color:#f92672>.</span>time() <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span>)) <span style=color:#f92672>*</span> <span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    base_path <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>dirname(os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>abspath(__file__))
+</span></span><span style=display:flex><span>    model_folder <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(base_path, params[<span style=color:#e6db74>&#34;folders&#34;</span>][<span style=color:#e6db74>&#34;parent_dir&#34;</span>], params[<span style=color:#e6db74>&#34;settings&#34;</span>][<span style=color:#e6db74>&#34;game_id&#34;</span>],
+</span></span><span style=display:flex><span>                                params[<span style=color:#e6db74>&#34;folders&#34;</span>][<span style=color:#e6db74>&#34;model_name&#34;</span>], <span style=color:#e6db74>&#34;model&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Settings</span>
+</span></span><span style=display:flex><span>    settings <span style=color:#f92672>=</span> params[<span style=color:#e6db74>&#34;settings&#34;</span>]
+</span></span><span style=display:flex><span>    settings[<span style=color:#e6db74>&#34;player&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;P1&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Wrappers Settings</span>
+</span></span><span style=display:flex><span>    wrappers_settings <span style=color:#f92672>=</span> params[<span style=color:#e6db74>&#34;wrappers_settings&#34;</span>]
+</span></span><span style=display:flex><span>    wrappers_settings[<span style=color:#e6db74>&#34;reward_normalization&#34;</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create environment</span>
+</span></span><span style=display:flex><span>    env, num_envs <span style=color:#f92672>=</span> make_sb3_env(params[<span style=color:#e6db74>&#34;settings&#34;</span>][<span style=color:#e6db74>&#34;game_id&#34;</span>], settings, wrappers_settings, seed<span style=color:#f92672>=</span>time_dep_seed, no_vec<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Activated </span><span style=color:#e6db74>{}</span><span style=color:#e6db74> environment(s)&#34;</span><span style=color:#f92672>.</span>format(num_envs))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Observation space =&#34;</span>, env<span style=color:#f92672>.</span>observation_space)
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Act_space =&#34;</span>, env<span style=color:#f92672>.</span>action_space)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Load the trained agent</span>
+</span></span><span style=display:flex><span>    model_path <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(model_folder, trained_model)
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> PPO<span style=color:#f92672>.</span>load(model_path)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Print policy network architecture</span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Policy architecture:&#34;</span>)
+</span></span><span style=display:flex><span>    print(agent<span style=color:#f92672>.</span>policy)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    obs <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        action, _ <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>predict(obs, deterministic<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        obs, reward, done, info <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>step(action<span style=color:#f92672>.</span>tolist())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> done:
+</span></span><span style=display:flex><span>            obs <span style=color:#f92672>=</span> env<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> info[<span style=color:#e6db74>&#34;env_done&#34;</span>]:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Close the environment</span>
+</span></span><span style=display:flex><span>    env<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Return success</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    parser <span style=color:#f92672>=</span> argparse<span style=color:#f92672>.</span>ArgumentParser()
+</span></span><span style=display:flex><span>    parser<span style=color:#f92672>.</span>add_argument(<span style=color:#e6db74>&#34;--cfgFile&#34;</span>, type<span style=color:#f92672>=</span>str, required<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, help<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Configuration file&#34;</span>)
+</span></span><span style=display:flex><span>    parser<span style=color:#f92672>.</span>add_argument(<span style=color:#e6db74>&#34;--trainedModel&#34;</span>, type<span style=color:#f92672>=</span>str, default<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;model&#34;</span>, help<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Model checkpoint&#34;</span>)
+</span></span><span style=display:flex><span>    opt <span style=color:#f92672>=</span> parser<span style=color:#f92672>.</span>parse_args()
+</span></span><span style=display:flex><span>    print(opt)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    main(opt<span style=color:#f92672>.</span>cfgFile, opt<span style=color:#f92672>.</span>trainedModel)
+</span></span></code></pre></div><p>How to run it locally:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python agent.py --cfgFile /absolute/path/to/config.yaml --trainedModel <span style=color:#e6db74>&#34;model_name&#34;</span>
+</span></span></code></pre></div><p>and the configuration file to be used is the same that was used for training it, like the one reported in the previous paragraph.</p><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/v2.1/js/clipboard.min.js?1691925477></script>
+<script src=/v2.1/js/perfect-scrollbar.min.js?1691925477></script>
+<script src=/v2.1/js/perfect-scrollbar.jquery.min.js?1691925477></script>
+<script src=/v2.1/js/jquery.sticky.js?1691925477></script>
+<script src=/v2.1/js/featherlight.min.js?1691925477></script>
+<script src=/v2.1/js/highlight.pack.js?1691925477></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=/v2.1/js/modernizr.custom-3.6.0.js?1691925477></script>
+<script src=/v2.1/js/learn.js?1691925477></script>
+<script src=/v2.1/js/hugo-learn.js?1691925477></script>
+<script src=https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js></script>
+<script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-105947713-1","auto"),ga("send","pageview")</script></body></html>
