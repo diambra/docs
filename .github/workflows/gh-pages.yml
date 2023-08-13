@@ -27,14 +27,18 @@ jobs:
       - id: get-path
         run: echo "path=v${GITHUB_REF_NAME#release-}" >> $GITHUB_OUTPUT
         if: github.event_name == 'push' && github.ref_name != 'main'
-        
-      - name: Build
+
+      - name: get branches
         run: |
           cat <<EOF > data/versions.yaml
           versions:
-          $(git branch --list 'release-*'|sed 's/.*release-/- /')
+          $(gh api repos/:owner/:repo/branches --paginate | jq -r '.[] | select(.name | startswith("release-")) | .name' | sed 's/release-/  - /')
           EOF
-          hugo --minify --baseURL https://docs.diambra.ai/${{ github.ref_name == 'main' && '' || steps.get-path.outputs.path }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build
+        run: hugo --minify --baseURL https://docs.diambra.ai/${{ github.ref_name == 'main' && '' || steps.get-path.outputs.path }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
