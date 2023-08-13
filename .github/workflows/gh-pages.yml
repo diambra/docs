@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Set a branch to deploy
+      - release-*
   pull_request:
   repository_dispatch:
     types: [rebuild-deploy]
@@ -26,10 +27,15 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - id: get-path
+        run: echo "path=v${GITHUB_REF_NAME#release-}" >> $GITHUB_OUTPUT
+        if: github.event_name == 'push' && github.ref_name != 'main'
+        
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main' || github.event_name == 'repository_dispatch'
+        if: github.event_name == 'push' || github.event_name == 'repository_dispatch'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           cname: docs.diambra.ai
+          destination_dir: ${{ github.ref_name == 'main' && '' || steps.get-path.outputs.path }}
