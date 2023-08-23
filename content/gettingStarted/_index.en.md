@@ -14,7 +14,6 @@ weight: 20
   - <a href="./#script-execution">Script Execution</a>
 - <a href="./#advanced-usage">Advanced Usage</a>
   - <a href="./#diambra-cli-advanced-options">DIAMBRA CLI Advanced Options</a>
-  - <a href="./#using-python-notebooks">Using Python Notebooks</a>
   - <a href="./#environment-native-rendering">Environment Native Rendering</a>
   - <a href="./#running-multiple-environments-in-parallel">Running Multiple Environments in Parallel</a>
   - <a href="./#run-diambra-engine-without-cli">Run DIAMBRA Engine without CLI</a>
@@ -159,39 +158,6 @@ Flags:
 Global Flags:
   -d, --log.debug           Enable debug logging
       --log.format string   Set logging output format (logfmt, json, fancy) (default "fancy")
-```
-
-##### Using Python Notebooks
-
-DIAMBRA Arena can also be used inside python notebooks. There are two options to do it, explained here after.
-
-The most straightfoward one is to launch Jupyter Notebook through the CLI as shown by the next command:
-
-```shell
-diambra run jupyter notebook
-```
-
-This step is needed to boot up the environment container and load its connection port in the `DIAMBRA_ENVS` environment variable. This variable is thus accessible from within Jupyter Notebook, that looks like the following one:
-
-{{< pybook diambraarenagist 700 >}}
-
-If one wants to execute a notebook from somewhere else (for example from inside Visual Studio Code), it is not possible to leverage the `DIAMBRA_ENVS` environment variable for passing the connection port information. In such cases, one should activate the environment container and retrieve its port, and this can be done by means of the CLI command `diambra arena up` that returns the port address, as shown below:
-
-```shell
-diambra arena up
-Server listening on 0.0.0.0:50051
-127.0.0.1:49153
-```
-
-This information is then passed to the make function of DIAMBRA Arena through the setting `"env_address"` as shown in the next jupyter notebook:
-
-{{< pybook diambraarenagist2 700 >}}
-
-Once done, one can stop running container(s) as follows:
-
-```shell
-diambra arena down
-(bb1a) stopping container
 ```
 
 ##### Environment Native Rendering
