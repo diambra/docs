@@ -7,69 +7,58 @@ weight: 60
 
 ### Index
 
-- <a href="./#experience-recording-wrapper">Experience Recording Wrapper</a>
-- <a href="./#recorded-experience-loader">Recorded Experience Loader</a>
+- <a href="./#episode-recording-wrapper">Episode Recording Wrapper</a>
+- <a href="./#dataset-loader">Dataset Loader</a>
 
 </div>
 
-With the goal of easing the usage of Imitation Learning, DIAMBRA Arena comes with two, easy-to-use, useful features: an environment wrapper allowing to record agent experience (to be used, for example, to save human expert demonstrations), and a loader class allowing to flawlessly serve stored trajectories.
+With the goal of supporting the exploration and research of techniques dealing with offline learning based on data (e.g. offline Reinforcement Learning, Imitation Learning, Behavioral Cloning, etc.), DIAMBRA Arena comes with two, easy-to-use, useful features: an environment wrapper allowing to record episodes (to be used, for example, to save human expert demonstrations), and a loader class allowing to easily access the stored dataset.
 
-### Experience Recording Wrapper
+### Episode Recording Wrapper
 
-In order to activate the experience recording wrapper, one has just to add an additional kwargs dictionary, here named `traj_rec_settings`, to the environment creation method, as shown in the next code block. The dictionary has to be populated as described below.
+In order to activate the episode recording wrapper, one has just to add an additional kwargs dictionary, conventionally named `episode_recording_settings`, to the environment creation method, as shown in the next code block.
 
 ```python
-env = diambra.arena.make("doapp", settings, wrappers_settings, traj_rec_settings)
+env = diambra.arena.make("doapp", settings, wrappers_settings, episode_recording_settings)
 ```
 
-{{% notice note %}}
-Implementation examples and templates can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/diambra/arena/wrappers" target="_blank">here</a>.
-{{% /notice %}}
+The dictionary has to be populated as described in the following table:
+
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                             |
+| -------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `username`                                               | `str`                                                     | `username`                                                                     | Provides an identifier to be associated with the recorded episode                                                                                         |
+| `dataset_path`                                              | `str`                                                     | `./`                                                                     | Specifies the path where to save recorded episodes                                                                                                        |
+
+```python
+episode_recording_settings["username"] = "user"
+episode_recording_settings["dataset_path"] = "/home/user/DIAMBRA/"
+```
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="../gettingstarted/examples/humanexperiencerecorder/">this</a> example.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                             |
-| -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `username`                                               | `str`                                                     | -                                                                     | -                                                                | Provides an identifier to be associated with the recorded trajectory                                                                                         |
-| `file_path`                                              | `str`                                                     | -                                                                     | -                                                                | Specifies the path where to save recorded experiences                                                                                                        |
-| `ignore_p2`                                              | `int`                                                     | -                                                                     | [0,&#160;1]                                                      | Specifies if to ignore P2 experience. Useful for example when recording expert demonstrations of a human player (P1) who is playing against an RL agent (P2) |
-
-```python
-trajRecSettings["username"] = "user"
-trajRecSettings["file_path"] = "/home/user/DIAMBRA/"
-trajRecSettings["ignore_p2"] = 0
-```
-
 {{% notice note %}}
-In order to use this wrapper, the <a href="../wrappers/#flattening-and-filtering">Flattening and Filtering</a> wrapper must be disabled.
+Implementation examples and templates can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/diambra/arena/wrappers" target="_blank">here</a>.
 {{% /notice %}}
 
-### Recorded Experience Loader
+{{% notice note %}}
+By default, this wrapper acts _before_ wrappers are applied. Thus, it will store the original, native, unprocessed observations (and reward and actions) as generated by the base environment. This guarantees a better generality and transferability of the generated dataset, but requires preprocessing at load time.
+{{% /notice %}}
 
-DIAMBRA Arena provides a dedicated class to load and use recorded trajectories for training. It needs the settings described in the following table in the form of a kwargs python dictionary. It also supports parallel environment executions, providing interfaces to easily integrate it with third party libraries.
+### Dataset Loader
+
+DIAMBRA Arena provides a simple dedicated class `DiambraDataLoader` demonstrating how to load and minimally process recorded episodes, it only requires the dataset folder path as input parameter and can be customized adding the additional processing operations required. The data loader class is created as follows:
+
+```python
+from diambra.arena.utils.diambra_data_loader import DiambraDataLoader
+data_loader = DiambraDataLoader(dataset_path)
+```
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="../gettingstarted/examples/imitationlearning/">this</a> example.
 {{% /notice %}}
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                          |
-| -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `traj_files_list`                                        | `str`                                                     | -                                                                     | -                                                                | Contains the list of recorded experience files, specified as absolute paths                               |
-| `total_cpus`                                             | `int`                                                     | 1                                                                     | [1, inf)                                                         | Specifies the number of parallel environments one wants to run at the same time                           |
-| `rank`                                                   | `int`                                                     | 0                                                                     | [0,&#160;settings["total_cpus"]-1]                               | Assigns a rank number to the environment to identify the instance number when using parallel environments |
-
-```python
-settings["traj_files_list"] = recorded_trajectories_files
-settings["total_cpus"] = 1
-settings["rank"] = 0
-```
-
-Once settings dictionary has been properly setup, the environment is created as shown in the next code block:
-
-```python
-env = diambra.arena.ImitationLearning(**settings)
-```
-
-The interaction with the environment follows the usual methods and conventions, except for the fact that actions in the step method are obviously ignored and the recorded ones are used.
+{{% notice note %}}
+Implementation of this class can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/diambra/arena/wrappers" target="_blank">here</a>.
+{{% /notice %}}
