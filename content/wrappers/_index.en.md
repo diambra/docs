@@ -59,10 +59,10 @@ DEPRECATED: For speed, consider using the environment setting `frame_shape` that
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Target Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                    |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hwc_obs_resize`                                         | `tuple` of three `int` (H,&#160;W,&#160;C)                | (84,&#160;84,&#160;0)                                                 | H,&#160;W:&#160;[1,&#160;512]<br>C:&#160;0, 1 or 3               | Frame                                                                           | Warps the frame from original Game resolution to H&#160;X&#160;W size.<br>C values:<br>0 - Deactivated;<br>1 - Grayscale;<br>3 - RGB;<br>Keeps observation element of type _Box_, changes its shape |
+| `frame_shape`                                         | `tuple` of three `int` (H,&#160;W,&#160;C)                | (0,&#160;0,&#160;0)                                                 | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0, 1 or 3               | Frame                                                                           | Warps the frame from original Game resolution to H&#160;X&#160;W&#160;X&#160;C size.<br>H/W values:<br>0 - Deactivated;<br># - Target Resolution;<br>C values:<br>0 - Deactivated;<br>1 - Grayscale;<br>3 - RGB;<br>Keeps observation element of type _Box_, changes its shape |
 
 ```python
-wrappers_settings["hwc_obs_resize"] = (128, 128, 1)
+wrappers_settings["frame_shape"] = (128, 128, 1)
 ```
 
 #### Frame Stacking With Optional Dilation
@@ -107,12 +107,12 @@ wrappers_settings["scale_mod"] = 0
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Target Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                                  |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `flatten`                                                | `bool`                                                    | False                                                                 | True / False                                                     | RAM States                                                                      | Activates RAM States dictionary flattening, removing nested dictionaries and creating new keys joining original ones using "`_`" across nesting levels. For example: `obs["P1"]["key1"]` becomes `obs["P1_key1"]` |
+| `flatten`                                                | `bool`                                                    | False                                                                 | True / False                                                     | RAM States                                                                      | Activates RAM States dictionary flattening, removing nested dictionaries and creating new keys joining original ones using "`_`" across nesting levels. For example: `obs["agent_0"]["key_1"]` becomes `obs["agent_0_key_1"]` |
 | `filter_keys`                                            | `list` of `str`                                           | None                                                                  | -                                                                | RAM States                                                                      | Defines the list of RAM states to keep in the observation space                                                                                                                                                   |
 
 ```python
 wrappers_settings["flatten"] = True
-wrappers_settings["filter_keys"] = ["stage", "P1_ownHealth", "P1_oppChar"]
+wrappers_settings["filter_keys"] = ["stage", "agent_0_own_health", "agent_0_opp_char"]
 ```
 
 ### Action Wrappers
