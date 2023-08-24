@@ -105,37 +105,37 @@ Output will be similar to what follows:
 ```txt
 Observation space:
 
-        observation_space["P1"]["actions"]["attack"]: Discrete(4)
+observation_space["action_attack"]: Discrete(4)
 
-        observation_space["P1"]["actions"]["move"]: Discrete(9)
+observation_space["action_move"]: Discrete(9)
 
-    observation_space["P1"]["oppChar"]: Discrete(11)
+observation_space["opp_char"]: Discrete(11)
 
-    observation_space["P1"]["oppHealth"]: Box()
-        Space type = int32
-        Space high bound = 208
-        Space low bound = 0
+observation_space["opp_health"]: Box()
+    Space type = int32
+    Space high bound = 208
+    Space low bound = 0
 
-    observation_space["P1"]["oppSide"]: Discrete(2)
+observation_space["opp_side"]: Discrete(2)
 
-    observation_space["P1"]["oppWins"]: Box()
-        Space type = int32
-        Space high bound = 2
-        Space low bound = 0
+observation_space["opp_wins"]: Box()
+    Space type = int32
+    Space high bound = 2
+    Space low bound = 0
 
-    observation_space["P1"]["ownChar"]: Discrete(11)
+observation_space["own_char"]: Discrete(11)
 
-    observation_space["P1"]["ownHealth"]: Box()
-        Space type = int32
-        Space high bound = 208
-        Space low bound = 0
+observation_space["own_health"]: Box()
+    Space type = int32
+    Space high bound = 208
+    Space low bound = 0
 
-    observation_space["P1"]["ownSide"]: Discrete(2)
+observation_space["own_side"]: Discrete(2)
 
-    observation_space["P1"]["ownWins"]: Box()
-        Space type = int32
-        Space high bound = 2
-        Space low bound = 0
+observation_space["own_wins"]: Box()
+    Space type = int32
+    Space high bound = 2
+    Space low bound = 0
 
 observation_space["frame"]: Box(480, 512, 3)
         Space type = uint8
@@ -179,6 +179,11 @@ observation_space["stage"]: Box()
         Space high bound = 8
         Space low bound = 1
 
+observation_space["timer"]: Box()
+        Space type = int8
+        Space high bound = 40
+        Space low bound = 0
+
 Action space:
 
 action_space =  Discrete(12)
@@ -195,10 +200,6 @@ The same method works on both the basic Gym Environment and the wrapped one.
 ```python
 env.show_obs(observation=obs, wait_key=1, viz=True)
 ```
-
-{{% notice warning %}}
-This functionality currently does not support all possible wrappers configurations but only a part of them, so the behavior varies a lot depending on the execution settings.
-{{% /notice %}}
 
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a>, <a href="/gettingstarted/examples/multiplayerenv/">this</a>, <a href="/gettingstarted/examples/wrappersoptions/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
@@ -218,16 +219,16 @@ Output will be similar to what follows:
    observation["frame"]: shape (128, 128, 3) - min 0 - max 255
    observation["stage"]: [1]
    observation["timer"]: [30]
-   observation["P1"]["ownChar"]: 0 / Kasumi
-   observation["P1"]["oppChar"]: 3 / Bayman
-   observation["P1"]["ownHealth"]: [66]
-   observation["P1"]["oppHealth"]: [184]
-   observation["P1"]["ownSide"]: 0
-   observation["P1"]["oppSide"]: 1
-   observation["P1"]["ownWins"]: [0]
-   observation["P1"]["oppWins"]: [0]
-   observation["P1"]["actions"]["move"]: 0
-   observation["P1"]["actions"]["attack"]: 3
+   observation["own_char"]: 0 / Kasumi
+   observation["opp_char"]: 3 / Bayman
+   observation["own_health"]: [66]
+   observation["opp_health"]: [184]
+   observation["own_side"]: 0
+   observation["opp_side"]: 1
+   observation["own_wins"]: [0]
+   observation["opp_wins"]: [0]
+   observation["action_move"]: 0
+   observation["action_attack"]: 3
    ```
 
 #### Wrapped Observation
@@ -245,15 +246,15 @@ Output will be similar to what follows:
   observation["frame"]: shape (128, 128, 4) - min 0 - max 255
   observation["stage"]: [0.0]
   observation["timer"]: [0.875]
-  observation["P1"]["ownChar"]: [0 0 0 1 0 0 0 0 0 0 0] / Bayman
-  observation["P1"]["oppChar"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
-  observation["P1"]["ownHealth"]: [0.8173076923076923]
-  observation["P1"]["oppHealth"]: [0.8028846153846154]
-  observation["P1"]["ownSide"]: [0 1]
-  observation["P1"]["oppSide"]: [1 0]
-  observation["P1"]["ownWins"]: [0.]
-  observation["P1"]["oppWins"]: [0.]
-  observation["P1"]["actions"]["move"] (reshaped for visualization):
+  observation["own_char"]: [0 0 0 1 0 0 0 0 0 0 0] / Bayman
+  observation["opp_char"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
+  observation["own_health"]: [0.8173076923076923]
+  observation["opp_health"]: [0.8028846153846154]
+  observation["own_side"]: [0 1]
+  observation["opp_side"]: [1 0]
+  observation["own_wins"]: [0.]
+  observation["opp_wins"]: [0.]
+  observation["action_move"] (reshaped for visualization):
   [[1 0 0 0 0 0 0 0 0]
    [1 0 0 0 0 0 0 0 0]
    [0 0 0 0 0 0 0 0 1]
@@ -266,7 +267,7 @@ Output will be similar to what follows:
    [0 0 0 0 0 0 1 0 0]
    [0 0 0 1 0 0 0 0 0]
    [0 0 0 0 0 0 0 0 1]]
-  observation["P1"]["actions"]["attack"]  (reshaped for visualization):
+  observation["action_attack"]  (reshaped for visualization):
   [[1 0 0 0]
    [1 0 0 0]
    [1 0 0 0]
@@ -283,6 +284,27 @@ Output will be similar to what follows:
 
 ### Controller Interface
 
+It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Arena environments, to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
+
+```python
+import diambra.arena
+from diambra.arena.utils.controller import get_diambra_controller
+...
+# Environment Initialization
+...
+# Controller initialization
+controller = get_diambra_controller(env.get_actions_tuples())
+controller.start()
+...
+# Player-Environment interaction loop
+while condition:
+    ...
+    actions = controller.get_actions()
+    ...
+...
+controller.stop()
+```
+
 {{% notice tip %}}
 Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
 {{% /notice %}}
@@ -290,18 +312,3 @@ Use of this functionality can be found in <a href="/gettingstarted/examples/huma
 {{% notice note %}}
 Depending on the Operating System used, specific permissions may be needed in order to read the keyboard inputs.<br><br> - On Windows, by default no specific permissions are needed. However, if you have some third-party security software you may need to white-list Python.<br> - On Linux you need to add the user the `input` group: `sudo usermod -aG input $USER`<br> - On Mac, it is possible you need to use the settings application to allow your program to access the input devices (see <a href="https://inputs.readthedocs.io/en/latest/user/install.html#mac-permissions" target="_blank">this reference</a>).<br><br>Official `inputs` python package reference guide can be found at <a href="https://inputs.readthedocs.io/en/latest/user/install.html#windows-permissions" target="_blank">this link</a>
 {{% /notice %}}
-
-It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Arena environments, to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
-
-```python
-import diambra.arena
-from diambra.arena.utils.controller import get_diambra_controller
-...
-# Controller initialization
-controller = get_diambra_controller(env.action_list)
-controller.start()
-...
-actions = controller.get_actions()
-...
-controller.stop()
-```

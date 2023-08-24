@@ -21,7 +21,7 @@ Source code for examples described in what follows can be found in the code repo
 - <a href="./singleplayerenv/">Single Player Environment</a>
 - <a href="./multiplayerenv/">Multi Player Environment</a>
 - <a href="./wrappersoptions/">Wrappers Options</a>
-- <a href="./humanexperiencerecorder/">Human Experience Recorder</a>
-- <a href="./imitationlearning/">Imitation Learning</a>
+- <a href="./episoderecorder/">Episode Recorder</a>
+- <a href="./datasetloader/">Dataset Loader</a>
 
 </div>
