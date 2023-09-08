@@ -34,7 +34,7 @@ Implementation examples and templates can be found in the code repository, <a hr
 {{% /notice %}}
 
 {{% notice tip %}}
-Use of these functionalities can be found in <a href="../gettingstarted/examples/wrappersoptions/">this</a> and <a href="../gettingstarted/examples/humanexperiencerecorder/">this</a> examples.
+Use of these functionalities can be found in <a href="../gettingstarted/examples/wrappersoptions/">this</a> and <a href="../gettingstarted/examples/episoderecorder/">this</a> examples.
 {{% /notice %}}
 
 ### Generic Wrappers

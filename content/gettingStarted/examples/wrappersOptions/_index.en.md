@@ -10,7 +10,7 @@ This example focuses on:
 - Wrapped observation visualization
 
 {{% notice tip %}}
-A dedicated section describing environment wrappers settings is presented <a href="/wrappers/">here</a>, while more info on wrapped observation visualization utils are presented <a href="/utils/#wrapped-observation">here</a>. They both provide additional details on usage and purpose.
+A dedicated section describing environment wrappers settings is presented <a href="/wrappers/">here</a>.
 {{% /notice %}}
 
 {{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/wrappers_options.py" >}}

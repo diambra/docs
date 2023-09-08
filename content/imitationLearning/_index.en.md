@@ -35,7 +35,7 @@ episode_recording_settings["dataset_path"] = "/home/user/DIAMBRA/"
 ```
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="../gettingstarted/examples/humanexperiencerecorder/">this</a> example.
+Use of this functionality can be found in <a href="../gettingstarted/examples/episoderecorder/">this</a> example.
 {{% /notice %}}
 
 {{% notice note %}}
@@ -56,7 +56,7 @@ data_loader = DiambraDataLoader(dataset_path)
 ```
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="../gettingstarted/examples/imitationlearning/">this</a> example.
+Use of this functionality can be found in <a href="../gettingstarted/examples/datasetloader/">this</a> example.
 {{% /notice %}}
 
 {{% notice note %}}
