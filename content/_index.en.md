@@ -30,7 +30,7 @@ title: "Home"
 
 ### Overview
 
-DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It provides a standard interface to popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym format</span>, that makes its adoption smooth and straightforward.
+DIAMBRA Arena is a software package featuring a collection of <span style="color:#333333; font-weight:bolder;">high-quality environments for Reinforcement Learning research and experimentation</span>. It provides a standard interface to popular arcade emulated video games, offering a <span style="color:#333333; font-weight:bolder;">Python API fully compliant with OpenAI Gym/Gymnasium format</span>, that makes its adoption smooth and straightforward.
 
 It <span style="color:#333333; font-weight:bolder;">supports all major Operating Systems</span> (Linux, Windows and MacOS) and <span style="color:#333333; font-weight:bolder;">can be easily installed via Python PIP</span>, as described in the <a href="./#installation">installation section</a> below. It is <span style="color:#333333; font-weight:bolder;">completely free to use</span>, the user only needs to register on the official website.
 
@@ -109,20 +109,12 @@ Additional details can be found in their <a href="./envs/games/">dedicated secti
 
 - Install Docker Desktop (<a href="https://docs.docker.com/desktop/install/linux-install/" target="_blank">Linux</a> | <a href="https://docs.docker.com/desktop/windows/install/" target="_blank">Windows</a> | <a href="https://docs.docker.com/desktop/mac/install/" target="_blank">MacOS</a>) and <span style="color:#333333; font-weight:bolder;">make sure you have permissions to run it</span> (<a href="https://docs.docker.com/engine/install/linux-postinstall/" target="_blank">see here</a>). On Linux, it's usually enough to run `sudo usermod -aG docker $USER`, log out and log back in.
 
-- Install specific `wheel` and `setuptools` versions (temporary workaround to handle `gym v0.21` incompatibility with newest `pip` versions*):
-
-  `python3 -m pip install wheel==0.38.4 setuptools==66.0.0`
-
 - Install DIAMBRA Command Line Interface: `python3 -m pip install diambra`
 
 - Install DIAMBRA Arena: `python3 -m pip install diambra-arena`
 
 {{% notice tip %}}
 Using a virtual environment to isolate your python packages installation is strongly suggested
-{{% /notice %}}
-
-{{% notice note %}}
-*We are already working to support `gymnasium>=0.26.3` to solve all `gym v0.21` compatibility issues. This breaking change will happen very soon.
 {{% /notice %}}
 
 ### Quickstart
@@ -178,26 +170,7 @@ Make sure to check out our <a href="https://diambra.ai/terms" target="_blank">Te
 
 A Python script to run a complete episode with a random agent requires less than 20 lines:
 
-```python
-import diambra.arena
-
-env = diambra.arena.make("doapp")
-
-observation = env.reset()
-
-while True:
-    env.render()
-
-    actions = env.action_space.sample()
-
-    observation, reward, done, info = env.step(actions)
-
-    if done:
-        observation = env.reset()
-        break
-
-env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/diambra_arena_gist.py" >}}
 
 To execute the script run:
 
@@ -211,7 +184,7 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 ### Examples
 
-We provide multiple examples covering the most important use-cases, and can be used as templates and starting points to explore all the features of the software package.
+We provide multiple examples covering the most important use-cases, that can be used as templates and starting points to explore all the features of the software package.
 
 They show how to leverage both single and two players modes, how to set up environment wrappers with all their options, how to record human expert demonstrations and how to load them to apply imitation learning.
 
@@ -227,8 +200,8 @@ DIAMBRA Arena is built to maximize compatibility will all major Reinforcement Le
 
 Native interfaces, installed with the specific options listed below, are tested with the following versions:
 
-- Stable Baselines 3 (1.6.1) | `pip install diambra-arena[stable-baselines3]` <a href="https://stable-baselines3.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/DLR-RM/stable-baselines3" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines3/" target="_blank">Pypi</a>
-- Ray RLlib (2.0.0) | `pip install diambra-arena[ray-rllib]` <a href="https://docs.ray.io/en/latest/index.html" target="_blank">Docs</a>-<a href="https://github.com/ray-project/ray" target="_blank">GitHub</a>-<a href="https://pypi.org/project/ray/" target="_blank">Pypi</a>
+- Stable Baselines 3 (2.1.0) | `pip install diambra-arena[stable-baselines3]` <a href="https://stable-baselines3.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/DLR-RM/stable-baselines3" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines3/" target="_blank">Pypi</a>
+- Ray RLlib (2.6.3) | `pip install diambra-arena[ray-rllib]` <a href="https://docs.ray.io/en/latest/index.html" target="_blank">Docs</a>-<a href="https://github.com/ray-project/ray" target="_blank">GitHub</a>-<a href="https://pypi.org/project/ray/" target="_blank">Pypi</a>
 - Stable Baselines (2.10.2) | `pip install diambra-arena[stable-baselines]` <a href="https://stable-baselines.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/hill-a/stable-baselines" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines/" target="_blank">Pypi</a>
 
 ### Competition Platform
@@ -247,9 +220,9 @@ It also offers you the possibility to unlock cool achievements depending on the 
   <img src="../images/competitionPlatform/achievements.jpg" style="margin-top:0px;margin-bottom:30px;">
 </figure>
 
-Submitted agents are evaluated and their episodes are streamed on our Twitch channel.
+Submitted agents are evaluated and their episodes are streamed on <a href="https://www.twitch.tv/diambra_ai" target="_blank">our Twitch channel.</a>
 
-We aimed at making the submission process as smooth as possible, try it now!
+We aimed at making the submission process as smooth as possible, <a href="./competitionplatform/howtosubmitanagent/">try it now!</a>
 
 ### Docs Structure
 
@@ -270,8 +243,9 @@ We aimed at making the submission process as smooth as possible, try it now!
 
 To receive support, use the dedicated channel in our <a href="https://diambra.ai/discord" target="_blank">Discord Server</a>.
 
-To request features or report bugs, use the GitHub issue tracker for the specific repository:
+To request features or report bugs, use GitHub discussions and issue trackers for the repositories:
 
+- <a href="https://github.com/orgs/diambra/discussions" target="_blank">DIAMBRA Discussions</a>
 - <a href="https://github.com/diambra/arena/issues" target="_blank">DIAMBRA Arena Issue Tracker</a>
 - <a href="https://github.com/diambra/agents/issues" target="_blank">DIAMBRA Agents Issue Tracker</a>
 

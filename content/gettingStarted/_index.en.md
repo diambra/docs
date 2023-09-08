@@ -14,16 +14,16 @@ weight: 20
   - <a href="./#script-execution">Script Execution</a>
 - <a href="./#advanced-usage">Advanced Usage</a>
   - <a href="./#diambra-cli-advanced-options">DIAMBRA CLI Advanced Options</a>
-  - <a href="./#environment-native-rendering">Environment Native Rendering</a>
   - <a href="./#running-multiple-environments-in-parallel">Running Multiple Environments in Parallel</a>
   - <a href="./#run-diambra-engine-without-cli">Run DIAMBRA Engine without CLI</a>
+  - <a href="./#environment-native-rendering">Environment Native Rendering</a>
 
 </div>
 
 ### Prerequisites
 
-- Installation completed and tested as described in <a href="/#installation">Installation</a> and <a href="/#quickstart">Quickstart</a> homepage sections
-- ROMs downloaded and placed all in the same folder, whose absolute path will be referred in the following as `/absolute/path/to/roms/folder/`
+- Having completed and tested the installation as described in <a href="/#installation">Installation</a> and <a href="/#quickstart">Quickstart</a> sections in homepage
+- Having downloaded the ROMs and placed them all in the same folder, whose absolute path will be referred in the following as `/absolute/path/to/roms/folder/`
 
 {{% notice tip %}}
 To avoid specifying ROMs path at every run, you can define the environment variable `DIAMBRAROMSPATH=/absolute/path/to/roms/folder/`, either temporarily in your current shell/prompt session, or permanently in your profile (e.g. on linux in `~/.bashrc`).
@@ -160,40 +160,6 @@ Global Flags:
       --log.format string   Set logging output format (logfmt, json, fancy) (default "fancy")
 ```
 
-##### Environment Native Rendering
-
-It is possible to activate emulator native rendering while running environments (i.e. bringing up the emulator graphics window). The CLI provides a specific flag for this purpose, but currently this is supported only on Linux, while Windows and MacOS users have to configure a Xserver and link it to the environment container. The next tabs provide hints for each context.
-
-{{< tabs groupId="nativeRendering">}}
-{{% tab name="Linux" %}}
-
-On Linux, the CLI allows to render emulator natively on the host, the user only needs to add the `-g` flag to the run command, as follows:
-
-```shell
-diambra run -g python diambra_arena_gist.py
-```
-
-{{% notice note %}}
-Activating emulator native rendering will open a GUI where the game executes. Currently, this feature is affected by a problem: the mouse cursor disappears and remains constrained inside such window. To re-aquire control of the OS Xserver, one can circle through the active windows using the key combination ALT+TAB and highlight a different one.
-{{% /notice %}}
-
-{{% /tab %}}
-{{% tab name="Win" %}}
-
-To run environments with native emulator GUI support on Windows, currently requires the user to setup a virtual XServer and connect it to the container. We cannot provide support for this use case at the moment, but we plan to implement this feature in the near future.
-
-A virtual XServer that in our experience proved to be effective is <a href="https://sourceforge.net/projects/vcxsrv/" target="_blank">VcXsrv Windows X Server</a>.
-
-{{% /tab %}}
-{{% tab name="MacOS" %}}
-
-To run environments with native emulator GUI support on MacOS, currently requires the user to setup a virtual XServer and connect it to the container. We cannot provide support for this use case at the moment, but we plan to implement this feature in the near future.
-
-A virtual XServer that in our experience proved to be effective is <a href="https://www.xquartz.org/releases/XQuartz-2.7.8.html" target="_blank">XQuartz 2.7.8</a> coupled to `socat` that can be installed via `brew install socat`.
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ##### Running Multiple Environments in Parallel
 
 It can be useful to run multiple environment instances in parallel, for example for Deep RL training. The CLI provides a flag to control this, it can be used both by the `run` and the `arena` commands. The former will load a string in the `DIAMBRA_ENVS` environment variable where connection addresses are listed and separated by a space, while the latter will print out in the terminal the same string. These values can then be used properly to setup multiple parallel connections.
@@ -215,11 +181,6 @@ Server listening on 0.0.0.0:50051
 ##### Run DIAMBRA Engine without CLI
 
 Agents connect via network using gRPC to DIAMBRA Engine running in a Docker container. The `diambra` CLI's `run` command starts the DIAMBRA Engine in a Docker container and sets up the environment to make it easy to connect to the Engine. For troubleshooting it might be useful to run the Engine manually, using host networking.
-
-
-{{% notice note %}}
-Creating the `~/.diambra` and `~/.diambra/credentials` is only needed when you never ran the diambra CLI before. Otherwise this step can be skipped.
-{{% /notice %}}
 
 ###### Start Engine
 
@@ -264,6 +225,10 @@ docker run --rm -ti --name engine `
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% notice note %}}
+Creating the `~/.diambra` and `~/.diambra/credentials` is only needed when you never ran the diambra CLI before. Otherwise this step can be skipped.
+{{% /notice %}}
+
 ###### Connect to Engine
 
 Now you can run the script that uses DIAMBRA Arena by opening a new terminal and setting `DIAMBRA_ENVS` environment variable followed by the python command:
@@ -271,3 +236,37 @@ Now you can run the script that uses DIAMBRA Arena by opening a new terminal and
 ```bash
 DIAMBRA_ENVS=localhost:50051 python ./script.py
 ```
+
+##### Environment Native Rendering
+
+It is possible to activate emulator native rendering while running environments (i.e. bringing up the emulator graphics window). The CLI provides a specific flag for this purpose, but currently this is supported only on Linux, while Windows and MacOS users have to configure a Xserver and link it to the environment container. The next tabs provide hints for each context.
+
+{{< tabs groupId="nativeRendering">}}
+{{% tab name="Linux" %}}
+
+On Linux, the CLI allows to render emulator natively on the host, the user only needs to add the `-g` flag to the run command, as follows:
+
+```shell
+diambra run -g python diambra_arena_gist.py
+```
+
+{{% notice note %}}
+Activating emulator native rendering will open a GUI where the game executes. Currently, this feature is affected by a problem: the mouse cursor disappears and remains constrained inside such window. To re-aquire control of the OS Xserver, one can circle through the active windows using the key combination ALT+TAB and highlight a different one.
+{{% /notice %}}
+
+{{% /tab %}}
+{{% tab name="Win" %}}
+
+To run environments with native emulator GUI support on Windows, currently requires the user to setup a virtual XServer and connect it to the container. We cannot provide support for this use case at the moment, but we plan to implement this feature in the near future.
+
+A virtual XServer that in our experience proved to be effective is <a href="https://sourceforge.net/projects/vcxsrv/" target="_blank">VcXsrv Windows X Server</a>.
+
+{{% /tab %}}
+{{% tab name="MacOS" %}}
+
+To run environments with native emulator GUI support on MacOS, currently requires the user to setup a virtual XServer and connect it to the container. We cannot provide support for this use case at the moment, but we plan to implement this feature in the near future.
+
+A virtual XServer that in our experience proved to be effective is <a href="https://www.xquartz.org/releases/XQuartz-2.7.8.html" target="_blank">XQuartz 2.7.8</a> coupled to `socat` that can be installed via `brew install socat`.
+
+{{% /tab %}}
+{{< /tabs >}}
