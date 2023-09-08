@@ -129,19 +129,19 @@ All the examples presented in these sections (plus additional code) showing how 
 
 The classical way to create an agent able to play a game is to hand-code the rules governing its behavior. These rules can vary from very simple heuristics to very complex behavioral trees, but they all have in common the need of an expert coder that knows the game and is able to distill the key elements of it to craft the scripted bot.
 
-The following are two examples of (very simple) scripted agents interfaced with our environments, and they are available here: <a href="https://github.com/diambra/agents/tree/main/basic" target="_blank">DIAMBRA Agents - Basic</a>.
+The following are two examples of (very simple) scripted agents interfaced with our environments, and they are available here: <a href="https://github.com/diambra/agents/tree/release-2.1/basic" target="_blank">DIAMBRA Agents - Basic</a>.
 
 ###### No-Action Agent
 
 This agent simply performs the "No-Action" action at every step. By convention it is the action with index 0, and it needs to be a single value for `Discrete` action spaces, and a tuple of 0s for `MultiDiscrete` ones, as shown in the snippet below.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/basic/no_action/agent.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/basic/no_action/agent.py" >}}
 
 ###### Random Agent
 
 This agent simply performs a random action at every step. In this case, the sampling method takes care of generating an action that is consistent with the environment action space.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/basic/random_1/agent.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/basic/random_1/agent.py" >}}
 
 More complex scripts can be built in similar ways, for example continuously performing user-defined combos moves, or adding some more complex choice mechanics. But this would still require to decide the tactics in advance, properly translating knowledge into code. A different approach would be to leverage reinforcement learning, so that the agent will improve leveraging its own experience.
 

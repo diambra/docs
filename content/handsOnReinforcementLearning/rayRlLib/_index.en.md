@@ -20,7 +20,7 @@ weight: 20
 </div>
 
 {{% notice tip %}}
-The source code of all examples described in this section is available in our <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">DIAMBRA Agents</a> repository.
+The source code of all examples described in this section is available in our <a href="https://github.com/diambra/agents/tree/release-2.1/ray_rllib" target="_blank">DIAMBRA Agents</a> repository.
 {{% /notice %}}
 
 ### Getting Ready
@@ -42,7 +42,7 @@ pip install diambra-arena[ray-rllib]
 
 This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://docs.ray.io/en/latest/rllib/index.html" target="_blank">Ray RLlib documentation</a> or reach out on our <a href="https://diambra.ai/discord" target="_blank">Discord server</a> for specific needs.
 
-All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">DIAMBRA Agents - Ray RLlib.</a> They have been created following the high level approach found on <a href="https://docs.ray.io/en/latest/rllib/rllib-examples.html" target="_blank">Ray RLlib examples</a> page and their related <a href="https://github.com/ray-project/ray/tree/master/rllib/examples" target="_blank">repository collection,</a> thus allowing to easily extend them and to understand how they interface with the different components.
+All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/release-2.1/ray_rllib" target="_blank">DIAMBRA Agents - Ray RLlib.</a> They have been created following the high level approach found on <a href="https://docs.ray.io/en/latest/rllib/rllib-examples.html" target="_blank">Ray RLlib examples</a> page and their related <a href="https://github.com/ray-project/ray/tree/master/rllib/examples" target="_blank">repository collection,</a> thus allowing to easily extend them and to understand how they interface with the different components.
 
 These examples only aims at demonstrating the core functionalities and high level aspects, they will not generate well performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like: policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping and other similar ones.
 
@@ -51,7 +51,7 @@ These examples only aims at demonstrating the core functionalities and high leve
 DIAMBRA Arena native interface with Ray RLlib covers a wide range of use cases, automating handling of key things like parallelization. In the majority of cases it will be sufficient for users to directly import and use it, with no need for additional customization.
 
 {{% notice note %}}
-For the interface low level details, users can review the correspondent source code <a href="https://github.com/diambra/arena/blob/main/diambra/arena/ray_rllib/" target="_blank">here</a>.
+For the interface low level details, users can review the correspondent source code <a href="https://github.com/diambra/arena/blob/release-2.1/diambra/arena/ray_rllib/" target="_blank">here</a>.
 {{% /notice %}}
 
 ### Basic
@@ -69,7 +69,7 @@ This example demonstrates how to:
 
 It uses the PPO algorithm and, for demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/basic.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/ray_rllib/basic.py" >}}
 
 How to run it:
 
@@ -89,7 +89,7 @@ In addition to what seen in the previous example, this one demonstrates how to:
 
 The same conditions of the previous example for algorithm, policy and training steps are used in this one too.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/saving_loading_evaluating.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/ray_rllib/saving_loading_evaluating.py" >}}
 
 How to run it:
 
@@ -108,7 +108,7 @@ This example runs multiple environments. In order to properly execute it, the us
 - 2 rollout workers with 2 environments each, accounting for 4 environments
 - 1 evaluation worker with 2 environments, accounting for the remaining 2 environments
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/parallel_envs.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/ray_rllib/parallel_envs.py" >}}
 
 How to run it:
 
@@ -131,7 +131,7 @@ There are two main things to note in this example: how to handle observation nor
 
 The policy network is automatically generated, properly handling different types of inputs. Model architecture is then printed to the console output, allowing to clearly identify all the different contributions.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/dict_obs_space.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/ray_rllib/dict_obs_space.py" >}}
 
 How to run it:
 
@@ -147,7 +147,7 @@ Finally, after the agent training is completed, besides running it locally in yo
 To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
 {{% /notice %}}
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/agent.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/ray_rllib/agent.py" >}}
 
 How to run it locally:
 

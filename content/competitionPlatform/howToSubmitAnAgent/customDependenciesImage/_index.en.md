@@ -24,7 +24,7 @@ Instead of using the pre-built dependencies docker images we provide, you may wa
 
 
 {{% notice tip %}}
-Examples of docker files to create dependencies images are on the <a href="https://github.com/diambra/arena/tree/main/images" target='_blank'>Arena repo,</a> where we automatically build images for the RL libraries we support.
+Examples of docker files to create dependencies images are on the <a href="https://github.com/diambra/arena/tree/release-2.1/images" target='_blank'>Arena repo,</a> where we automatically build images for the RL libraries we support.
 {{% /notice %}}
 
 

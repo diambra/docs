@@ -17,4 +17,4 @@ A dedicated section describing human experience recording wrapper settings is pr
 Depending on the Operating System used, specific permissions may be needed in order to read the keyboard inputs.<br><br> - On Windows, by default no specific permissions are needed. However, if you have some third-party security software you may need to white-list Python.<br> - On Linux you need to add the user the `input` group: `sudo usermod -aG input $USER`<br> - On Mac, it is possible you need to use the settings application to allow your program to access the input devices (see <a href="https://inputs.readthedocs.io/en/latest/user/install.html#mac-permissions" target="_blank">this reference</a>).<br><br>Official `inputs` python package reference guide can be found at <a href="https://inputs.readthedocs.io/en/latest/user/install.html#windows-permissions" target="_blank">this link</a>
 {{% /notice %}}
 
-{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/human_trajectory_recording_options_single_player.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/release-2.1/examples/human_trajectory_recording_options_single_player.py" >}}

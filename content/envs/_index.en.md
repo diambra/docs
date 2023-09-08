@@ -105,7 +105,7 @@ DIAMBRA Arena Environments usage follows the standard RL interaction framework: 
 
 The shortest snippet for a complete basic execution of an environment consists of just a few lines of code, and is presented in the code block below:
 
-{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/diambra_arena_gist.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/release-2.1/examples/diambra_arena_gist.py" >}}
 
 {{% notice note %}}
 More complex and complete examples can be found in the <a href="../gettingstarted/examples/">Examples</a> section.

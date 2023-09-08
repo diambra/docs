@@ -36,7 +36,7 @@ To avoid specifying ROMs path at every run, you can define the environment varia
 
 The most straightforward and simple script to use DIAMBRA Arena is reported below. It features a random agent playing Dead Or Alive ++, and it represents the general interaction schema to be used for every game and context of DIAMBRA Arena.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/diambra_arena_gist.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/release-2.1/examples/diambra_arena_gist.py" >}}
 
 {{% notice note %}}
 More complex and complete examples can be found in the <a href="./examples/">Examples</a> section.

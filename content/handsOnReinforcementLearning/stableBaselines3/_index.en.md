@@ -21,7 +21,7 @@ weight: 10
 </div>
 
 {{% notice tip %}}
-The source code of all examples described in this section is available in our <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents</a> repository.
+The source code of all examples described in this section is available in our <a href="https://github.com/diambra/agents/tree/release-2.1/stable_baselines3" target="_blank">DIAMBRA Agents</a> repository.
 {{% /notice %}}
 
 ### Getting Ready
@@ -43,7 +43,7 @@ pip install diambra-arena[stable-baselines3]
 
 This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://stable-baselines3.readthedocs.io/en/master/guide/install.html" target="_blank">Stable Baselines 3 documentation</a> or reach out on our <a href="https://diambra.ai/discord" target="_blank">Discord server</a> for specific needs.
 
-All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Agents - Stable Baselines 3</a>. They have been created following the high level approach found on <a href="https://stable-baselines3.readthedocs.io/en/master/guide/examples.html" target="_blank">Stable Baselines 3 examples</a> page, thus allowing to easily extend them and to understand how they interface with the different components.
+All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/release-2.1/stable_baselines3" target="_blank">DIAMBRA Agents - Stable Baselines 3</a>. They have been created following the high level approach found on <a href="https://stable-baselines3.readthedocs.io/en/master/guide/examples.html" target="_blank">Stable Baselines 3 examples</a> page, thus allowing to easily extend them and to understand how they interface with the different components.
 
 These examples only aims at demonstrating the core functionalities and high level aspects, they will not generate well performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like: policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping and other similar ones.
 
@@ -72,7 +72,7 @@ def make_sb3_env(game_id: str, env_settings: dict={}, wrappers_settings: dict={}
 | `no_vec`                                                      | `bool`                                                    | `False`                                                               | If `True` avoids using vectorized environments (valid only when using a single instance)                                                                               |
 
 {{% notice note %}}
-For the interface low level details, users can review the correspondent source code <a href="https://github.com/diambra/arena/tree/main/diambra/arena/stable_baselines3" target="_blank">here</a>.
+For the interface low level details, users can review the correspondent source code <a href="https://github.com/diambra/arena/tree/release-2.1/diambra/arena/stable_baselines3" target="_blank">here</a>.
 {{% /notice %}}
 
 ### Basic
@@ -90,7 +90,7 @@ This example demonstrates how to:
 
 It uses the A2C algorithm, with a `CnnPolicy` policy network to properly process the game frame observation as input. For demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/basic.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/stable_baselines3/basic.py" >}}
 
 How to run it:
 
@@ -108,7 +108,7 @@ In addition to what seen in the previous example, this one demonstrates how to:
 
 The same conditions of the previous example for algorithm, policy and training steps are used in this one too.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/saving_loading_evaluating.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/stable_baselines3/saving_loading_evaluating.py" >}}
 
 How to run it:
 
@@ -129,7 +129,7 @@ In this example, the PPO algorithm is used, with the same `CnnPolicy` seen befor
 
 This example also runs multiple environments, automatically detecting the number of instances created by DIAMBRA CLI when running the script.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/parallel_envs.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/stable_baselines3/parallel_envs.py" >}}
 
 How to run it:
 
@@ -152,7 +152,7 @@ There are two main things to note in this example: how to handle observation nor
 
 In this case, the policy network needs to be of class `MultiInputPolicy`, since it will handle different types of inputs. Stable Baselines 3 automatically defines the network architecture, properly matching the input type. The architecture is then printed to the console output, allowing to clearly identify all the different contributions.
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/dict_obs_space.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/stable_baselines3/dict_obs_space.py" >}}
 
 How to run it:
 
@@ -177,7 +177,7 @@ This example show exactly how we trained our own models on these environments. I
 - Try to leverage behavioral cloning / imitation learning
 - Modify the reward function to guide learning in other directions
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/training.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/stable_baselines3/training.py" >}}
 
 How to run it:
 
@@ -187,7 +187,7 @@ diambra run python training.py --cfgFile /absolute/path/to/config.yaml
 
 and the configuration file to be used with this training script is reported below:
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/cfg_files/doapp/sr6_128x4_das_nc.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/stable_baselines3/cfg_files/doapp/sr6_128x4_das_nc.yaml" >}}
 
 #### Agent Script for Competition
 
@@ -197,7 +197,7 @@ Finally, after the agent training is completed, besides running it locally in yo
 To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
 {{% /notice %}}
 
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/agent.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/stable_baselines3/agent.py" >}}
 
 How to run it locally:
 

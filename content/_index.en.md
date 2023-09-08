@@ -178,26 +178,7 @@ Make sure to check out our <a href="https://diambra.ai/terms" target="_blank">Te
 
 A Python script to run a complete episode with a random agent requires less than 20 lines:
 
-```python
-import diambra.arena
-
-env = diambra.arena.make("doapp")
-
-observation = env.reset()
-
-while True:
-    env.render()
-
-    actions = env.action_space.sample()
-
-    observation, reward, done, info = env.step(actions)
-
-    if done:
-        observation = env.reset()
-        break
-
-env.close()
-```
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/release-2.1/examples/diambra_arena_gist.py" >}}
 
 To execute the script run:
 
@@ -215,7 +196,7 @@ We provide multiple examples covering the most important use-cases, and can be u
 
 They show how to leverage both single and two players modes, how to set up environment wrappers with all their options, how to record human expert demonstrations and how to load them to apply imitation learning.
 
-Every example has a <a href="/gettingstarted/examples/">dedicated page</a> in this documentation, and the source code is available in the <a href="https://github.com/diambra/arena/tree/main/examples" target="_blank">code repository.</a>
+Every example has a <a href="/gettingstarted/examples/">dedicated page</a> in this documentation, and the source code is available in the <a href="https://github.com/diambra/arena/tree/release-2.1/examples" target="_blank">code repository.</a>
 
 ### RL Libs Compatibility & State-of-the-Art Agents
 

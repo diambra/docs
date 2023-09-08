@@ -19,7 +19,7 @@ weight: 50
 
 DIAMBRA Arena comes with many different tools supporting development and debug. They provide different functionalities, all described below in the sections below where both code and output is reported.
 
-Source code can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/diambra/arena/utils/gym_utils.py" target="_blank">here</a>.
+Source code can be found in the code repository, <a href="https://github.com/diambra/arena/tree/release-2.1/diambra/arena/utils/gym_utils.py" target="_blank">here</a>.
 
 ### Available Games
 

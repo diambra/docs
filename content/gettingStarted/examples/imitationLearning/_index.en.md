@@ -12,4 +12,4 @@ This example focuses on:
 A dedicated section describing recorded experience loader is presented <a href="/imitationlearning/#recorded-experience-loader">here</a> and provides additional details on its usage and purpose.
 {{% /notice %}}
 
-{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/imitation_learning.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/release-2.1/examples/imitation_learning.py" >}}

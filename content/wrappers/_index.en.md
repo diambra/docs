@@ -30,7 +30,7 @@ env = diambra.arena.make("doapp", settings, wrappers_settings)
 ```
 
 {{% notice note %}}
-Implementation examples and templates can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/diambra/arena/wrappers" target="_blank">here</a>.
+Implementation examples and templates can be found in the code repository, <a href="https://github.com/diambra/arena/tree/release-2.1/diambra/arena/wrappers" target="_blank">here</a>.
 {{% /notice %}}
 
 {{% notice tip %}}
