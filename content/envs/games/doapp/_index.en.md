@@ -42,7 +42,7 @@ weight: 10
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                      |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `difficulty`                                             | `int`                                                     | 3                                                                     | [1, 4]                                                                                |
+| `difficulty`                                             | `str` U `int`                                                     | `Random`                                                                     | `Random` U [1, 4]                                                                                |
 
 #### Player Settings
 

@@ -41,7 +41,7 @@ weight: 20
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                        |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `difficulty`                                             | `int`                                                     | 3                                                                     | [1, 8]                                                                                                                  |
+| `difficulty`                                             | `str` U `int`                                                     | `Random`                                                                     | `Random` U [1, 8]                                                                                                                  |
 
 #### Player Settings
 
@@ -54,7 +54,7 @@ weight: 20
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>      |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `super_art*`                                              | `int`                                                     | 0                                                                     | [0, 3]                                                           | Selects the type of super move.<br>0: Random, 1-2-3: Super move 1-2-3 |
+| `super_art*`                                              | `str` U `int`                                                     | `Random`                                                                     | `Random` U [1, 3]                                                           | Selects the type of super move.<br>1-2-3: Super move 1-2-3 |
 
 {{% notice note %}}
 *: must be provided as tuples of two elements (for `agent_0` and `agent_1` respectively) when using the environments in two players mode.
