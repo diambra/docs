@@ -13,7 +13,7 @@ weight: 40
 <div style="font-size:1.125rem;">
 
 - <a href="./#game-specific-info">Game Specific Info</a>
-- <a href="./#game-specific-settings">Game Specific Settings</a>
+- <a href="./#specific-variable-settings">Specific Variable Settings</a>
 - <a href="./#action-spaces">Action Spaces</a>
 - <a href="./#observation-space">Observation Space</a>
   - <a href="./#global">Global</a>
@@ -30,28 +30,35 @@ weight: 40
 | <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>                                                     | `f48216ad82f78cb86e9c07d2507be347f904f4b5ae354a85ae7c34d969d265af`                                                                                                                      |
 | <strong><span style="color:#5B5B60;">Search Keywords</span></strong>                                                     | `ULTIMATE MORTAL KOMBAT 3 (CLONE)`, `ultimate-mortal-kombat-3-clone`, `109574`, `wowroms`                                                                                               |
 | <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>                                      | 254px&#160;X&#160;500px&#160;X&#160;3                                                                                                                                                   |
-| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong> | 9, 7 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-6): (No-Attack, High Punch, High Kick, Low Kick, Low Punch, Run, Block) |
+| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions</span></strong> | 9, 7 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-6): (No-Attack, High Punch, High Kick, Low Kick, Low Punch, Run, Block) |
 | <strong><span style="color:#5B5B60;">Max Difficulty (1P Mode)</span></strong>                                            | 5                                                                                                                                                                                       |
 | <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>                                   | 26 (22)                                                                                                                                                                                 |
 | <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>                                               | 1                                                                                                                                                                                       |
 | <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>                                          | 8 (Tower 1), 9 (Tower 2), 10 (Tower 3), 11 (Tower 4)                                                                                                                                    |
 
-### Game Specific Settings
+### Specific Variable Settings
+
+#### Game Settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                                                                                          |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `difficulty`                                             | `int`                                                     | 3                                                                     | [1, 5]                                                                                                                                                                                    |
-| `characters`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Kitana, Reptile, Kano, Sektor, Kabal, Sonya, Mileena, Sindel, Sheeva, Jax, Ermac, Stryker, Shang Tsung, Nightwolf, Sub-Zero-2, Cyrax, Liu Kang, Jade, Sub-Zero, Kung Lao, Smoke, Skorpion |
-| `outfits`                                           | `int`                                                     | 1                                                                     | [1, 1]                                                                                                                                                                                    |
 
-##### Extended Game Settings
+##### Additional Game Settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong> |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `tower`                                                  | `int`                                                     | 3                                                                     | [1, 4]                                                           | Selects the tower to play in (1P mode only)                      |
 
+#### Player Settings
+
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                                                                                          |
+| -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `characters*`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Kitana, Reptile, Kano, Sektor, Kabal, Sonya, Mileena, Sindel, Sheeva, Jax, Ermac, Stryker, Shang Tsung, Nightwolf, Sub-Zero-2, Cyrax, Liu Kang, Jade, Sub-Zero, Kung Lao, Smoke, Skorpion |
+| `outfits*`                                           | `int`                                                     | 1                                                                     | [1, 1]                                                                                                                                                                                    |
+
 {{% notice note %}}
-`characters` and `outfits` need to be provided as tuples of two elements (the first for P1 and the second for P2) when using this environment in two players mode.
+*: must be provided as tuples of two elements (for `agent_0` and `agent_1` respectively) when using the environments in two players mode.
 {{% /notice %}}
 
 ### Action Spaces

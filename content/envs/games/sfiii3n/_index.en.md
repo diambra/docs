@@ -13,7 +13,7 @@ weight: 20
 <div style="font-size:1.125rem;">
 
 - <a href="./#game-specific-info">Game Specific Info</a>
-- <a href="./#game-specific-settings">Game Specific Settings</a>
+- <a href="./#specific-variable-settings">Specific Variable Settings</a>
 - <a href="./#action-spaces">Action Spaces</a>
 - <a href="./#observation-space">Observation Space</a>
   - <a href="./#global">Global</a>
@@ -30,28 +30,34 @@ weight: 20
 | <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>                                                     | `7239b5eb005488db22ace477501c574e9420c0ab70aeeb0795dfeb474284d416`                                                                                                                                                                                                          |
 | <strong><span style="color:#5B5B60;">Search Keywords</span></strong>                                                     | `STREET FIGHTER III 3RD STRIKE: FIGHT FOR THE FUTUR [JAPAN] (CLONE)`, `street-fighter-iii-3rd-strike-fight-for-the-futur-japan-clone`, `106255`, `wowroms`                                                                                                                  |
 | <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>                                      | 224px&#160;X&#160;384px&#160;X&#160;3                                                                                                                                                                                                                                       |
-| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong> | 9, 10 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-9): (No-Attack, Low Punch, Medium Punch, High Punch, Low Kick, Medium Kick, High Kick), Low Punch+Low Kick, Medium Punch+Medium Kick, High Punch+High Kick |
+| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions</span></strong> | 9, 10 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-9): No-Attack, Low Punch, Medium Punch, High Punch, Low Kick, Medium Kick, High Kick, Low Punch+Low Kick, Medium Punch+Medium Kick, High Punch+High Kick |
 | <strong><span style="color:#5B5B60;">Max Difficulty (1P Mode)</span></strong>                                            | 8                                                                                                                                                                                                                                                                           |
 | <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>                                   | 20 (19)                                                                                                                                                                                                                                                                     |
 | <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>                                               | 7                                                                                                                                                                                                                                                                           |
 | <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>                                          | 10                                                                                                                                                                                                                                                                          |
 
-### Game Specific Settings
+### Specific Variable Settings
+#### Game Settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                        |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `difficulty`                                             | `int`                                                     | 3                                                                     | [1, 8]                                                                                                                  |
-| `characters`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
-| `outfits`                                           | `int`                                                     | 1                                                                     | [1, 7]                                                                                                                  |
 
-##### Extended Game Settings
+#### Player Settings
+
+| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                        |
+| -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `characters*`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
+| `outfits*`                                           | `int`                                                     | 1                                                                     | [1, 7]                                                                                                                  |
+
+##### Additional Player Settings
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>      |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `super_art`                                              | `int`                                                     | 0                                                                     | [0, 3]                                                           | Selects the type of super move.<br>0: Random, 1-2-3: Super move 1-2-3 |
+| `super_art*`                                              | `int`                                                     | 0                                                                     | [0, 3]                                                           | Selects the type of super move.<br>0: Random, 1-2-3: Super move 1-2-3 |
 
 {{% notice note %}}
-`characters`, `outfits` and `super_art` need to be provided as tuples of two elements (the first for P1 and the second for P2) when using this environment in two players mode.
+*: must be provided as tuples of two elements (for `agent_0` and `agent_1` respectively) when using the environments in two players mode.
 {{% /notice %}}
 
 ### Action Spaces

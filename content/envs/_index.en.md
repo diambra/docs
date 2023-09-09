@@ -11,8 +11,10 @@ math: true
 - <a href="./#overview">Overview</a>
 - <a href="./#interaction-basics">Interaction Basics</a>
 - <a href="./#settings">Settings</a>
-  - <a href="./#general-environment-settings">General Environment Settings</a>
-  - <a href="./#game-specific-settings">Game Specific Settings</a>
+  - <a href="./#fixed-settings">Fixed Settings</a>
+  - <a href="./#variable-settings">Variable Settings</a>
+    - <a href="./#game-settings">Game Settings</a>
+    - <a href="./#player-settings">Player Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
   - <a href="./#action-spaces-in-numbers">Action Spaces in Numbers</a>
 - <a href="./#observation-space">Observation Space</a>
