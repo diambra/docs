@@ -60,5 +60,5 @@ Use of this functionality can be found in <a href="../gettingstarted/examples/da
 {{% /notice %}}
 
 {{% notice note %}}
-Implementation of this class can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/diambra/arena/wrappers" target="_blank">here</a>.
+Implementation of this class can be found in the code repository, <a href="https://github.com/diambra/arena/tree/main/diambra/arena/utils" target="_blank">here</a>.
 {{% /notice %}}
