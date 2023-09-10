@@ -11,7 +11,7 @@ weight: 50
 - <a href="./#roms-check">ROMs Check</a>
 - <a href="./#environment-spaces-summary">Environment Spaces Summary</a>
 - <a href="./#observation-inspection">Observation Inspection</a>
-    - <a href="./#gym-observation">Gym Observation</a>
+    - <a href="./#base-environment">Base Environment</a>
     - <a href="./#wrapped-observation">Wrapped Observation</a>
 - <a href="./#controller-interface">Controller Interface</a>
 

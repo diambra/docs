@@ -29,7 +29,7 @@ Examples of docker files to create dependencies images are on the <a href="https
 
 
 
-Once these steps are completed, you can submit the agent to the platform using your custom dependencies images. Assuming you are in the very same situation explained in the examples shown in the <a href="../submityourownagent/#example-1-command-line-interface-command">Submit Your Own Agent</a> page, you would tweak them, respectively, as follows:
+Once these steps are completed, you can submit the agent to the platform using your custom dependencies images. Assuming you are in the very same situation explained in the examples shown in the <a href="/competitionplatform/howtosubmitanagent/submityourownagent/#example-1-using-a-manifest-file-suggested">Submit Your Own Agent</a> page, you would tweak them, respectively, as follows:
 
 - Example 1: Command Line Interface Command
 

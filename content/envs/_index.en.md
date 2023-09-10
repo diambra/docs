@@ -16,7 +16,6 @@ math: true
     - <a href="./#game-settings">Game Settings</a>
     - <a href="./#player-settings">Player Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
-  - <a href="./#action-spaces-in-numbers">Action Spaces in Numbers</a>
 - <a href="./#observation-space">Observation Space</a>
   - <a href="./#global">Global</a>
   - <a href="./#player-specific">Player Specific</a>
@@ -73,7 +72,7 @@ Interfaced games have been selected among the most popular fighting retro-games.
 
 Whenever possible, games are released with all hidden/bonus characters unlocked.
 
-Additional details can be found in their <a href="./envs/games/">dedicated section</a>.
+Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
 
 <div>
   <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">

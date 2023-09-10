@@ -58,7 +58,7 @@ An additional useful resource is represented by courses and/or video-lectures. T
 
 After having acquired solid fundamentals, as usual in the whole ML domain, one should rely on publications to keep the pace of field advancements. Conference papers, peer-reviewed journal and open access publications are all options to consider.
 
-A good starting point is to read the reference paper for all state-of-the-art algorithms implemented in the most important [RL libraries (see next section)](/deeprltraining/endtoendtraining/#rl-libraries), as found for example <a href="https://stable-baselines3.readthedocs.io/en/master/guide/algos.html" target="_blank">here (SB3)</a> and <a href="https://docs.ray.io/en/latest/rllib/rllib-algorithms.html" target="_blank">here (RAY RLlib)</a>.
+A good starting point is to read the reference paper for all state-of-the-art algorithms implemented in the most important [RL libraries (see next section)](/handsonreinforcementlearning/#reinforcement-learning-libraries), as found for example <a href="https://stable-baselines3.readthedocs.io/en/master/guide/algos.html" target="_blank">here (SB3)</a> and <a href="https://docs.ray.io/en/latest/rllib/rllib-algorithms.html" target="_blank">here (RAY RLlib)</a>.
 
 <div>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
