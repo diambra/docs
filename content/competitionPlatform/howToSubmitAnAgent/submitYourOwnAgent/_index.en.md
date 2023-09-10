@@ -25,7 +25,7 @@ To favor an easy start, we provide example agents files (scripts and weights) th
 <span style="color:#333333; font-weight:bolder;">Do not add your tokens directly in the submission YAML file, they will be publicly visible.</span>
 {{% /notice %}}
 
-#### Example 1: Using a Manifest File (Suggested)
+#### Example 1: Using a Manifest File (Recommended)
 
 Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image, and have your agent's files stored on GitHub, create a file named `submission-manifest.yaml` with the following content:
 
