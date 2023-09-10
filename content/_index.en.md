@@ -188,7 +188,7 @@ We provide multiple examples covering the most important use-cases, that can be 
 
 They show how to leverage both single and two players modes, how to set up environment wrappers with all their options, how to record human expert demonstrations and how to load them to apply imitation learning.
 
-Every example has a <a href="/gettingstarted/examples/">dedicated page</a> in this documentation, and the source code is available in the <a href="https://github.com/diambra/arena/tree/main/examples" target="_blank">code repository.</a>
+Every example has a <a href="./gettingstarted/examples/">dedicated page</a> in this documentation, and the source code is available in the <a href="https://github.com/diambra/arena/tree/main/examples" target="_blank">code repository.</a>
 
 ### RL Libs Compatibility & State-of-the-Art Agents
 
@@ -196,7 +196,7 @@ Every example has a <a href="/gettingstarted/examples/">dedicated page</a> in th
   <img src="https://github.com/diambra/agents/blob/main/img/agents.jpg?raw=true" style="margin-top:0px;margin-bottom:30px;">
 </figure>
 
-DIAMBRA Arena is built to maximize compatibility will all major Reinforcement Learning libraries. It natively provides interfaces with the two most import packages: Stable Baselines 3 and Ray RLlib, while Stable Baselines is also available but deprecated. Their usage is illustrated in detail in the <a href="/handsonreinforcementlearning/">dedicated section</a> of this documentation and in the <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>  repository. It can easily be interfaced with any other package in a similar way.
+DIAMBRA Arena is built to maximize compatibility will all major Reinforcement Learning libraries. It natively provides interfaces with the two most import packages: Stable Baselines 3 and Ray RLlib, while Stable Baselines is also available but deprecated. Their usage is illustrated in detail in the <a href="./handsonreinforcementlearning/">dedicated section</a> of this documentation and in the <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a>  repository. It can easily be interfaced with any other package in a similar way.
 
 Native interfaces, installed with the specific options listed below, are tested with the following versions:
 

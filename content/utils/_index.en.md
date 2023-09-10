@@ -202,7 +202,7 @@ env.show_obs(observation=obs, wait_key=1, viz=True)
 ```
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a>, <a href="/gettingstarted/examples/multiplayerenv/">this</a>, <a href="/gettingstarted/examples/wrappersoptions/">this</a> and <a href="/gettingstarted/examples/datasetloader/">this</a> examples.
+Use of this functionality can be found in <a href="../gettingstarted/examples/singleplayerenv/">this</a>, <a href="../gettingstarted/examples/multiplayerenv/">this</a>, <a href="../gettingstarted/examples/wrappersoptions/">this</a> and <a href="../gettingstarted/examples/datasetloader/">this</a> examples.
 {{% /notice %}}
 
 #### Base Environment
@@ -306,7 +306,7 @@ controller.stop()
 ```
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/episoderecorder/">this</a> example.
+Use of this functionality can be found in <a href="../gettingstarted/examples/episoderecorder/">this</a> example.
 {{% /notice %}}
 
 {{% notice note %}}

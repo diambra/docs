@@ -12,7 +12,7 @@ This example focuses on:
 - Gym observation visualization
 
 {{% notice tip %}}
-A dedicated section describing environment settings is presented <a href="/envs/#settings">here</a>.
+A dedicated section describing environment settings is presented <a href="../../../envs/#settings">here</a>.
 {{% /notice %}}
 
 {{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/single_player_env.py" >}}

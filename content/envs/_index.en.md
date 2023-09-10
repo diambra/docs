@@ -29,7 +29,7 @@ This page describes in details all general aspects related to DIAMBRA Arena envi
 
 DIAMBRA Arena is a software package featuring a collection of high-quality environments for Reinforcement Learning research and experimentation. It provides a standard interface to popular arcade emulated video games, offering a Python API fully compliant with OpenAI Gym/Gymnasium format, that makes its adoption smooth and straightforward.
 
-It supports all major Operating Systems (Linux, Windows and MacOS) and can be easily installed via Python PIP, as described in the <a href="/#installation">installation section</a>. It is completely free to use, the user only needs to register on the official website.
+It supports all major Operating Systems (Linux, Windows and MacOS) and can be easily installed via Python PIP, as described in the <a href="../#installation">installation section</a>. It is completely free to use, the user only needs to register on the official website.
 
 In addition, its <a href="https://github.com/diambra/arena" target="_blank">GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
 
@@ -72,26 +72,26 @@ Interfaced games have been selected among the most popular fighting retro-games.
 
 Whenever possible, games are released with all hidden/bonus characters unlocked.
 
-Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
+Additional details can be found in their <a href="./games/">dedicated section</a>.
 
 <div>
   <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
   </figure>
   <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
   </figure>
 </div>
 
@@ -126,7 +126,7 @@ Settings specifications when instantiating the environment is done by passing th
 env = diambra.arena.make("doapp", settings)
 ```
 
-The first argument is the `game_id` string, it specifies the game to execute among those available (see <a href="/envs/games/ ">games list</a> for details).
+The first argument is the `game_id` string, it specifies the game to execute among those available (see <a href="./games/ ">games list</a> for details).
 
 Variable settings specification at reset is done by passing the `variable_settings` dictionary to the environment `reset` call as follows:
 
@@ -134,7 +134,7 @@ Variable settings specification at reset is done by passing the `variable_settin
 env.reset(options=variable_settings)
 ```
 
-Same of them are shared among all environments and are presented here below, while others are specific to the selected game and can be found in the game-specific pages listed <a href="/envs/games/ ">here.</a>
+Same of them are shared among all environments and are presented here below, while others are specific to the selected game and can be found in the game-specific pages listed <a href="./games/ ">here.</a>
 
 {{% notice note %}}
 Following OpenAI Gym/Gymnasium standard, also the `seed` can be specified at `reset` using `env.reset(seed=seed, options=variable_settings)`, but please note that:<br>&nbsp;<span style="color:#333333; font-weight:bolder;">•</span> It can be directly passed through the `settings` dictionary when the environment is instantiated and the environment will take care of setting it at the first `reset` call<br>&nbsp;<span style="color:#333333; font-weight:bolder;">•</span> When explicitly passed to the `reset` keyword argument, it should only be passed to the very first `reset` method call and never after it
