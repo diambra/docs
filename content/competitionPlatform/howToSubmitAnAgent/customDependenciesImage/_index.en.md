@@ -14,7 +14,7 @@ Instead of using the pre-built dependencies docker images we provide, you may wa
    docker build -t <registry>/<name>:<tag> .
    ```
 
-   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://dockerhub.com" target="_blank">dockerhub,</a> but make sure the image is public.
+   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://hub.docker.com/" target="_blank">dockerhub,</a> but make sure the image is public.
 
 3. Push the image to the registry:
 
