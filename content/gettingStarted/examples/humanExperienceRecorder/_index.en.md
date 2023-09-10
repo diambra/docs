@@ -10,7 +10,7 @@ This example focuses on:
 - Controller interfacing (Gamepad or Keyboard)
 
 {{% notice tip %}}
-A dedicated section describing human experience recording wrapper settings is presented <a href="/imitationlearning/#experience-recording-wrapper">here</a> and provides additional details on their usage and purpose.
+A dedicated section describing human experience recording wrapper settings is presented <a href="../../../imitationlearning/#experience-recording-wrapper">here</a> and provides additional details on their usage and purpose.
 {{% /notice %}}
 
 {{% notice note %}}

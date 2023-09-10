@@ -12,7 +12,7 @@ This example focuses on:
 - Gym observation visualization
 
 {{% notice tip %}}
-A dedicated section describing environment settings is presented <a href="/envs/#settings">here</a>, while more info on gym observation visualization utils are presented <a href="/utils/#gym-observation">here</a>. They both provide additional details on usage and purpose.
+A dedicated section describing environment settings is presented <a href="../../../envs/#settings">here</a>, while more info on gym observation visualization utils are presented <a href="../../../utils/#gym-observation">here</a>. They both provide additional details on usage and purpose.
 {{% /notice %}}
 
 {{< github_code "https://raw.githubusercontent.com/diambra/arena/release-2.1/examples/single_player_env.py" >}}

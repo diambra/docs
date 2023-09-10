@@ -23,7 +23,7 @@ weight: 20
 
 ### Prerequisites
 
-- Installation completed and tested as described in <a href="/#installation">Installation</a> and <a href="/#quickstart">Quickstart</a> homepage sections
+- Installation completed and tested as described in <a href="../#installation">Installation</a> and <a href="../#quickstart">Quickstart</a> homepage sections
 - ROMs downloaded and placed all in the same folder, whose absolute path will be referred in the following as `/absolute/path/to/roms/folder/`
 
 {{% notice tip %}}

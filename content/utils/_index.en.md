@@ -195,7 +195,7 @@ There are two different methods, one to be used for the basic Gym Environment an
 #### Gym Observation
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a> and <a href="/gettingstarted/examples/multiplayerenv/">this</a> examples.
+Use of this functionality can be found in <a href="../gettingstarted/examples/singleplayerenv/">this</a> and <a href="../gettingstarted/examples/multiplayerenv/">this</a> examples.
 {{% /notice %}}
 
 ```python
@@ -228,7 +228,7 @@ Output will be similar to what follows:
 #### Wrapped Observation
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/wrappersoptions/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
+Use of this functionality can be found in <a href="../gettingstarted/examples/wrappersoptions/">this</a> and <a href="../gettingstarted/examples/imitationlearning/">this</a> examples.
 {{% /notice %}}
 
 {{% notice warning %}}
@@ -292,7 +292,7 @@ Output will be similar to what follows:
 ### Controller Interface
 
 {{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
+Use of this functionality can be found in <a href="../gettingstarted/examples/humanexperiencerecorder/">this</a> example.
 {{% /notice %}}
 
 {{% notice note %}}

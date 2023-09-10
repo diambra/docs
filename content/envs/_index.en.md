@@ -28,7 +28,7 @@ This page describes in details all general aspects related to DIAMBRA Arena envi
 
 DIAMBRA Arena is a software package featuring a collection of high-quality environments for Reinforcement Learning research and experimentation. It provides a standard interface to popular arcade emulated video games, offering a Python API fully compliant with OpenAI Gym format, that makes its adoption smooth and straightforward.
 
-It supports all major Operating Systems (Linux, Windows and MacOS) and can be easily installed via Python PIP, as described in the <a href="/#installation">installation section</a>. It is completely free to use, the user only needs to register on the official website.
+It supports all major Operating Systems (Linux, Windows and MacOS) and can be easily installed via Python PIP, as described in the <a href="../#installation">installation section</a>. It is completely free to use, the user only needs to register on the official website.
 
 In addition, its <a href="https://github.com/diambra/arena" target="_blank">GitHub repository</a> provides a collection of examples covering main use cases of interest that can be run in just a few steps.
 
@@ -71,26 +71,26 @@ Interfaced games have been selected among the most popular fighting retro-games.
 
 Whenever possible, games are released with all hidden/bonus characters unlocked.
 
-Additional details can be found in their <a href="/envs/games/">dedicated section</a>.
+Additional details can be found in their <a href="./games/">dedicated section</a>.
 
 <div>
   <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
   </figure>
   <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <a href="/envs/games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
   </figure>
 </div>
 

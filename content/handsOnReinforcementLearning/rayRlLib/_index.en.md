@@ -144,7 +144,7 @@ diambra run python dict_obs_space.py
 Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our competition platform! To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.
 
 {{% notice tip %}}
-To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
+To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="../../competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
 {{% /notice %}}
 
 {{< github_code "https://raw.githubusercontent.com/diambra/agents/release-2.1/ray_rllib/agent.py" >}}

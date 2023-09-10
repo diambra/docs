@@ -54,7 +54,7 @@ wrappers_settings["no_op_max"] = 0
 #### Frame Warping
 
 {{% notice warning %}}
-DEPRECATED: For speed, consider using the environment setting `frame_shape` that performs the same operation on the engine side, as described in <a href="/envs/#general-environment-settings">this section</a>.
+DEPRECATED: For speed, consider using the environment setting `frame_shape` that performs the same operation on the engine side, as described in <a href="../envs/#general-environment-settings">this section</a>.
 {{% /notice %}}
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Target Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                    |
