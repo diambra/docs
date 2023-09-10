@@ -29,7 +29,7 @@ diambra agent submit --submission.manifest manifest.yaml arg1 arg2 arg3
 the resulting submission manifest sent to the platform would be
 ```yaml
 ---
-image: diambra/agent-random-1:main
+image: diambra/agent-random-1:2.1
 mode: AIvsCOM
 difficulty: easy
 args:
@@ -63,7 +63,7 @@ diambra agent submit --submission.set-command --submission.manifest manifest.yam
 the resulting submission manifest sent to the platform would be
 ```yaml
 ---
-image: diambra/agent-random-1:main
+image: diambra/agent-random-1:2.1
 mode: AIvsCOM
 difficulty: easy
 command:

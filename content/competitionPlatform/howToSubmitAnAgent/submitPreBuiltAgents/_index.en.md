@@ -11,21 +11,21 @@ For example, <a href="https://github.com/diambra/agents/pkgs/container/agent-ran
 Using this pre-built docker image you can easily perform your first submission ever on DIAMBRA platform, and appear in the official online leaderboard by simply typing in your preferred shell the following command:
 
 ```shell
-diambra agent submit diambra/agent-random-1:main
+diambra agent submit diambra/agent-random-1:2.1
 ```
 {{% notice note %}}
-If you want to specify the game on which to run the random agent, use the `--gameId` command line argument that our pre-built image accepts, when submitting the docker image as follows: `diambra agent submit diambra/agent-random-1:main --gameId tektagt`. Additional similar use cases are covered in the <a href="../../argumentsandcommands/">"Arguments and Commands"</a> page.
+If you want to specify the game on which to run the random agent, use the `--gameId` command line argument that our pre-built image accepts, when submitting the docker image as follows: `diambra agent submit diambra/agent-random-1:2.1 --gameId tektagt`. Additional similar use cases are covered in the <a href="../../argumentsandcommands/">"Arguments and Commands"</a> page.
 {{% /notice %}}
 
 After running the command, you will receive a submission confirmation, its identification number as well as the url where to see the results, something similar to the following:
 
 ```
-diambra agent submit diambra/agent-random-1:main
+diambra agent submit diambra/agent-random-1:2.1
 🖥️  (178) Agent submitted: https://diambra.ai/submission/178
 ```
 
 {{% notice note %}}
-By default, the submission will select the lowest difficulty level (`Easy`) of the three available (`Easy`, `Medium`, `Hard`). To change this, you can add the `--submission.difficulty` argument: `diambra agent submit --submission.difficulty Medium diambra/agent-random-1:main`
+By default, the submission will select the lowest difficulty level (`Easy`) of the three available (`Easy`, `Medium`, `Hard`). To change this, you can add the `--submission.difficulty` argument: `diambra agent submit --submission.difficulty Medium diambra/agent-random-1:2.1`
 {{% /notice %}}
 
 

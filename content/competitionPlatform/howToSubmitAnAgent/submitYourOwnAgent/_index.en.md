@@ -31,7 +31,7 @@ Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencie
 
 ```yaml
 mode: AIvsCOM
-image: diambra/arena-stable-baselines3-on3.10-bullseye:main
+image: diambra/arena-stable-baselines3-on3.10-bullseye:2.1
 command:
   - python
   - "/sources/agent.py"
@@ -63,7 +63,7 @@ In case you don't want to clone all your repository, you can explicitly specify 
 ```yaml
 ---
 mode: AIvsCOM
-image: diambra/arena-stable-baselines3-on3.10-bullseye:main
+image: diambra/arena-stable-baselines3-on3.10-bullseye:2.1
 command:
   - python
   - "/sources/agent.py"
@@ -77,7 +77,7 @@ In case you have multiple source files you need to use, and you want to avoid to
 
 ```yaml
 mode: AIvsCOM
-image: diambra/arena-stable-baselines3-on3.10-bullseye:main
+image: diambra/arena-stable-baselines3-on3.10-bullseye:2.1
 command:
   - python
   - "/sources/data/agent.py"
