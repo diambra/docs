@@ -29,23 +29,9 @@ Examples of docker files to create dependencies images are on the <a href="https
 
 
 
-Once these steps are completed, you can submit the agent to the platform using your custom dependencies images. Assuming you are in the very same situation explained in the examples shown in the <a href="../submityourownagent/#example-1-using-a-manifest-file-suggested">Submit Your Own Agent</a> page, you would tweak them, respectively, as follows:
+Once these steps are completed, you can submit the agent to the platform using your custom dependencies images. Assuming you are in the very same situation explained in the examples shown in the <a href="../submityourownagent/#example-1-using-a-manifest-file-recommended">Submit Your Own Agent</a> page, you would tweak them, respectively, as follows:
 
-- Example 1: Command Line Interface Command
-
-  Update the image name command line argument:
-  ```sh
-  diambra agent submit \
-  --submission.mode AIvsCOM \
-  --submission.source agent.py=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py \
-  --submission.source models/model.zip=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip \
-  --submission.secret token=your_gh_token \
-  --submission.set-command \
-  <registry>/<name>:<tag> \
-  python "/sources/agent.py" "/sources/models/model.zip"
-  ```
-
-- Example 2: Using a Manifest File
+- Example 1: Using a Manifest File (Recommended)
 
   Update the image name in the submission manifest:
   ```yaml
@@ -58,6 +44,20 @@ Once these steps are completed, you can submit the agent to the platform using y
   sources:
     agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py
     models/model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip
+  ```
+
+- Example 2: Command Line Interface Only
+
+  Update the image name command line argument:
+  ```sh
+  diambra agent submit \
+  --submission.mode AIvsCOM \
+  --submission.source agent.py=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py \
+  --submission.source models/model.zip=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip \
+  --submission.secret token=your_gh_token \
+  --submission.set-command \
+  <registry>/<name>:<tag> \
+  python "/sources/agent.py" "/sources/models/model.zip"
   ```
 
 {{% notice warning %}}
