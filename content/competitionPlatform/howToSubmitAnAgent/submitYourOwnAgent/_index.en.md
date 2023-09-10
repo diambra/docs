@@ -22,7 +22,7 @@ To favor an easy start, we provide example agents files (scripts and weights) th
 {{% /notice %}}
 
 {{% notice warning %}}
-**Do not add your tokens directly in the submission YAML file, they will be publicly visible.**
+<span style="color:#333333; font-weight:bolder;">Do not add your tokens directly in the submission YAML file, they will be publicly visible.</span>
 {{% /notice %}}
 
 #### Example 1: Using a Manifest File (Suggested)
@@ -55,7 +55,7 @@ Note that this will clone your entire repository (including Git LFS files) and p
 ##### Specify Sources Explicitly
 
 {{% notice warning %}}
-Explicit sources specification will now work with Git LFS files, to submit them, the only option is to use the automatic `git clone` mechanism described above.
+Explicit sources specification will not work with Git LFS files, to submit them, the only option is to use the automatic `git clone` mechanism described above.
 {{% /notice %}}
 
 In case you don't want to clone all your repository, you can explicitly specify the source files you want to download as follows:
