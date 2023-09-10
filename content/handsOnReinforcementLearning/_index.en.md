@@ -71,7 +71,7 @@ A good starting point is to read the reference paper for all state-of-the-art al
   </figure>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%;">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/papers_journals.png"/>
-   <figcaption align="middle">Peer-reviewed Journals (<a href="https://www.journals.elsevier.com/artificial-intelligence" target="_blank">ELSEVIER</a>, <a href="https://www.springer.com/journal/10458" target="_blank">Springer</a>, etc.)</figcaption>
+   <figcaption align="middle">Peer-reviewed Journals (<a href="https://www.sciencedirect.com/journal/artificial-intelligence" target="_blank">ELSEVIER</a>, <a href="https://www.springer.com/journal/10458" target="_blank">Springer</a>, etc.)</figcaption>
   </figure>
 </div>
 
