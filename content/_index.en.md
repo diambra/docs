@@ -200,8 +200,8 @@ DIAMBRA Arena is built to maximize compatibility will all major Reinforcement Le
 
 Native interfaces, installed with the specific options listed below, are tested with the following versions:
 
-- Stable Baselines 3 (2.1.0) | `pip install diambra-arena[stable-baselines3]` <a href="https://stable-baselines3.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/DLR-RM/stable-baselines3" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines3/" target="_blank">Pypi</a>
-- Ray RLlib (2.6.3) | `pip install diambra-arena[ray-rllib]` <a href="https://docs.ray.io/en/latest/index.html" target="_blank">Docs</a>-<a href="https://github.com/ray-project/ray" target="_blank">GitHub</a>-<a href="https://pypi.org/project/ray/" target="_blank">Pypi</a>
+- Stable Baselines 3 (2.1.*) | `pip install diambra-arena[stable-baselines3]` <a href="https://stable-baselines3.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/DLR-RM/stable-baselines3" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines3/" target="_blank">Pypi</a>
+- Ray RLlib (2.7.*) | `pip install diambra-arena[ray-rllib]` <a href="https://docs.ray.io/en/latest/index.html" target="_blank">Docs</a>-<a href="https://github.com/ray-project/ray" target="_blank">GitHub</a>-<a href="https://pypi.org/project/ray/" target="_blank">Pypi</a>
 - Stable Baselines (2.10.2) | `pip install diambra-arena[stable-baselines]` <a href="https://stable-baselines.readthedocs.io/en/master/index.html" target="_blank">Docs</a>-<a href="https://github.com/hill-a/stable-baselines" target="_blank">GitHub</a>-<a href="https://pypi.org/project/stable-baselines/" target="_blank">Pypi</a>
 
 ### Competition Platform

@@ -11,8 +11,8 @@ math: true
 - <a href="./#overview">Overview</a>
 - <a href="./#interaction-basics">Interaction Basics</a>
 - <a href="./#settings">Settings</a>
-  - <a href="./#fixed-settings">Fixed Settings</a>
-  - <a href="./#variable-settings">Variable Settings</a>
+  - <a href="./#environmnet-settings">Environment Settings</a>
+  - <a href="./#episode-settings">Episode Settings</a>
     - <a href="./#game-settings">Game Settings</a>
     - <a href="./#player-settings">Player Settings</a>
 - <a href="./#action-spaces">Action Space(s)</a>
@@ -114,42 +114,78 @@ More complex and complete examples can be found in the <a href="../gettingstarte
 
 ### Settings
 
-All environments have different options that can be specified using key-value pairs in a Python dictionary. They are grouped as follows:
-- <span style="color:#333333; font-weight:bolder;">Fixed</span>: defined only when the environment is instantiated, they never change throughout the agent-environment interaction (e.g. the action space or the frame size)
-- <span style="color:#333333; font-weight:bolder;">Variable</span>: defined first when the environment is instantiated, they can be changed at each environment `reset` call through the `options` keyword argument. These settings are further divided into:
-  - <span style="color:#333333; font-weight:bolder;">Game settings</span>: they specify features of the game (e.g. difficulty level)
-  - <span style="color:#333333; font-weight:bolder;">Player settings</span>: they specify player-related aspects (e.g. selected character and its outfits)
+All environments have different options that can be specified using a dedicated `EnvironmentSettings` class. They are nested as follows:
+- <span style="color:#333333; font-weight:bolder;">Environment settings</span>: defined only when the environment is instantiated, they never change throughout the agent-environment interaction (e.g. the action space or the frame size)
+  - <span style="color:#333333; font-weight:bolder;">Episode settings</span>: defined first when the environment is instantiated, they can be changed each time a new episode starts, i.e. at every environment `reset` call, passing a dictionary containing the key-value pairs for the settings of interest through the `options` keyword argument. These settings are further divided in:
+    - <span style="color:#333333; font-weight:bolder;">Game settings</span>: they specify features of the game (e.g. difficulty level)
+    - <span style="color:#333333; font-weight:bolder;">Player settings</span>: they specify player-related aspects (e.g. selected character and its outfits)
 
-Settings specifications when instantiating the environment is done by passing the `settings` dictionary to the environment `make` call as follows:
+Settings specifications when instantiating the environment is done by passing the `EnvironmentSettings` class, properly filled, to the environment `make` call as follows:
 
 ```python
+from diambra.arena import EnvironmentSettings
+
+# Settings specification
+settings = EnvironmentSettings()
+settings.setting_1 = value_1
+settings.setting_2 = value_2
+
 env = diambra.arena.make("doapp", settings)
 ```
 
 The first argument is the `game_id` string, it specifies the game to execute among those available (see <a href="./games/ ">games list</a> for details).
 
-Variable settings specification at reset is done by passing the `variable_settings` dictionary to the environment `reset` call as follows:
+Episode settings specification at reset is done by passing the `episode_settings` dictionary to the environment `reset` call as follows:
 
 ```python
-env.reset(options=variable_settings)
+# Episode settings
+episode_settings = {
+  setting_1: value_1,
+  setting_2: value_2,
+}
+
+env.reset(options=episode_settings)
 ```
 
-Same of them are shared among all environments and are presented here below, while others are specific to the selected game and can be found in the game-specific pages listed <a href="./games/ ">here.</a>
+Some of them are shared among all environments and are presented here below, while others are specific to the selected game and can be found in the game-specific pages listed <a href="./games/ ">here.</a>
+
+The tables in the next sections lists all the attributes of the setting classes.
+
+##### Use dictionaries to specify settings
+
+As for previous versions of the library, it is also possible to specify environment settings through a dictionary and use a dedicated function to load it into the `EnvironmentSettings` class:
+
+```python
+from diambra.arena import EnvironmentSettings, load_settings_flat_dict
+
+# Settings specification
+settings = {
+  setting_1: value_1,
+  setting_2: value_2,
+}
+
+settings = load_settings_flat_dict(EnvironmentSettings, settings)
+env = diambra.arena.make("doapp", settings)
+```
 
 {{% notice note %}}
-Following OpenAI Gym/Gymnasium standard, also the `seed` can be specified at `reset` using `env.reset(seed=seed, options=variable_settings)`, but please note that:<br>&nbsp;<span style="color:#333333; font-weight:bolder;">•</span> It can be directly passed through the `settings` dictionary when the environment is instantiated and the environment will take care of setting it at the first `reset` call<br>&nbsp;<span style="color:#333333; font-weight:bolder;">•</span> When explicitly passed to the `reset` keyword argument, it should only be passed to the very first `reset` method call and never after it
+When using multi-agents (two players) environments, the settings class to be passed to the environment `make` method is the `EnvironmentSettingsMultiAgent` instead of `EnvironmentSettings`, while all the attributes will remain the same.
+{{% /notice %}}
+
+{{% notice note %}}
+Following OpenAI Gym/Gymnasium standard, also the `seed` can be specified at `reset` using `env.reset(seed=seed, options=episode_settings)`, but please note that:<br>&nbsp;<span style="color:#333333; font-weight:bolder;">•</span> It can be directly passed through the `settings` dictionary when the environment is instantiated and the environment will take care of setting it at the first `reset` call<br>&nbsp;<span style="color:#333333; font-weight:bolder;">•</span> When explicitly passed to the `reset` keyword argument, it should only be passed to the very first `reset` method call and never after it
 {{% /notice %}}
 
 {{% notice tip %}}
 Two ready-to-use examples showing how environment settings are used can be found <a href="../gettingstarted/examples/singleplayerenv/">here</a> and <a href="../gettingstarted/examples/multiplayerenv/">here</a>.
 {{% /notice %}}
 
-#### Fixed Settings
+#### Environment Settings
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                                                         | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                                                                                                                            |
+| <strong><span style="color:#5B5B60;">Name</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                                                         | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                                                                                                                            |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `frame_shape`                                            | `tuple` of three `int` (H,&#160;W,&#160;C)                | (0,&#160;0,&#160;0)                                                   | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1                                                                                                          | If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>(0,&#160;0,&#160;0) - Deactivated;<br>(H,&#160;W,&#160;0) - RBG frame resized to H&#160;X&#160;W;<br>(0,&#160;0,&#160;1) - Grayscale frame;<br>(H,&#160;W,&#160;1) - Grayscale frame resized to H&#160;X&#160;W. |
-| `action_space*`                                           | `str`                                                     | `multi_discrete`                                                      | `discrete` / `multi_discrete`                                                                                                                            | Defines the type of the action space                                                                                                                                                                                                                                                                        |
+| `action_space*`                                           | `SpaceTypes`                                                     | `MULTI_DISCRETE`                                                      | `DISCRETE` / `MULTI_DISCRETE`                                                                                                                            | Defines the type of the action space                                                                                                                                                                                                                                                                        |
 | `n_players`                                                 | `int`                                                     | 1                                                             | [1, 2]| Selects single player or two players mode                                                                                                                                                                                                       |
 | `step_ratio`                                             | `int`                                                     | 6                                                                     | [1, 6]                                                                                                                                                   | Defines how many steps the game (emulator) performs for every environment step                                                                                                                                                                                                                              |
 
@@ -157,13 +193,13 @@ Two ready-to-use examples showing how environment settings are used can be found
 *: must be provided as tuples of two elements (for `agent_0` and `agent_1` respectively) when using the environments in two players mode.
 {{% /notice %}}
 
-#### Variable Settings
+#### Episode Settings
 
 ##### Game Settings
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>  |
+| <strong><span style="color:#5B5B60;">Name</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>  |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `difficulty`                                             | `str` U `int`                                                     | `Random`                                                                     | Game-specific min and max values allowed                         | Specifies game difficulty (1P only)                               |
+| `difficulty`                                             | `None` U `int`                                                     | `None`                                                                     | Game-specific min and max values allowed                         | Specifies game difficulty (1P only)                               |
 | `continue_game`                                          | `float`                                                   | 0.0                                                                   | [0.0, 1.0]: probability of continuing game at game over<br>`int(abs(-inf, -1.0])`: number of continues at game over before episode to be considered done | Defines if and how to allow ”Continue” when the agent is about to face the game over condition    |
 | `show_final`                                          | `bool`                                                   | `False`                                                                   | `True` / `False` | Activates displaying of final animation when game is completed|
 
@@ -173,10 +209,10 @@ Other variable game settings are found in the game-specific pages where applicab
 
 Environment settings depending on the specific game and shared among all of them are reported in the table below. Additional ones (if present) are reported in game-dedicated pages.
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>  |
+| <strong><span style="color:#5B5B60;">Name</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>  |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `role*`                                                 | `str`                                                     | `Random`                                                              | `P1` (left), `P2` (right), `Random` (50% P1, 50% P2)                                                                        | Selects role for the player, which also affects the side positioning at round starts                                                                                                                                                                                                       |
-| `characters*`                                             | `str` or `tuple` of maximum three `str`                   | `Random`                                                              | Game-specific lists of characters that can be selected           | Specifies character(s) to use                                     |
+| `role*`                                                 | `None` U `Roles`                                                     | `None`                                                              | `P1` (left), `P2` (right), `None` (50% P1, 50% P2)                                                                        | Selects role for the player, which also affects the side positioning at round starts                                                                                                                                                                                                       |
+| `characters*`                                             | `None` U `str` U `tuple` of maximum three `str`                   | `None`                                                              | Game-specific lists of characters that can be selected           | Specifies character(s) to use                                     |
 | `outfits*`                                           | `int`                                                     | 1                                                                     | Game-specific min and max values allowed                         | Defines the number of outfits to draw from at character selection |
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;width: 60%">
@@ -189,6 +225,11 @@ Other variable player settings are found in the game-specific pages where applic
 {{% notice note %}}
 *: must be provided as tuples of two elements (for `agent_0` and `agent_1` respectively) when using the environments in two players mode.
 {{% /notice %}}
+
+{{% notice note %}}
+`None` values specify a `Random` behavior for the correspondent parameter.
+{{% /notice %}}
+
 
 ### Action Space(s)
 
@@ -248,31 +289,27 @@ Global elements of the observation space are unrelated to the player and they ar
 
 #### Player specific
 
-Player-specific observations are found at the same nesting level of the global ones for single player mode, while they grouped in a separate agent-specific nesting level when the 2 players mode is selected. In this latter case, they can be accessed using keys `agent_0` and `agent_1` for the first and the second agent respectively. A code example for the two different cases is shown below for the `own_side` RAM state:
+Player-specific observations are nested under the key indicating the player they are referred to (i.e. `"P1"` and `"P2"`). A code example is shown below for the `side` RAM state of the two players:
 
 ```python
-# Single player environment
-own_side = observation["own_side"]
+# P1 side
+P1_side = observation["P1"]["side"]
+# P2 side
+P2_side = observation["P2"]["side"]
 ```
-```python
-# Two players environment
-# Agent 0
-own_side_agent_0 = observation["agent_0"]["own_side"]
-# Agent 1
-own_side_agent_1 = observation["agent_1"]["own_side"]
-```
-
 
 Typical values that are available for each game are reported and described in the table below. The same table is found in every game-dedicated page, specifying and extending (if needed) the observation elements set.
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong>                                                        | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                  |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `own_side`/`opp_side`                                      | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1]                                                      | Side of the stage where the player is<br>0: Left, 1: Right                                                                        |
-| `own_wins`/`opp_wins`                                      | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/box.py" target="blank_">Box</a>                    | [0,&#160;max number of rounds]                                   | Number of rounds won by the player for the current stage                                                                                                |
-| `own_char`/`opp_char`                                      | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;max number of characters - 1]                           | Index of character in use                                                                                                         |
-| `own_health`/`opp_health`                                  | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/box.py" target="blank_">Box</a>                    | [0,&#160;max health value]                                       | Health bar value                                                                                                                  |
-| `action_move`                                         | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;max number of move actions - 1]                         | Index of latest move action performed (no-move, left, left+up, up, etc.)                                                          |
-| `action_attack`                                       | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;max number of attack actions - 1]                       | Index of latest attack action performed (no-attack, hold, punch, etc.)                                                            |
+| `side`                                      | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/discrete.py" target="blank_">Discrete</a> (Binary) | [0,&#160;1]                                                      | Side of the stage where the player is<br>0: Left, 1: Right                                                                        |
+| `wins`                                      | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/box.py" target="blank_">Box</a>                    | [0,&#160;max number of rounds]                                   | Number of rounds won by the player for the current stage                                                                                                |
+| `character`                                      | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/discrete.py" target="blank_">Discrete</a>          | [0,&#160;max number of characters - 1]                           | Index of character in use                                                                                                         |
+| `health`                                  | <a href="https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/spaces/box.py" target="blank_">Box</a>                    | [0,&#160;max health value]                                       | Health bar value                                                                                                                  |
+
+{{% notice note %}}
+Additional observations, both new and derived from specific processing of the above ones, can be obtained via the wide choice of <a href="../wrappers/">Environment Wrappers</a>, see the dedicated page for details.
+{{% /notice %}}
 
 ### Reward Function
 
