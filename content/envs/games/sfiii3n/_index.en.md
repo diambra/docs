@@ -47,7 +47,7 @@ weight: 20
 
 | <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                        |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `characters*`                                             | `None` U `str` or `tuple` of maximum three `str`                   | `None`                                                              | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
+| `characters*`                                             | `None` U `str` U `tuple` of maximum three `str`                   | `None`                                                              | Alex, Twelve, Hugo, Sean, Makoto, Elena, Ibuki, Chun-Li, Dudley, Necro, Q, Oro, Urien, Remy, Ryu, Gouki, Yun, Yang, Ken |
 | `outfits*`                                           | `int`                                                     | 1                                                                     | [1, 7]                                                                                                                  |
 
 ##### Additional Player Settings
