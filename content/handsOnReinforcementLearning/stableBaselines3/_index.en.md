@@ -84,7 +84,7 @@ For all the examples there are two main things to note about the observation spa
 
 First, the normalization wrapper is applied on all elements but the image frame, as Stable Baselines 3 automatically normalizes images and expects their pixels to be in the range [0 - 255].
 
-Second, the library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a <a href="../../wrappers/#flattening-and-filtering">flattening wrapper</a> that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.
+Second, the library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a <a href="../../wrappers/#flatten-and-filter-observation">flattening wrapper</a> that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.
 
 Stable Baselines 3 automatically defines the network architecture, properly matching the input type. In some of the examples the architecture is printed to the console output, allowing to clearly identify all the different contributions.
 

@@ -11,7 +11,7 @@ math: true
 - <a href="./#overview">Overview</a>
 - <a href="./#interaction-basics">Interaction Basics</a>
 - <a href="./#settings">Settings</a>
-  - <a href="./#environmnet-settings">Environment Settings</a>
+  - <a href="./#environment-settings">Environment Settings</a>
   - <a href="./#episode-settings">Episode Settings</a>
     - <a href="./#game-settings">Game Settings</a>
     - <a href="./#player-settings">Player Settings</a>
@@ -376,6 +376,6 @@ $$
 
 With the following additional term at the denominator:
 
-- $N_k$ is the reward normalization factor defined through our [Reward Nomralization Wrapper](/wrappers/#reward-normalization).
+- $N_k$ is the reward normalization factor defined through our [reward nomralization wrapper](/wrappers/#normalize-reward).
 
 The normalization term at the denominator ensures that a round won with a perfect (i.e. without losing any health), generates always the same maximum total cumulative reward (for the round) accross all games, equal to $N_c/N_k$.
