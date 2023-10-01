@@ -44,8 +44,8 @@ Game specific details provide useful information about each title. They are repo
 | <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>                                                   | Name of the original game ROM to be downloaded (if renaming is needed, it is indicated) |
 | <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>                                                     | ROM file checksum used to validate it                                                   |
 | <strong><span style="color:#5B5B60;">Search Keywords</span></strong>                                                     | List of keywords that can be used to find the correct ROM file                          |
-| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>                                         | Game frame resolution                                                                   |
-| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions<br>(Without Buttons Combination)</span></strong> | Number of moves and attack actions and their description                                |
+| <strong><span style="color:#5B5B60;">Game Resolution (H X W X C)</span></strong>                                         | Game frame native  resolution                                                                   |
+| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions</span></strong> | Number of moves and attack actions and their description                                |
 | <strong><span style="color:#5B5B60;">Max Difficulty</span></strong>                                                      | Maximum difficulty level available                                                      |
 | <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>                                   | Number of characters featured in the game, and those that can actually be selected      |
 | <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>                                               | Maximum number of different outfits available per each character                        |
@@ -56,7 +56,7 @@ Whenever possible, games are released with all hidden/bonus characters unlocked.
 {{% /notice %}}
 
 {{% notice info %}}
-For every released title, extensive testing has been carried out, being the minimum requirement for a game to be released in beta. After that, the next internal step is training a Deep RL agent to play, and possibly complete it, making sure the 1P mode is playable with no bugs up until game end. This is the condition under which titles are moved from beta to stable status.
+For every released title, extensive testing has been carried out, making sure the 1P mode is playable with no bugs up until game end.
 {{% /notice %}}
 
 </div>

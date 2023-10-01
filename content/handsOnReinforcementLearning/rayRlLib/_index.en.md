@@ -56,8 +56,6 @@ For the interface low level details, users can review the correspondent source c
 
 ### Basic
 
-For all the basic examples, the environment will be used in `hardcore` mode, so that the observation space will be only of type `Box` composed by screen pixels, as in the majority of simple examples found in tutorials and docs. This allows to directly use it without the need of further processing.
-
 #### Basic Example
 
 This example demonstrates how to:
@@ -118,8 +116,6 @@ diambra run -s=6 python parallel_envs.py
 
 ### Advanced
 
-The nex example make use of the complete observation space of our environments. This is of type `Dict`, in which different elements are organized as key-value pairs and they can be of different type.
-
 #### Dictionary Observations
 
 In addition to what seen in previous examples, this one demonstrates how to:
@@ -127,7 +123,7 @@ In addition to what seen in previous examples, this one demonstrates how to:
 - Activate a complete set of environment wrappers
 - How to properly handle dictionary observations for Ray RLlib
 
-There are two main things to note in this example: how to handle observation normalization and dictionary observations. As it can be seen from the snippet below, the normalization wrapper is applied on all elements prescribing one-hot encoding to be applied on binary discrete observations too. This is usually not needed nor suggested, but it is requested by Ray RLlib to automatically handle this observation type. On the other hand, the library does not have constraints on dictionary observation spaces, being able to handle nested ones too.
+The main thing to note in this example is that the library does not have constraints on dictionary observation spaces, being able to handle nested ones too.
 
 The policy network is automatically generated, properly handling different types of inputs. Model architecture is then printed to the console output, allowing to clearly identify all the different contributions.
 
@@ -141,10 +137,10 @@ diambra run python dict_obs_space.py
 
 #### Agent Script for Competition
 
-Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our competition platform! To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.
+Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our <a href="../../competitionplatform">Competition Platform!</a> To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.
 
 {{% notice tip %}}
-To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
+To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="../../competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
 {{% /notice %}}
 
 {{< github_code "https://raw.githubusercontent.com/diambra/agents/main/ray_rllib/agent.py" >}}

@@ -14,7 +14,7 @@ Instead of using the pre-built dependencies docker images we provide, you may wa
    docker build -t <registry>/<name>:<tag> .
    ```
 
-   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://dockerhub.com" target="_blank">dockerhub,</a> but make sure the image is public.
+   This will create the docker image and tag it. You can use any public registry, like <a href="https://quay.io" target="_blank">quay.io</a> or <a href="https://hub.docker.com" target="_blank">dockerhub,</a> but make sure the image is public.
 
 3. Push the image to the registry:
 
@@ -29,23 +29,9 @@ Examples of docker files to create dependencies images are on the <a href="https
 
 
 
-Once these steps are completed, you can submit the agent to the platform using your custom dependencies images. Assuming you are in the very same situation explained in the examples shown in the <a href="../submityourownagent/#example-1-command-line-interface-command">Submit Your Own Agent</a> page, you would tweak them, respectively, as follows:
+Once these steps are completed, you can submit the agent to the platform using your custom dependencies images. Assuming you are in the very same situation explained in the examples shown in the <a href="../submityourownagent/#example-1-using-a-manifest-file-recommended">Submit Your Own Agent</a> page, you would tweak them, respectively, as follows:
 
-- Example 1: Command Line Interface Command
-
-  Update the image name command line argument:
-  ```sh
-  diambra agent submit \
-  --submission.mode AIvsCOM \
-  --submission.source agent.py=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py \
-  --submission.source models/model.zip=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip \
-  --submission.secret token=your_gh_token \
-  --submission.set-command \
-  <registry>/<name>:<tag> \
-  python "/sources/agent.py" "/sources/models/model.zip"
-  ```
-
-- Example 2: Using a Manifest File
+- Example 1: Using a Manifest File (Recommended)
 
   Update the image name in the submission manifest:
   ```yaml
@@ -58,6 +44,20 @@ Once these steps are completed, you can submit the agent to the platform using y
   sources:
     agent.py: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py
     models/model.zip: https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip
+  ```
+
+- Example 2: Command Line Interface Only
+
+  Update the image name command line argument:
+  ```sh
+  diambra agent submit \
+  --submission.mode AIvsCOM \
+  --submission.source agent.py=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py \
+  --submission.source models/model.zip=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip \
+  --submission.secret token=your_gh_token \
+  --submission.set-command \
+  <registry>/<name>:<tag> \
+  python "/sources/agent.py" "/sources/models/model.zip"
   ```
 
 {{% notice warning %}}

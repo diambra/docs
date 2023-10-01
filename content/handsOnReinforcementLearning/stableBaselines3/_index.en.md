@@ -14,7 +14,6 @@ weight: 10
   - <a href="./#saving-loading-and-evaluating">Saving, Loading and Evaluating</a>
   - <a href="./#parallel-environments">Parallel Environments</a>
 - <a href="./#advanced">Advanced</a>
-  - <a href="./#dictionary-observations">Dictionary Observations</a>
   - <a href="./#complete-training-script">Complete Training Script</a>
   - <a href="./#agent-script-for-competition">Agent Script for Competition</a>
 
@@ -52,24 +51,28 @@ These examples only aims at demonstrating the core functionalities and high leve
 DIAMBRA Arena native interface with Stable Baselines 3 covers a wide range of use cases, automating handling of vectorized environments and monitoring wrappers. In the majority of cases it will be sufficient for users to directly import and use it, with no need for additional customization. Below is reported its interface and a table describing its arguments.
 
 ```python
-def make_sb3_env(game_id: str, env_settings: dict={}, wrappers_settings: dict={},
-                 use_subprocess: bool=True, seed: int=0, log_dir_base: str="/tmp/DIAMBRALog/",
-                 start_index: int=0, allow_early_resets: bool=True,
-                 start_method: str=None, no_vec: bool=False)
+def make_sb3_env(game_id: str, env_settings: EnvironmentSettings=EnvironmentSettings(),
+                 wrappers_settings: WrappersSettings=WrappersSettings(),
+                 episode_recording_settings: RecordingSettings=RecordingSettings(),
+                 render_mode: str="rgb_array", seed: int=None, start_index: int=0,
+                 allow_early_resets: bool=True, start_method: str=None, no_vec: bool=False,
+                 use_subprocess: bool=True, log_dir_base: str="/tmp/DIAMBRALog/"):
 ```
 
 | <strong><span style="color:#5B5B60;">Argument</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                       |
 | ------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `game_id`                                                     | `str`                                                     | -                                                                     | Game environment identifier                                                                                                                                            |
-| `env_settings`                                                | `dict`                                                    | `{}`                                                                  | Environment settings (<a href="/envs/#settings">see more</a>)                                                                                                          |
-| `wrappers_settings`                                           | `dict`                                                    | `{}`                                                                  | Wrappers settings (<a href="/wrappers/">see more</a>)                                                                                                                  |
-| `use_subprocess`                                              | `bool`                                                    | `True`                                                                | If to use subprocesses for multi-threaded parallelization                                                                                                              |
-| `seed`                                                        | `int`                                                     | 0                                                                     | Random number generator seed                                                                                                                                           |
-| `log_dir_base`                                                | `str`                                                     | `"/tmp/DIAMBRALog/"`                                                  | Folder where to save execution logs                                                                                                                                    |
-| `start_index`                                                 | `int`                                                     | 0                                                                     | Starting process rank index                                                                                                                                            |
+| `env_settings`                                                | `EnvironmentSettings`                                                    | `EnvironmentSettings()`                                                                  | Environment settings (<a href="../../envs/#settings">see more</a>)                                                                                                          |
+| `wrappers_settings`                                           | `WrappersSettings`                                                    | `WrappersSettings()`                                                                  | Wrappers settings (<a href="../../wrappers/">see more</a>)                                                                                                                  |
+| `episode_recording_settings`                                    | `RecordingSettings`                                                    | `RecordingSettings()`                                                                  | Episode recording settings<br>(<a href="../../imitationlearning/#episode-recording-wrapper">see more</a>)                                                                                                                  |
+| `render_mode`                                                        | `str`                                                     | `"rgb_array"`                                                                     | Rendering mode                                                                                                                                           |
+| `seed`                                                        | `int`                                                     | `None`                                                                     | Random number generator seed                                                                                                                                           |
+| `start_index`                                                 | `int`                                                     | `0`                                                                     | Starting process rank index                                                                                                                                            |
 | `allow_early_resets`                                          | `bool`                                                    | `True`                                                                | Monitor wrapper argument to allow environment reset before it is done                                                                                                  |
 | `start_method`                                                | `str`                                                     | `None`                                                                | Method to spawn subprocesses when active (<a href="https://stable-baselines3.readthedocs.io/en/master/guide/vec_envs.html#subprocvecenv" target="_blank">see more</a>) |
 | `no_vec`                                                      | `bool`                                                    | `False`                                                               | If `True` avoids using vectorized environments (valid only when using a single instance)                                                                               |
+| `use_subprocess`                                              | `bool`                                                    | `True`                                                                | If to use subprocesses for multi-threaded parallelization                                                                                                              |
+| `log_dir_base`                                                | `str`                                                     | `"/tmp/DIAMBRALog/"`                                                  | Folder where to save execution logs                                                                                                                                    |
 
 {{% notice note %}}
 For the interface low level details, users can review the correspondent source code <a href="https://github.com/diambra/arena/tree/main/diambra/arena/stable_baselines3" target="_blank">here</a>.
@@ -77,18 +80,24 @@ For the interface low level details, users can review the correspondent source c
 
 ### Basic
 
-For all the basic examples, the environment will be used in `hardcore` mode, so that the observation space will be only of type `Box` composed by screen pixels, as in the majority of simple examples found in tutorials and docs. This allows to directly use it without the need of further processing.
+For all the examples there are two main things to note about the observation space.
+
+First, the normalization wrapper is applied on all elements but the image frame, as Stable Baselines 3 automatically normalizes images and expects their pixels to be in the range [0 - 255].
+
+Second, the library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a <a href="../../wrappers/#flatten-and-filter-observation">flattening wrapper</a> that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.
+
+Stable Baselines 3 automatically defines the network architecture, properly matching the input type. In some of the examples the architecture is printed to the console output, allowing to clearly identify all the different contributions.
 
 #### Basic Example
 
 This example demonstrates how to:
 
-- Instantiate a new DIAMBRA Arena environment with its settings
-- Interface it with one of Stable Baselines 3's algorithms
+- Leverage DIAMBRA Arena native Stable Baselines 3 interface to create the environment
+- Interface the environment with one of Stable Baselines 3's algorithms
 - Train the algorithm
 - Run the trained agent in the environment for one episode
 
-It uses the A2C algorithm, with a `CnnPolicy` policy network to properly process the game frame observation as input. For demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.
+It uses the A2C algorithm, with a `MultiInputPolicy` policy network to properly process the dictionary observation space as input. For demonstration purposes, the algorithm is trained for only 200 steps, so the resulting agent will be far from optimal.
 
 {{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/basic.py" >}}
 
@@ -120,12 +129,10 @@ diambra run python saving_loading_evaluating.py
 
 In addition to what seen in previous examples, this one demonstrates how to:
 
-- Leverage DIAMBRA Arena native Stable Baselines 3 interface
-- Activate environment wrappers
 - Run training using parallel environments
 - Print out the policy network architecture
 
-In this example, the PPO algorithm is used, with the same `CnnPolicy` seen before. This policy network works even if in this example an environment wrapper is used to stack multiple game frames, as they are piled along the channel dimension. In this example the policy architecture is also printed to the console output, allowing to visualize how inputs are processed and "translated" to actions probabilities.
+In this example, the PPO algorithm is used, with the same `MultiInputPolicy` seen before. The policy architecture is also printed to the console output, allowing to visualize how inputs are processed and "translated" to actions probabilities.
 
 This example also runs multiple environments, automatically detecting the number of instances created by DIAMBRA CLI when running the script.
 
@@ -139,32 +146,11 @@ diambra run -s=2 python parallel_envs.py
 
 ### Advanced
 
-The nex examples make use of the complete observation space of our environments. This is of type `Dict`, in which different elements are organized as key-value pairs and they can be of different type.
-
-#### Dictionary Observations
-
-In addition to what seen in previous examples, this one demonstrates how to:
-
-- Activate a complete set of environment wrappers
-- How to properly handle dictionary observations for Stable Baselines 3
-
-There are two main things to note in this example: how to handle observation normalization and dictionary observations. As it can be seen from the snippet below, the normalization wrapper is applied on all elements but the image frame, as Stable Baselines 3 automatically normalizes images and expects their pixels to be in the range [0 - 255]. The library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a flattening wrapper that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.
-
-In this case, the policy network needs to be of class `MultiInputPolicy`, since it will handle different types of inputs. Stable Baselines 3 automatically defines the network architecture, properly matching the input type. The architecture is then printed to the console output, allowing to clearly identify all the different contributions.
-
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/dict_obs_space.py" >}}
-
-How to run it:
-
-```shell
-diambra run python dict_obs_space.py
-```
-
 #### Complete Training Script
 
 In addition to what seen in previous examples, this one demonstrates how to:
 
-- Build a complete training script to be used with Stable Baselines via a config fila
+- Build a complete training script to be used with Stable Baselines via a config file
 - How to properly handle hyper-parameters scheduling via callbacks
 - How to use callbacks for auto-saving
 - How to control some policy network models and optimizer parameters
@@ -191,10 +177,10 @@ and the configuration file to be used with this training script is reported belo
 
 #### Agent Script for Competition
 
-Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our competition platform! To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.
+Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our <a href="../../competitionplatform">Competition Platform!</a> To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different models, games and settings.
 
 {{% notice tip %}}
-To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="/competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
+To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="../../competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
 {{% /notice %}}
 
 {{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/agent.py" >}}

@@ -11,7 +11,7 @@ weight: 50
 - <a href="./#roms-check">ROMs Check</a>
 - <a href="./#environment-spaces-summary">Environment Spaces Summary</a>
 - <a href="./#observation-inspection">Observation Inspection</a>
-    - <a href="./#gym-observation">Gym Observation</a>
+    - <a href="./#base-environment">Base Environment</a>
     - <a href="./#wrapped-observation">Wrapped Observation</a>
 - <a href="./#controller-interface">Controller Interface</a>
 
@@ -105,37 +105,37 @@ Output will be similar to what follows:
 ```txt
 Observation space:
 
-        observation_space["P1"]["actions"]["attack"]: Discrete(4)
+observation_space["action_attack"]: Discrete(4)
 
-        observation_space["P1"]["actions"]["move"]: Discrete(9)
+observation_space["action_move"]: Discrete(9)
 
-    observation_space["P1"]["oppChar"]: Discrete(11)
+observation_space["opp_char"]: Discrete(11)
 
-    observation_space["P1"]["oppHealth"]: Box()
-        Space type = int32
-        Space high bound = 208
-        Space low bound = 0
+observation_space["opp_health"]: Box()
+    Space type = int32
+    Space high bound = 208
+    Space low bound = 0
 
-    observation_space["P1"]["oppSide"]: Discrete(2)
+observation_space["opp_side"]: Discrete(2)
 
-    observation_space["P1"]["oppWins"]: Box()
-        Space type = int32
-        Space high bound = 2
-        Space low bound = 0
+observation_space["opp_wins"]: Box()
+    Space type = int32
+    Space high bound = 2
+    Space low bound = 0
 
-    observation_space["P1"]["ownChar"]: Discrete(11)
+observation_space["own_char"]: Discrete(11)
 
-    observation_space["P1"]["ownHealth"]: Box()
-        Space type = int32
-        Space high bound = 208
-        Space low bound = 0
+observation_space["own_health"]: Box()
+    Space type = int32
+    Space high bound = 208
+    Space low bound = 0
 
-    observation_space["P1"]["ownSide"]: Discrete(2)
+observation_space["own_side"]: Discrete(2)
 
-    observation_space["P1"]["ownWins"]: Box()
-        Space type = int32
-        Space high bound = 2
-        Space low bound = 0
+observation_space["own_wins"]: Box()
+    Space type = int32
+    Space high bound = 2
+    Space low bound = 0
 
 observation_space["frame"]: Box(480, 512, 3)
         Space type = uint8
@@ -179,6 +179,11 @@ observation_space["stage"]: Box()
         Space high bound = 8
         Space low bound = 1
 
+observation_space["timer"]: Box()
+        Space type = int8
+        Space high bound = 40
+        Space low bound = 0
+
 Action space:
 
 action_space =  Discrete(12)
@@ -188,58 +193,43 @@ action_space =  Discrete(12)
 
 ### Observation Inspection
 
-Prints out a detailed description of Environment's observation content, showing every level of it. The only element that is not printed in the terminal is the game frame that, when `viz` input argument is set to `True`, is shown is a dedicated graphical window. The `wait_key` parameter defines how this window behaves: when set equal to 0, it pauses waiting for the user to press a button, while if set different from zero, it waits the prescribed number of milliseconds before continuing.
+Prints out a detailed description of Environment's observation content, showing every level of it. The only element that is not printed in the terminal is the game frame that, when `viz` input argument is set to `True`, is shown in dedicated graphical windows, one per channel (i.e. RGB channels are shown separately). The `wait_key` parameter defines how this window(s) behaves: when set equal to 0, it pauses waiting for the user to press a button, while if set different from zero, it waits the prescribed number of milliseconds before continuing.
 
-There are two different methods, one to be used for the basic Gym Environment and the other one specific for the wrapped one.
-
-#### Gym Observation
-
-{{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/singleplayerenv/">this</a> and <a href="/gettingstarted/examples/multiplayerenv/">this</a> examples.
-{{% /notice %}}
+The same method works on both the basic Gym Environment and the wrapped one.
 
 ```python
-from diambra.arena.gym_utils import show_gym_obs
-...
-show_gym_obs(observation=obs, char_list=characters_names, wait_key=1, viz=True)
+env.show_obs(observation=obs, wait_key=1, viz=True)
 ```
+
+{{% notice tip %}}
+Use of this functionality can be found in <a href="../gettingstarted/examples/singleplayerenv/">this</a>, <a href="../gettingstarted/examples/multiplayerenv/">this</a>, <a href="../gettingstarted/examples/wrappersoptions/">this</a> and <a href="../gettingstarted/examples/datasetloader/">this</a> examples.
+{{% /notice %}}
+
+#### Base Environment
+
 Output will be similar to what follows:
 
- - Frame visualization window:
+ - Frame(s) visualization window(s):
 <figure style="margin-right:auto; margin-left:auto;">
   <img src="../images/utils/gymObs.jpg" style="padding-left:40px;margin-bottom:1rem; margin-top:0px">
 </figure>
 
  - Terminal printout:
    ```txt
-   observation["frame"].shape: (480, 512, 3)
-   observation["stage"]: 1
-   observation["P1"]["ownChar"]: Kasumi
-   observation["P1"]["oppChar"]: Bayman
-   observation["P1"]["ownHealth"]: 66
-   observation["P1"]["oppHealth"]: 184
-   observation["P1"]["ownSide"]: 0
-   observation["P1"]["oppSide"]: 1
-   observation["P1"]["ownWins"]: 0
-   observation["P1"]["oppWins"]: 0
-   observation["P1"]["actions"]: {'move': 0, 'attack': 3}
+   observation["frame"]: shape (128, 128, 3) - min 0 - max 255
+   observation["stage"]: [1]
+   observation["timer"]: [30]
+   observation["P1"]["char"]: 0 / Kasumi
+   observation["P1"]["health"]: [66]
+   observation["P1"]["side"]: 0
+   observation["P1"]["wins"]: [0]
+   observation["P2"]["char"]: 3 / Bayman
+   observation["P2"]["health"]: [184]
+   observation["P2"]["side"]: 1
+   observation["P2"]["wins"]: [0]
    ```
 
 #### Wrapped Observation
-
-{{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/wrappersoptions/">this</a> and <a href="/gettingstarted/examples/imitationlearning/">this</a> examples.
-{{% /notice %}}
-
-{{% notice warning %}}
-This functionality currently does not support all possible wrappers configurations but only a part of them. In particular, it assumes the observation normalization wrapper is active.
-{{% /notice %}}
-
-```python
-from diambra.arena.gym_utils import show_wrap_obs
-...
-show_wrap_obs(observation=obs, n_actions_stack=n_act_stack, char_list=characters_names, wait_key=1, viz=True)
-```
 
 Output will be similar to what follows:
 
@@ -251,53 +241,33 @@ Output will be similar to what follows:
 - Terminal printout:
 
   ```txt
-  observation["frame"].shape: (128, 128, 4)
-  observation["stage"]: 0.0
-  observation["P1"]["ownChar"]: [0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0.] / Bayman
-  observation["P1"]["oppChar"]: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.] / Kasumi
-  observation["P1"]["ownHealth"]: 0.8173076923076923
-  observation["P1"]["oppHealth"]: 0.8028846153846154
-  observation["P1"]["ownSide"]: 1
-  observation["P1"]["oppSide"]: 0
-  observation["P1"]["ownWins"]: 0.0
-  observation["P1"]["oppWins"]: 0.0
-  observation["P1"]["actions"]["move"]:
-  [[1 0 0 0 0 0 0 0 0]
-   [1 0 0 0 0 0 0 0 0]
-   [0 0 0 0 0 0 0 0 1]
-   [1 0 0 0 0 0 0 0 0]
-   [0 1 0 0 0 0 0 0 0]
-   [0 1 0 0 0 0 0 0 0]
-   [1 0 0 0 0 0 0 0 0]
-   [1 0 0 0 0 0 0 0 0]
-   [0 0 0 0 0 0 1 0 0]
-   [0 0 0 0 0 0 1 0 0]
-   [0 0 0 1 0 0 0 0 0]
-   [0 0 0 0 0 0 0 0 1]]
-  observation["P1"]["actions"]["attack"]:
-  [[1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [0 0 1 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]]
+  observation["frame"]: shape (128, 128, 4) - min 0 - max 255
+  observation["stage"]: [0.0]
+  observation["timer"]: [0.875]
+  observation["own_char"]: [0 0 0 1 0 0 0 0 0 0 0] / Bayman
+  observation["own_health"]: [0.8173076923076923]
+  observation["own_side"]: [0 1]
+  observation["own_wins"]: [0.]
+  observation["opp_char"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
+  observation["opp_health"]: [0.8028846153846154]
+  observation["opp_side"]: [1 0]
+  observation["opp_wins"]: [0.]
+  observation["action"] (reshaped for visualization):
+  [[1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [0 0 0 0 0 0 0 0 1 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 0 0 1 0]
+   [0 1 0 0 0 0 0 0 0 1 0 0 0]
+   [0 1 0 0 0 0 0 0 0 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [0 0 0 0 0 0 1 0 0 1 0 0 0]
+   [0 0 0 0 0 0 1 0 0 1 0 0 0]
+   [0 0 0 1 0 0 0 0 0 1 0 0 0]
+   [0 0 0 0 0 0 0 0 1 1 0 0 0]]
   ```
 
 ### Controller Interface
-
-{{% notice tip %}}
-Use of this functionality can be found in <a href="/gettingstarted/examples/humanexperiencerecorder/">this</a> example.
-{{% /notice %}}
-
-{{% notice note %}}
-Depending on the Operating System used, specific permissions may be needed in order to read the keyboard inputs.<br><br> - On Windows, by default no specific permissions are needed. However, if you have some third-party security software you may need to white-list Python.<br> - On Linux you need to add the user the `input` group: `sudo usermod -aG input $USER`<br> - On Mac, it is possible you need to use the settings application to allow your program to access the input devices (see <a href="https://inputs.readthedocs.io/en/latest/user/install.html#mac-permissions" target="_blank">this reference</a>).<br><br>Official `inputs` python package reference guide can be found at <a href="https://inputs.readthedocs.io/en/latest/user/install.html#windows-permissions" target="_blank">this link</a>
-{{% /notice %}}
 
 It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Arena environments, to be used for experiments where human input is required, for example Human Expert Demonstration Collection or Competitive Human-Agent. The following code snippet shows a typical usage.
 
@@ -305,11 +275,25 @@ It allows to easily interface a common USB Gamepad or the Keyboard to DIAMBRA Ar
 import diambra.arena
 from diambra.arena.utils.controller import get_diambra_controller
 ...
+# Environment Initialization
+...
 # Controller initialization
-controller = get_diambra_controller(env.action_list)
+controller = get_diambra_controller(env.get_actions_tuples())
 controller.start()
 ...
-actions = controller.get_actions()
+# Player-Environment interaction loop
+while condition:
+    ...
+    actions = controller.get_actions()
+    ...
 ...
 controller.stop()
 ```
+
+{{% notice tip %}}
+Use of this functionality can be found in <a href="../gettingstarted/examples/episoderecorder/">this</a> example.
+{{% /notice %}}
+
+{{% notice note %}}
+Depending on the Operating System used, specific permissions may be needed in order to read the keyboard inputs.<br><br> - On Windows, by default no specific permissions are needed. However, if you have some third-party security software you may need to white-list Python.<br> - On Linux you need to add the user the `input` group: `sudo usermod -aG input $USER`<br> - On Mac, it is possible you need to use the settings application to allow your program to access the input devices (see <a href="https://inputs.readthedocs.io/en/latest/user/install.html#mac-permissions" target="_blank">this reference</a>).<br><br>Official `inputs` python package reference guide can be found at <a href="https://inputs.readthedocs.io/en/latest/user/install.html#windows-permissions" target="_blank">this link</a>
+{{% /notice %}}
