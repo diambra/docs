@@ -168,7 +168,7 @@ Make sure to check out our <a href="https://diambra.ai/terms" target="_blank">Te
 
 ##### Base script
 
-A Python script to run a complete episode with a random agent requires less than 20 lines:
+A Python script to run a complete episode with a random agent requires just a few lines:
 
 {{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/diambra_arena_gist.py" >}}
 

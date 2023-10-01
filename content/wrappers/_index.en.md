@@ -30,7 +30,7 @@ weight: 40
 DIAMBRA Arena comes with a large number of ready-to-use wrappers and examples showing how to apply them. They cover a wide spectrum of use cases, and also provide reference templates to develop custom ones. In order to activate wrappers, one needs to properly set the `WrapperSettings` class attributes and provide them as input to the environment creation method, as shown in the next code block. The class attributes are described in the next sections below.
 
 ```python
-from diambra.arena EnvironmentSettings, WrapperSettings
+from diambra.arena import EnvironmentSettings, WrapperSettings
 
 # Settings specification
 settings = EnvironmentSettings()

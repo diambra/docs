@@ -5,7 +5,7 @@
             "label": "Run Hugo Server",
             "type": "shell",
             "command": "hugo",
-            "args": ["server", "-w"],
+            "args": ["server", "-w", "--ignoreCache", "--verbose"],
             "group": {
                 "kind": "build"
             }

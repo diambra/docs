@@ -12,4 +12,4 @@ This example focuses on:
 A dedicated section describing the dataset loader is presented <a href="../../../imitationlearning/#dataset-loader">here</a> and provides additional details on its usage and purpose.
 {{% /notice %}}
 
-{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/imitation_learning.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/episode_data_loader.py" >}}

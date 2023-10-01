@@ -16,22 +16,35 @@ With the goal of supporting the exploration and research of techniques dealing w
 
 ### Episode Recording Wrapper
 
-In order to activate the episode recording wrapper, one has just to add an additional kwargs dictionary, conventionally named `episode_recording_settings`, to the environment creation method, as shown in the next code block.
+In order to activate the episode recording wrapper, one needs to properly set the `RecordingSettings` class attributes and provide them as input to the environment creation method, as shown in the next code block.
 
 ```python
-env = diambra.arena.make("doapp", settings, wrappers_settings, episode_recording_settings)
+from diambra.arena import EnvironmentSettings, WrapperSettings, RecordingSettings
+
+# Settings specification
+settings = EnvironmentSettings()
+
+# Wrapper settings specification
+wrapper_settings = WrapperSettings()
+
+# Recording settings specification
+recording_settings = RecordingSettings()
+recording_settings.setting_1 = value_1
+recording_settings.setting_2 = value_2
+
+env = diambra.arena.make("doapp", settings, wrappers_settings, recording_settings)
 ```
 
-The dictionary has to be populated as described in the following table:
+The class attributes are described in the following table:
 
-| <strong><span style="color:#5B5B60;">Key</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                             |
+| <strong><span style="color:#5B5B60;">Name</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                             |
 | -------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `username`                                               | `str`                                                     | `username`                                                                     | Provides an identifier to be associated with the recorded episode                                                                                         |
-| `dataset_path`                                              | `str`                                                     | `./`                                                                     | Specifies the path where to save recorded episodes                                                                                                        |
+| `username`                                               | `None` U `str`                                                     | `None`                                                                     | Provides an identifier to be associated with the recorded episode                                                                                         |
+| `dataset_path`                                              | `None` U `str`                                                     | `None`                                                                     | Specifies the path where to save recorded episodes                                                                                                        |
 
 ```python
-episode_recording_settings["username"] = "user"
-episode_recording_settings["dataset_path"] = "/home/user/DIAMBRA/"
+episode_recording_settings.username = "user"
+episode_recording_settings.dataset_path = "/home/user/DIAMBRA/"
 ```
 
 {{% notice tip %}}

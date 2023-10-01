@@ -14,7 +14,6 @@ weight: 10
   - <a href="./#saving-loading-and-evaluating">Saving, Loading and Evaluating</a>
   - <a href="./#parallel-environments">Parallel Environments</a>
 - <a href="./#advanced">Advanced</a>
-  - <a href="./#dictionary-observations">Dictionary Observations</a>
   - <a href="./#complete-training-script">Complete Training Script</a>
   - <a href="./#agent-script-for-competition">Agent Script for Competition</a>
 
@@ -52,18 +51,20 @@ These examples only aims at demonstrating the core functionalities and high leve
 DIAMBRA Arena native interface with Stable Baselines 3 covers a wide range of use cases, automating handling of vectorized environments and monitoring wrappers. In the majority of cases it will be sufficient for users to directly import and use it, with no need for additional customization. Below is reported its interface and a table describing its arguments.
 
 ```python
-def make_sb3_env(game_id: str, env_settings: dict={}, wrappers_settings: dict={},
-                 episode_recording_settings: dict={}, render_mode: str="rgb_array", seed: int=None,
-                 start_index: int=0, allow_early_resets: bool=True, start_method: str=None,
-                 no_vec: bool=False, use_subprocess: bool=True, log_dir_base: str="/tmp/DIAMBRALog/"):
+def make_sb3_env(game_id: str, env_settings: EnvironmentSettings=EnvironmentSettings(),
+                 wrappers_settings: WrappersSettings=WrappersSettings(),
+                 episode_recording_settings: RecordingSettings=RecordingSettings(),
+                 render_mode: str="rgb_array", seed: int=None, start_index: int=0,
+                 allow_early_resets: bool=True, start_method: str=None, no_vec: bool=False,
+                 use_subprocess: bool=True, log_dir_base: str="/tmp/DIAMBRALog/"):
 ```
 
 | <strong><span style="color:#5B5B60;">Argument</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                       |
 | ------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `game_id`                                                     | `str`                                                     | -                                                                     | Game environment identifier                                                                                                                                            |
-| `env_settings`                                                | `dict`                                                    | `{}`                                                                  | Environment settings (<a href="../../envs/#settings">see more</a>)                                                                                                          |
-| `wrappers_settings`                                           | `dict`                                                    | `{}`                                                                  | Wrappers settings (<a href="../../wrappers/">see more</a>)                                                                                                                  |
-| `episode_recording_settings`                                    | `dict`                                                    | `{}`                                                                  | Episode recording settings<br>(<a href="../../imitationlearning/#episode-recording-wrapper">see more</a>)                                                                                                                  |
+| `env_settings`                                                | `EnvironmentSettings`                                                    | `EnvironmentSettings()`                                                                  | Environment settings (<a href="../../envs/#settings">see more</a>)                                                                                                          |
+| `wrappers_settings`                                           | `WrappersSettings`                                                    | `WrappersSettings()`                                                                  | Wrappers settings (<a href="../../wrappers/">see more</a>)                                                                                                                  |
+| `episode_recording_settings`                                    | `RecordingSettings`                                                    | `RecordingSettings()`                                                                  | Episode recording settings<br>(<a href="../../imitationlearning/#episode-recording-wrapper">see more</a>)                                                                                                                  |
 | `render_mode`                                                        | `str`                                                     | `"rgb_array"`                                                                     | Rendering mode                                                                                                                                           |
 | `seed`                                                        | `int`                                                     | `None`                                                                     | Random number generator seed                                                                                                                                           |
 | `start_index`                                                 | `int`                                                     | `0`                                                                     | Starting process rank index                                                                                                                                            |
@@ -79,14 +80,20 @@ For the interface low level details, users can review the correspondent source c
 
 ### Basic
 
-For all the following examples, the environment will be used in single player mode, so that the observation space will be of type `Dict` but without nesting. This allows to directly use it without the need of further processing. Note that when the two players mode is activated, the dictionary observation space will have an additional nesting level, thus requiring proper processing (see <a href="./#advanced">Advanced section</a> below).
+For all the examples there are two main things to note about the observation space.
+
+First, the normalization wrapper is applied on all elements but the image frame, as Stable Baselines 3 automatically normalizes images and expects their pixels to be in the range [0 - 255].
+
+Second, the library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a <a href="../../wrappers/#flattening-and-filtering">flattening wrapper</a> that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.
+
+Stable Baselines 3 automatically defines the network architecture, properly matching the input type. In some of the examples the architecture is printed to the console output, allowing to clearly identify all the different contributions.
 
 #### Basic Example
 
 This example demonstrates how to:
 
-- Instantiate a new DIAMBRA Arena environment with its settings
-- Interface it with one of Stable Baselines 3's algorithms
+- Leverage DIAMBRA Arena native Stable Baselines 3 interface to create the environment
+- Interface the environment with one of Stable Baselines 3's algorithms
 - Train the algorithm
 - Run the trained agent in the environment for one episode
 
@@ -122,12 +129,10 @@ diambra run python saving_loading_evaluating.py
 
 In addition to what seen in previous examples, this one demonstrates how to:
 
-- Leverage DIAMBRA Arena native Stable Baselines 3 interface
-- Activate environment wrappers
 - Run training using parallel environments
 - Print out the policy network architecture
 
-In this example, the PPO algorithm is used, with the same `MultiInputPolicy` seen before. In this example the policy architecture is also printed to the console output, allowing to visualize how inputs are processed and "translated" to actions probabilities.
+In this example, the PPO algorithm is used, with the same `MultiInputPolicy` seen before. The policy architecture is also printed to the console output, allowing to visualize how inputs are processed and "translated" to actions probabilities.
 
 This example also runs multiple environments, automatically detecting the number of instances created by DIAMBRA CLI when running the script.
 
@@ -140,31 +145,6 @@ diambra run -s=2 python parallel_envs.py
 ```
 
 ### Advanced
-
-#### Dictionary Observations
-
-In addition to what seen in previous examples, this one demonstrates how to:
-
-- Activate a complete set of environment wrappers
-- How to properly tweak dictionary observations for Stable Baselines 3
-
-There are two main things to note in this example: how to handle observation normalization and dictionary observations.
-
-As it can be seen from the snippet below, the normalization wrapper is applied on all elements but the image frame, as Stable Baselines 3 automatically normalizes images and expects their pixels to be in the range [0 - 255].
-
-The library also has a specific constraint on dictionary observation spaces: they cannot be nested. For this reason we provide a <a href="../../wrappers/#flattening-and-filtering">flattening wrapper</a> that creates a shallow, not nested, dictionary from the original observation space, allowing in addition to filter it by keys.
-
-Even if for the single player mode the observation space is already not nested, thus flattening is not strictly needed, it can be used to filter the subset of observations the user wants providing a list of keys.
-
-Stable Baselines 3 automatically defines the network architecture, properly matching the input type. The architecture is then printed to the console output, allowing to clearly identify all the different contributions.
-
-{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/stable_baselines3/dict_obs_space.py" >}}
-
-How to run it:
-
-```shell
-diambra run python dict_obs_space.py
-```
 
 #### Complete Training Script
 

@@ -56,8 +56,6 @@ For the interface low level details, users can review the correspondent source c
 
 ### Basic
 
-For all the following examples, the environment will be used in single player mode, so that the observation space will be of type `Dict` but without nesting. This allows to directly use it without the need of further processing. Note that when the two players mode is activated, the dictionary observation space will have an additional nesting level, thus requiring proper processing (see <a href="./#advanced">Advanced section</a> below).
-
 #### Basic Example
 
 This example demonstrates how to:

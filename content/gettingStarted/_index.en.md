@@ -92,7 +92,13 @@ It runs a command after brining up DIAMBRA Arena containerized environment(s). I
 The next snippet shows the help message for this command, where all available options are reported:
 
 ```shell
-Version: 0.0.14
+Run runs the given command after diambraEngine is brought up.
+
+It will set the DIAMBRA_ENVS environment variable to list the endpoints of all running environments.
+The DIAMBRA arena python package will automatically be configured by this.
+
+The flag --agent-image can be used to run the commands in the given image.
+
 Usage:
   diambra run [flags] command [args...]
 
@@ -113,8 +119,8 @@ Flags:
   -n, --images.no-pull            Do not try to pull image before running
       --init.image string         Init image to use (default "ghcr.io/diambra/init:main")
   -i, --interactive               Open stdin for interactions with arena and agent (default true)
-      --path.credentials string   Path to credentials file (default "$HOME/.diambra/credentials")
-  -r, --path.roms string          Path to ROMs (default to DIAMBRAROMSPATH env var if set)
+      --path.credentials string   Path to credentials file (default "/home/alexpalms/.diambra/credentials")
+  -r, --path.roms string          Path to ROMs (default to DIAMBRAROMSPATH env var if set) (default "/home/alexpalms/work/diambra/roms")
 
 Global Flags:
   -d, --log.debug           Enable debug logging
@@ -140,7 +146,8 @@ The snippet below lists all available commands for this mode.
 Flags reported for the Run command above apply also to this mode.
 
 ```shell
-Version: 0.0.14
+These are the arena related commands
+
 Usage:
   diambra arena [command]
 
@@ -158,6 +165,8 @@ Flags:
 Global Flags:
   -d, --log.debug           Enable debug logging
       --log.format string   Set logging output format (logfmt, json, fancy) (default "fancy")
+
+Use "diambra arena [command] --help" for more information about a command.
 ```
 
 ##### Running Multiple Environments in Parallel

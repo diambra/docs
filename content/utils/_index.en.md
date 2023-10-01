@@ -219,16 +219,14 @@ Output will be similar to what follows:
    observation["frame"]: shape (128, 128, 3) - min 0 - max 255
    observation["stage"]: [1]
    observation["timer"]: [30]
-   observation["own_char"]: 0 / Kasumi
-   observation["opp_char"]: 3 / Bayman
-   observation["own_health"]: [66]
-   observation["opp_health"]: [184]
-   observation["own_side"]: 0
-   observation["opp_side"]: 1
-   observation["own_wins"]: [0]
-   observation["opp_wins"]: [0]
-   observation["action_move"]: 0
-   observation["action_attack"]: 3
+   observation["P1"]["char"]: 0 / Kasumi
+   observation["P1"]["health"]: [66]
+   observation["P1"]["side"]: 0
+   observation["P1"]["wins"]: [0]
+   observation["P2"]["char"]: 3 / Bayman
+   observation["P2"]["health"]: [184]
+   observation["P2"]["side"]: 1
+   observation["P2"]["wins"]: [0]
    ```
 
 #### Wrapped Observation
@@ -247,39 +245,26 @@ Output will be similar to what follows:
   observation["stage"]: [0.0]
   observation["timer"]: [0.875]
   observation["own_char"]: [0 0 0 1 0 0 0 0 0 0 0] / Bayman
-  observation["opp_char"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
   observation["own_health"]: [0.8173076923076923]
-  observation["opp_health"]: [0.8028846153846154]
   observation["own_side"]: [0 1]
-  observation["opp_side"]: [1 0]
   observation["own_wins"]: [0.]
+  observation["opp_char"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
+  observation["opp_health"]: [0.8028846153846154]
+  observation["opp_side"]: [1 0]
   observation["opp_wins"]: [0.]
-  observation["action_move"] (reshaped for visualization):
-  [[1 0 0 0 0 0 0 0 0]
-   [1 0 0 0 0 0 0 0 0]
-   [0 0 0 0 0 0 0 0 1]
-   [1 0 0 0 0 0 0 0 0]
-   [0 1 0 0 0 0 0 0 0]
-   [0 1 0 0 0 0 0 0 0]
-   [1 0 0 0 0 0 0 0 0]
-   [1 0 0 0 0 0 0 0 0]
-   [0 0 0 0 0 0 1 0 0]
-   [0 0 0 0 0 0 1 0 0]
-   [0 0 0 1 0 0 0 0 0]
-   [0 0 0 0 0 0 0 0 1]]
-  observation["action_attack"]  (reshaped for visualization):
-  [[1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [0 0 1 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]
-   [1 0 0 0]]
+  observation["action"] (reshaped for visualization):
+  [[1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [0 0 0 0 0 0 0 0 1 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 0 0 1 0]
+   [0 1 0 0 0 0 0 0 0 1 0 0 0]
+   [0 1 0 0 0 0 0 0 0 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [1 0 0 0 0 0 0 0 0 1 0 0 0]
+   [0 0 0 0 0 0 1 0 0 1 0 0 0]
+   [0 0 0 0 0 0 1 0 0 1 0 0 0]
+   [0 0 0 1 0 0 0 0 0 1 0 0 0]
+   [0 0 0 0 0 0 0 0 1 1 0 0 0]]
   ```
 
 ### Controller Interface
