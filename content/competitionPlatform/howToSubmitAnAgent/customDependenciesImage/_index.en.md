@@ -34,6 +34,7 @@ Once these steps are completed, you can submit the agent to the platform using y
   ```yaml
   mode: AIvsCOM
   image: <registry>/<name>:<tag>
+  version: v2.1
   command:
     - python
     - "/sources/agent.py"
@@ -49,6 +50,7 @@ Once these steps are completed, you can submit the agent to the platform using y
   ```sh
   diambra agent submit \
   --submission.mode AIvsCOM \
+  --submission.version v2.1 \
   --submission.source agent.py=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/trained-agent/your_agent.py \
   --submission.source models/model.zip=https://{{.Secrets.token}}@raw.githubusercontent.com/path/to/nn-weights/your_model.zip \
   --submission.secret token=your_gh_token \

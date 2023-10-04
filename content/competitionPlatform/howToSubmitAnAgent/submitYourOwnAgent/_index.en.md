@@ -32,6 +32,7 @@ Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencie
 ```yaml
 mode: AIvsCOM
 image: diambra/arena-stable-baselines3-on3.10-bullseye:2.1
+version: v2.1
 command:
   - python
   - "/sources/agent.py"
@@ -64,6 +65,7 @@ In case you don't want to clone all your repository, you can explicitly specify 
 ---
 mode: AIvsCOM
 image: diambra/arena-stable-baselines3-on3.10-bullseye:2.1
+version: v2.1
 command:
   - python
   - "/sources/agent.py"
@@ -78,6 +80,7 @@ In case you have multiple source files you need to use, and you want to avoid to
 ```yaml
 mode: AIvsCOM
 image: diambra/arena-stable-baselines3-on3.10-bullseye:2.1
+version: v2.1
 command:
   - python
   - "/sources/data/agent.py"
@@ -95,6 +98,7 @@ If you want to avoid using submission files, you can use the command line to dir
 ```sh
 diambra agent submit \
   --submission.mode AIvsCOM \
+  --submission.version v2.1 \
   --submission.source .=git+https://username:{{.Secrets.token}}@github.com/username/repository_name.git#ref=branch_name \
   --submission.secret token=your_gh_token \
   --submission.set-command \

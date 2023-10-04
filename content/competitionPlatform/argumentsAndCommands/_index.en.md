@@ -16,6 +16,7 @@ the correspondent submission manifest would use a new `args` keyword as follows:
 ---
 image: <docker image>
 mode: AIvsCOM
+version: v2.1
 difficulty: easy
 args:
 - arg1
@@ -31,6 +32,7 @@ the resulting submission manifest sent to the platform would be
 ---
 image: diambra/agent-random-1:2.1
 mode: AIvsCOM
+version: v2.1
 difficulty: easy
 args:
 - arg1
@@ -48,6 +50,7 @@ the correspondent submission manifest would be:
 ---
 image: <docker image>
 mode: AIvsCOM
+version: v2.1
 difficulty: easy
 command:
 - command
@@ -65,6 +68,7 @@ the resulting submission manifest sent to the platform would be
 ---
 image: diambra/agent-random-1:2.1
 mode: AIvsCOM
+version: v2.1
 difficulty: easy
 command:
 - command
