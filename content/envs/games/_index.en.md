@@ -34,6 +34,17 @@ weight: 20
 <div>
 <p style="font-size:35px;  margin-bottom:20px; text-align:center; color: #a5101f; clear:both;">... many more to come soon.</p>
 
+| <strong><span style="color:#5B5B60;">Title</span></strong>              | <strong><span style="color:#5B5B60;">FPS*</span></strong> | <strong><span style="color:#5B5B60;">Game Id</span></strong> |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
+| <a href="./doapp/">Dead Or Alive ++</a>                                 | 92                                                  | `doapp`                                                      |
+| <a href="./sfiii3n/">Street Fighter III 3rd Strike</a>                  | 164                                                  | `sfiii3n`                                                    |
+| <a href="./tektagt/">Tekken Tag Tournament</a>                          | 72                                                  | `tektagt`                                                    |
+| <a href="./umk3/">Ultimate Mortal Kombat 3</a>                          | 158                                                  | `umk3`                                                       |
+| <a href="./samsh5sp/">Samurai Showdown 5 Special</a>                    | 168                                                     | `samsh5sp`                                                   |
+| <a href="./kof98umh/">The King of Fighters '98: Ultimate Match Hero</a> | 92                                                     | `kof98umh`                                                   |
+
+*Measured on Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz, using `step_ratio = 1` and `frame_shape = (128, 128, 1)`
+
 ### Game Specific Info
 
 Game specific details provide useful information about each title. They are reported in every game-dedicated page, and summarized in the table below.
@@ -60,14 +71,3 @@ For every released title, extensive testing has been carried out, making sure th
 {{% /notice %}}
 
 </div>
-
-| <strong><span style="color:#5B5B60;">Title</span></strong>              | <strong><span style="color:#5B5B60;">Status</span></strong> | <strong><span style="color:#5B5B60;">Game Id</span></strong> |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| <a href="./doapp/">Dead Or Alive ++</a>                                 | Stable[^1]                                                  | `doapp`                                                      |
-| <a href="./sfiii3n/">Street Fighter III 3rd Strike</a>                  | Stable[^1]                                                  | `sfiii3n`                                                    |
-| <a href="./tektagt/">Tekken Tag Tournament</a>                          | Stable[^1]                                                  | `tektagt`                                                    |
-| <a href="./umk3/">Ultimate Mortal Kombat 3</a>                          | Stable[^1]                                                  | `umk3`                                                       |
-| <a href="./samsh5sp/">Samurai Showdown 5 Special</a>                    | Stable[^1]                                                     | `samsh5sp`                                                   |
-| <a href="./kof98umh/">The King of Fighters '98: Ultimate Match Hero</a> | Stable[^1]                                                     | `kof98umh`                                                   |
-
-[^1]: Stable = Passing all quality assurance tests
