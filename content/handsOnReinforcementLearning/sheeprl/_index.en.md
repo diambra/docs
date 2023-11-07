@@ -128,13 +128,13 @@ As anticipated before, SheepRL provides several default configurations for all i
 
 Regarding the environment, there are some constraints that must be respected, for example, the dictionary observation spaces cannot be nested. For this reason, the DIAMBRA <a href="../../wrappers/#flatten-and-filter-observation" target="_blank">flattening wrapper</a> is always used. For more information about the constraints of the SheepRL library, check <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/learn_in_diambra.md#args" target="_blank">here</a>.
 
-Instead, regarding the agent, the only constraints that are present concern the action space that agents support. You can read the supported action spaces in Table 2 of the <a href="https://github.com/Eclectic-Sheep/sheeprl" target="_blank">README</a> in the SheepRL GitHub repository.
+Instead, regarding the agent, the only two constraints that are present concern the observation and action spaces that agents support. You can read the supported observation and action spaces in Table 1 and Table 2 of the <a href="https://github.com/Eclectic-Sheep/sheeprl" target="_blank">README</a> in the SheepRL GitHub repository, respectively.
 
 
 #### Customising the Configurations
 The default configurations are available <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs" target="_blank">here</a>. If you want to define your custom experiments, you just need to follow a few steps:
 1. You need to create a folder (with the same structure as the <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs" target="_blank">SheepRL configs folder</a>) where to place your custom configurations. 
-2. You need to define the `SHEEPRL_SEARCH_PATH` environment variable in the `.env` file as follows: `SHEEPRL_SEARCH_PATH=file://path/to/custom/configs/folder;pkg://sheeprl.configs`.
+2. You need to define the `SHEEPRL_SEARCH_PATH` environment variable in the `.env` file as follows: `SHEEPRL_SEARCH_PATH=file://relative/path/to/custom/configs/folder;pkg://sheeprl.configs`.
 3. You need to define the custom configurations, being careful that the filename is different from the default ones. If this is not respected, your file will overwrite the default configurations.
 
 #### Basic Example
@@ -151,12 +151,9 @@ This example demonstrates how to:
 SheepRL natively supports supports dictionary observation spaces, the only thing you need to define is the keys of the observations you want to process. For more information about observations selection, check <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/select_observations.md" target="_blank">here</a>.
 
 ##### Configs Folder
-First, it is necessary to create a folder for the configuration files. We create the `configs` folder under the `./sheeprl/` folder in the <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Arena</a> GitHub repository. Then we added the `.env` file in `.sheeprl` folder, in which we need to define the `SHEEPRL_SEARCH_PATH` environment variable as follows:
+First, it is necessary to create a folder for the configuration files. We create the `configs` folder under the `./sheeprl/` folder in the <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Arena</a> GitHub repository. Then we added the `.env` file in `./sheeprl/` folder, in which we need to define the `SHEEPRL_SEARCH_PATH` environment variable as follows:
 
 {{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/.env" >}}
-```bash
-SHEEPRL_SEARCH_PATH=file://configs;pkg://sheeprl.configs
-```
 
 ##### Define the Environment
 Now, in the `./sheeprl/configs` folder we create the `env` folder in which the `custom_env.yaml` will be placed.
@@ -168,7 +165,7 @@ Below is reported a possible configuration of the environment.
 As for the environment, we need to create a dedicated folder to place the custom configurations of the agents: we create the `algo` folder in the `./sheeprl/configs` folder and we place the `custom_ppo_agent.yaml` file. Under the `default` keyword, it is possible to retrieve the configurations specified in another file, in our case, since we are defining the agent, we can take the configuration from the <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs/algo" target="_blank">algorithm config folder</a> in SheepRL, in which several SOTA agents are defined.
 
 {{% notice note %}}
-When defining an agent it is mandatory to define the `name` of the algorithm. The value of these parameters defines which algorithm will be used for training. If you inherit the default configurations of a specific algorithm, then you do not need to define it, since it is already defined in the default configs of that algorithm.
+When defining an agent it is mandatory to define the `name` of the algorithm (it must be equal to the filename of the file in which the algorithm is defined). The value of these parameters defines which algorithm will be used for training. If you inherit the default configurations of a specific algorithm, then you do not need to define it, since it is already defined in the default configs of that algorithm.
 {{% /notice %}}
 
 Below is reported a configuration file for a PPO agent.
