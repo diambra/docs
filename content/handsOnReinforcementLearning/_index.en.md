@@ -106,16 +106,16 @@ The next section provides guidance and examples using some of the options listed
 
 <div>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
+   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_sheeprl.png"/>
+   <figcaption align="middle">SheepRL • <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main" target="_blank">Link</a></figcaption>
+  </figure>
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_sb3.png"/>
    <figcaption align="middle">Stable Baselines 3 • <a href="https://stable-baselines3.readthedocs.io/en/master/" target="_blank">Link</a></figcaption>
   </figure>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:30.0%;">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_rayrllib.png"/>
    <figcaption align="middle">Ray RLlib • <a href="https://docs.ray.io/en/latest/rllib/index.html" target="_blank">Link</a></figcaption>
-  </figure>
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:auto; margin-left:1%; float:left; width:30.0%;">
-   <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_rlcoach.png"/>
-   <figcaption align="middle">Intel RL Coach • <a href="https://intellabs.github.io/coach/" target="_blank">Link</a></figcaption>
   </figure>
 </div>
 
@@ -153,6 +153,7 @@ DIAMBRA Arena natively provides interfaces to both Stable Baselines 3 and Ray RL
 
 <div style="font-size:1.125rem;">
 
+- <a href="./sheeprl/">SheepRL</a>
 - <a href="./stablebaselines3/">Stable Baselines 3</a>
 - <a href="./rayrllib/">Ray RLlib</a>
 
