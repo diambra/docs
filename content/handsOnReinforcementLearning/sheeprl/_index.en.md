@@ -229,10 +229,10 @@ In this section, we show the two scripts for training and evaluating agents. Wit
 
 As far as evaluation is concerned, simply the configurations are passed directly to the `evaluate()` function of sheeprl. There is no need to check the environment as it has already been checked before training.
 
-Train function:
+The `train.py` script:
 {{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/train.py" >}}
 
-Evaluate function:
+The `evaluate.py` script:
 {{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/evaluate.py" >}}
 
 
