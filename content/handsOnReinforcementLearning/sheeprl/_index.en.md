@@ -20,7 +20,7 @@ weight: 5
     - <a href="#define-the-experiment">Define the Experiment</a>
     - <a href="#train-and-evaluate-the-agent">Train and Evaluate the Agent</a>
     - <a href="#train-and-evaluate-scripts">Train and Evaluate Scripts</a>
-    - <a href="#ppo-implementation">Train Function</a>
+    - <a href="#ppo-implementation">PPO Implementation</a>
   - <a href="#parallel-environments">Parallel Environments</a>
 - <a href="#advanced">Advanced</a>
   - <a href="#fabric">Fabric</a>
