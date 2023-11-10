@@ -203,6 +203,12 @@ To evaluate the agent you just need to run the following command:
 diambra run python evaluate.py checkpoint_path=/path/to/checkpoint.ckpt
 ```
 
+##### Train Function
+In this paragraph, we quote the code of our ppo implementation, just to give more context on how SheepRL works. In the `main()` function, all the components needed for training are instantiated (i.e., the agent, the environments, the buffer, the logger, and so on). Then, the environment interaction is performed, and after collecting the rollout steps, the train function is called.
+
+The `train()` function is responsible for sharing the data between processes, if more processes are launched and the `buffer.share_data` is set to `True`. Then, for each batch, the losses are computed and the agent is updated.
+
+{{< github_code "https://raw.githubusercontent.com/Eclectic-Sheep/sheeprl/main/sheeprl/algos/ppo/ppo.py" >}}
 
 #### Parallel Environments
 
@@ -216,7 +222,7 @@ You can create a `custom_parallel_env.yaml` config file that inherits the config
 If you set the `env.sync_env` to `False`, then you must instantiate one more docker container because the `gymnasium.vector.AsyncVectorEnv` instantiates a dummy env when defined.
 {{% /notice %}}
 
-Then, you have to create a new file for the experiment (`custom_parallel_env_exp.yaml`), this file inherits the configurations of the `custom_exp` file and overrides the environmnet with the new defined configurations (`custom_parallel_env`):
+Then, you have to create a new file for the experiment (`custom_parallel_env_exp.yaml`), this file inherits the configurations of the `custom_exp` file and overrides the environment with the newly defined configurations (`custom_parallel_env`):
 {{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_parallel_env_exp.yaml" >}}
 
 How to run it:
@@ -238,8 +244,14 @@ The default Fabric configuration is the following:
 The `sheeprl.utils.callback.CheckpointCallback` is used for saving the checkpoint during training and for saving the trained agent.
 {{% /notice %}}
 
-To modify the Fabric configs, you can add a `fabric` field in the experiment file, as shown below. In this case, we selected `2` devices, the accelerator is `"cuda"` and the training is performed in 16 bits. As before, it inherits the configurations form the `custom_exp` and then sets the Fabric parameters.
+To modify the Fabric configs, you can add a `fabric` field in the experiment file, as shown below. In this case, we selected `2` devices, the accelerator is `"cuda"` and the training is performed in 16 bits. As before, it inherits the configurations from the `custom_exp` and then sets the Fabric parameters.
 {{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_fabric_exp.yaml" >}}
+
+How to run it:
+
+```shell
+diambra run -s=2 python train.py exp=custom_fabric_exp
+```
 
 #### Metric and Logging
 Finally, SheepRL allows you to visualize and monitor training using Tensorboard. 
@@ -265,12 +277,18 @@ You can modify the default metric configurations by adding in the `custom_exp` f
 In this example, we do not log the timer information and we want to synchronize the metrics between the 2 processes. Moreover, we add 3 metrics to log to the aggregator (in addition to reward and episode length): the value loss, the policy loss, and the entropy loss.
 {{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_metric_exp.yaml" >}}
 
+How to run it:
+
+```shell
+diambra run -s=2 python train.py exp=custom_metric_exp
+```
+
 The logs are stored in the `./logs/runs/<algo_name>/<env_id>/<datetime_experiment>/` folder, and to visualize the plots, you just need to run the following command:
 
 ```bash
 tensorboard --logdir /path/to/logging/directory
 ```
-open your browser and go to `http://localhost:6006/`. You can eventually modify the port of the process, for instance, you can use port `6010` running the following command:
+open your browser and go to `http://localhost:6006/`. You can eventually modify the port of the process, for instance, you can use port `6010` by running the following command:
 
 ```bash
 tensorboard --logdir /path/to/logging/directory --port 6010

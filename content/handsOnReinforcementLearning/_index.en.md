@@ -149,7 +149,7 @@ More complex scripts can be built in similar ways, for example continuously perf
 
 An alternative approach to scripted agents is adopting reinforcement learning, and the following sections provide examples on how to do that with the most important libraries in the domain.
 
-DIAMBRA Arena natively provides interfaces to both Stable Baselines 3 and Ray RLlib, allowing to easily train models with them on our environments. Each library-dedicated page presents some basic and advanced examples.
+DIAMBRA Arena natively provides interfaces to SheepRL, Stable Baselines 3, and Ray RLlib, allowing to easily train models with them on our environments. Each library-dedicated page presents some basic and advanced examples.
 
 <div style="font-size:1.125rem;">
 
