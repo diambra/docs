@@ -19,6 +19,7 @@ weight: 5
     - <a href="#define-the-agent">Define the Agent</a>
     - <a href="#define-the-experiment">Define the Experiment</a>
     - <a href="#train-and-evaluate-the-agent">Train and Evaluate the Agent</a>
+    - <a href="#train-function">Train Function</a>
   - <a href="#parallel-environments">Parallel Environments</a>
 - <a href="#advanced">Advanced</a>
   - <a href="#fabric">Fabric</a>
@@ -124,7 +125,7 @@ For the interface low-level details, users can review the correspondent source c
 SheepRL provides several SOTA algorithms, both model-free and model-based. <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs/algo" target="_blank">Here</a> you can find the default configurations for these agent. Of course, one can change algorithm-related hyper-parameters for customizing his/her experiments.
 
 ### Basic
-As anticipated before, SheepRL provides several default configurations for all its components, these configurations are available and can be composed to set up an experiment. Otherwise, it is possible to custom define the configurations of all or some components: the two main components to define for the experiments are the agent and the environment. 
+As anticipated before, SheepRL provides several default configurations for all its components, which are available and can be composed to set up an experiment. Otherwise, you can customize the ones you want: the two main ones to be defined for experiments are the agent and the environment. 
 
 Regarding the environment, there are some constraints that must be respected, for example, the dictionary observation spaces cannot be nested. For this reason, the DIAMBRA <a href="../../wrappers/#flatten-and-filter-observation" target="_blank">flattening wrapper</a> is always used. For more information about the constraints of the SheepRL library, check <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/learn_in_diambra.md#args" target="_blank">here</a>.
 
@@ -148,7 +149,7 @@ This example demonstrates how to:
 * Run the trained agent in the environment for one episode.
 
 
-SheepRL natively supports supports dictionary observation spaces, the only thing you need to define is the keys of the observations you want to process. For more information about observations selection, check <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/select_observations.md" target="_blank">here</a>.
+SheepRL natively supports dictionary observation spaces, the only thing you need to define is the keys of the observations you want to process. For more information about observations selection, check <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/select_observations.md" target="_blank">here</a>.
 
 ##### Configs Folder
 First, it is necessary to create a folder for the configuration files. We create the `configs` folder under the `./sheeprl/` folder in the <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Arena</a> GitHub repository. Then we added the `.env` file in `./sheeprl/` folder, in which we need to define the `SHEEPRL_SEARCH_PATH` environment variable as follows:
@@ -187,7 +188,6 @@ When defining the configurations of the experiment you can specify how frequentl
 
 
 ##### Train and Evaluate the Agent
-
 To run the experiment you just need to go into the `./sheeprl` folder and run the following command:
 ```shell
 diambra run -s=2 python train.py exp=custom_exp
@@ -197,21 +197,37 @@ diambra run -s=2 python train.py exp=custom_exp
 You have to instantiate 2 docker containers because sheeprl automatically performs a test of the agent after training.
 {{% /notice %}}
 
-After training, you can decide to evaluate the agent as many times as you want. The only thing you need is the checkpoint of the agent that you want to evaluate.
+After training, you can decide to evaluate the agent as many times as you want. You can specify only a few parameters for evaluating your agent:
+1. The checkpoint of the agent that you want to evaluate (`checkpoint_path`, mandatory).
+2. The type of device on which you want to run the evaluation (`fabric.device`, default to `cpu`).
+3. Whether or not to capture the video of the evaluation (`env.capture_video`, default to `True`).
+
+{{< github_code "https://raw.githubusercontent.com/Eclectic-Sheep/sheeprl/feature/split-p2e/sheeprl/configs/eval_config.yaml" >}}
+
 To evaluate the agent you just need to run the following command:
 ```shell
 diambra run python evaluate.py checkpoint_path=/path/to/checkpoint.ckpt
 ```
 
+If you want to specify the device to use, for instance `cuda`, you have to run the following command:
+```shell
+diambra run python evaluate.py checkpoint_path=/path/to/checkpoint.ckpt fabric.device=cuda
+```
+
+If you want to specify whether or not to capture the video, you have to run the following command:
+```shell
+diambra run python evaluate.py checkpoint_path=/path/to/checkpoint.ckpt env.capture_video=True
+```
+
+
 ##### Train Function
-In this paragraph, we quote the code of our ppo implementation, just to give more context on how SheepRL works. In the `main()` function, all the components needed for training are instantiated (i.e., the agent, the environments, the buffer, the logger, and so on). Then, the environment interaction is performed, and after collecting the rollout steps, the train function is called.
+In this paragraph, we quote the code of our ppo implementation (the `ppo.py` file in the <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/feature/split-p2e/sheeprl/algos/ppo" target="_blank">SheepRL PPO folder</a>), just to give more context on how SheepRL works. In the `main()` function, all the components needed for training are instantiated (i.e., the agent, the environments, the buffer, the logger, and so on). Then, the environment interaction is performed, and after collecting the rollout steps, the train function is called.
 
 The `train()` function is responsible for sharing the data between processes, if more processes are launched and the `buffer.share_data` is set to `True`. Then, for each batch, the losses are computed and the agent is updated.
 
 {{< github_code "https://raw.githubusercontent.com/Eclectic-Sheep/sheeprl/main/sheeprl/algos/ppo/ppo.py" >}}
 
 #### Parallel Environments
-
 In addition to what is seen in previous examples, this one demonstrates how to run training using parallel environments. In this example, the same PPO algorithm is used as before.
 To train the agent with multiple parallel environments, you need to define properly a few environment parameters and then run the script instantiating the correct number of docker containers.
 
@@ -248,9 +264,12 @@ To modify the Fabric configs, you can add a `fabric` field in the experiment fil
 {{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_fabric_exp.yaml" >}}
 
 How to run it:
-
 ```shell
-diambra run -s=2 python train.py exp=custom_fabric_exp
+# Remember to set properly the number of containers to create
+#   - Each process has 1 environment
+#   - There are 2 processes
+#   - Only the zero-rank process will perform the evaluation after the training
+diambra run -s=3 python train.py exp=custom_fabric_exp
 ```
 
 #### Metric and Logging
@@ -280,7 +299,8 @@ In this example, we do not log the timer information and we want to synchronize 
 How to run it:
 
 ```shell
-diambra run -s=2 python train.py exp=custom_metric_exp
+# s=3 since `custom_metric_exp` extends from the fabric experiments
+diambra run -s=3 python train.py exp=custom_metric_exp
 ```
 
 The logs are stored in the `./logs/runs/<algo_name>/<env_id>/<datetime_experiment>/` folder, and to visualize the plots, you just need to run the following command:
