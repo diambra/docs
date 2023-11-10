@@ -19,7 +19,8 @@ weight: 5
     - <a href="#define-the-agent">Define the Agent</a>
     - <a href="#define-the-experiment">Define the Experiment</a>
     - <a href="#train-and-evaluate-the-agent">Train and Evaluate the Agent</a>
-    - <a href="#train-function">Train Function</a>
+    - <a href="#train-and-evaluate-scripts">Train and Evaluate Scripts</a>
+    - <a href="#ppo-implementation">Train Function</a>
   - <a href="#parallel-environments">Parallel Environments</a>
 - <a href="#advanced">Advanced</a>
   - <a href="#fabric">Fabric</a>
@@ -223,7 +224,19 @@ diambra run python evaluate.py checkpoint_path=/path/to/checkpoint.ckpt env.capt
 ```
 
 
-##### Train Function
+##### Train and Evaluate Scripts
+In this section, we show the two scripts for training and evaluating agents. With regard to training, first the environment selected by the user is checked, if it is not one of diambra, then an exception is raised. Next, the `run()` function of SheepRL is called, which will initialize all components and start the training.
+
+As far as evaluation is concerned, simply the configurations are passed directly to the `evaluate()` function of sheeprl. There is no need to check the environment as it has already been checked before training.
+
+Train function:
+{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/train.py" >}}
+
+Evaluate function:
+{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/evaluate.py" >}}
+
+
+##### PPO Implementation
 In this paragraph, we quote the code of our ppo implementation (the `ppo.py` file in the <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/feature/split-p2e/sheeprl/algos/ppo" target="_blank">SheepRL PPO folder</a>), just to give more context on how SheepRL works. In the `main()` function, all the components needed for training are instantiated (i.e., the agent, the environments, the buffer, the logger, and so on). Then, the environment interaction is performed, and after collecting the rollout steps, the train function is called.
 
 The `train()` function is responsible for sharing the data between processes, if more processes are launched and the `buffer.share_data` is set to `True`. Then, for each batch, the losses are computed and the agent is updated.
@@ -276,7 +289,7 @@ diambra run -s=3 python train.py exp=custom_fabric_exp
 ```
 
 {{% notice warning %}}
-To run the fabric experiment, make sure you have a `cuda` GPU in your device, otherwise change the device from `cuda` to `cpu` (or to another device).
+To run the fabric experiment, make sure you have a `cuda` GPU in your device, otherwise, change the device from `cuda` to `cpu` (or to another device).
 {{% /notice %}}
 
 
