@@ -248,7 +248,7 @@ How to run it:
 
 ```shell
 # s=6 comes from: 4 for the envs, 1 for testing, 1 for `gymnasium.vector.AsyncVectorEnv`
-diambra run -s=6 python train.py exp=custom_parallel_exp
+diambra run -s=6 python train.py exp=custom_parallel_env_exp
 ```
 
 ### Advanced
@@ -274,6 +274,11 @@ How to run it:
 #   - Only the zero-rank process will perform the evaluation after the training
 diambra run -s=3 python train.py exp=custom_fabric_exp
 ```
+
+{{% notice warning %}}
+To run the fabric experiment, make sure you have a `cuda` GPU in your device, otherwise change the device from `cuda` to `cpu` (or to another device).
+{{% /notice %}}
+
 
 #### Metric and Logging
 Finally, SheepRL allows you to visualize and monitor training using Tensorboard. 
