@@ -109,7 +109,7 @@ The next section provides guidance and examples using some of the options listed
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_sheeprl.png"/>
    <figcaption align="middle">SheepRL • <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main" target="_blank">Link</a></figcaption>
   </figure>
-  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:3%; float:left; width:30.0%">
+  <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:30.0%">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/lib_sb3.png"/>
    <figcaption align="middle">Stable Baselines 3 • <a href="https://stable-baselines3.readthedocs.io/en/master/" target="_blank">Link</a></figcaption>
   </figure>
