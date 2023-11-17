@@ -29,7 +29,7 @@ weight: 5
 </div>
 
 {{% notice tip %}}
-The source code of all examples described in this section is available in our <a href="#" target="_blank">DIAMBRA Agents</a> repository.
+The source code of all examples described in this section is available in our <a href="https://github.com/diambra/agents/tree/main/sheeprl" target="_blank">DIAMBRA Agents</a> repository.
 {{% /notice %}}
 
 ### Getting Ready
@@ -51,7 +51,7 @@ pip install diambra-arena[sheeprl]
 
 This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://github.com/Eclectic-Sheep/sheeprl" target="_blank">SheepRL documentation</a> or reach out on our <a href="https://diambra.ai/discord" target="_blank">Discord server</a> for specific needs.
 
-All the examples presented below are available here: <a href="#" target="_blank">DIAMBRA Agents - SheepRL</a>. They have been created following the high level approach found on <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/learn_in_diambra.md" target="_blank">SheepRL DIAMBRA</a> page, thus allowing to easily extend them and to understand how they interface with the different components.
+All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/sheeprl" target="_blank">DIAMBRA Agents - SheepRL</a>. They have been created following the high level approach found on <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/learn_in_diambra.md" target="_blank">SheepRL DIAMBRA</a> page, thus allowing to easily extend them and to understand how they interface with the different components.
 
 These examples only aim at demonstrating the core functionalities and high-level aspects, they will not generate well-performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping, and other similar ones.
 
@@ -153,15 +153,15 @@ This example demonstrates how to:
 SheepRL natively supports dictionary observation spaces, the only thing you need to define is the keys of the observations you want to process. For more information about observations selection, check <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/select_observations.md" target="_blank">here</a>.
 
 ##### Configs Folder
-First, it is necessary to create a folder for the configuration files. We create the `configs` folder under the `./sheeprl/` folder in the <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">DIAMBRA Arena</a> GitHub repository. Then we added the `.env` file in `./sheeprl/` folder, in which we need to define the `SHEEPRL_SEARCH_PATH` environment variable as follows:
+First, it is necessary to create a folder for the configuration files. We create the `configs` folder under the `./sheeprl/` folder in the <a href="https://github.com/diambra/agents/tree/main" target="_blank">DIAMBRA Arena</a> GitHub repository. Then we added the `.env` file in `./sheeprl/` folder, in which we need to define the `SHEEPRL_SEARCH_PATH` environment variable as follows:
 
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/.env" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/.env" >}}
 
 ##### Define the Environment
 Now, in the `./sheeprl/configs` folder we create the `env` folder in which the `custom_env.yaml` will be placed.
 Below is reported a possible configuration of the environment.
 
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/env/custom_env.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/configs/env/custom_env.yaml" >}}
 
 ##### Define the Agent
 As for the environment, we need to create a dedicated folder to place the custom configurations of the agents: we create the `algo` folder in the `./sheeprl/configs` folder and we place the `custom_ppo_agent.yaml` file. Under the `default` keyword, it is possible to retrieve the configurations specified in another file, in our case, since we are defining the agent, we can take the configuration from the <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs/algo" target="_blank">algorithm config folder</a> in SheepRL, in which several SOTA agents are defined.
@@ -171,7 +171,7 @@ When defining an agent it is mandatory to define the `name` of the algorithm (it
 {{% /notice %}}
 
 Below is reported a configuration file for a PPO agent.
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/algo/custom_ppo_agent.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/configs/algo/custom_ppo_agent.yaml" >}}
 
 ##### Define the Experiment
 The last thing to do is to define the experiment. You just need to define a `custom_exp.yaml` file in the `./sheeprl/configs/exp` folder and assemble the environment, the agent, and the other components of the SheepRL framework. In particular, there are four parameters that must be defined:
@@ -181,7 +181,7 @@ The last thing to do is to define the experiment. You just need to define a `cus
 4. `mlp_keys`: the keys of vectors in observations that must be encoded (and eventually reconstructed by the decoder).
 
 Below is an example of an experiment config file.
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_exp.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/configs/exp/custom_exp.yaml" >}}
 
 {{% notice note %}}
 When defining the configurations of the experiment you can specify how frequently save checkpoints of the model, and if you want to save the final agent. For more information, check <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/logs_and_checkpoints.md#checkpointing" target="_blank">here</a>.
@@ -230,14 +230,14 @@ In this section, we show the two scripts for training and evaluating agents. Wit
 As far as evaluation is concerned, simply the configurations are passed directly to the `evaluate()` function of sheeprl. There is no need to check the environment as it has already been checked before training.
 
 The `train.py` script:
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/train.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/train.py" >}}
 
 The `evaluate.py` script:
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/evaluate.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/evaluate.py" >}}
 
 
 ##### PPO Implementation
-In this paragraph, we quote the code of our ppo implementation (the `ppo.py` file in the <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/feature/split-p2e/sheeprl/algos/ppo" target="_blank">SheepRL PPO folder</a>), just to give more context on how SheepRL works. In the `main()` function, all the components needed for training are instantiated (i.e., the agent, the environments, the buffer, the logger, and so on). Then, the environment interaction is performed, and after collecting the rollout steps, the train function is called.
+In this paragraph, we quote the code of our ppo implementation (the `ppo.py` file in the <a href="https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/algos/ppo" target="_blank">SheepRL PPO folder</a>), just to give more context on how SheepRL works. In the `main()` function, all the components needed for training are instantiated (i.e., the agent, the environments, the buffer, the logger, and so on). Then, the environment interaction is performed, and after collecting the rollout steps, the train function is called.
 
 The `train()` function is responsible for sharing the data between processes, if more processes are launched and the `buffer.share_data` is set to `True`. Then, for each batch, the losses are computed and the agent is updated.
 
@@ -248,14 +248,14 @@ In addition to what is seen in previous examples, this one demonstrates how to r
 To train the agent with multiple parallel environments, you need to define properly a few environment parameters and then run the script instantiating the correct number of docker containers.
 
 You can create a `custom_parallel_env.yaml` config file that inherits the configurations from the `custom_env.yaml` file:
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/env/custom_parallel_env.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/configs/env/custom_parallel_env.yaml" >}}
 
 {{% notice note %}}
 If you set the `env.sync_env` to `False`, then you must instantiate one more docker container because the `gymnasium.vector.AsyncVectorEnv` instantiates a dummy env when defined.
 {{% /notice %}}
 
 Then, you have to create a new file for the experiment (`custom_parallel_env_exp.yaml`), this file inherits the configurations of the `custom_exp` file and overrides the environment with the newly defined configurations (`custom_parallel_env`):
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_parallel_env_exp.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/configs/exp/custom_parallel_env_exp.yaml" >}}
 
 How to run it:
 
@@ -277,7 +277,7 @@ The `sheeprl.utils.callback.CheckpointCallback` is used for saving the checkpoin
 {{% /notice %}}
 
 To modify the Fabric configs, you can add a `fabric` field in the experiment file, as shown below. In this case, we selected `2` devices, the accelerator is `"cuda"` and the training is performed in 16 bits. As before, it inherits the configurations from the `custom_exp` and then sets the Fabric parameters.
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_fabric_exp.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/configs/exp/custom_fabric_exp.yaml" >}}
 
 How to run it:
 ```shell
@@ -315,7 +315,7 @@ Below is reported the default logging configuration and a table describing the a
 
 You can modify the default metric configurations by adding in the `custom_exp` file the custom configuration you want under the `metric` key, as shown below.
 In this example, we do not log the timer information and we want to synchronize the metrics between the 2 processes. Moreover, we add 3 metrics to log to the aggregator (in addition to reward and episode length): the value loss, the policy loss, and the entropy loss.
-{{< github_code "https://raw.githubusercontent.com/michele-milesi/diambra-agents/feature/sheeprl-integration/sheeprl/configs/exp/custom_metric_exp.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/configs/exp/custom_metric_exp.yaml" >}}
 
 How to run it:
 
