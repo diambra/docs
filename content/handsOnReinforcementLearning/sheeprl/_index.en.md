@@ -206,7 +206,7 @@ After training, you can decide to evaluate the agent as many times as you want. 
 The reason why only these three parameters need to be specified is to avoid inconsistencies, e.g. the checkpoint of one agent and the configurations of the evaluation refer to another one, or the model in the checkpoint has different dimensions from the model specified in the configurations. 
 This implies, however, that the evaluation script expects a certain directory structure. For this reason, the structure of the log directory should not be changed: all of it can be moved, but not the checkpoint individually, otherwise the script cannot automatically retrieve the environment and agent configurations.
 
-{{< github_code "https://raw.githubusercontent.com/Eclectic-Sheep/sheeprl/feature/split-p2e/sheeprl/configs/eval_config.yaml" >}}
+{{< github_code "https://raw.githubusercontent.com/Eclectic-Sheep/sheeprl/main/sheeprl/configs/eval_config.yaml" >}}
 
 To evaluate the agent you just need to run the following command:
 ```shell
