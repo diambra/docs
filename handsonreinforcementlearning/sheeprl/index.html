@@ -1,0 +1,832 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.112.3"><meta name=description content="Official documentation for DIAMBRA, the platform where coders create AI agents to compete in video games tournaments."><meta name=author content="DIAMBRA Team"><meta name=keywords content="Documentation,Reinforcement Learning,Deep Reinforcement Learning,AI Tournaments,Video Games Environments,RL Environments,DIAMBRA,DIAMBRA Documentation,AI Competitions,Artificial Intelligence"><meta itemprop=name content="DIAMBRA Docs"><meta itemprop=description content="Official documentation for DIAMBRA, the platform where coders create AI agents to compete in video games tournaments."><meta itemprop=image content="https://docs.diambra.ai//images/logoMeta.png"><meta property="og:site_name" content="DIAMBRA Docs"><meta property="og:title" content="DIAMBRA Docs"><meta property="og:description" content="Official documentation for DIAMBRA, the platform where coders create AI agents to compete in video games tournaments."><meta property="og:image" content="https://docs.diambra.ai//images/logoMeta.png"><meta property="og:url" content="https://docs.diambra.ai"><meta property="og:type" content="website"><meta name=publish_date property="og:publish_date" content="2022-01-15T00:00:00-0600"><meta charset=utf-8><link rel=icon href=/images/favicon.png type=image/png><title>SheepRL :: DIAMBRA Docs</title><link href=/css/nucleus.css?1700714718 rel=stylesheet><link href=/css/fontawesome-all.min.css?1700714718 rel=stylesheet><link href=/css/hybrid.css?1700714718 rel=stylesheet><link href=/css/featherlight.min.css?1700714718 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1700714718 rel=stylesheet><link href=/css/auto-complete.css?1700714718 rel=stylesheet><link href=/css/atom-one-dark-reasonable.css?1700714718 rel=stylesheet><link href=/css/theme.css?1700714718 rel=stylesheet><link href=/css/tabs.css?1700714718 rel=stylesheet><link href=/css/hugo-theme.css?1700714718 rel=stylesheet><link href=/css/theme-diambra.css?1700714718 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1700714718></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><style type=text/css>pre code{white-space:pre}</style></head><body data-url=/handsonreinforcementlearning/sheeprl/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=https://docs.diambra.ai/><img src=https://docs.diambra.ai//images/logo.png></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=/js/lunr.min.js?1700714718></script>
+<script type=text/javascript src=/js/auto-complete.js?1700714718></script>
+<script type=text/javascript>var baseurl="https://docs.diambra.ai/"</script><script type=text/javascript src=/js/search.js?1700714718></script></div><section id=homelinks><ul><li><a class=padding href=https://docs.diambra.ai/><i class='fas fa-home'></i> Home</a></li></ul></section><section id=versions class=dropdown><a class=dropdown-toggle>Versions ▼</a><div class=dropdown-content><a href=/>Latest</a>
+<a href=/v2.1>2.1</a></div></section><div class=highlightable><ul class=topics><li data-nav-id=/gettingstarted/ title="Getting Started" class=dd-item><a href=/gettingstarted/>Getting Started
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/gettingstarted/examples/ title=Examples class=dd-item><a href=/gettingstarted/examples/>Examples
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/gettingstarted/examples/singleplayerenv/ title="Single Player Environment" class=dd-item><a href=/gettingstarted/examples/singleplayerenv/>Single Player Environment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/gettingstarted/examples/multiplayerenv/ title="Multi Player Environment" class=dd-item><a href=/gettingstarted/examples/multiplayerenv/>Multi Player Environment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/gettingstarted/examples/wrappersoptions/ title="Wrappers Options" class=dd-item><a href=/gettingstarted/examples/wrappersoptions/>Wrappers Options
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/gettingstarted/examples/episoderecorder/ title="Episode Recorder" class=dd-item><a href=/gettingstarted/examples/episoderecorder/>Episode Recorder
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/gettingstarted/examples/datasetloader/ title="Dataset Loader" class=dd-item><a href=/gettingstarted/examples/datasetloader/>Dataset Loader
+<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li><li data-nav-id=/envs/ title=Environments class=dd-item><a href=/envs/>Environments
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/envs/games/ title="Games & Specifics" class=dd-item><a href=/envs/games/>Games & Specifics
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/envs/games/doapp/ title="Dead Or Alive ++" class=dd-item><a href=/envs/games/doapp/>Dead Or Alive ++
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/envs/games/sfiii3n/ title="Street Fighter III 3rd Strike" class=dd-item><a href=/envs/games/sfiii3n/>Street Fighter III 3rd Strike
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/envs/games/tektagt/ title="Tekken Tag Tournament" class=dd-item><a href=/envs/games/tektagt/>Tekken Tag Tournament
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/envs/games/umk3/ title="Ultimate Mortal Kombat 3" class=dd-item><a href=/envs/games/umk3/>Ultimate Mortal Kombat 3
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/envs/games/samsh5sp/ title="Samurai Showdown 5 Special" class=dd-item><a href=/envs/games/samsh5sp/>Samurai Showdown 5 Special
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/envs/games/kof98umh/ title="The King of Fighers '98 UMH" class=dd-item><a href=/envs/games/kof98umh/>The King of Fighers '98 UMH
+<i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li><li data-nav-id=/wrappers/ title=Wrappers class=dd-item><a href=/wrappers/>Wrappers
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/utils/ title=Utils class=dd-item><a href=/utils/>Utils
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/imitationlearning/ title="Imitation Learning" class=dd-item><a href=/imitationlearning/>Imitation Learning
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/handsonreinforcementlearning/ title="Hands-on Reinforcement Learning" class="dd-item
+parent"><a href=/handsonreinforcementlearning/>Hands-on Reinforcement Learning
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/handsonreinforcementlearning/sheeprl/ title=SheepRL class="dd-item
+active"><a href=/handsonreinforcementlearning/sheeprl/>SheepRL
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/handsonreinforcementlearning/stablebaselines3/ title="Stable Baselines 3" class=dd-item><a href=/handsonreinforcementlearning/stablebaselines3/>Stable Baselines 3
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/handsonreinforcementlearning/rayrllib/ title="Ray RLlib" class=dd-item><a href=/handsonreinforcementlearning/rayrllib/>Ray RLlib
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/competitionplatform/ title="Competition Platform" class=dd-item><a href=/competitionplatform/>Competition Platform
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/competitionplatform/basicagentscript/ title="Basic Agent Script" class=dd-item><a href=/competitionplatform/basicagentscript/>Basic Agent Script
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/competitionplatform/submissionevaluation/ title="Submission Evaluation" class=dd-item><a href=/competitionplatform/submissionevaluation/>Submission Evaluation
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/competitionplatform/howtosubmitanagent/ title="How To Submit An Agent" class=dd-item><a href=/competitionplatform/howtosubmitanagent/>How To Submit An Agent
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/competitionplatform/howtosubmitanagent/submitprebuiltagents/ title="Submit Pre-Built Agents" class=dd-item><a href=/competitionplatform/howtosubmitanagent/submitprebuiltagents/>Submit Pre-Built Agents
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/competitionplatform/howtosubmitanagent/submityourownagent/ title="Submit Your Own Agent" class=dd-item><a href=/competitionplatform/howtosubmitanagent/submityourownagent/>Submit Your Own Agent
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/competitionplatform/howtosubmitanagent/customdependenciesimage/ title="Custom Dependencies Image" class=dd-item><a href=/competitionplatform/howtosubmitanagent/customdependenciesimage/>Custom Dependencies Image
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/competitionplatform/argumentsandcommands/ title="Arguments and Commands" class=dd-item><a href=/competitionplatform/argumentsandcommands/>Arguments and Commands
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/competitionplatform/testyouragentlocally/ title="Test Your Agent Locally" class=dd-item><a href=/competitionplatform/testyouragentlocally/>Test Your Agent Locally
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/projects/ title=Projects class=dd-item><a href=/projects/>Projects
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/projects/rlztournament/ title="RLZ Tournament" class=dd-item><a href=/projects/rlztournament/>RLZ Tournament
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/projects/gamepainter/ title="Game Painter" class=dd-item><a href=/projects/gamepainter/>Game Painter
+<i class="fas fa-check read-icon"></i></a></li></ul></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://diambra.ai target=_blank><i class='fas fa-globe'></i> Website</a></li><li><a class=padding href=https://github.com/diambra/ target=_blank><i class='fab fa-fw fa-github'></i> GitHub</a></li><li><a class=padding href=https://diambra.ai/discord target=_blank><i class='fab fa-discord'></i> Discord</a></li><li><a class=padding href=https://www.twitch.tv/diambra_ai target=_blank><i class='fab fa-twitch'></i> Twitch</a></li><li><a class=padding href=https://www.linkedin.com/company/diambra target=_blank><i class='fab fa-linkedin'></i> Linkedin</a></li><li><a class=padding href=https://www.youtube.com/c/diambra_ai target=_blank><i class='fab fa-youtube'></i> YouTube</a></li><li><a class=padding href=https://twitter.com/diambra_ai target=_blank><i class='fab fa-fw fa-twitter'></i> Twitter</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><center><a class=github-button href=https://github.com/diambra/arena/archive/refs/heads/main.zip data-icon=octicon-download aria-label="Download DIAMBRA Arena from GitHub">Download</a>
+<a class=github-button href=https://github.com/diambra/arena data-icon=octicon-star data-show-count=true aria-label="Star DIAMBRA Arena on GitHub">Star</a>
+<a class=github-button href=https://github.com/diambra/arena/fork data-icon=octicon-repo-forked data-show-count=true aria-label="Fork DIAMBRA Arena on GitHub">Fork</a></center>
+<script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
+<span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=/>Home</a> > <a href=/handsonreinforcementlearning/>Hands-on Reinforcement Learning</a> > SheepRL</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li><a href=#index>Index</a></li><li><a href=#getting-ready>Getting Ready</a></li><li><a href=#basic>Basic</a></li><li><a href=#advanced>Advanced</a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>SheepRL</h1><div style=font-size:1.125rem><h3 id=index>Index</h3><ul><li><a href=#getting-ready>Getting Ready</a><ul><li><a href=#general-environment-settings>General Environment Settings</a></li><li><a href=#native-interface>Native Interface</a></li><li><a href=#agent-settings>Agent Settings</a></li></ul></li><li><a href=#basic>Basic</a><ul><li><a href=#customising-the-configurations>Customising the Configurations</a></li><li><a href=#basic-example>Basic Example</a><ul><li><a href=#configs-folder>Configs Folder</a></li><li><a href=#define-the-environment>Define the Environment</a></li><li><a href=#define-the-agent>Define the Agent</a></li><li><a href=#define-the-experiment>Define the Experiment</a></li><li><a href=#train-and-evaluate-the-agent>Train and Evaluate the Agent</a></li><li><a href=#train-and-evaluate-scripts>Train and Evaluate Scripts</a></li><li><a href=#ppo-implementation>PPO Implementation</a></li></ul></li><li><a href=#parallel-environments>Parallel Environments</a></li></ul></li><li><a href=#advanced>Advanced</a><ul><li><a href=#fabric>Fabric</a></li><li><a href=#metric-and-logging>Metric and Logging</a></li></ul></li></ul></div><div class="notices tip"><p>The source code of all examples described in this section is available in our <a href=https://github.com/diambra/agents/tree/main/sheeprl target=_blank>DIAMBRA Agents</a> repository.</p></div><h3 id=getting-ready>Getting Ready</h3><p>We highly recommend using virtual environments to isolate your python installs, especially to avoid conflicts in dependencies. In what follows we use Conda but any other tool should work too.</p><p>Create and activate a new dedicated virtual environment:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>conda create -n diambra-arena-sheeprl python<span style=color:#f92672>=</span>3.9
+</span></span><span style=display:flex><span>conda activate diambra-arena-sheeprl
+</span></span></code></pre></div><p>Install DIAMBRA Arena with SheepRL interface:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>pip install diambra-arena<span style=color:#f92672>[</span>sheeprl<span style=color:#f92672>]</span>
+</span></span></code></pre></div><p>This should be enough to prepare your system to execute the following examples. You can refer to the official <a href=https://github.com/Eclectic-Sheep/sheeprl target=_blank>SheepRL documentation</a> or reach out on our <a href=https://diambra.ai/discord target=_blank>Discord server</a> for specific needs.</p><p>All the examples presented below are available here: <a href=https://github.com/diambra/agents/tree/main/sheeprl target=_blank>DIAMBRA Agents - SheepRL</a>. They have been created following the high level approach found on <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/learn_in_diambra.md target=_blank>SheepRL DIAMBRA</a> page, thus allowing to easily extend them and to understand how they interface with the different components.</p><p>These examples only aim at demonstrating the core functionalities and high-level aspects, they will not generate well-performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping, and other similar ones.</p><h4 id=general-environment-settings>General Environment Settings</h4><p>SheepRL provides a lot of different environments that share a set of parameters. Moreover, SheepRL leverages <a href=https://hydra.cc/ target=_blank>Hydra</a> for defining hierarchical configurations. Below is reported the general structure of the configuration of an environment and a table describing the arguments.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>id</span>: ???
+</span></span><span style=display:flex><span><span style=color:#f92672>num_envs</span>: <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>frame_stack</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>sync_env</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>screen_size</span>: <span style=color:#ae81ff>64</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>action_repeat</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>grayscale</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>clip_rewards</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>capture_video</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>frame_stack_dilation</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>max_episode_steps</span>: <span style=color:#66d9ef>null</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>reward_as_observation</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>wrapper</span>: ???
+</span></span></code></pre></div><table><thead><tr><th><strong><span style=color:#5b5b60>Argument</span></strong></th><th><strong><span style=color:#5b5b60>Type</span></strong></th><th><strong><span style=color:#5b5b60>Default Value(s)</span></strong></th><th><strong><span style=color:#5b5b60>Description</span></strong></th></tr></thead><tbody><tr><td><code>id</code></td><td><code>str</code></td><td>-</td><td>Game environment identifier</td></tr><tr><td><code>num_envs</code></td><td><code>int</code></td><td><code>4</code></td><td>The number of environment to initialize for training</td></tr><tr><td><code>frame_stack</code></td><td><code>int</code></td><td><code>1</code></td><td>The number of frames to stack</td></tr><tr><td><code>sync_env</code></td><td><code>bool</code></td><td><code>False</code></td><td>Whether to use the <code>gymnasium.vector.SyncVectorEnv</code> (<code>True</code>) or <code>gymnasium.vector.AsyncVectorEnv</code> (<code>False</code>) for handling vectorized environments</td></tr><tr><td><code>screen_size</code></td><td><code>int | Tuple[int, int]</code></td><td><code>64</code></td><td>Screen size of the frames</td></tr><tr><td><code>action_repeat</code></td><td><code>int</code></td><td><code>64</code></td><td>How many times repeat the same action</td></tr><tr><td><code>grayscale</code></td><td><code>bool</code></td><td><code>False</code></td><td>Whether to use grayscale frames</td></tr><tr><td><code>clip_rewards</code></td><td><code>bool</code></td><td><code>False</code></td><td>Whether or not to clip rewards using a <code>tanh</code></td></tr><tr><td><code>capture_video</code></td><td><code>bool</code></td><td><code>True</code></td><td>Whether or not to capture the video of the episodes during training</td></tr><tr><td><code>frame_stack_dilation</code></td><td><code>int</code></td><td><code>1</code></td><td>The number of frames to be skipped between frames in the <code>frame_stack</code></td></tr><tr><td><code>max_episode_steps</code></td><td><code>int | None</code></td><td><code>null</code></td><td>The maximum number of steps in a single episode</td></tr><tr><td><code>reward_as_observation</code></td><td><code>bool</code></td><td><code>False</code></td><td>Whether or not to add the reward to the observations</td></tr><tr><td><code>wrapper</code></td><td><code>Dict[str, Any]</code></td><td>-</td><td>Environment-related arguments (see <a href=#native-interface>here</a>)</td></tr></tbody></table><div class="notices note"><p>If you have never used Hydra, before continuing, it is strongly recommended to check the <a href=https://hydra.cc/ target=_blank>Hydra official documentation</a> and the <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/configs.md target=_blank>SheepRL-related section</a>.</p></div><h4 id=native-interface>Native interface</h4><p>DIAMBRA Arena native interface with SheepRL covers a wide range of use cases, automating the handling of vectorized environments and monitoring wrappers. In the majority of cases, it will be sufficient for users to directly import and use it, with no need for additional customization. Below is reported its interface and a table describing its arguments.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DiambraWrapper</span>(gym<span style=color:#f92672>.</span>Wrapper):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(
+</span></span><span style=display:flex><span>        self,
+</span></span><span style=display:flex><span>        id: str,
+</span></span><span style=display:flex><span>        action_space: str <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;diambra.arena.SpaceTypes.DISCRETE&#34;</span>,
+</span></span><span style=display:flex><span>        screen_size: Union[int, Tuple[int, int]] <span style=color:#f92672>=</span> <span style=color:#ae81ff>64</span>,
+</span></span><span style=display:flex><span>        grayscale: bool <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>,
+</span></span><span style=display:flex><span>        repeat_action: int <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>,
+</span></span><span style=display:flex><span>        rank: int <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>        diambra_settings: Dict[str, Any] <span style=color:#f92672>=</span> {},
+</span></span><span style=display:flex><span>        diambra_wrappers: Dict[str, Any] <span style=color:#f92672>=</span> {},
+</span></span><span style=display:flex><span>        render_mode: str <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;rgb_array&#34;</span>,
+</span></span><span style=display:flex><span>        log_level: int <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>        increase_performance: bool <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>,
+</span></span><span style=display:flex><span>    ):
+</span></span></code></pre></div><table><thead><tr><th><strong><span style=color:#5b5b60>Argument</span></strong></th><th><strong><span style=color:#5b5b60>Type</span></strong></th><th><strong><span style=color:#5b5b60>Default Value(s)</span></strong></th><th><strong><span style=color:#5b5b60>Description</span></strong></th></tr></thead><tbody><tr><td><code>id</code></td><td><code>str</code></td><td>-</td><td>Game environment identifier</td></tr><tr><td><code>action_space</code></td><td><code>str</code></td><td><code>"diambra.arena.SpaceTypes.DISCRETE"</code></td><td>Which action space to use: one between <code>"diambra.arena.SpaceTypes.DISCRETE"</code> and <code>"diambra.arena.SpaceTypes.MULTI_DISCRETE"</code></td></tr><tr><td><code>screen_size</code></td><td><code>int | Tuple[int, int]</code></td><td><code>64</code></td><td>Screen size of the frames</td></tr><tr><td><code>grayscale</code></td><td><code>bool</code></td><td><code>False</code></td><td>Whether to use grayscale frames</td></tr><tr><td><code>rank</code></td><td><code>int</code></td><td><code>0</code></td><td>Rank of the environment</td></tr><tr><td><code>diambra_settings</code></td><td><code>Dict[str, Any]</code></td><td><code>{}</code></td><td>The settings of the environment. See <a href=../../envs/#settings target=_blank>here</a> to check which settings you can specify.</td></tr><tr><td><code>diambra_wrappers</code></td><td><code>Dict[str, Any]</code></td><td><code>{}</code></td><td>The wrappers to apply to the environment. See <a href=../../wrappers/ target=_blank>here</a> to check which wrappers you can specify.</td></tr><tr><td><code>render_mode</code></td><td><code>str</code></td><td><code>"rgb_array"</code></td><td>Rendering mode</td></tr><tr><td><code>log_level</code></td><td><code>int</code></td><td><code>0</code></td><td>Log level</td></tr><tr><td><code>increase_performance</code></td><td><code>bool</code></td><td><code>True</code></td><td>Whether to modify frames on the engine side (<code>True</code>) or use the wrapper (<code>False</code>)</td></tr></tbody></table><div class="notices note"><p>For the interface low-level details, users can review the correspondent source code <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/sheeprl/envs/diambra.py target=_blank>here</a>.</p></div><h4 id=agent-settings>Agent Settings</h4><p>SheepRL provides several SOTA algorithms, both model-free and model-based. <a href=https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs/algo target=_blank>Here</a> you can find the default configurations for these agent. Of course, one can change algorithm-related hyper-parameters for customizing his/her experiments.</p><h3 id=basic>Basic</h3><p>As anticipated before, SheepRL provides several default configurations for all its components, which are available and can be composed to set up an experiment. Otherwise, you can customize the ones you want: the two main ones to be defined for experiments are the agent and the environment.</p><p>Regarding the environment, there are some constraints that must be respected, for example, the dictionary observation spaces cannot be nested. For this reason, the DIAMBRA <a href=../../wrappers/#flatten-and-filter-observation target=_blank>flattening wrapper</a> is always used. For more information about the constraints of the SheepRL library, check <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/learn_in_diambra.md#args target=_blank>here</a>.</p><p>Instead, regarding the agent, the only two constraints that are present concern the observation and action spaces that agents support. You can read the supported observation and action spaces in Table 1 and Table 2 of the <a href=https://github.com/Eclectic-Sheep/sheeprl target=_blank>README</a> in the SheepRL GitHub repository, respectively.</p><h4 id=customising-the-configurations>Customising the Configurations</h4><p>The default configurations are available <a href=https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs target=_blank>here</a>. If you want to define your custom experiments, you just need to follow a few steps:</p><ol><li>You need to create a folder (with the same structure as the <a href=https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs target=_blank>SheepRL configs folder</a>) where to place your custom configurations.</li><li>You need to define the <code>SHEEPRL_SEARCH_PATH</code> environment variable in the <code>.env</code> file as follows: <code>SHEEPRL_SEARCH_PATH=file://relative/path/to/custom/configs/folder;pkg://sheeprl.configs</code>.</li><li>You need to define the custom configurations, being careful that the filename is different from the default ones. If this is not respected, your file will overwrite the default configurations.</li></ol><h4 id=basic-example>Basic Example</h4><p>This example demonstrates how to:</p><ul><li>Leverage SheepRL to define the environment for training.</li><li>Define a PPO Agent to be trained.</li><li>Define custom configurations for your experiment.</li><li>Train the agent.</li><li>Run the trained agent in the environment for one episode.</li></ul><p>SheepRL natively supports dictionary observation spaces, the only thing you need to define is the keys of the observations you want to process. For more information about observations selection, check <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/select_observations.md target=_blank>here</a>.</p><h5 id=configs-folder>Configs Folder</h5><p>First, it is necessary to create a folder for the configuration files. We create the <code>configs</code> folder under the <code>./sheeprl/</code> folder in the <a href=https://github.com/diambra/agents/tree/main target=_blank>DIAMBRA Arena</a> GitHub repository. Then we added the <code>.env</code> file in <code>./sheeprl/</code> folder, in which we need to define the <code>SHEEPRL_SEARCH_PATH</code> environment variable as follows:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-env data-lang=env><span style=display:flex><span>SHEEPRL_SEARCH_PATH<span style=color:#f92672>=</span>file://configs;pkg://sheeprl.configs</span></span></code></pre></div><h5 id=define-the-environment>Define the Environment</h5><p>Now, in the <code>./sheeprl/configs</code> folder we create the <code>env</code> folder in which the <code>custom_env.yaml</code> will be placed.
+Below is reported a possible configuration of the environment.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>default</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Override from `default` config</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># `default` config contains the arguments shared</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># among all the environments in SheepRL</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>id</span>: <span style=color:#ae81ff>doapp</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>frame_stack</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>sync_env</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>action_repeat</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>num_envs</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>screen_size</span>: <span style=color:#ae81ff>64</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>grayscale</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>clip_rewards</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>capture_video</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>frame_stack_dilation</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>max_episode_steps</span>: <span style=color:#66d9ef>null</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>reward_as_observation</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># DOAPP-related arguments</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>wrapper</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># class to be instantiated</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>sheeprl.envs.diambra.DiambraWrapper</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>id</span>: <span style=color:#ae81ff>${env.id}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>action_space</span>: <span style=color:#ae81ff>diambra.arena.SpaceTypes.DISCRETE </span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># or `diambra.arena.SpaceTypes.MULTI_DISCRETE`</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>screen_size</span>: <span style=color:#ae81ff>${env.screen_size}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>grayscale</span>: <span style=color:#ae81ff>${env.grayscale}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>repeat_action</span>: <span style=color:#ae81ff>${env.action_repeat}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>rank</span>: <span style=color:#66d9ef>null</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>log_level</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>increase_performance</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>diambra_settings</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>role</span>: <span style=color:#ae81ff>diambra.arena.Roles.P1</span> <span style=color:#75715e># or `diambra.arena.Roles.P1` or `null`</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>step_ratio</span>: <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>difficulty</span>: <span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>continue_game</span>: <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>show_final</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>outfits</span>: <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>splash_screen</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>diambra_wrappers</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>stack_actions</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>no_op_max</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>no_attack_buttons_combinations</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>add_last_action</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>scale</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>exclude_image_scaling</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>process_discrete_binary</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>role_relative</span>: <span style=color:#66d9ef>True</span>
+</span></span></code></pre></div><h5 id=define-the-agent>Define the Agent</h5><p>As for the environment, we need to create a dedicated folder to place the custom configurations of the agents: we create the <code>algo</code> folder in the <code>./sheeprl/configs</code> folder and we place the <code>custom_ppo_agent.yaml</code> file. Under the <code>default</code> keyword, it is possible to retrieve the configurations specified in another file, in our case, since we are defining the agent, we can take the configuration from the <a href=https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/configs/algo target=_blank>algorithm config folder</a> in SheepRL, in which several SOTA agents are defined.</p><div class="notices note"><p>When defining an agent it is mandatory to define the <code>name</code> of the algorithm (it must be equal to the filename of the file in which the algorithm is defined). The value of these parameters defines which algorithm will be used for training. If you inherit the default configurations of a specific algorithm, then you do not need to define it, since it is already defined in the default configs of that algorithm.</p></div><p>Below is reported a configuration file for a PPO agent.<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Take default configurations of PPO</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>ppo</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># define Adam optimizer under the `optimizer` key </span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># from the sheeprl/configs/optim folder</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>override /optim@optimizer</span>: <span style=color:#ae81ff>adam</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Override default ppo arguments</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># `name` is a mandatory attribute, it must be equal to the filename </span>
+</span></span><span style=display:flex><span><span style=color:#75715e># of the file in which the algorithm is defined.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># If you inherit the default configurations of a specific algoritm,</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># then you do not need to define it, since it is already defined in the default configs</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>ppo</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>update_epochs</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>normalize_advantages</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>rollout_steps</span>: <span style=color:#ae81ff>32</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>dense_units</span>: <span style=color:#ae81ff>16</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>mlp_layers</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>dense_act</span>: <span style=color:#ae81ff>torch.nn.Tanh</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>max_grad_norm</span>: <span style=color:#ae81ff>1.0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Encoder</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>encoder</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>cnn_features_dim</span>: <span style=color:#ae81ff>128</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>mlp_features_dim</span>: <span style=color:#ae81ff>32</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dense_units</span>: <span style=color:#ae81ff>${algo.dense_units}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>mlp_layers</span>: <span style=color:#ae81ff>${algo.mlp_layers}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dense_act</span>: <span style=color:#ae81ff>${algo.dense_act}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>layer_norm</span>: <span style=color:#ae81ff>${algo.layer_norm}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Actor</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>actor</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dense_units</span>: <span style=color:#ae81ff>${algo.dense_units}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>mlp_layers</span>: <span style=color:#ae81ff>${algo.mlp_layers}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dense_act</span>: <span style=color:#ae81ff>${algo.dense_act}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>layer_norm</span>: <span style=color:#ae81ff>${algo.layer_norm}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Critic</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>critic</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dense_units</span>: <span style=color:#ae81ff>${algo.dense_units}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>mlp_layers</span>: <span style=color:#ae81ff>${algo.mlp_layers}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>dense_act</span>: <span style=color:#ae81ff>${algo.dense_act}</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>layer_norm</span>: <span style=color:#ae81ff>${algo.layer_norm}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Single optimizer for both actor and critic</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>optimizer</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>lr</span>: <span style=color:#ae81ff>5e-3</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>eps</span>: <span style=color:#ae81ff>1e-6</span>
+</span></span></code></pre></div></p><h5 id=define-the-experiment>Define the Experiment</h5><p>The last thing to do is to define the experiment. You just need to define a <code>custom_exp.yaml</code> file in the <code>./sheeprl/configs/exp</code> folder and assemble the environment, the agent, and the other components of the SheepRL framework. In particular, there are four parameters that must be defined:</p><ol><li><code>total_steps</code>: the total number of policy steps to compute during training (for more information, check <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/work_with_steps.md#policy-steps target=_blank>here</a>).</li><li><code>buffer.size</code>: the dimension of the replay buffer.</li><li><code>cnn_keys</code>: the keys of frames in observations that must be encoded (and eventually reconstructed by the decoder).</li><li><code>mlp_keys</code>: the keys of vectors in observations that must be encoded (and eventually reconstructed by the decoder).</li></ol><p>Below is an example of an experiment config file.<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># @package _global_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Selects the algorithm and the environment</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>override /algo</span>: <span style=color:#ae81ff>custom_ppo_agent</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>override /env</span>: <span style=color:#ae81ff>custom_env</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Experiment</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>total_steps</span>: <span style=color:#ae81ff>1024</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>per_rank_batch_size</span>: <span style=color:#ae81ff>16</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Buffer</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>buffer</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>share_data</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>size</span>: <span style=color:#ae81ff>${algo.rollout_steps}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>checkpoint</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>save_last</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>cnn_keys</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>encoder</span>: [<span style=color:#ae81ff>frame]</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>mlp_keys</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>encoder</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>own_character</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>own_health</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>own_side</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>own_wins</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>opp_character</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>opp_health</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>opp_side</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>opp_wins</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>stage</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>timer</span>
+</span></span><span style=display:flex><span>    - <span style=color:#ae81ff>action</span>
+</span></span></code></pre></div></p><div class="notices note"><p>When defining the configurations of the experiment you can specify how frequently save checkpoints of the model, and if you want to save the final agent. For more information, check <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/logs_and_checkpoints.md#checkpointing target=_blank>here</a>.</p></div><h5 id=train-and-evaluate-the-agent>Train and Evaluate the Agent</h5><p>To run the experiment you just need to go into the <code>./sheeprl</code> folder and run the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run -s<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> python train.py exp<span style=color:#f92672>=</span>custom_exp
+</span></span></code></pre></div><div class="notices note"><p>You have to instantiate 2 docker containers because sheeprl automatically performs a test of the agent after training.</p></div><p>After training, you can decide to evaluate the agent as many times as you want. You can specify only a few parameters for evaluating your agent:</p><ol><li>The checkpoint of the agent that you want to evaluate (<code>checkpoint_path</code>, mandatory).</li><li>The type of device on which you want to run the evaluation (<code>fabric.device</code>, default to <code>cpu</code>).</li><li>Whether or not to capture the video of the evaluation (<code>env.capture_video</code>, default to <code>True</code>).</li></ol><p>The reason why only these three parameters need to be specified is to avoid inconsistencies, e.g. the checkpoint of one agent and the configurations of the evaluation refer to another one, or the model in the checkpoint has different dimensions from the model specified in the configurations.
+This implies, however, that the evaluation script expects a certain directory structure. For this reason, the structure of the log directory should not be changed: all of it can be moved, but not the checkpoint individually, otherwise the script cannot automatically retrieve the environment and agent configurations.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># @package _global_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># specify here default training configuration</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>override hydra/hydra_logging</span>: <span style=color:#ae81ff>disabled</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>override hydra/job_logging</span>: <span style=color:#ae81ff>disabled</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>hydra</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>output_subdir</span>: <span style=color:#66d9ef>null</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>run</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>dir</span>: <span style=color:#ae81ff>.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>fabric</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>accelerator</span>: <span style=color:#ae81ff>cpu</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>capture_video</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>checkpoint_path</span>: ???
+</span></span></code></pre></div><p>To evaluate the agent you just need to run the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python evaluate.py checkpoint_path<span style=color:#f92672>=</span>/path/to/checkpoint.ckpt
+</span></span></code></pre></div><p>If you want to specify the device to use, for instance <code>cuda</code>, you have to run the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python evaluate.py checkpoint_path<span style=color:#f92672>=</span>/path/to/checkpoint.ckpt fabric.device<span style=color:#f92672>=</span>cuda
+</span></span></code></pre></div><p>If you want to specify whether or not to capture the video, you have to run the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>diambra run python evaluate.py checkpoint_path<span style=color:#f92672>=</span>/path/to/checkpoint.ckpt env.capture_video<span style=color:#f92672>=</span>True
+</span></span></code></pre></div><h5 id=train-and-evaluate-scripts>Train and Evaluate Scripts</h5><p>In this section, we show the two scripts for training and evaluating agents. With regard to training, first the environment selected by the user is checked, if it is not one of diambra, then an exception is raised. Next, the <code>run()</code> function of SheepRL is called, which will initialize all components and start the training.</p><p>As far as evaluation is concerned, simply the configurations are passed directly to the <code>evaluate()</code> function of sheeprl. There is no need to check the environment as it has already been checked before training.</p><p>The <code>train.py</code> script:<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#75715e># Diambra Agents</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> hydra
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> diambra.arena.sheeprl <span style=color:#f92672>import</span> CONFIGS_PATH
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> omegaconf <span style=color:#f92672>import</span> DictConfig
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.cli <span style=color:#f92672>import</span> run
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>check_configs</span>(cfg: DictConfig):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;diambra&#34;</span> <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>wrapper<span style=color:#f92672>.</span>_target_:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;You must choose a DIAMBRA environment. &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Got &#39;</span><span style=color:#e6db74>{</span>cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>id<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39; provided by &#39;</span><span style=color:#e6db74>{</span>cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>wrapper<span style=color:#f92672>.</span>_target_<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#39;.&#39;</span>)[<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>]<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;.&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@hydra.main</span>(version_base<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1.3&#34;</span>, config_path<span style=color:#f92672>=</span>CONFIGS_PATH, config_name<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;config&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>train</span>(cfg: DictConfig):
+</span></span><span style=display:flex><span>    check_configs(cfg)
+</span></span><span style=display:flex><span>    run(cfg)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    train()
+</span></span></code></pre></div></p><p>The <code>evaluate.py</code> script:<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#75715e># Diambra Agents</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> hydra
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> diambra.arena.sheeprl <span style=color:#f92672>import</span> CONFIGS_PATH
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> omegaconf <span style=color:#f92672>import</span> DictConfig
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.cli <span style=color:#f92672>import</span> evaluation
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@hydra.main</span>(version_base<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;1.3&#34;</span>, config_path<span style=color:#f92672>=</span>CONFIGS_PATH, config_name<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;eval_config&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>run</span>(cfg: DictConfig):
+</span></span><span style=display:flex><span>    evaluation(cfg)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>    run()
+</span></span></code></pre></div></p><h5 id=ppo-implementation>PPO Implementation</h5><p>In this paragraph, we quote the code of our ppo implementation (the <code>ppo.py</code> file in the <a href=https://github.com/Eclectic-Sheep/sheeprl/tree/main/sheeprl/algos/ppo target=_blank>SheepRL PPO folder</a>), just to give more context on how SheepRL works. In the <code>main()</code> function, all the components needed for training are instantiated (i.e., the agent, the environments, the buffer, the logger, and so on). Then, the environment interaction is performed, and after collecting the rollout steps, the train function is called.</p><p>The <code>train()</code> function is responsible for sharing the data between processes, if more processes are launched and the <code>buffer.share_data</code> is set to <code>True</code>. Then, for each batch, the losses are computed and the agent is updated.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>from</span> __future__ <span style=color:#f92672>import</span> annotations
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> copy
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> warnings
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> typing <span style=color:#f92672>import</span> Any, Dict, Union
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> gymnasium <span style=color:#66d9ef>as</span> gym
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> hydra
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> torch
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> lightning.fabric <span style=color:#f92672>import</span> Fabric
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> lightning.fabric.wrappers <span style=color:#f92672>import</span> _FabricModule
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> tensordict <span style=color:#f92672>import</span> TensorDict, make_tensordict
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> tensordict.tensordict <span style=color:#f92672>import</span> TensorDictBase
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> torch <span style=color:#f92672>import</span> nn
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> torch.utils.data <span style=color:#f92672>import</span> BatchSampler, DistributedSampler, RandomSampler
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> torchmetrics <span style=color:#f92672>import</span> SumMetric
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.algos.ppo.agent <span style=color:#f92672>import</span> PPOAgent
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.algos.ppo.loss <span style=color:#f92672>import</span> entropy_loss, policy_loss, value_loss
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.algos.ppo.utils <span style=color:#f92672>import</span> test
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.data <span style=color:#f92672>import</span> ReplayBuffer
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.utils.env <span style=color:#f92672>import</span> make_env
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.utils.logger <span style=color:#f92672>import</span> create_tensorboard_logger, get_log_dir
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.utils.metric <span style=color:#f92672>import</span> MetricAggregator
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.utils.registry <span style=color:#f92672>import</span> register_algorithm
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.utils.timer <span style=color:#f92672>import</span> timer
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> sheeprl.utils.utils <span style=color:#f92672>import</span> gae, normalize_tensor, polynomial_decay
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>train</span>(
+</span></span><span style=display:flex><span>    fabric: Fabric,
+</span></span><span style=display:flex><span>    agent: Union[nn<span style=color:#f92672>.</span>Module, _FabricModule],
+</span></span><span style=display:flex><span>    optimizer: torch<span style=color:#f92672>.</span>optim<span style=color:#f92672>.</span>Optimizer,
+</span></span><span style=display:flex><span>    data: TensorDictBase,
+</span></span><span style=display:flex><span>    aggregator: MetricAggregator <span style=color:#f92672>|</span> <span style=color:#66d9ef>None</span>,
+</span></span><span style=display:flex><span>    cfg: Dict[str, Any],
+</span></span><span style=display:flex><span>):
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Train the agent on the data collected from the environment.&#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    indexes <span style=color:#f92672>=</span> list(range(data<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>0</span>]))
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>share_data:
+</span></span><span style=display:flex><span>        sampler <span style=color:#f92672>=</span> DistributedSampler(
+</span></span><span style=display:flex><span>            indexes,
+</span></span><span style=display:flex><span>            num_replicas<span style=color:#f92672>=</span>fabric<span style=color:#f92672>.</span>world_size,
+</span></span><span style=display:flex><span>            rank<span style=color:#f92672>=</span>fabric<span style=color:#f92672>.</span>global_rank,
+</span></span><span style=display:flex><span>            shuffle<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>,
+</span></span><span style=display:flex><span>            seed<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>seed,
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        sampler <span style=color:#f92672>=</span> RandomSampler(indexes)
+</span></span><span style=display:flex><span>    sampler <span style=color:#f92672>=</span> BatchSampler(sampler, batch_size<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>per_rank_batch_size, drop_last<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> epoch <span style=color:#f92672>in</span> range(cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>update_epochs):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>share_data:
+</span></span><span style=display:flex><span>            sampler<span style=color:#f92672>.</span>sampler<span style=color:#f92672>.</span>set_epoch(epoch)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> batch_idxes <span style=color:#f92672>in</span> sampler:
+</span></span><span style=display:flex><span>            batch <span style=color:#f92672>=</span> data[batch_idxes]
+</span></span><span style=display:flex><span>            normalized_obs <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>                k: batch[k] <span style=color:#f92672>/</span> <span style=color:#ae81ff>255</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span> <span style=color:#66d9ef>if</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder <span style=color:#66d9ef>else</span> batch[k]
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>mlp_keys<span style=color:#f92672>.</span>encoder <span style=color:#f92672>+</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            _, logprobs, entropy, new_values <span style=color:#f92672>=</span> agent(
+</span></span><span style=display:flex><span>                normalized_obs, torch<span style=color:#f92672>.</span>split(batch[<span style=color:#e6db74>&#34;actions&#34;</span>], agent<span style=color:#f92672>.</span>actions_dim, dim<span style=color:#f92672>=-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>normalize_advantages:
+</span></span><span style=display:flex><span>                batch[<span style=color:#e6db74>&#34;advantages&#34;</span>] <span style=color:#f92672>=</span> normalize_tensor(batch[<span style=color:#e6db74>&#34;advantages&#34;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Policy loss</span>
+</span></span><span style=display:flex><span>            pg_loss <span style=color:#f92672>=</span> policy_loss(
+</span></span><span style=display:flex><span>                logprobs,
+</span></span><span style=display:flex><span>                batch[<span style=color:#e6db74>&#34;logprobs&#34;</span>],
+</span></span><span style=display:flex><span>                batch[<span style=color:#e6db74>&#34;advantages&#34;</span>],
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>clip_coef,
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>loss_reduction,
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Value loss</span>
+</span></span><span style=display:flex><span>            v_loss <span style=color:#f92672>=</span> value_loss(
+</span></span><span style=display:flex><span>                new_values,
+</span></span><span style=display:flex><span>                batch[<span style=color:#e6db74>&#34;values&#34;</span>],
+</span></span><span style=display:flex><span>                batch[<span style=color:#e6db74>&#34;returns&#34;</span>],
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>clip_coef,
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>clip_vloss,
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>loss_reduction,
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Entropy loss</span>
+</span></span><span style=display:flex><span>            ent_loss <span style=color:#f92672>=</span> entropy_loss(entropy, cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>loss_reduction)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Equation (9) in the paper</span>
+</span></span><span style=display:flex><span>            loss <span style=color:#f92672>=</span> pg_loss <span style=color:#f92672>+</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>vf_coef <span style=color:#f92672>*</span> v_loss <span style=color:#f92672>+</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>ent_coef <span style=color:#f92672>*</span> ent_loss
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            optimizer<span style=color:#f92672>.</span>zero_grad(set_to_none<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>            fabric<span style=color:#f92672>.</span>backward(loss)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>max_grad_norm <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0.0</span>:
+</span></span><span style=display:flex><span>                fabric<span style=color:#f92672>.</span>clip_gradients(agent, optimizer, max_norm<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>max_grad_norm)
+</span></span><span style=display:flex><span>            optimizer<span style=color:#f92672>.</span>step()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Update metrics</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> aggregator <span style=color:#f92672>and</span> <span style=color:#f92672>not</span> aggregator<span style=color:#f92672>.</span>disabled:
+</span></span><span style=display:flex><span>                aggregator<span style=color:#f92672>.</span>update(<span style=color:#e6db74>&#34;Loss/policy_loss&#34;</span>, pg_loss<span style=color:#f92672>.</span>detach())
+</span></span><span style=display:flex><span>                aggregator<span style=color:#f92672>.</span>update(<span style=color:#e6db74>&#34;Loss/value_loss&#34;</span>, v_loss<span style=color:#f92672>.</span>detach())
+</span></span><span style=display:flex><span>                aggregator<span style=color:#f92672>.</span>update(<span style=color:#e6db74>&#34;Loss/entropy_loss&#34;</span>, ent_loss<span style=color:#f92672>.</span>detach())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@register_algorithm</span>()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>(fabric: Fabric, cfg: Dict[str, Any]):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;minedojo&#34;</span> <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>wrapper<span style=color:#f92672>.</span>_target_<span style=color:#f92672>.</span>lower():
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;MineDojo is not currently supported by PPO agent, since it does not take &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;into consideration the action masks provided by the environment, but needed &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;in order to play correctly the game. &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;As an alternative you can use one of the Dreamers&#39; agents.&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    initial_ent_coef <span style=color:#f92672>=</span> copy<span style=color:#f92672>.</span>deepcopy(cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>ent_coef)
+</span></span><span style=display:flex><span>    initial_clip_coef <span style=color:#f92672>=</span> copy<span style=color:#f92672>.</span>deepcopy(cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>clip_coef)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Initialize Fabric</span>
+</span></span><span style=display:flex><span>    rank <span style=color:#f92672>=</span> fabric<span style=color:#f92672>.</span>global_rank
+</span></span><span style=display:flex><span>    world_size <span style=color:#f92672>=</span> fabric<span style=color:#f92672>.</span>world_size
+</span></span><span style=display:flex><span>    device <span style=color:#f92672>=</span> fabric<span style=color:#f92672>.</span>device
+</span></span><span style=display:flex><span>    fabric<span style=color:#f92672>.</span>seed_everything(cfg<span style=color:#f92672>.</span>seed)
+</span></span><span style=display:flex><span>    torch<span style=color:#f92672>.</span>backends<span style=color:#f92672>.</span>cudnn<span style=color:#f92672>.</span>deterministic <span style=color:#f92672>=</span> cfg<span style=color:#f92672>.</span>torch_deterministic
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Resume from checkpoint</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from:
+</span></span><span style=display:flex><span>        state <span style=color:#f92672>=</span> fabric<span style=color:#f92672>.</span>load(cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from)
+</span></span><span style=display:flex><span>        cfg<span style=color:#f92672>.</span>per_rank_batch_size <span style=color:#f92672>=</span> state[<span style=color:#e6db74>&#34;batch_size&#34;</span>] <span style=color:#f92672>//</span> fabric<span style=color:#f92672>.</span>world_size
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create TensorBoardLogger. This will create the logger only on the</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># rank-0 process</span>
+</span></span><span style=display:flex><span>    logger <span style=color:#f92672>=</span> create_tensorboard_logger(fabric, cfg)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> logger <span style=color:#f92672>and</span> fabric<span style=color:#f92672>.</span>is_global_zero:
+</span></span><span style=display:flex><span>        fabric<span style=color:#f92672>.</span>_loggers <span style=color:#f92672>=</span> [logger]
+</span></span><span style=display:flex><span>        fabric<span style=color:#f92672>.</span>logger<span style=color:#f92672>.</span>log_hyperparams(cfg)
+</span></span><span style=display:flex><span>    log_dir <span style=color:#f92672>=</span> get_log_dir(fabric, cfg<span style=color:#f92672>.</span>root_dir, cfg<span style=color:#f92672>.</span>run_name)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Environment setup</span>
+</span></span><span style=display:flex><span>    vectorized_env <span style=color:#f92672>=</span> gym<span style=color:#f92672>.</span>vector<span style=color:#f92672>.</span>SyncVectorEnv <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>sync_env <span style=color:#66d9ef>else</span> gym<span style=color:#f92672>.</span>vector<span style=color:#f92672>.</span>AsyncVectorEnv
+</span></span><span style=display:flex><span>    envs <span style=color:#f92672>=</span> vectorized_env(
+</span></span><span style=display:flex><span>        [
+</span></span><span style=display:flex><span>            make_env(
+</span></span><span style=display:flex><span>                cfg,
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>seed <span style=color:#f92672>+</span> rank <span style=color:#f92672>*</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs <span style=color:#f92672>+</span> i,
+</span></span><span style=display:flex><span>                rank <span style=color:#f92672>*</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs,
+</span></span><span style=display:flex><span>                log_dir <span style=color:#66d9ef>if</span> rank <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>None</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;train&#34;</span>,
+</span></span><span style=display:flex><span>                vector_env_idx<span style=color:#f92672>=</span>i,
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs)
+</span></span><span style=display:flex><span>        ]
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>    observation_space <span style=color:#f92672>=</span> envs<span style=color:#f92672>.</span>single_observation_space
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> isinstance(observation_space, gym<span style=color:#f92672>.</span>spaces<span style=color:#f92672>.</span>Dict):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>RuntimeError</span>(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Unexpected observation type, should be of type Dict, got: </span><span style=color:#e6db74>{</span>observation_space<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder <span style=color:#f92672>+</span> cfg<span style=color:#f92672>.</span>mlp_keys<span style=color:#f92672>.</span>encoder <span style=color:#f92672>==</span> []:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>RuntimeError</span>(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;You should specify at least one CNN keys or MLP keys from the cli: &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;`cnn_keys.encoder=[rgb]` or `mlp_keys.encoder=[state]`&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_level <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        fabric<span style=color:#f92672>.</span>print(<span style=color:#e6db74>&#34;Encoder CNN keys:&#34;</span>, cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder)
+</span></span><span style=display:flex><span>        fabric<span style=color:#f92672>.</span>print(<span style=color:#e6db74>&#34;Encoder MLP keys:&#34;</span>, cfg<span style=color:#f92672>.</span>mlp_keys<span style=color:#f92672>.</span>encoder)
+</span></span><span style=display:flex><span>    obs_keys <span style=color:#f92672>=</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder <span style=color:#f92672>+</span> cfg<span style=color:#f92672>.</span>mlp_keys<span style=color:#f92672>.</span>encoder
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    is_continuous <span style=color:#f92672>=</span> isinstance(envs<span style=color:#f92672>.</span>single_action_space, gym<span style=color:#f92672>.</span>spaces<span style=color:#f92672>.</span>Box)
+</span></span><span style=display:flex><span>    is_multidiscrete <span style=color:#f92672>=</span> isinstance(envs<span style=color:#f92672>.</span>single_action_space, gym<span style=color:#f92672>.</span>spaces<span style=color:#f92672>.</span>MultiDiscrete)
+</span></span><span style=display:flex><span>    actions_dim <span style=color:#f92672>=</span> (
+</span></span><span style=display:flex><span>        envs<span style=color:#f92672>.</span>single_action_space<span style=color:#f92672>.</span>shape
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> is_continuous
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span> (envs<span style=color:#f92672>.</span>single_action_space<span style=color:#f92672>.</span>nvec<span style=color:#f92672>.</span>tolist() <span style=color:#66d9ef>if</span> is_multidiscrete <span style=color:#66d9ef>else</span> [envs<span style=color:#f92672>.</span>single_action_space<span style=color:#f92672>.</span>n])
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create the actor and critic models</span>
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> PPOAgent(
+</span></span><span style=display:flex><span>        actions_dim<span style=color:#f92672>=</span>actions_dim,
+</span></span><span style=display:flex><span>        obs_space<span style=color:#f92672>=</span>observation_space,
+</span></span><span style=display:flex><span>        encoder_cfg<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>encoder,
+</span></span><span style=display:flex><span>        actor_cfg<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>actor,
+</span></span><span style=display:flex><span>        critic_cfg<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>critic,
+</span></span><span style=display:flex><span>        cnn_keys<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder,
+</span></span><span style=display:flex><span>        mlp_keys<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>mlp_keys<span style=color:#f92672>.</span>encoder,
+</span></span><span style=display:flex><span>        screen_size<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>screen_size,
+</span></span><span style=display:flex><span>        distribution_cfg<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>distribution,
+</span></span><span style=display:flex><span>        is_continuous<span style=color:#f92672>=</span>is_continuous,
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Define the optimizer</span>
+</span></span><span style=display:flex><span>    optimizer <span style=color:#f92672>=</span> hydra<span style=color:#f92672>.</span>utils<span style=color:#f92672>.</span>instantiate(cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>optimizer, params<span style=color:#f92672>=</span>agent<span style=color:#f92672>.</span>parameters())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Load the state from the checkpoint</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from:
+</span></span><span style=display:flex><span>        agent<span style=color:#f92672>.</span>load_state_dict(state[<span style=color:#e6db74>&#34;agent&#34;</span>])
+</span></span><span style=display:flex><span>        optimizer<span style=color:#f92672>.</span>load_state_dict(state[<span style=color:#e6db74>&#34;optimizer&#34;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Setup agent and optimizer with Fabric</span>
+</span></span><span style=display:flex><span>    agent <span style=color:#f92672>=</span> fabric<span style=color:#f92672>.</span>setup_module(agent)
+</span></span><span style=display:flex><span>    optimizer <span style=color:#f92672>=</span> fabric<span style=color:#f92672>.</span>setup_optimizers(optimizer)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Create a metric aggregator to log the metrics</span>
+</span></span><span style=display:flex><span>    aggregator <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> MetricAggregator<span style=color:#f92672>.</span>disabled:
+</span></span><span style=display:flex><span>        aggregator: MetricAggregator <span style=color:#f92672>=</span> hydra<span style=color:#f92672>.</span>utils<span style=color:#f92672>.</span>instantiate(cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>aggregator)<span style=color:#f92672>.</span>to(device)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Local data</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>size <span style=color:#f92672>&lt;</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>rollout_steps:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;The size of the buffer (</span><span style=color:#e6db74>{</span>cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>size<span style=color:#e6db74>}</span><span style=color:#e6db74>) cannot be lower &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;than the rollout steps (</span><span style=color:#e6db74>{</span>cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>rollout_steps<span style=color:#e6db74>}</span><span style=color:#e6db74>)&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>    rb <span style=color:#f92672>=</span> ReplayBuffer(
+</span></span><span style=display:flex><span>        cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>size,
+</span></span><span style=display:flex><span>        cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs,
+</span></span><span style=display:flex><span>        device<span style=color:#f92672>=</span>device,
+</span></span><span style=display:flex><span>        memmap<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>memmap,
+</span></span><span style=display:flex><span>        memmap_dir<span style=color:#f92672>=</span>os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(log_dir, <span style=color:#e6db74>&#34;memmap_buffer&#34;</span>, <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;rank_</span><span style=color:#e6db74>{</span>fabric<span style=color:#f92672>.</span>global_rank<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>),
+</span></span><span style=display:flex><span>        obs_keys<span style=color:#f92672>=</span>obs_keys,
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>    step_data <span style=color:#f92672>=</span> TensorDict({}, batch_size<span style=color:#f92672>=</span>[cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs], device<span style=color:#f92672>=</span>device)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Global variables</span>
+</span></span><span style=display:flex><span>    last_train <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    train_step <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    start_step <span style=color:#f92672>=</span> state[<span style=color:#e6db74>&#34;update&#34;</span>] <span style=color:#f92672>//</span> fabric<span style=color:#f92672>.</span>world_size <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    policy_step <span style=color:#f92672>=</span> state[<span style=color:#e6db74>&#34;update&#34;</span>] <span style=color:#f92672>*</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs <span style=color:#f92672>*</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>rollout_steps <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    last_log <span style=color:#f92672>=</span> state[<span style=color:#e6db74>&#34;last_log&#34;</span>] <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    last_checkpoint <span style=color:#f92672>=</span> state[<span style=color:#e6db74>&#34;last_checkpoint&#34;</span>] <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    policy_steps_per_update <span style=color:#f92672>=</span> int(cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs <span style=color:#f92672>*</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>rollout_steps <span style=color:#f92672>*</span> world_size)
+</span></span><span style=display:flex><span>    num_updates <span style=color:#f92672>=</span> cfg<span style=color:#f92672>.</span>total_steps <span style=color:#f92672>//</span> policy_steps_per_update <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> cfg<span style=color:#f92672>.</span>dry_run <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Warning for log and checkpoint every</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_level <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>and</span> cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_every <span style=color:#f92672>%</span> policy_steps_per_update <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        warnings<span style=color:#f92672>.</span>warn(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;The metric.log_every parameter (</span><span style=color:#e6db74>{</span>cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_every<span style=color:#e6db74>}</span><span style=color:#e6db74>) is not a multiple of the &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;policy_steps_per_update value (</span><span style=color:#e6db74>{</span>policy_steps_per_update<span style=color:#e6db74>}</span><span style=color:#e6db74>), so &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;the metrics will be logged at the nearest greater multiple of the &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;policy_steps_per_update value.&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>every <span style=color:#f92672>%</span> policy_steps_per_update <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>        warnings<span style=color:#f92672>.</span>warn(
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;The checkpoint.every parameter (</span><span style=color:#e6db74>{</span>cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>every<span style=color:#e6db74>}</span><span style=color:#e6db74>) is not a multiple of the &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;policy_steps_per_update value (</span><span style=color:#e6db74>{</span>policy_steps_per_update<span style=color:#e6db74>}</span><span style=color:#e6db74>), so &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;the checkpoint will be saved at the nearest greater multiple of the &#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;policy_steps_per_update value.&#34;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Linear learning rate scheduler</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>anneal_lr:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>from</span> torch.optim.lr_scheduler <span style=color:#f92672>import</span> PolynomialLR
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        scheduler <span style=color:#f92672>=</span> PolynomialLR(optimizer<span style=color:#f92672>=</span>optimizer, total_iters<span style=color:#f92672>=</span>num_updates, power<span style=color:#f92672>=</span><span style=color:#ae81ff>1.0</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>resume_from:
+</span></span><span style=display:flex><span>            scheduler<span style=color:#f92672>.</span>load_state_dict(state[<span style=color:#e6db74>&#34;scheduler&#34;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Get the first environment observation and start the optimization</span>
+</span></span><span style=display:flex><span>    obs <span style=color:#f92672>=</span> envs<span style=color:#f92672>.</span>reset(seed<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>seed)[<span style=color:#ae81ff>0</span>]  <span style=color:#75715e># [N_envs, N_obs]</span>
+</span></span><span style=display:flex><span>    next_obs <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> obs_keys:
+</span></span><span style=display:flex><span>        torch_obs <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>as_tensor(obs[k])<span style=color:#f92672>.</span>to(fabric<span style=color:#f92672>.</span>device)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder:
+</span></span><span style=display:flex><span>            torch_obs <span style=color:#f92672>=</span> torch_obs<span style=color:#f92672>.</span>view(cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>*</span>torch_obs<span style=color:#f92672>.</span>shape[<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>:])
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>elif</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>mlp_keys<span style=color:#f92672>.</span>encoder:
+</span></span><span style=display:flex><span>            torch_obs <span style=color:#f92672>=</span> torch_obs<span style=color:#f92672>.</span>float()
+</span></span><span style=display:flex><span>        step_data[k] <span style=color:#f92672>=</span> torch_obs
+</span></span><span style=display:flex><span>        next_obs[k] <span style=color:#f92672>=</span> torch_obs
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> update <span style=color:#f92672>in</span> range(start_step, num_updates <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> _ <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>0</span>, cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>rollout_steps):
+</span></span><span style=display:flex><span>            policy_step <span style=color:#f92672>+=</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs <span style=color:#f92672>*</span> world_size
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Measure environment interaction time: this considers both the model forward</span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># to get the action given the observation and the time taken into the environment</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>with</span> timer(<span style=color:#e6db74>&#34;Time/env_interaction_time&#34;</span>, SumMetric(sync_on_compute<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)):
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>with</span> torch<span style=color:#f92672>.</span>no_grad():
+</span></span><span style=display:flex><span>                    <span style=color:#75715e># Sample an action given the observation received by the environment</span>
+</span></span><span style=display:flex><span>                    normalized_obs <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>                        k: next_obs[k] <span style=color:#f92672>/</span> <span style=color:#ae81ff>255</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span> <span style=color:#66d9ef>if</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder <span style=color:#66d9ef>else</span> next_obs[k] <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> obs_keys
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                    actions, logprobs, _, values <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>module(normalized_obs)
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>if</span> is_continuous:
+</span></span><span style=display:flex><span>                        real_actions <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>cat(actions, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)<span style=color:#f92672>.</span>cpu()<span style=color:#f92672>.</span>numpy()
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                        real_actions <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>concatenate([act<span style=color:#f92672>.</span>argmax(dim<span style=color:#f92672>=-</span><span style=color:#ae81ff>1</span>)<span style=color:#f92672>.</span>cpu()<span style=color:#f92672>.</span>numpy() <span style=color:#66d9ef>for</span> act <span style=color:#f92672>in</span> actions], axis<span style=color:#f92672>=-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>                    actions <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>cat(actions, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e># Single environment step</span>
+</span></span><span style=display:flex><span>                obs, rewards, dones, truncated, info <span style=color:#f92672>=</span> envs<span style=color:#f92672>.</span>step(real_actions<span style=color:#f92672>.</span>reshape(envs<span style=color:#f92672>.</span>action_space<span style=color:#f92672>.</span>shape))
+</span></span><span style=display:flex><span>                truncated_envs <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>nonzero(truncated)[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> len(truncated_envs) <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>                    real_next_obs <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>                        k: torch<span style=color:#f92672>.</span>empty(
+</span></span><span style=display:flex><span>                            len(truncated_envs),
+</span></span><span style=display:flex><span>                            <span style=color:#f92672>*</span>observation_space[k]<span style=color:#f92672>.</span>shape,
+</span></span><span style=display:flex><span>                            dtype<span style=color:#f92672>=</span>torch<span style=color:#f92672>.</span>float32,
+</span></span><span style=display:flex><span>                            device<span style=color:#f92672>=</span>device,
+</span></span><span style=display:flex><span>                        )
+</span></span><span style=display:flex><span>                        <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> obs_keys
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>for</span> i, truncated_env <span style=color:#f92672>in</span> enumerate(truncated_envs):
+</span></span><span style=display:flex><span>                        <span style=color:#66d9ef>for</span> k, v <span style=color:#f92672>in</span> info[<span style=color:#e6db74>&#34;final_observation&#34;</span>][truncated_env]<span style=color:#f92672>.</span>items():
+</span></span><span style=display:flex><span>                            torch_v <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>as_tensor(v, dtype<span style=color:#f92672>=</span>torch<span style=color:#f92672>.</span>float32, device<span style=color:#f92672>=</span>device)
+</span></span><span style=display:flex><span>                            <span style=color:#66d9ef>if</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder:
+</span></span><span style=display:flex><span>                                torch_v <span style=color:#f92672>=</span> torch_v<span style=color:#f92672>.</span>view(len(truncated_envs), <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>*</span>torch_obs<span style=color:#f92672>.</span>shape[<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>:]) <span style=color:#f92672>/</span> <span style=color:#ae81ff>255.0</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span>
+</span></span><span style=display:flex><span>                            real_next_obs[k][i] <span style=color:#f92672>=</span> torch_v
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>with</span> torch<span style=color:#f92672>.</span>no_grad():
+</span></span><span style=display:flex><span>                        vals <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>module<span style=color:#f92672>.</span>get_value(real_next_obs)<span style=color:#f92672>.</span>cpu()<span style=color:#f92672>.</span>numpy()
+</span></span><span style=display:flex><span>                        rewards[truncated_envs] <span style=color:#f92672>+=</span> vals<span style=color:#f92672>.</span>reshape(rewards[truncated_envs]<span style=color:#f92672>.</span>shape)
+</span></span><span style=display:flex><span>                dones <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>logical_or(dones, truncated)
+</span></span><span style=display:flex><span>                dones <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>as_tensor(dones, dtype<span style=color:#f92672>=</span>torch<span style=color:#f92672>.</span>float32, device<span style=color:#f92672>=</span>device)<span style=color:#f92672>.</span>view(cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>                rewards <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>as_tensor(rewards, dtype<span style=color:#f92672>=</span>torch<span style=color:#f92672>.</span>float32, device<span style=color:#f92672>=</span>device)<span style=color:#f92672>.</span>view(cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Update the step data</span>
+</span></span><span style=display:flex><span>            step_data[<span style=color:#e6db74>&#34;dones&#34;</span>] <span style=color:#f92672>=</span> dones
+</span></span><span style=display:flex><span>            step_data[<span style=color:#e6db74>&#34;values&#34;</span>] <span style=color:#f92672>=</span> values
+</span></span><span style=display:flex><span>            step_data[<span style=color:#e6db74>&#34;actions&#34;</span>] <span style=color:#f92672>=</span> actions
+</span></span><span style=display:flex><span>            step_data[<span style=color:#e6db74>&#34;logprobs&#34;</span>] <span style=color:#f92672>=</span> logprobs
+</span></span><span style=display:flex><span>            step_data[<span style=color:#e6db74>&#34;rewards&#34;</span>] <span style=color:#f92672>=</span> rewards
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>memmap:
+</span></span><span style=display:flex><span>                step_data[<span style=color:#e6db74>&#34;returns&#34;</span>] <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>zeros_like(rewards)
+</span></span><span style=display:flex><span>                step_data[<span style=color:#e6db74>&#34;advantages&#34;</span>] <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>zeros_like(rewards)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Append data to buffer</span>
+</span></span><span style=display:flex><span>            rb<span style=color:#f92672>.</span>add(step_data<span style=color:#f92672>.</span>unsqueeze(<span style=color:#ae81ff>0</span>))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Update the observation and dones</span>
+</span></span><span style=display:flex><span>            next_obs <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> obs_keys:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder:
+</span></span><span style=display:flex><span>                    torch_obs <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>as_tensor(obs[k], device<span style=color:#f92672>=</span>device)
+</span></span><span style=display:flex><span>                    torch_obs <span style=color:#f92672>=</span> torch_obs<span style=color:#f92672>.</span>view(cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>num_envs, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>*</span>torch_obs<span style=color:#f92672>.</span>shape[<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>:])
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>elif</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>mlp_keys<span style=color:#f92672>.</span>encoder:
+</span></span><span style=display:flex><span>                    torch_obs <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>as_tensor(obs[k], device<span style=color:#f92672>=</span>device, dtype<span style=color:#f92672>=</span>torch<span style=color:#f92672>.</span>float32)
+</span></span><span style=display:flex><span>                step_data[k] <span style=color:#f92672>=</span> torch_obs
+</span></span><span style=display:flex><span>                next_obs[k] <span style=color:#f92672>=</span> torch_obs
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_level <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>and</span> <span style=color:#e6db74>&#34;final_info&#34;</span> <span style=color:#f92672>in</span> info:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>for</span> i, agent_ep_info <span style=color:#f92672>in</span> enumerate(info[<span style=color:#e6db74>&#34;final_info&#34;</span>]):
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>if</span> agent_ep_info <span style=color:#f92672>is</span> <span style=color:#f92672>not</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>                        ep_rew <span style=color:#f92672>=</span> agent_ep_info[<span style=color:#e6db74>&#34;episode&#34;</span>][<span style=color:#e6db74>&#34;r&#34;</span>]
+</span></span><span style=display:flex><span>                        ep_len <span style=color:#f92672>=</span> agent_ep_info[<span style=color:#e6db74>&#34;episode&#34;</span>][<span style=color:#e6db74>&#34;l&#34;</span>]
+</span></span><span style=display:flex><span>                        <span style=color:#66d9ef>if</span> aggregator <span style=color:#f92672>and</span> <span style=color:#e6db74>&#34;Rewards/rew_avg&#34;</span> <span style=color:#f92672>in</span> aggregator:
+</span></span><span style=display:flex><span>                            aggregator<span style=color:#f92672>.</span>update(<span style=color:#e6db74>&#34;Rewards/rew_avg&#34;</span>, ep_rew)
+</span></span><span style=display:flex><span>                        <span style=color:#66d9ef>if</span> aggregator <span style=color:#f92672>and</span> <span style=color:#e6db74>&#34;Game/ep_len_avg&#34;</span> <span style=color:#f92672>in</span> aggregator:
+</span></span><span style=display:flex><span>                            aggregator<span style=color:#f92672>.</span>update(<span style=color:#e6db74>&#34;Game/ep_len_avg&#34;</span>, ep_len)
+</span></span><span style=display:flex><span>                        fabric<span style=color:#f92672>.</span>print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Rank-0: policy_step=</span><span style=color:#e6db74>{</span>policy_step<span style=color:#e6db74>}</span><span style=color:#e6db74>, reward_env_</span><span style=color:#e6db74>{</span>i<span style=color:#e6db74>}</span><span style=color:#e6db74>=</span><span style=color:#e6db74>{</span>ep_rew[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Estimate returns with GAE (https://arxiv.org/abs/1506.02438)</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> torch<span style=color:#f92672>.</span>no_grad():
+</span></span><span style=display:flex><span>            normalized_obs <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>                k: next_obs[k] <span style=color:#f92672>/</span> <span style=color:#ae81ff>255</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span> <span style=color:#66d9ef>if</span> k <span style=color:#f92672>in</span> cfg<span style=color:#f92672>.</span>cnn_keys<span style=color:#f92672>.</span>encoder <span style=color:#66d9ef>else</span> next_obs[k] <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> obs_keys
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            next_values <span style=color:#f92672>=</span> agent<span style=color:#f92672>.</span>module<span style=color:#f92672>.</span>get_value(normalized_obs)
+</span></span><span style=display:flex><span>            returns, advantages <span style=color:#f92672>=</span> gae(
+</span></span><span style=display:flex><span>                rb[<span style=color:#e6db74>&#34;rewards&#34;</span>],
+</span></span><span style=display:flex><span>                rb[<span style=color:#e6db74>&#34;values&#34;</span>],
+</span></span><span style=display:flex><span>                rb[<span style=color:#e6db74>&#34;dones&#34;</span>],
+</span></span><span style=display:flex><span>                next_values,
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>rollout_steps,
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>gamma,
+</span></span><span style=display:flex><span>                cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>gae_lambda,
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Add returns and advantages to the buffer</span>
+</span></span><span style=display:flex><span>            rb[<span style=color:#e6db74>&#34;returns&#34;</span>] <span style=color:#f92672>=</span> returns<span style=color:#f92672>.</span>float()
+</span></span><span style=display:flex><span>            rb[<span style=color:#e6db74>&#34;advantages&#34;</span>] <span style=color:#f92672>=</span> advantages<span style=color:#f92672>.</span>float()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Flatten the batch</span>
+</span></span><span style=display:flex><span>        local_data <span style=color:#f92672>=</span> rb<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>view(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>buffer<span style=color:#f92672>.</span>share_data <span style=color:#f92672>and</span> fabric<span style=color:#f92672>.</span>world_size <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span>:
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Gather all the tensors from all the world and reshape them</span>
+</span></span><span style=display:flex><span>            gathered_data <span style=color:#f92672>=</span> fabric<span style=color:#f92672>.</span>all_gather(local_data<span style=color:#f92672>.</span>to_dict())  <span style=color:#75715e># Fabric does not work with TensorDict</span>
+</span></span><span style=display:flex><span>            gathered_data <span style=color:#f92672>=</span> make_tensordict(gathered_data)<span style=color:#f92672>.</span>view(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            gathered_data <span style=color:#f92672>=</span> local_data
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> timer(<span style=color:#e6db74>&#34;Time/train_time&#34;</span>, SumMetric(sync_on_compute<span style=color:#f92672>=</span>cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>sync_on_compute)):
+</span></span><span style=display:flex><span>            train(fabric, agent, optimizer, gathered_data, aggregator, cfg)
+</span></span><span style=display:flex><span>        train_step <span style=color:#f92672>+=</span> world_size
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_level <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Log lr and coefficients</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>anneal_lr:
+</span></span><span style=display:flex><span>                fabric<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;Info/learning_rate&#34;</span>, scheduler<span style=color:#f92672>.</span>get_last_lr()[<span style=color:#ae81ff>0</span>], policy_step)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                fabric<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;Info/learning_rate&#34;</span>, cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>optimizer<span style=color:#f92672>.</span>lr, policy_step)
+</span></span><span style=display:flex><span>            fabric<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;Info/clip_coef&#34;</span>, cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>clip_coef, policy_step)
+</span></span><span style=display:flex><span>            fabric<span style=color:#f92672>.</span>log(<span style=color:#e6db74>&#34;Info/ent_coef&#34;</span>, cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>ent_coef, policy_step)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Log metrics</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_level <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>and</span> (policy_step <span style=color:#f92672>-</span> last_log <span style=color:#f92672>&gt;=</span> cfg<span style=color:#f92672>.</span>metric<span style=color:#f92672>.</span>log_every <span style=color:#f92672>or</span> update <span style=color:#f92672>==</span> num_updates):
+</span></span><span style=display:flex><span>                <span style=color:#75715e># Sync distributed metrics</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> aggregator <span style=color:#f92672>and</span> <span style=color:#f92672>not</span> aggregator<span style=color:#f92672>.</span>disabled:
+</span></span><span style=display:flex><span>                    metrics_dict <span style=color:#f92672>=</span> aggregator<span style=color:#f92672>.</span>compute()
+</span></span><span style=display:flex><span>                    fabric<span style=color:#f92672>.</span>log_dict(metrics_dict, policy_step)
+</span></span><span style=display:flex><span>                    aggregator<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e># Sync distributed timers</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> timer<span style=color:#f92672>.</span>disabled:
+</span></span><span style=display:flex><span>                    timer_metrics <span style=color:#f92672>=</span> timer<span style=color:#f92672>.</span>compute()
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;Time/train_time&#34;</span> <span style=color:#f92672>in</span> timer_metrics:
+</span></span><span style=display:flex><span>                        fabric<span style=color:#f92672>.</span>log(
+</span></span><span style=display:flex><span>                            <span style=color:#e6db74>&#34;Time/sps_train&#34;</span>,
+</span></span><span style=display:flex><span>                            (train_step <span style=color:#f92672>-</span> last_train) <span style=color:#f92672>/</span> timer_metrics[<span style=color:#e6db74>&#34;Time/train_time&#34;</span>],
+</span></span><span style=display:flex><span>                            policy_step,
+</span></span><span style=display:flex><span>                        )
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;Time/env_interaction_time&#34;</span> <span style=color:#f92672>in</span> timer_metrics:
+</span></span><span style=display:flex><span>                        fabric<span style=color:#f92672>.</span>log(
+</span></span><span style=display:flex><span>                            <span style=color:#e6db74>&#34;Time/sps_env_interaction&#34;</span>,
+</span></span><span style=display:flex><span>                            ((policy_step <span style=color:#f92672>-</span> last_log) <span style=color:#f92672>/</span> world_size <span style=color:#f92672>*</span> cfg<span style=color:#f92672>.</span>env<span style=color:#f92672>.</span>action_repeat)
+</span></span><span style=display:flex><span>                            <span style=color:#f92672>/</span> timer_metrics[<span style=color:#e6db74>&#34;Time/env_interaction_time&#34;</span>],
+</span></span><span style=display:flex><span>                            policy_step,
+</span></span><span style=display:flex><span>                        )
+</span></span><span style=display:flex><span>                    timer<span style=color:#f92672>.</span>reset()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e># Reset counters</span>
+</span></span><span style=display:flex><span>                last_log <span style=color:#f92672>=</span> policy_step
+</span></span><span style=display:flex><span>                last_train <span style=color:#f92672>=</span> train_step
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Update lr and coefficients</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>anneal_lr:
+</span></span><span style=display:flex><span>            scheduler<span style=color:#f92672>.</span>step()
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>anneal_clip_coef:
+</span></span><span style=display:flex><span>            cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>clip_coef <span style=color:#f92672>=</span> polynomial_decay(
+</span></span><span style=display:flex><span>                update, initial<span style=color:#f92672>=</span>initial_clip_coef, final<span style=color:#f92672>=</span><span style=color:#ae81ff>0.0</span>, max_decay_steps<span style=color:#f92672>=</span>num_updates, power<span style=color:#f92672>=</span><span style=color:#ae81ff>1.0</span>
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>anneal_ent_coef:
+</span></span><span style=display:flex><span>            cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>ent_coef <span style=color:#f92672>=</span> polynomial_decay(
+</span></span><span style=display:flex><span>                update, initial<span style=color:#f92672>=</span>initial_ent_coef, final<span style=color:#f92672>=</span><span style=color:#ae81ff>0.0</span>, max_decay_steps<span style=color:#f92672>=</span>num_updates, power<span style=color:#f92672>=</span><span style=color:#ae81ff>1.0</span>
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Checkpoint model</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>every <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>and</span> policy_step <span style=color:#f92672>-</span> last_checkpoint <span style=color:#f92672>&gt;=</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>every) <span style=color:#f92672>or</span> (
+</span></span><span style=display:flex><span>            update <span style=color:#f92672>==</span> num_updates <span style=color:#f92672>and</span> cfg<span style=color:#f92672>.</span>checkpoint<span style=color:#f92672>.</span>save_last
+</span></span><span style=display:flex><span>        ):
+</span></span><span style=display:flex><span>            last_checkpoint <span style=color:#f92672>=</span> policy_step
+</span></span><span style=display:flex><span>            state <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;agent&#34;</span>: agent<span style=color:#f92672>.</span>state_dict(),
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;optimizer&#34;</span>: optimizer<span style=color:#f92672>.</span>state_dict(),
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;scheduler&#34;</span>: scheduler<span style=color:#f92672>.</span>state_dict() <span style=color:#66d9ef>if</span> cfg<span style=color:#f92672>.</span>algo<span style=color:#f92672>.</span>anneal_lr <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>None</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;update&#34;</span>: update <span style=color:#f92672>*</span> world_size,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;batch_size&#34;</span>: cfg<span style=color:#f92672>.</span>per_rank_batch_size <span style=color:#f92672>*</span> fabric<span style=color:#f92672>.</span>world_size,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;last_log&#34;</span>: last_log,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;last_checkpoint&#34;</span>: last_checkpoint,
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            ckpt_path <span style=color:#f92672>=</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>join(log_dir, <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;checkpoint/ckpt_</span><span style=color:#e6db74>{</span>policy_step<span style=color:#e6db74>}</span><span style=color:#e6db74>_</span><span style=color:#e6db74>{</span>fabric<span style=color:#f92672>.</span>global_rank<span style=color:#e6db74>}</span><span style=color:#e6db74>.ckpt&#34;</span>)
+</span></span><span style=display:flex><span>            fabric<span style=color:#f92672>.</span>call(<span style=color:#e6db74>&#34;on_checkpoint_coupled&#34;</span>, fabric<span style=color:#f92672>=</span>fabric, ckpt_path<span style=color:#f92672>=</span>ckpt_path, state<span style=color:#f92672>=</span>state)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    envs<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> fabric<span style=color:#f92672>.</span>is_global_zero:
+</span></span><span style=display:flex><span>        test(agent<span style=color:#f92672>.</span>module, fabric, cfg, log_dir)
+</span></span></code></pre></div><h4 id=parallel-environments>Parallel Environments</h4><p>In addition to what is seen in previous examples, this one demonstrates how to run training using parallel environments. In this example, the same PPO algorithm is used as before.
+To train the agent with multiple parallel environments, you need to define properly a few environment parameters and then run the script instantiating the correct number of docker containers.</p><p>You can create a <code>custom_parallel_env.yaml</code> config file that inherits the configurations from the <code>custom_env.yaml</code> file:<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Inherit evironment configurations from custom_env.yaml</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>custom_env</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Override parameters</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>sync_env</span>: <span style=color:#66d9ef>False</span> <span style=color:#75715e># True if you want to use the gymnasium.vector.SyncVectorEnv</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>num_envs</span>: <span style=color:#ae81ff>4</span></span></span></code></pre></div></p><div class="notices note"><p>If you set the <code>env.sync_env</code> to <code>False</code>, then you must instantiate one more docker container because the <code>gymnasium.vector.AsyncVectorEnv</code> instantiates a dummy env when defined.</p></div><p>Then, you have to create a new file for the experiment (<code>custom_parallel_env_exp.yaml</code>), this file inherits the configurations of the <code>custom_exp</code> file and overrides the environment with the newly defined configurations (<code>custom_parallel_env</code>):<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># @package _global_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Inherit configs from custom_exp</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>custom_exp</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Override the environment configurations</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>override /env</span>: <span style=color:#ae81ff>custom_parallel_env</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span></span></span></code></pre></div></p><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># s=6 comes from: 4 for the envs, 1 for testing, 1 for `gymnasium.vector.AsyncVectorEnv`</span>
+</span></span><span style=display:flex><span>diambra run -s<span style=color:#f92672>=</span><span style=color:#ae81ff>6</span> python train.py exp<span style=color:#f92672>=</span>custom_parallel_env_exp
+</span></span></code></pre></div><h3 id=advanced>Advanced</h3><h4 id=fabric>Fabric</h4><p>SheepRL allows training to be distributed thanks to <a href=https://lightning.ai/docs/fabric/stable/ target=_blank>Lightning Fabric</a>.</p><p>The default Fabric configuration is the following:<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>lightning.fabric.Fabric</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>devices</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>num_nodes</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>strategy</span>: <span style=color:#e6db74>&#34;auto&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>accelerator</span>: <span style=color:#e6db74>&#34;cpu&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>precision</span>: <span style=color:#e6db74>&#34;32-true&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>callbacks</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>sheeprl.utils.callback.CheckpointCallback</span>
+</span></span></code></pre></div></p><div class="notices note"><p>The <code>sheeprl.utils.callback.CheckpointCallback</code> is used for saving the checkpoint during training and for saving the trained agent.</p></div><p>To modify the Fabric configs, you can add a <code>fabric</code> field in the experiment file, as shown below. In this case, we selected <code>2</code> devices, the accelerator is <code>"cuda"</code> and the training is performed in 16 bits. As before, it inherits the configurations from the <code>custom_exp</code> and then sets the Fabric parameters.<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># @package _global_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Inherit configs from custom_exp</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>custom_exp</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Set Fabric parameters</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>fabric</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>devices</span>: <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>accelerator</span>: <span style=color:#ae81ff>cuda</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>precision</span>: <span style=color:#ae81ff>bf16</span></span></span></code></pre></div></p><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Remember to set properly the number of containers to create</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   - Each process has 1 environment</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   - There are 2 processes</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   - Only the zero-rank process will perform the evaluation after the training</span>
+</span></span><span style=display:flex><span>diambra run -s<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> python train.py exp<span style=color:#f92672>=</span>custom_fabric_exp
+</span></span></code></pre></div><div class="notices warning"><p>To run the fabric experiment, make sure you have a <code>cuda</code> GPU in your device, otherwise, change the device from <code>cuda</code> to <code>cpu</code> (or to another device).</p></div><h4 id=metric-and-logging>Metric and Logging</h4><p>Finally, SheepRL allows you to visualize and monitor training using Tensorboard.</p><div class="notices note"><p>We strongly recommend to read the SheepRL <a href=https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/logs_and_checkpoints.md target=_blank>logging documentation</a> to know about how to enable/disable logging.</p></div><p>Below is reported the default logging configuration and a table describing the arguments.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>log_every</span>: <span style=color:#ae81ff>5000</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>disable_timer</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Level of Logging:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   0: No log</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   1: Log everything</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>log_level</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Metric related parameters. Please have a look at</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># https://torchmetrics.readthedocs.io/en/stable/references/metric.html#torchmetrics.Metric</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># for more information</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>sync_on_compute</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>aggregator</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>sheeprl.utils.metric.MetricAggregator</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>raise_on_missing</span>: <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>metrics</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>Rewards/rew_avg</span>: 
+</span></span><span style=display:flex><span>      <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>torchmetrics.MeanMetric</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>sync_on_compute</span>: <span style=color:#ae81ff>${metric.sync_on_compute}</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>Game/ep_len_avg</span>: 
+</span></span><span style=display:flex><span>      <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>torchmetrics.MeanMetric</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>sync_on_compute</span>: <span style=color:#ae81ff>${metric.sync_on_compute}</span></span></span></code></pre></div><table><thead><tr><th><strong><span style=color:#5b5b60>Argument</span></strong></th><th><strong><span style=color:#5b5b60>Type</span></strong></th><th><strong><span style=color:#5b5b60>Default Value(s)</span></strong></th><th><strong><span style=color:#5b5b60>Description</span></strong></th></tr></thead><tbody><tr><td><code>log_every</code></td><td><code>int</code></td><td><code>5000</code></td><td>Number of steps between one log and the next</td></tr><tr><td><code>disable_timer</code></td><td><code>bool</code></td><td><code>False</code></td><td>Whether or not to disable timer information (training and environment interaction)</td></tr><tr><td><code>log_level</code></td><td><code>int</code></td><td><code>1</code></td><td>The level of logging (<code>0</code>: disabled, <code>1</code>: log everything)</td></tr><tr><td><code>sync_on_compute</code></td><td><code>bool</code></td><td><code>False</code></td><td>Whether to synchronize the metrics between processes</td></tr><tr><td><code>aggregator</code></td><td><code>Dict[str, Any]</code></td><td>-</td><td>Configurations of the aggregator to be instantiated, containing the metrics to log</td></tr></tbody></table><p>You can modify the default metric configurations by adding in the <code>custom_exp</code> file the custom configuration you want under the <code>metric</code> key, as shown below.
+In this example, we do not log the timer information and we want to synchronize the metrics between the 2 processes. Moreover, we add 3 metrics to log to the aggregator (in addition to reward and episode length): the value loss, the policy loss, and the entropy loss.<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e># @package _global_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>defaults</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Inherit configs from custom_fabric_exp</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>custom_fabric_exp</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>_self_</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Set Metric parameters</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>metric</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>disable_timer</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>sync_on_compute</span>: <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>aggregator</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>metrics</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>Loss/value_loss</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>torchmetrics.MeanMetric</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>sync_on_compute</span>: <span style=color:#ae81ff>${metric.sync_on_compute}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>Loss/policy_loss</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>torchmetrics.MeanMetric</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>sync_on_compute</span>: <span style=color:#ae81ff>${metric.sync_on_compute}</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>Loss/entropy_loss</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>_target_</span>: <span style=color:#ae81ff>torchmetrics.MeanMetric</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>sync_on_compute</span>: <span style=color:#ae81ff>${metric.sync_on_compute}</span></span></span></code></pre></div></p><p>How to run it:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># s=3 since `custom_metric_exp` extends from the fabric experiments</span>
+</span></span><span style=display:flex><span>diambra run -s<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> python train.py exp<span style=color:#f92672>=</span>custom_metric_exp
+</span></span></code></pre></div><p>The logs are stored in the <code>./logs/runs/&lt;algo_name>/&lt;env_id>/&lt;datetime_experiment>/</code> folder, and to visualize the plots, you just need to run the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tensorboard --logdir /path/to/logging/directory
+</span></span></code></pre></div><p>open your browser and go to <code>http://localhost:6006/</code>. You can eventually modify the port of the process, for instance, you can use port <code>6010</code> by running the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tensorboard --logdir /path/to/logging/directory --port <span style=color:#ae81ff>6010</span>
+</span></span></code></pre></div><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1700714719></script>
+<script src=/js/perfect-scrollbar.min.js?1700714719></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1700714719></script>
+<script src=/js/jquery.sticky.js?1700714719></script>
+<script src=/js/featherlight.min.js?1700714719></script>
+<script src=/js/highlight.pack.js?1700714719></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=/js/modernizr.custom-3.6.0.js?1700714719></script>
+<script src=/js/learn.js?1700714719></script>
+<script src=/js/hugo-learn.js?1700714719></script>
+<script src=https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js></script>
+<script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-105947713-1","auto"),ga("send","pageview")</script></body></html>
