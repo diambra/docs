@@ -51,6 +51,10 @@ pip install diambra-arena[sheeprl]
 
 This should be enough to prepare your system to execute the following examples. You can refer to the official <a href="https://github.com/Eclectic-Sheep/sheeprl" target="_blank">SheepRL documentation</a> or reach out on our <a href="https://diambra.ai/discord" target="_blank">Discord server</a> for specific needs.
 
+{{% notice warning %}}
+Remember that to train agents, you must have installed the `diambra` CLI (`python3 -m pip install diambra`) and set the `DIAMBRAROMSPATH` environment variable properly.
+{{% /notice %}}
+
 All the examples presented below are available here: <a href="https://github.com/diambra/agents/tree/main/sheeprl" target="_blank">DIAMBRA Agents - SheepRL</a>. They have been created following the high level approach found on <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/howto/learn_in_diambra.md" target="_blank">SheepRL DIAMBRA</a> page, thus allowing to easily extend them and to understand how they interface with the different components.
 
 These examples only aim at demonstrating the core functionalities and high-level aspects, they will not generate well-performing agents, even if the training time is extended to cover a large number of training steps. The user will need to build upon them, exploring aspects like policy network architecture, algorithm hyperparameter tuning, observation space tweaking, rewards wrapping, and other similar ones.
@@ -107,7 +111,7 @@ class DiambraWrapper(gym.Wrapper):
 | <strong><span style="color:#5B5B60;">Argument</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                       |
 | ------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`  | `str` | - | Game environment identifier |
-| `action_space` | `str` | `"diambra.arena.SpaceTypes.DISCRETE"` | Which action space to use: one between `"diambra.arena.SpaceTypes.DISCRETE"` and `"diambra.arena.SpaceTypes.MULTI_DISCRETE"` |
+| `action_space` | `str` | `DISCRETE*` | Which action space to use: one between `DISCRETE*` and `MULTI_DISCRETE*` |
 | `screen_size` | `int \| Tuple[int, int]` | `64` | Screen size of the frames |
 | `grayscale` | `bool` | `False` | Whether to use grayscale frames |
 | `rank` | `int` | `0` | Rank of the environment |
@@ -116,6 +120,10 @@ class DiambraWrapper(gym.Wrapper):
 | `render_mode` | `str` | `"rgb_array"` | Rendering mode |
 | `log_level` | `int` | `0` | Log level |
 | `increase_performance` | `bool` | `True` | Whether to modify frames on the engine side (`True`) or use the wrapper (`False`) |
+
+{{% notice warning %}}
+*: `DISCRETE` is a placeholder for `diambra.arena.SpaceTypes.DISCRETE`, whereas `MULTI_DISCRETE` is a placeholder for `diambra.arena.SpaceTypes.MULTI_DISCRETE`. You must enter the full string.
+{{% /notice %}}
 
 {{% notice note %}}
 For the interface low-level details, users can review the correspondent source code <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/main/sheeprl/envs/diambra.py" target="_blank">here</a>.
