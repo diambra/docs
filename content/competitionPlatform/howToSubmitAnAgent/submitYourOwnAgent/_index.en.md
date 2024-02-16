@@ -44,41 +44,41 @@ Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencie
 mode: AIvsCOM
 image: diambra/arena-stable-baselines3-on3.10-bullseye:main
 env:
-  HF_TOKEN: '{{ .Secrets.token }}'
+  HF_TOKEN: '{{ .Secrets.HF_TOKEN }}'
 command:
   - python
   - "./agent.py"
+  - "hf-repo-id"
   - "./models/model.zip"
-sources:
-  .: git+https://username:{{.Secrets.token}}@github.com/username/repository_name.git#ref=branch_name
 ```
 
-Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values, and change `image` and `command` fields according to your specific use case.
+Change `image` and `command` fields according to your specific use case.
 
 Then, submit your agent using the manifest file:
 
 ```sh
-diambra agent submit  --submission.secret token=your_gh_token --submission.manifest submission-manifest.yaml
+diambra agent submit --submission.secrets-from=huggingface --submission.manifest submission-manifest.yaml
 ```
 
-Replace `your_gh_token` with the GitHub token you saved earlier.
+This will automatically retrieve the Hugging Face token you saved earlier.
 
-Note that this will clone your entire repository (including Git LFS files) and put its content inside the `/sources/` folder directly.
+Note that your agent script must contain the instructions to download your model from Hugging Face as shown in the examples provided in our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a> repository.
 
 #### Example 2: Command Line Interface Only
+
+If you want to avoid using submission files, you can use the command line to directly submit your agent. Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image:
 
 ```sh
 diambra agent submit \
   --submission.mode AIvsCOM \
-  --submission.source .=git+https://username:{{.Secrets.token}}@github.com/username/repository_name.git#ref=branch_name \
-  --submission.secret token=your_gh_token \
+  --submission.secrets-from=huggingface \
   --submission.set-command \
   arena-stable-baselines3-on3.10-bullseye \
-  python "/sources/agent.py" "/sources/models/model.zip"
+  python "./agent.py" "hf-repo-id" "./models/model.zip"
 
 ```
 
-Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values and `your_gh_token` with the GitHub token you saved earlier.
+Also in this case, the Hugging Face token you saved earlier will be automatically retrieved.
 
 Note that, in this case, the dependencies `image` and `command` fields we discussed above are merged together and provided as values to the last argument `--submission.set-command`. Use the same order and change their values according to your specific use case.
 
@@ -117,7 +117,7 @@ Replace `username` and `repository_name.git#ref=branch_name` with the appropriat
 Then, submit your agent using the manifest file:
 
 ```sh
-diambra agent submit  --submission.secret token=your_gh_token --submission.manifest submission-manifest.yaml
+diambra agent submit --submission.secret token=your_gh_token --submission.manifest submission-manifest.yaml
 ```
 
 Replace `your_gh_token` with the GitHub token you saved earlier.
