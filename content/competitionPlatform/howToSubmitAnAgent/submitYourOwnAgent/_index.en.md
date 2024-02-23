@@ -26,12 +26,15 @@ To favor an easy start, we provide example agents files (scripts and weights) th
 These are the steps to submit your own agent hosted on Hugging Face:
 
 1. Store your agent files (e.g. scripts and weights) in a private model
-2. Create your personal access token (<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">official docs here</a>):
-   - Go to "Settings" in the top-right corner of the GitHub website.
-   - Click "Developer settings" at the bottom-left of the page.
-   - Click "Personal access tokens", "Tokens (classic)" and then "Generate new token".
+2. Create your personal access token (<a href="https://huggingface.co/docs/hub/security-tokens" target="_blank">official docs here</a>):
+   - Log into the Hugging Face platform with your credentials.
+   - Click on your profile image and go to "Settings".
+   - On the left side bar menu, click the "Access Token" option.
+   - Click on "New token" to create a new token, give it a name and assign it the "Read" permissions
    - Give your token a name, select the necessary scopes (e.g., "repo" for accessing private repositories), and click "Generate token."
-   - Copy the generated token and save it somewhere safe, as you won't be able to see it again.
+   - Store the generated token in your local machine (<a href="https://huggingface.co/docs/huggingface_hub/en/quick-start#login-command" target="_blank">official docs here</a>):
+     - Install the Hugging Face hub library: `pip install -U huggingface_hub`
+     - From the terminal run the `login()` command: `huggingface-cli login`, which will tell you if you are already logged in and prompt you for your token. The token is then validated and saved in your `HF_HOME` directory (defaults to `~/.cache/huggingface/token`).
 3. Submit your AI agent:
    - Choose the appropriate dependencies docker image for your submission. We provide <a href="https://github.com/orgs/diambra/packages?repo_name=arena" target="_blank">different pre-built ones</a> giving access to various common third party libraries
    - Submit your agent as shown in the following examples
