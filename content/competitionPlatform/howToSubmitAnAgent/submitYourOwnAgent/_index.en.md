@@ -71,7 +71,7 @@ If you want to avoid using submission files, you can use the command line to dir
 ```sh
 diambra agent submit \
   --submission.mode AIvsCOM \
-  --submission.source .=git+https://username:{{.Secrets.tokhf_tokenen}}@huggingface.co/username/repository_name.git#ref=branch_name \
+  --submission.source .=git+https://username:{{.Secrets.hf_token}}@huggingface.co/username/repository_name.git#ref=branch_name \
   --submission.secrets-from=huggingface \
   --submission.set-command \
   arena-stable-baselines3-on3.10-bullseye \
