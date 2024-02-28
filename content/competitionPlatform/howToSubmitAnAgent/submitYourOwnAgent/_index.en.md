@@ -4,7 +4,7 @@ weight: 50
 math: true
 ---
 
-We officially support two different hosting services to submit your own agent:
+We support all types of git sources and we also included Hugging Face libraries for model download in the base image. These are the two recommended methods to host and submit your agents:
 
 <div style="font-size:1.125rem;">
 
@@ -46,16 +46,15 @@ Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencie
 ```yaml
 mode: AIvsCOM
 image: diambra/arena-stable-baselines3-on3.10-bullseye:main
-env:
-  HF_TOKEN: '{{ .Secrets.HF_TOKEN }}'
 command:
   - python
-  - "./agent.py"
-  - "hf-repo-id"
-  - "./models/model.zip"
+  - "/sources/agent.py"
+  - "/sources/models/model.zip"
+sources:
+  .: git+https://username:{{.Secrets.hf_token}}@huggingface.co/username/repository_name.git#ref=branch_name
 ```
 
-Change `image` and `command` fields according to your specific use case.
+Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values, and change `image` and `command` fields according to your specific use case.
 
 Then, submit your agent using the manifest file:
 
@@ -65,8 +64,6 @@ diambra agent submit --submission.secrets-from=huggingface --submission.manifest
 
 This will automatically retrieve the Hugging Face token you saved earlier.
 
-Note that your agent script must contain the instructions to download your model from Hugging Face as shown in the examples provided in our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a> repository.
-
 #### Example 2: Command Line Interface Only
 
 If you want to avoid using submission files, you can use the command line to directly submit your agent. Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image:
@@ -74,16 +71,91 @@ If you want to avoid using submission files, you can use the command line to dir
 ```sh
 diambra agent submit \
   --submission.mode AIvsCOM \
+  --submission.source .=git+https://username:{{.Secrets.tokhf_tokenen}}@huggingface.co/username/repository_name.git#ref=branch_name \
   --submission.secrets-from=huggingface \
   --submission.set-command \
   arena-stable-baselines3-on3.10-bullseye \
-  python "./agent.py" "hf-repo-id" "./models/model.zip"
-
+  python "/sources/agent.py" "/sources/models/model.zip"
 ```
+
+Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values.
 
 Also in this case, the Hugging Face token you saved earlier will be automatically retrieved.
 
 Note that, in this case, the dependencies `image` and `command` fields we discussed above are merged together and provided as values to the last argument `--submission.set-command`. Use the same order and change their values according to your specific use case.
+
+#### Example 3: Using HF library
+
+Instead of relying on `git` to download the model from HF, you can leverage the Hugging Face libraries, already provided by our pre-built dependencies images, to download the specific files you need directly from inside the agent python script.
+
+To do so, you would need to:
+- Create an agent script (e.g. `agent.py`) that contains the instructions to download the HF model, similar to the following example:
+  ```python
+  # Content of agent.py
+
+  import os
+  import argparse
+  import diambra.arena
+
+  from huggingface_hub import hf_hub_download, login as huggingface_hub_login
+
+  def main(repo, cfg_file):
+
+      # Retrieve the token from the ENV variables and login to HF
+      if os.getenv("HF_TOKEN"):
+          huggingface_hub_login(os.getenv("HF_TOKEN").strip())
+
+      # Download the model weights and save the local path
+      model_path = hf_hub_download(repo_id=repo, filename="./model_weights.zip")
+
+      # Load the trained agent
+      agent = PPO.load(model_path)
+
+      # Environment settings setup and environment creation
+      env = diambra.arena.make(game_id)
+
+      # Agent-Environment loop
+      obs, info = env.reset()
+
+      while True:
+          action, _ = agent.predict(obs, deterministic=False)
+
+          obs, reward, terminated, truncated, info = env.step(action.tolist())
+
+          if terminated or truncated:
+              obs, info = env.reset()
+              if info["env_done"] or test is True:
+                  break
+
+      # Close the environment
+      env.close()
+
+  if __name__ == "__main__":
+      parser = argparse.ArgumentParser()
+      parser.add_argument("--repo", type=str, required=True, help="Repository name")
+      opt = parser.parse_args()
+
+      main(opt.repo)
+  ```
+- Create a custom image based on one of our pre-built images with the appropriate dependencies, place the agent script inside it and push it to your docker image registry of choice
+- Assuming you are using the `arena-stable-baselines3-on3.10-bullseye` dependencies image, create a file named `submission-manifest.yaml` with the following content:
+  ```yaml
+  mode: AIvsCOM
+  image: docker-image-repo/docker-image-name:tag
+  env:
+    HF_TOKEN: '{{ .Secrets.HF_TOKEN }}'
+  command:
+    - python
+    - "./agent.py"
+    - "hf-repo-id"
+  ```
+  Changing `image` and `command` fields according to your specific use case.
+
+- Then, submit your agent using the manifest file:
+  ```sh
+  diambra agent submit --submission.secrets-from=huggingface --submission.manifest submission-manifest.yaml
+  ```
+  Also in this case, the Hugging Face token you saved earlier will be automatically retrieved.
 
 ### GitHub
 
