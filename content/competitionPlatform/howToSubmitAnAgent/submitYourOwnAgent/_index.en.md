@@ -142,14 +142,14 @@ To do so, you would need to:
   ```yaml
   mode: AIvsCOM
   image: docker-image-repo/docker-image-name:tag
-  env:
-    HF_TOKEN: '{{ .Secrets.HF_TOKEN }}'
   command:
     - python
     - "./agent.py"
     - "hf-repo-id"
   ```
   Changing `image` and `command` fields according to your specific use case.
+
+  Note that you don't need to specify the `HF_TOKEN` `ENV` variable to be retrieved by your script as it will be automatically loaded by our CLI when using the `--submission.secrets-from=huggingface` option as shown below.
 
 - Then, submit your agent using the manifest file:
   ```sh
