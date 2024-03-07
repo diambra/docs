@@ -1,6 +1,6 @@
 ---
 title: RLZ Tournament
-weight: 10
+weight: 20
 math: true
 ---
 
@@ -24,7 +24,7 @@ Participants trained an AI algorithm to effectively play Dead Or Alive ++. The t
 
 ##### References <!-- Add related links of interest, like: web pages, github repo, paper(s), linkedin pages -->
 - Tournament Website: <a href="https://diambra.gitlab.io/website/aitournament/" target="_blank">https://diambra.gitlab.io/website/aitournament/</a>
-- RLZ Linkedin Page: <a href="https://www.linkedin.com/company/reinforcement-learning-zurich/" target="_blank">https://www.linkedin.com/company/reinforcement-learning-zurich/</a> 
+- RLZ Linkedin Page: <a href="https://www.linkedin.com/company/reinforcement-learning-zurich/" target="_blank">https://www.linkedin.com/company/reinforcement-learning-zurich/</a>
 - RLZ Meetup Page: <a href="https://www.meetup.com/Reinforcement-Learning-Zurich" target="_blank">https://www.meetup.com/Reinforcement-Learning-Zurich</a>
 
 <!-- ##### Sponsors <!-- Add sponsors (if any), with optional links to their website, linkedin page, etc) -->
