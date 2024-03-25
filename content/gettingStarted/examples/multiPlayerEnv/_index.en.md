@@ -25,4 +25,4 @@ The following example demonstrates utilizing a single model for self-play within
 This illustration assumes that the model was trained with both flatten and role_relative options set to True. Should your model's training settings differ, adjustments to the handling of observations and actions will be necessary to align with those specific configurations.
 {{% /notice %}}
 
-{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/mp_with_trained_agent_env.py" >}}
+{{< github_code "https://raw.githubusercontent.com/diambra/arena/main/examples/multi_player_trained_agent_selfplay_env.py" >}}
