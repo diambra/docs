@@ -12,7 +12,6 @@ This section contains a collection of projects that have been developed using DI
 
 If you want to add yours, you can fork the <a href="https://github.com/diambra/docs" target="_blank">docs repo</a> and submit a Pull Request or get in touch on our <a href="https://diambra.ai/discord" target="_blank">Discord server</a> and send us the material.
 
-
 #### Project List
 
 <div style="font-size:1.125rem;">
@@ -20,8 +19,5 @@ If you want to add yours, you can fork the <a href="https://github.com/diambra/d
 - <a href="./marlleaguetraining/">Multi Agent RL - League Training</a>
 - <a href="./rlztournament/">RLZ Tournament</a>
 - <a href="./gamepainter/">Game Painter</a>
+- <a href="./llmcolosseum">LLM Colosseum</a>
 </div>
-
-
-
-
