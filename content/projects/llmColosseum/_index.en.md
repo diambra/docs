@@ -1,12 +1,12 @@
 ---
-title: MARL - League Training
-weight: 10
+title: LLM Colosseum
+weight: 5
 math: true
 ---
 
 <!-- Image of the project -->
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
-  <img src="../../images/projects/llmColosseum.jpg" style="margin-top:0px;margin-bottom:30px;">
+  <img src="../../images/projects/llmColosseum_original.gif" style="margin-top:0px;margin-bottom:30px;">
 </figure>
 
 ##### Project summary <!-- Brief description of the project -->
@@ -28,6 +28,6 @@ LLMs are different from Reinforcement Learning (RL) models, that are based on ma
 
 - GitHub Repo: <a href="https://github.com/OpenGenerativeAI/llm-colosseum/tree/main" target="_blank">https://github.com/OpenGenerativeAI/llm-colosseum/tree/main</a>
 
-##### Sponsors <!-- Add sponsors (if any), with optional links to their website, linkedin page, etc)
+##### Sponsors <!-- Add sponsors (if any), with optional links to their website, linkedin page, etc) -->
 
 This project was made by teams from <a href="https://phospho.ai" target="_blank">phospho</a> and <a href="https://www.quivr.app" target="_blank">Quivr</a>.
