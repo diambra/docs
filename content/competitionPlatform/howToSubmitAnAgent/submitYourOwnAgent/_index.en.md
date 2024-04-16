@@ -160,7 +160,7 @@ To do so, you would need to:
 #### Example 4: SheepRL - Using a Manifest File
 This section shows how to submit a trained agent with SheepRL.
 
-[Here](https://github.com/diambra/agents/blob/main/sheeprl/ppo-agent.py) you can find an example of what the evaluation script should look like.
+[Here](https://github.com/diambra/agents/blob/main/sheeprl/agent-ppo.py) you can find an example of what the evaluation script should look like.
 You need of two files:
 - A YAML configuration file, the one produced during training, that contains the configs of the agent and all the information needed to instantiate the environment.
 - A `ckpt` file that contains the weights of the agent.
@@ -175,17 +175,17 @@ mode: AIvsCOM
 image: diambra/arena-sheeprl-on3.10-bullseye:main
 command:
   - python
-  - "/sources/ppo-agent.py"
+  - "/sources/agent-ppo.py"
   - "--cfg_path"
-  - "/sources/config.yaml"
+  - "/sources/results/ppo/config.yaml"
   - "--checkpoint_path"
-  - "/sources/ckpt_1024_0.ckpt"
+  - "/sources/results/ppo/ckpt_1024_0.ckpt"
 sources:
   .: git+https://username:{{.Secrets.hf_token}}@huggingface.co/username/repository_name.git#ref=branch_name
 ```
 
 {{% notice note %}}
-`/sources/config.yaml` refers to the `config.yaml` file in the root directory of the huggingface repository. If you placed that file in a subdirectory, then you must specify the path to that file, i.e., `/sources/path/to/config.yaml`.
+[Here](https://huggingface.co/michele-milesi/diambra-agent-example/tree/main) you can find the huggingface repository on which the example is based.
 {{% /notice %}}
 
 Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values, and change `image` and `command` fields according to your specific use case.
