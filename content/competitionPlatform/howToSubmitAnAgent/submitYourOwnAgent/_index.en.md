@@ -157,6 +157,47 @@ To do so, you would need to:
   ```
   Also in this case, the Hugging Face token you saved earlier will be automatically retrieved.
 
+#### Example 4: SheepRL - Using a Manifest File
+This section shows how to submit a trained agent with SheepRL.
+
+[Here](https://github.com/diambra/agents/blob/main/sheeprl/ppo-agent.py) you can find an example of what the evaluation script should look like.
+You need of two files:
+- A YAML configuration file, the one produced during training, that contains the configs of the agent and all the information needed to instantiate the environment.
+- A `ckpt` file that contains the weights of the agent.
+
+After retrieving these two files, you can load them with the script file into your huggingface repository.
+An example of the files you need to retrieve is shown [here](https://github.com/diambra/agents/blob/main/sheeprl/example-logs/runs/ppo/doapp/experiment).
+
+Assuming you are using the `arena-sheeprl-on3.10-bullseye` dependencies image and that you upload the files without subdirectories, create a file named `submission-manifest.yaml` with the following content:
+
+```yaml
+mode: AIvsCOM
+image: diambra/arena-sheeprl-on3.10-bullseye:main
+command:
+  - python
+  - "/sources/ppo-agent.py"
+  - "--cfg_path"
+  - "/sources/config.yaml"
+  - "--checkpoint_path"
+  - "/sources/ckpt_1024_0.ckpt"
+sources:
+  .: git+https://username:{{.Secrets.hf_token}}@huggingface.co/username/repository_name.git#ref=branch_name
+```
+
+{{% notice note %}}
+`/sources/config.yaml` refers to the `config.yaml` file in the root directory of the huggingface repository. If you placed that file in a subdirectory, then you must specify the path to that file, i.e., `/sources/path/to/config.yaml`.
+{{% /notice %}}
+
+Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values, and change `image` and `command` fields according to your specific use case.
+
+Then, submit your agent using the manifest file:
+
+```sh
+diambra agent submit --submission.secrets-from=huggingface --submission.manifest submission-manifest.yaml
+```
+
+This will automatically retrieve the Hugging Face token you saved earlier.
+
 ### GitHub
 
 These are the steps to submit your own agent hosted on GitHub:
