@@ -405,14 +405,14 @@ def main(cfg_path: str, checkpoint_path: str, test=False):
     print("Policy architecture:")
     print(agent)
 
-    o, info = env.reset()
+    obs, info = env.reset()
 +   agent.init_states()
 
     while True:
         ...
 
         if terminated or truncated:
-            o, info = env.reset()
+            obs, info = env.reset()
 +           agent.init_states()
             if info["env_done"] or test is True:
                 break
