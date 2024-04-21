@@ -6,28 +6,42 @@ weight: 20
 
 <div style="display:block; width:100%;">
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
-   <a href="./doapp/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/doapp.jpg"/>
+   <a href="./doapp/"><img style="margin-top:0px; margin-bottom: 10px; border-radius: 10px;" src="../../images/envs/doapp.jpg"/>
    <figcaption align="middle">Dead or Alive ++</figcaption></a>
   </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
-   <a href="./sfiii3n/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/sfiii3n.jpg"/>
+   <a href="./sfiii3n/"><img style="margin-top:0px; margin-bottom: 10px; border-radius: 10px;" src="../../images/envs/sfiii3n.jpg"/>
    <figcaption align="middle">Street Fighter III 3rd Strike</figcaption></a>
   </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
-   <a href="./tektagt/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/tektagt.jpg"/>
+   <a href="./tektagt/"><img style="margin-top:0px; margin-bottom: 10px; border-radius: 10px;" src="../../images/envs/tektagt.jpg"/>
    <figcaption align="middle">Tekken Tag Tournament</figcaption></a>
   </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
-   <a href="./umk3/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/umk3.jpg"/>
+   <a href="./umk3/"><img style="margin-top:0px; margin-bottom: 10px; border-radius: 10px;" src="../../images/envs/umk3.jpg"/>
    <figcaption align="middle">Ultimate Mortal Kombat 3</figcaption></a>
   </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
-   <a href="./samsh5sp/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/samsh5sp.jpg"/>
+   <a href="./samsh5sp/"><img style="margin-top:0px; margin-bottom: 10px; border-radius: 10px;" src="../../images/envs/samsh5sp.jpg"/>
    <figcaption align="middle">Samurai Showdown 5 Sp</figcaption></a>
   </figure>
   <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
-   <a href="./kof98umh/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/kof98umh.jpg"/>
+   <a href="./kof98umh/"><img style="margin-top:0px; margin-bottom: 10px; border-radius: 10px;" src="../../images/envs/kof98umh.jpg"/>
    <figcaption align="middle">The King of Fighers '98 UMH</figcaption></a>
+  </figure>
+</div>
+<div style="display:block; width:100%;">
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
+   <a href="./mvsc/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/mvsc.jpg"/>
+   <figcaption align="middle">Marvel VS Capcom</figcaption></a>
+  </figure>
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
+   <a href="./xmvsf/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/xmvsf.jpg"/>
+   <figcaption align="middle">X-Men VS Street Fighter</figcaption></a>
+  </figure>
+  <figure style="padding:2px; margin-right:auto; margin-left:auto; float:left; min-width:90px; max-width:15.0%; min-height:230px;">
+   <a href="./soulclbr/"><img style="margin-top:0px; margin-bottom: 20px; border-radius: 10px;" src="../../images/envs/soulclbr.jpg"/>
+   <figcaption align="middle">Soul Calibur</figcaption></a>
   </figure>
 </div>
 
@@ -42,6 +56,9 @@ weight: 20
 | <a href="./umk3/">Ultimate Mortal Kombat 3</a>                          | 158                                                  | `umk3`                                                       |
 | <a href="./samsh5sp/">Samurai Showdown 5 Special</a>                    | 168                                                     | `samsh5sp`                                                   |
 | <a href="./kof98umh/">The King of Fighters '98: Ultimate Match Hero</a> | 92                                                     | `kof98umh`                                                   |
+| <a href="./mvsc/">Marvel VS Capcom</a> | 190                                                     | `mvsc`                                                   |
+| <a href="./xmvsf/">X-Men VS Street Fighter</a> | 190                                                     | `xmvsf`                                                   |
+| <a href="./soulclbr/">Soul Calibur</a> | 60                                                     | `soulclbr`                                                   |
 
 *Measured on Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz, using `step_ratio = 1` and `frame_shape = (128, 128, 1)`
 
