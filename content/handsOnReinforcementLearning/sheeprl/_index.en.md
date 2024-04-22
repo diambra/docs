@@ -349,7 +349,7 @@ tensorboard --logdir /path/to/logging/directory --port 6010
 ```
 
 #### Agent Script for Competition
-Finally, after the agent training is completed, besides running it locally in your own machine, you may want to submit it to our <a href="../../competitionplatform">Competition Platform!</a> To do so, you can use the following script that provides a ready to use, flexible example that can accommodate different games and settings.
+Finally, after the agent training is completed, besides running it locally on your own machine, you may want to submit it to our <a href="../../competitionplatform">Competition Platform!</a> To do so, you can use the following script that provides a ready-to-use, flexible example that can accommodate different games and settings.
 
 {{% notice tip %}}
 To submit your trained agent to our platform, compete for the first leaderboard positions, and unlock our achievements, follow the simple steps described in the <a href="../../competitionplatform/howtosubmitanagent/">"How to Submit an Agent"</a> section.
@@ -360,14 +360,14 @@ The script for submitting PPOs is shown below.
 {{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/agent-ppo.py" >}}
 
 If you have trained an agent different from PPO, you can simply reuse this script, modifying a couple of things:
-1. The `build_agent()` method: every agent has its own method, you can find it in the `./sheeprl/algos/<algo_name>/agent.py` file. You should check the parameters of the method, every agent has its own models, so you must pass the state of the agent's models as a parameter. The parameter is always called: `model_name_state`, you can retrive the state of the model from the `state` dictionary (in the script shown above) with the `"model_name"` key.
+1. The `build_agent()` method: every agent has its own method, you can find it in the `./sheeprl/algos/<algo_name>/agent.py` file. You should check the parameters of the method, every agent has its own models, so you must pass the state of the agent's models as a parameter. The parameter is always called: `model_name_state`, you can retrieve the state of the model from the `state` dictionary (in the script shown above) with the `"model_name"` key.
 2. Whether or not to initialize the recurrent states: the models with recurrent neural networks (e.g., all the Dreamer algorithms) need to initialize the recurrent states at every reset of the environment. It is recommended to look at the test function of the algorithm you want to submit.
 
 {{% notice tip %}}
 The only algorithm you need to pay a little more attention to is PPO Recurrent. It is recommended to look at its test function available <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/v0.5.5/sheeprl/algos/ppo_recurrent/utils.py#L25" target="_blank">here</a>.
 {{% /notice %}}
 
-For example, below are shown the changes you need to make to the script to submit DreamerV3.
+For example, the changes to be made to the script to submit DreamerV3 are explained below.
 
 ```diff
 import argparse
@@ -421,7 +421,7 @@ def main(cfg_path: str, checkpoint_path: str, test=False):
 
 ```
 
-The final script for the sumbission of dreamer_v3 is shown below.
+The final script for the submission of dreamer_v3 is shown below.
 
 {{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/agent-dreamer_v3.py" >}}
 

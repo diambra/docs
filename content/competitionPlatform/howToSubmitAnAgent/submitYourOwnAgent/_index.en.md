@@ -161,7 +161,7 @@ To do so, you would need to:
 This section shows how to submit a trained agent with SheepRL.
 
 <a href="https://github.com/diambra/agents/blob/main/sheeprl/agent-ppo.py" target="_blank">Here</a> you can find an example of what the evaluation script should look like.
-You need of two files:
+You need two files:
 - A YAML configuration file, the one produced during training, that contains the configs of the agent and all the information needed to instantiate the environment.
 - A `ckpt` file that contains the weights of the agent.
 
