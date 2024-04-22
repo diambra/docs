@@ -96,7 +96,7 @@ class DiambraWrapper(gym.Wrapper):
     def __init__(
         self,
         id: str,
-        action_space: str = "diambra.arena.SpaceTypes.DISCRETE",
+        action_space: str = "DISCRETE",
         screen_size: Union[int, Tuple[int, int]] = 64,
         grayscale: bool = False,
         repeat_action: int = 1,
@@ -112,7 +112,7 @@ class DiambraWrapper(gym.Wrapper):
 | <strong><span style="color:#5B5B60;">Argument</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                       |
 | ------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`  | `str` | - | Game environment identifier |
-| `action_space` | `str` | `DISCRETE*` | Which action space to use: one between `DISCRETE*` and `MULTI_DISCRETE*` |
+| `action_space` | `str` | `"DISCRETE"` | Which action space to use: one between `"DISCRETE"` and `"MULTI_DISCRETE"` |
 | `screen_size` | `int \| Tuple[int, int]` | `64` | Screen size of the frames |
 | `grayscale` | `bool` | `False` | Whether to use grayscale frames |
 | `rank` | `int` | `0` | Rank of the environment |
@@ -121,10 +121,6 @@ class DiambraWrapper(gym.Wrapper):
 | `render_mode` | `str` | `"rgb_array"` | Rendering mode |
 | `log_level` | `int` | `0` | Log level |
 | `increase_performance` | `bool` | `True` | Whether to modify frames on the engine side (`True`) or use the wrapper (`False`) |
-
-{{% notice warning %}}
-*: `DISCRETE` is a placeholder for `diambra.arena.SpaceTypes.DISCRETE`, whereas `MULTI_DISCRETE` is a placeholder for `diambra.arena.SpaceTypes.MULTI_DISCRETE`. You must enter the full string.
-{{% /notice %}}
 
 {{% notice note %}}
 For the interface low-level details, users can review the correspondent source code <a href="https://github.com/Eclectic-Sheep/sheeprl/blob/v0.5.5/sheeprl/envs/diambra.py" target="_blank">here</a>.
