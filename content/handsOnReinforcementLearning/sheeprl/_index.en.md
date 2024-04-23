@@ -420,4 +420,3 @@ def main(cfg_path: str, checkpoint_path: str, test=False):
 The final script for the submission of dreamer_v3 is shown below.
 
 {{< github_code "https://raw.githubusercontent.com/diambra/agents/main/sheeprl/agent-dreamer_v3.py" >}}
-
