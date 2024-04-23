@@ -65,8 +65,8 @@ weight: 90
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="../../../images/envs/doappData.png" style="margin-bottom:20px;">
-  <figcaption align="middle">Some examples of Dead Or Alive ++ RAM states</figcaption>
+  <img src="../../../images/envs/soulclbrData.jpg" style="margin-bottom:20px;">
+  <figcaption align="middle">Some examples of Soul Calibur RAM states</figcaption>
 </figure>
 
 #### Global

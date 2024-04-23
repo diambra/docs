@@ -26,14 +26,14 @@ weight: 70
 |                                                                                                                          |                                                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <strong><span style="color:#5B5B60;">Game ID</span></strong>                                                             | `mvsc`                                                                                                                                                                                                |
-| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>                                                   | `mvsc.zip`                                                                                                                                                                                            |
+| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong></strong>                                                   | `mvsc.zip`<br><strong><span style="color:#FF0000;">Requires the QSound_HLE sound driver to be placed in the roms folder. Search keywords: "qsound_hle.zip", "dl-1425.bin"</span></strong>                                                   |
 | <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>                                                     | `d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e`                                                                                                                                     |
-| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>                                                     | `DEAD OR ALIVE ++ [JAPAN]`, `dead-or-alive-japan`, `80781`, `wowroms`                                                                                                                                  |
-| <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>                                      | 480px&#160;X&#160;512px&#160;X&#160;3                                                                                                                                                                  |
-| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions</span></strong> | 9, 8 (4)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-7): No-Attack, Hold, Punch, Kick, Hold+Punch, Hold+Kick, Punch+Kick, Hold+Punch+Kick |
-| <strong><span style="color:#5B5B60;">Max Difficulty (1P Mode)</span></strong>                                            | 4                                                                                                                                                                                                      |
-| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>                                   | 11 (11)                                                                                                                                                                                                |
-| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>                                               | 4                                                                                                                                                                                                      |
+| <strong><span style="color:#5B5B60;">Search Keywords</span></strong>                                                     | `marvel vs capcom clash of super heroes`, `marvel-vs.-capcom-clash-of-super-heroes-euro-980123`, `5511`, `wowroms`                                                                                                                                  |
+| <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>                                      | 224px&#160;X&#160;384px&#160;X&#160;3                                                                                                                                                                  |
+| <strong><span style="color:#5B5B60;">Number of Moves and Attack Actions</span></strong> | 9, 10 (7)<br>Moves (0-8): No-Move, Left, Left+Up, Up, Up+Right, Right, Right+Down, Down, Down+Left<br>Attacks (0-9): No-Attack, Weak Punch, Medium Punch, Strong Punch, Weak Kick, Medium Kick, Strong Kick, Hold+Punch+Kick |
+| <strong><span style="color:#5B5B60;">Max Difficulty (1P Mode)</span></strong>                                            | 8                                                                                                                                                                                                      |
+| <strong><span style="color:#5B5B60;">Number of Characters (Selectable)</span></strong>                                   | 22 (15)                                                                                                                                                                                                |
+| <strong><span style="color:#5B5B60;">Max Number of Outfits</span></strong>                                               | 2                                                                                                                                                                                                      |
 | <strong><span style="color:#5B5B60;">Number of Stages (1P Mode)</span></strong>                                          | 8                                                                                                                                                                                                      |
 
 ### Specific Episode Settings
@@ -65,8 +65,11 @@ weight: 70
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="../../../images/envs/doappData.png" style="margin-bottom:20px;">
-  <figcaption align="middle">Some examples of Dead Or Alive ++ RAM states</figcaption>
+  <img src="../../../images/envs/mvscData.jpg" style="margin-bottom:20px;">
+</figure>
+<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
+  <img src="../../../images/envs/mvscData2.jpg" style="margin-bottom:20px;">
+  <figcaption align="middle">Some examples of Marvel VS Capcom RAM states</figcaption>
 </figure>
 
 #### Global

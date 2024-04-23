@@ -158,7 +158,7 @@ wrappers_settings.role_relative = True
 
 ```python
 wrappers_settings.flatten = True
-wrappers_settings.filter_keys = ["stage", "P1_health", "P2_char"]
+wrappers_settings.filter_keys = ["stage", "P1_health", "P2_character"]
 ```
 
 {{% notice note %}}

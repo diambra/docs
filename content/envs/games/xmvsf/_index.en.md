@@ -26,7 +26,7 @@ weight: 80
 |                                                                                                                          |                                                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <strong><span style="color:#5B5B60;">Game ID</span></strong>                                                             | `doapp`                                                                                                                                                                                                |
-| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong>                                                   | `doapp.zip`                                                                                                                                                                                            |
+| <strong><span style="color:#5B5B60;">Original ROM Name</span></strong></strong>                                                   | `xmvsf.zip`<br><strong><span style="color:#FF0000;">Requires the QSound_HLE sound driver to be placed in the roms folder. Search keywords: "qsound_hle.zip", "dl-1425.bin"</span></strong>                                                   |
 | <strong><span style="color:#5B5B60;">SHA256 Checksum</span></strong>                                                     | `d95855c7d8596a90f0b8ca15725686567d767a9a3f93a8896b489a160e705c4e`                                                                                                                                     |
 | <strong><span style="color:#5B5B60;">Search Keywords</span></strong>                                                     | `DEAD OR ALIVE ++ [JAPAN]`, `dead-or-alive-japan`, `80781`, `wowroms`                                                                                                                                  |
 | <strong><span style="color:#5B5B60;">Game Resolution<br>(H X W X C)</span></strong>                                      | 480px&#160;X&#160;512px&#160;X&#160;3                                                                                                                                                                  |
@@ -65,8 +65,11 @@ weight: 80
 ### Observation Space
 
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
-  <img src="../../../images/envs/doappData.png" style="margin-bottom:20px;">
-  <figcaption align="middle">Some examples of Dead Or Alive ++ RAM states</figcaption>
+  <img src="../../../images/envs/xmvsfData.jpg" style="margin-bottom:20px;">
+</figure>
+<figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto;">
+  <img src="../../../images/envs/xmvsfData2.jpg" style="margin-bottom:20px;">
+  <figcaption align="middle">Some examples of X-Men VS Street Fighter RAM states</figcaption>
 </figure>
 
 #### Global
