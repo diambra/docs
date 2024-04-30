@@ -109,7 +109,7 @@ observation_space["action_attack"]: Discrete(4)
 
 observation_space["action_move"]: Discrete(9)
 
-observation_space["opp_char"]: Discrete(11)
+observation_space["opp_character"]: Discrete(11)
 
 observation_space["opp_health"]: Box()
     Space type = int32
@@ -123,7 +123,7 @@ observation_space["opp_wins"]: Box()
     Space high bound = 2
     Space low bound = 0
 
-observation_space["own_char"]: Discrete(11)
+observation_space["own_character"]: Discrete(11)
 
 observation_space["own_health"]: Box()
     Space type = int32
@@ -219,11 +219,11 @@ Output will be similar to what follows:
    observation["frame"]: shape (128, 128, 3) - min 0 - max 255
    observation["stage"]: [1]
    observation["timer"]: [30]
-   observation["P1"]["char"]: 0 / Kasumi
+   observation["P1"]["character"]: 0 / Kasumi
    observation["P1"]["health"]: [66]
    observation["P1"]["side"]: 0
    observation["P1"]["wins"]: [0]
-   observation["P2"]["char"]: 3 / Bayman
+   observation["P2"]["character"]: 3 / Bayman
    observation["P2"]["health"]: [184]
    observation["P2"]["side"]: 1
    observation["P2"]["wins"]: [0]
@@ -244,11 +244,11 @@ Output will be similar to what follows:
   observation["frame"]: shape (128, 128, 4) - min 0 - max 255
   observation["stage"]: [0.0]
   observation["timer"]: [0.875]
-  observation["own_char"]: [0 0 0 1 0 0 0 0 0 0 0] / Bayman
+  observation["own_character"]: [0 0 0 1 0 0 0 0 0 0 0] / Bayman
   observation["own_health"]: [0.8173076923076923]
   observation["own_side"]: [0 1]
   observation["own_wins"]: [0.]
-  observation["opp_char"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
+  observation["opp_character"]: [1 0 0 0 0 0 0 0 0 0 0] / Kasumi
   observation["opp_health"]: [0.8028846153846154]
   observation["opp_side"]: [1 0]
   observation["opp_wins"]: [0.]

@@ -76,22 +76,33 @@ Additional details can be found in their <a href="./games/">dedicated section</a
 
 <div>
   <figure style="margin-right:1%; margin-left:auto; float:left; width:15.0%">
-   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:5px; border-radius: 10px;" src="/images/envs/doapp.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:5px; border-radius: 10px;" src="/images/envs/sfiii3n.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:5px; border-radius: 10px;" src="/images/envs/tektagt.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:5px; border-radius: 10px;" src="/images/envs/umk3.jpg"/></a>
   </figure>
   <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:5px; border-radius: 10px;" src="/images/envs/samsh5sp.jpg"/></a>
   </figure>
   <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
-   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:5px; border-radius: 10px;" src="/images/envs/kof98umh.jpg"/></a>
+  </figure>
+</div>
+<div>
+  <figure style="margin-right:1%; margin-left:26%; float:left; width:15.0%">
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/mvsc.jpg"/></a>
+  </figure>
+  <figure style="margin-right:1%; margin-left:1%; float:left; width:15.0%;">
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/xmvsf.jpg"/></a>
+  </figure>
+  <figure style="margin-right:auto; margin-left:1%; float:left; width:15.0%;">
+   <a href="./games/"><img style="margin-top:0px; margin-bottom:30px; border-radius: 10px;" src="/images/envs/soulclbr.jpg"/></a>
   </figure>
 </div>
 
@@ -184,7 +195,7 @@ Two ready-to-use examples showing how environment settings are used can be found
 
 | <strong><span style="color:#5B5B60;">Name</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong>                                                                                         | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                                                                                                                            |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `frame_shape`                                            | `tuple` of three `int` (H,&#160;W,&#160;C)                | (0,&#160;0,&#160;0)                                                   | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1                                                                                                          | If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>(0,&#160;0,&#160;0) - Deactivated;<br>(H,&#160;W,&#160;0) - RBG frame resized to H&#160;X&#160;W;<br>(0,&#160;0,&#160;1) - Grayscale frame;<br>(H,&#160;W,&#160;1) - Grayscale frame resized to H&#160;X&#160;W. |
+| `frame_shape`                                            | `tuple` of three `int` (H,&#160;W,&#160;C)                | (0,&#160;0,&#160;0)                                                   | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1                                                                                                          | If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>(0,&#160;0,&#160;0) - Deactivated;<br>(H,&#160;W,&#160;0) - RGB frame resized to H&#160;X&#160;W;<br>(0,&#160;0,&#160;1) - Grayscale frame;<br>(H,&#160;W,&#160;1) - Grayscale frame resized to H&#160;X&#160;W. |
 | `action_space*`                                           | `SpaceTypes`                                                     | `MULTI_DISCRETE`                                                      | `DISCRETE` / `MULTI_DISCRETE`                                                                                                                            | Defines the type of the action space                                                                                                                                                                                                                                                                        |
 | `n_players`                                                 | `int`                                                     | 1                                                             | [1, 2]| Selects single player or two players mode                                                                                                                                                                                                       |
 | `step_ratio`                                             | `int`                                                     | 6                                                                     | [1, 6]                                                                                                                                                   | Defines how many steps the game (emulator) performs for every environment step                                                                                                                                                                                                                              |
