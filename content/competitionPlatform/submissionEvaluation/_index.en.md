@@ -4,7 +4,7 @@ weight: 20
 math: true
 ---
 
-Each time you submit an agent, it is run for one episode to be evaluated. Every submission will generate a score, used for leaderboard positioning, and will unlock achievements. 
+Each time you submit an agent, it is run for one episode to be evaluated. Every submission will generate a score, used for leaderboard positioning, and will unlock achievements.
 
 The score is a function of both the total cumulative reward and the submission difficulty you selected at submission time, which can be either "Easy", "Medium" or "Hard". Every game has a different difficulty level scale, so a specific mapping is applied and is represented by the following table:
 
@@ -16,6 +16,9 @@ The score is a function of both the total cumulative reward and the submission d
 | Ultimate Mortal Kombat 3                                       | 3 | 4 | 5 |
 | Samurai Showdown 5                                             | 4 | 6 | 8 |
 | King of Fighters '98                                           | 4 | 6 | 8 |
+| Marvel VS Capcom                                               | 4 | 6 | 8 |
+| X-Men VS Street Fighter                                        | 4 | 6 | 8 |
+| Soul Calibur                                                   | 3 | 4 | 5 |
 
 The relation that links score with total cumulative reward and difficulty is shown in the picture below. When "Easy" is selected, the score is exactly equal to the total cumulative reward. When "Medium" (or "Hard") is selected, the score is obtained multiplying the total cumulative reward by a weighting value that varies linearly with the total cumulative reward obtained. It is equal to 1 if you obtain the lowest possible total cumulative reward (i.e. same score as if "Easy" was selected), and it is equal to the ratio between the game difficulty level for "Medium" (or "Hard") and the game difficulty level for "Easy" if you obtain the highest possible total cumulative reward.
 
