@@ -1,5 +1,5 @@
 ---
-title: Hands-on Reinforcement Learning
+title: Reinforcement Learning
 weight: 70
 ---
 
