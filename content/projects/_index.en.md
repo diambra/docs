@@ -42,6 +42,18 @@ If you want to add yours, you can fork the <a href="https://github.com/diambra/d
 <div>
   <figure style="margin-top:20px;margin-bottom:20px; margin-right:2%; margin-left:3%; float:left; width:45.0%; border-radius: 10px; border: 1px solid #cccccc;  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);">
   <div style="overflow: hidden; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+   <a href="./rlinduction/"><img style="margin:0; margin-bottom: 20px;" src="../../images/projects/RLInduction.png"/></a>
+   <figcaption align="middle">
+      <div style="text-align: center; margin-bottom:20px">
+        <a href="./rlinduction/" style="font-size:1.75rem;">RL Induction</a><br/><br/>
+        A reinforcement learning-based Tekken Tag environment, developed by COPS at IIT BHU, for freshers' induction. This project offers hands-on RL experience in a competitive setting using the DIAMBRA platform.
+      </div>
+   </figcaption>
+   </div>
+  </figure>
+
+  <figure style="margin-top:20px;margin-bottom:20px; margin-right:auto; margin-left:2%; float:left; width:45.0%; border-radius: 10px; border: 1px solid #cccccc;  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);">
+  <div style="overflow: hidden; border-top-left-radius: 10px; border-top-right-radius: 10px;">
    <a href="./rlztournament/"><img style="margin:0; margin-bottom: 20px;" src="../../images/projects/rlzTournament.jpg"/></a>
    <figcaption align="middle">
       <div style="text-align: center; margin-bottom:20px">
@@ -49,10 +61,10 @@ If you want to add yours, you can fork the <a href="https://github.com/diambra/d
         In 2021, we organized the very first AI Tournament leveraging DIAMBRA. It has been organized in collaboration with Reinforcement Learning Zurich (RLZ), a community of researchers, data scientists and...
       </div>
    </figcaption>
-   </div>
   </figure>
-
-  <figure style="margin-top:20px;margin-bottom:20px; margin-right:auto; margin-left:2%; float:left; width:45.0%; border-radius: 10px; border: 1px solid #cccccc;  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);">
+</div>
+<div>
+  <figure style="margin-top:20px;margin-bottom:20px; margin-right:2%; margin-left:3%; float:left; width:45.0%; border-radius: 10px; border: 1px solid #cccccc;  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);">
   <div style="overflow: hidden; border-top-left-radius: 10px; border-top-right-radius: 10px;">
    <a href="./gamepainter/"><img style="margin:0; margin-bottom: 20px;" src="../../images/projects/gamePainter.jpg"/></a>
    </div>
@@ -63,4 +75,5 @@ If you want to add yours, you can fork the <a href="https://github.com/diambra/d
    </div>
    </figcaption>
   </figure>
+
 </div>

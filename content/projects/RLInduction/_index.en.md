@@ -1,6 +1,6 @@
 ---
-title:RLInduction
-weight: 5
+title: RL Induction
+weight: 15
 math: true
 ---
 
@@ -19,6 +19,6 @@ A reinforcement learning-based Tekken Tag environment, developed by [COPS](https
 
 ##### References <!-- Add related links of interest, like: web pages, github repo, paper(s), linkedin pages -->
 
-- GitHub Repo: <a href="https://github.com/yashashwi-s/diambra/tree/main" target="_blank">https://github.com/yashashwi-s/diambra/tree/main</a>
+- GitHub Repo: <a href="https://github.com/yashashwi-s/diambra/" target="_blank">https://github.com/yashashwi-s/diambra/</a>
 
 ##### <!-- Add sponsors (if any), with optional links to their website, linkedin page, etc) -->
