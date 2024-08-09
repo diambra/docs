@@ -6,7 +6,7 @@ math: true
 
 <!-- Image of the project -->
 <figure style="margin-bottom:0px; margin-top:0px; margin-right:auto; margin-left:auto; width: 100%;">
-  <img src="../../images/projects/RLInduction.jpg" style="margin-top:0px;margin-bottom:30px;">
+  <img src="../../images/projects/RLInduction.png" style="margin-top:0px;margin-bottom:30px;">
 </figure>
 
 ##### Project summary <!-- Brief description of the project -->
