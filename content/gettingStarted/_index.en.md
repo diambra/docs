@@ -216,7 +216,8 @@ echo > %userprofile%/.diambra/credentials
 docker run --rm -ti --name engine ^
   -v %userprofile%/.diambra/credentials:/tmp/.diambra/credentials ^
   -v %userprofile%/.diambra/roms:/opt/diambraArena/roms ^
-  --net=host docker.io/diambra/engine:latest
+  -p 127.0.0.1:50051:50051 ^
+  docker.io/diambra/engine:latest
 ```
 
 {{% /tab %}}
