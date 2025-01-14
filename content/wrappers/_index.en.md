@@ -83,7 +83,7 @@ DEPRECATED: For speed, consider using the environment setting `frame_shape` that
 
 | <strong><span style="color:#5B5B60;">Name</span></strong> | <strong><span style="color:#5B5B60;">Type</span></strong> | <strong><span style="color:#5B5B60;">Default Value(s)</span></strong> | <strong><span style="color:#5B5B60;">Value Range</span></strong> | <strong><span style="color:#5B5B60;">Target Observation Element</span></strong> | <strong><span style="color:#5B5B60;">Description</span></strong>                                                                                                                                    |
 | -------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `frame_shape`                                         | `tuple` of three `int` (H,&#160;W,&#160;C)                | (0,&#160;0,&#160;0)                                                 | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1              | `frame`                                                                           | If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>(0,&#160;0,&#160;0) - Deactivated;<br>(H,&#160;W,&#160;0) - RBG frame resized to H&#160;X&#160;W;<br>(0,&#160;0,&#160;1) - Grayscale frame;<br>(H,&#160;W,&#160;1) - Grayscale frame resized to H&#160;X&#160;W;<br>Keeps observation element of type _Box_, changes its shape |
+| `frame_shape`                                         | `tuple` of three `int` (H,&#160;W,&#160;C)                | (0,&#160;0,&#160;0)                                                 | H,&#160;W:&#160;[0,&#160;512]<br>C:&#160;0 or 1              | `frame`                                                                           | If active, resizes the frame and/or converts it from RGB to grayscale.<br>Combinations:<br>(0,&#160;0,&#160;0) - Deactivated;<br>(H,&#160;W,&#160;0) - RGB frame resized to H&#160;X&#160;W;<br>(0,&#160;0,&#160;1) - Grayscale frame;<br>(H,&#160;W,&#160;1) - Grayscale frame resized to H&#160;X&#160;W;<br>Keeps observation element of type _Box_, changes its shape |
 
 ```python
 wrappers_settings.frame_shape = (128, 128, 1)
@@ -158,7 +158,7 @@ wrappers_settings.role_relative = True
 
 ```python
 wrappers_settings.flatten = True
-wrappers_settings.filter_keys = ["stage", "P1_health", "P2_char"]
+wrappers_settings.filter_keys = ["stage", "P1_health", "P2_character"]
 ```
 
 {{% notice note %}}

@@ -1,5 +1,5 @@
 ---
-title: Hands-on Reinforcement Learning
+title: Reinforcement Learning
 weight: 70
 ---
 
@@ -42,7 +42,7 @@ An additional useful resource is represented by courses and/or video-lectures. T
 <div>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:2%; float:left; width:22.0%">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/courses_deepminducl.png"/>
-   <figcaption align="middle">DeepMind Deep RL at UCL • <a href="https://www.deepmind.com/learning-resources/reinforcement-learning-lecture-series-2021" target="_blank">Link</a></figcaption>
+   <figcaption align="middle">DeepMind Deep RL at UCL • <a href="https://www.youtube.com/playlist?list=PLqYmG7hTraZDVH599EItlEWsUOsJbAodm" target="_blank">Link</a></figcaption>
   </figure>
   <figure style="margin-top:0px;margin-bottom:40px; margin-right:1%; margin-left:1%; float:left; width:22.0%;">
    <img style="margin-bottom: 20px; border-radius: 10px;" src="../../images/deepRlTraining/courses_hf.png"/>

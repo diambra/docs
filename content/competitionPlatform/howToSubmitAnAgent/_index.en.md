@@ -7,7 +7,7 @@ math: true
 The basic process to submit an agent consists in the following steps:
 
 1. Write a python script in which your agent interact with the environment exactly as if you were performing evaluation in your local machine
-2. Store your trained agent's scripts and weights (if any) in a private repository and create a personal access token to the repository (in our examples we will use GitHub).
+2. Store your trained agent's scripts and weights (if any) in a private repository and create a personal access token to the repository (in our examples we will use Hugging Face and GitHub).
 3. Submit the agent using our Command Line Interface specifying your private repository files path, your secret token and one of the public pre-built dependencies images we provide
 
 {{% notice tip %}}
