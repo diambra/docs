@@ -203,7 +203,8 @@ touch ~/.diambra/credentials
 docker run -d --rm --name engine \
   -v $HOME/.diambra/credentials:/tmp/.diambra/credentials \
   -v /absolute/path/to/roms/folder/:/opt/diambraArena/roms \
-  --net=host docker.io/diambra/engine:latest
+  -p 127.0.0.1:50051:50051 \ 
+  docker.io/diambra/engine:latest
 ```
 
 {{% /tab %}}
@@ -216,7 +217,8 @@ echo > %userprofile%/.diambra/credentials
 docker run --rm -ti --name engine ^
   -v %userprofile%/.diambra/credentials:/tmp/.diambra/credentials ^
   -v %userprofile%/.diambra/roms:/opt/diambraArena/roms ^
-  --net=host docker.io/diambra/engine:latest
+  -p 127.0.0.1:50051:50051 ^
+  docker.io/diambra/engine:latest
 ```
 
 {{% /tab %}}
@@ -229,7 +231,8 @@ echo "" > $Env:userprofile/.diambra/credentials
 docker run --rm -ti --name engine `
   -v $Env:userprofile/.diambra/credentials:/tmp/.diambra/credentials `
   -v $Env:userprofile/.diambra/roms:/opt/diambraArena/roms `
-  --net=host docker.io/diambra/engine:latest
+  -p 127.0.0.1:50051:50051 `
+  docker.io/diambra/engine:latest
 ```
 {{% /tab %}}
 {{< /tabs >}}
