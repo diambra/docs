@@ -51,7 +51,7 @@ command:
   - "/sources/agent.py"
   - "/sources/models/model.zip"
 sources:
-  .: git+https://username:{{.Secrets.hf_token}}@huggingface.co/username/repository_name.git#ref=branch_name
+  .: git+https://username:{{.Secrets.HF_TOKEN}}@huggingface.co/username/repository_name.git#ref=branch_name
 ```
 
 Replace `username` and `repository_name.git#ref=branch_name` with the appropriate values, and change `image` and `command` fields according to your specific use case.
@@ -71,7 +71,7 @@ If you want to avoid using submission files, you can use the command line to dir
 ```sh
 diambra agent submit \
   --submission.mode AIvsCOM \
-  --submission.source .=git+https://username:{{.Secrets.hf_token}}@huggingface.co/username/repository_name.git#ref=branch_name \
+  --submission.source .=git+https://username:{{.Secrets.HF_TOKEN}}@huggingface.co/username/repository_name.git#ref=branch_name \
   --submission.secrets-from=huggingface \
   --submission.set-command \
   arena-stable-baselines3-on3.10-bullseye \
@@ -181,7 +181,7 @@ command:
   - "--checkpoint_path"
   - "/sources/results/ppo/ckpt_1024_0.ckpt"
 sources:
-  .: git+https://username:{{.Secrets.hf_token}}@huggingface.co/username/repository_name.git#ref=branch_name
+  .: git+https://username:{{.Secrets.HF_TOKEN}}@huggingface.co/username/repository_name.git#ref=branch_name
 ```
 
 {{% notice note %}}
