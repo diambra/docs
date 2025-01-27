@@ -312,7 +312,7 @@ diambra agent submit --submission.secrets-from=huggingface --submission.manifest
 
 This will automatically retrieve the Hugging Face token you saved earlier.
 
-### <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:20px; vertical-align:sub;"> GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span>
+### GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span>
 
 These are the steps to submit your own agent hosted on GitHub:
 
