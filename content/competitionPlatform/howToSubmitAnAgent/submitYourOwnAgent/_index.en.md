@@ -4,7 +4,9 @@ weight: 50
 math: true
 ---
 
-We support all types of git sources and we also include Hugging Face libraries for model download in the base image. Here’s a streamlined method to create, train, and submit your agent locally using the DIAMBRA CLI, followed by the recommended hosting options:
+We recommend using the **DIAMBRA CLI** method to create, train, and submit your agent locally. This streamlined approach eliminates the need for external hosting services and simplifies the submission process.
+
+While we still provide legacy support for GitHub and Hugging Face, these methods are **deprecated**. Please use the DIAMBRA CLI for a more efficient and modern workflow.
 
 <div style="font-size:1.125rem;">
 
