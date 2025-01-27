@@ -4,24 +4,139 @@ weight: 50
 math: true
 ---
 
-We support all types of git sources and we also included Hugging Face libraries for model download in the base image. These are the two recommended methods to host and submit your agents:
+We recommend using the **DIAMBRA CLI** method to create, train, and submit your agent locally. This streamlined approach eliminates the need for external hosting services and simplifies the submission process.
+
+While we still provide legacy support for GitHub and Hugging Face, these methods are **deprecated**. Please use the DIAMBRA CLI for a more efficient and modern workflow.
 
 <div style="font-size:1.125rem;">
 
-- <a href="./#-hugging-face">🤗 Hugging Face</a>
-- <a href="./#github">GitHub</a>
+- <a href="./#local-cli">🖥️ Local CLI</a>
+- <a href="./#-hugging-face">🤗 Hugging Face <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span></a>
+- <a href="./#github"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:20px; vertical-align:sub;"> GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span></a>
+
 
 </div>
 
 {{% notice tip %}}
-To favor an easy start, we provide example agents files (scripts and weights) that work out-of-the-box (but are only minimally trained) in our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a> repository, for both <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">Stable Baselines 3</a> and <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">Ray RLlib.</a>
+To favor an easy start, we provide example agent files (scripts and weights) that work out-of-the-box (but are only minimally trained) in our <a href="https://github.com/diambra/agents" target="_blank">DIAMBRA Agents</a> repository, for both <a href="https://github.com/diambra/agents/tree/main/stable_baselines3" target="_blank">Stable Baselines 3</a> and <a href="https://github.com/diambra/agents/tree/main/ray_rllib" target="_blank">Ray RLlib.</a>
 {{% /notice %}}
+
+### 🖥️ Local CLI
+
+This method uses the DIAMBRA CLI to generate, build, and submit an agent directly from your local machine.
+
+#### Steps to Submit Your Agent
+
+1. **Initialize the Agent**:
+   Run the `diambra agent init` command, specifying the path to the directory where your model is located (not the model itself). This will generate the required files for your agent.
+
+   ```bash
+   diambra agent init path/to/agent
+   ```
+
+   Example:
+   ```bash
+   diambra agent init ./output/models/
+   ```
+
+   This command creates the following files:
+   - `agent.py`: A sample script for your agent.
+   - `requirements.txt`: Lists the dependencies for your agent.
+   - `Dockerfile`: Defines how to build the container for your agent.
+   - `README.md`: A quick reference for your agent.
+
+2. **Customize the `agent.py` Script**:
+   Replace the sample logic in the `agent.py` file with your own pretrained agent logic. Here’s an example of how the script should look:
+
+   ```python
+   import diambra.arena
+   from stable_baselines3 import PPO  # Import your RL framework
+
+   # Model path and game ID
+   MODEL_PATH = "./model.zip"
+   GAME_ID = "doapp"
+
+   # Load the trained agent
+   agent = PPO.load(MODEL_PATH)
+
+   # Environment settings setup and environment creation
+   env = diambra.arena.make(GAME_ID)
+
+   # Agent-Environment loop
+   obs, info = env.reset()
+
+   while True:
+       # Predict the next action using the trained agent
+       action, _ = agent.predict(obs, deterministic=True)
+
+       obs, reward, terminated, truncated, info = env.step(action)
+
+       if terminated or truncated:
+           obs, info = env.reset()
+           if info["env_done"]:
+               break
+
+   # Close the environment
+   env.close()
+   ```
+
+3. **Update the `Dockerfile` and `requirements.txt` (If Necessary)**:
+   If your agent requires additional dependencies or custom setups, update the following files:
+
+   - **`requirements.txt`**:
+     Add any Python packages your agent relies on. For example:
+     ```plaintext
+     diambra-arena==2.2.7
+     stable-baselines3
+     torch
+     numpy
+     ```
+
+   - **`Dockerfile`**:
+     Ensure the Dockerfile installs all required dependencies. If you add new packages to `requirements.txt`, no further changes are needed unless specific system-level dependencies are required.
+
+     Example:
+     ```dockerfile
+     FROM ghcr.io/diambra/arena-base-on3.10-bullseye:main
+
+     RUN apt-get -qy update && \
+         apt-get -qy install libgl1 && \
+         rm -rf /var/lib/apt/lists/*
+
+     WORKDIR /app
+     COPY requirements.txt .
+     RUN pip install -r requirements.txt
+
+     COPY . .
+     ENTRYPOINT [ "python", "/app/agent.py" ]
+     ```
+
+4. **Submit Your Agent**:
+   Submit your agent directly from the directory where the files are located. The DIAMBRA CLI will build and push the directory to DIAMBRA’s registry automatically.
+
+   ```bash
+   diambra agent submit .
+   ```
+
+5. **Track Your Submission**:
+   After submission, you’ll receive a link to monitor your agent’s evaluation. For example:
+   ```bash
+   🖥️  logged in
+   ...
+   🖥️  (####) Agent submitted: https://diambra.ai/submission/####
+   ```
+   Visit the link to review your agent’s progress and results.
 
 {{% notice warning %}}
-<span style="color:#333333; font-weight:bolder;">Do not add your tokens directly in the submission YAML file, they will be publicly visible.</span>
+<span style="color:#333333; font-weight:bolder;">The GitHub and Hugging Face submission methods are deprecated and not recommended.</span> Use the **DIAMBRA CLI** method instead for a more streamlined and efficient workflow.
 {{% /notice %}}
 
-### 🤗 Hugging Face
+
+{{% notice warning %}}
+<span style="color:#333333; font-weight:bolder;">Do not add your tokens directly in the submission YAML file, as they will be publicly visible.</span>
+{{% /notice %}}
+
+### 🤗 Hugging Face <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span>
 
 These are the steps to submit your own agent hosted on Hugging Face:
 
@@ -198,7 +313,7 @@ diambra agent submit --submission.secrets-from=huggingface --submission.manifest
 
 This will automatically retrieve the Hugging Face token you saved earlier.
 
-### GitHub
+### <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:20px; vertical-align:sub;"> GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span>
 
 These are the steps to submit your own agent hosted on GitHub:
 
