@@ -77,15 +77,45 @@ This method uses the DIAMBRA CLI to generate, build, and submit an agent directl
    env.close()
    ```
 
-3. **Submit Your Agent**:
+3. **Update the `Dockerfile` and `requirements.txt` (If Necessary)**:
+   If your agent requires additional dependencies or custom setups, update the following files:
+
+   - **`requirements.txt`**:
+     Add any Python packages your agent relies on. For example:
+     ```plaintext
+     diambra-arena==2.2.7
+     stable-baselines3
+     torch
+     numpy
+     ```
+
+   - **`Dockerfile`**:
+     Ensure the Dockerfile installs all required dependencies. If you add new packages to `requirements.txt`, no further changes are needed unless specific system-level dependencies are required.
+
+     Example:
+     ```dockerfile
+     FROM ghcr.io/diambra/arena-base-on3.10-bullseye:main
+
+     RUN apt-get -qy update && \
+         apt-get -qy install libgl1 && \
+         rm -rf /var/lib/apt/lists/*
+
+     WORKDIR /app
+     COPY requirements.txt .
+     RUN pip install -r requirements.txt
+
+     COPY . .
+     ENTRYPOINT [ "python", "/app/agent.py" ]
+     ```
+
+4. **Submit Your Agent**:
    Submit your agent directly from the directory where the files are located. The DIAMBRA CLI will build and push the directory to DIAMBRA’s registry automatically.
 
    ```bash
    diambra agent submit .
    ```
 
-
-4. **Track Your Submission**:
+5. **Track Your Submission**:
    After submission, you’ll receive a link to monitor your agent’s evaluation. For example:
    ```bash
    🖥️  logged in
@@ -93,7 +123,6 @@ This method uses the DIAMBRA CLI to generate, build, and submit an agent directl
    🖥️  (####) Agent submitted: https://diambra.ai/submission/####
    ```
    Visit the link to review your agent’s progress and results.
-
 
 {{% notice warning %}}
 <span style="color:#333333; font-weight:bolder;">Do not add your tokens directly in the submission YAML file, as they will be publicly visible.</span>
