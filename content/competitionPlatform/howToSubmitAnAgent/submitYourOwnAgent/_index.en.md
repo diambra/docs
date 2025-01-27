@@ -9,8 +9,9 @@ We support all types of git sources and we also include Hugging Face libraries f
 <div style="font-size:1.125rem;">
 
 - <a href="./#local-cli">🖥️ Local CLI</a>
-- <a href="./#-hugging-face">🤗 Hugging Face</a>
-- <a href="./#github"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:20px; vertical-align:sub;"> GitHub</a>
+- <a href="./#-hugging-face">🤗 Hugging Face <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span></a>
+- <a href="./#github"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:20px; vertical-align:sub;"> GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span></a>
+
 
 </div>
 
@@ -125,10 +126,15 @@ This method uses the DIAMBRA CLI to generate, build, and submit an agent directl
    Visit the link to review your agent’s progress and results.
 
 {{% notice warning %}}
+<span style="color:#333333; font-weight:bolder;">The GitHub and Hugging Face submission methods are deprecated and not recommended.</span> Use the **DIAMBRA CLI** method instead for a more streamlined and efficient workflow.
+{{% /notice %}}
+
+
+{{% notice warning %}}
 <span style="color:#333333; font-weight:bolder;">Do not add your tokens directly in the submission YAML file, as they will be publicly visible.</span>
 {{% /notice %}}
 
-### 🤗 Hugging Face
+### 🤗 Hugging Face <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span>
 
 These are the steps to submit your own agent hosted on Hugging Face:
 
@@ -305,7 +311,7 @@ diambra agent submit --submission.secrets-from=huggingface --submission.manifest
 
 This will automatically retrieve the Hugging Face token you saved earlier.
 
-### GitHub
+### <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:20px; vertical-align:sub;"> GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span>
 
 These are the steps to submit your own agent hosted on GitHub:
 
