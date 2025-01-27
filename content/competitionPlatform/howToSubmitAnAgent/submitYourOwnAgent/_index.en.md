@@ -12,8 +12,7 @@ While we still provide legacy support for GitHub and Hugging Face, these methods
 
 - <a href="./#local-cli">🖥️ Local CLI</a>
 - <a href="./#-hugging-face">🤗 Hugging Face <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span></a>
-- <a href="./#github"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:20px; vertical-align:sub;"> GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span></a>
-
+- <a href="./#github">GitHub <span style="color: #d9534f; font-size: 0.875rem; font-weight: bold; border: 1px solid #d9534f; border-radius: 3px; padding: 2px 4px; margin-left: 4px;">Deprecated</span></a>
 
 </div>
 
