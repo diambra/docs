@@ -113,8 +113,10 @@ This method uses the DIAMBRA CLI to generate, build, and submit an agent directl
 4. **Submit Your Agent**:
    Submit your agent directly from the directory where the files are located. The DIAMBRA CLI will build and push the directory to DIAMBRA’s registry automatically.
 
+   Remember to set the difficulty level for your agent. For example, if you want to set the difficulty to `hard`, use the following command:
+
    ```bash
-   diambra agent submit .
+   diambra agent submit --submission.difficulty hard .
    ```
 
 5. **Track Your Submission**:
